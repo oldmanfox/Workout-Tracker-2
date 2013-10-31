@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="11G63" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Workout" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="exercise" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exerciseCompleted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phase" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reps" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="round" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="week" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weekCompleted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="workout" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Workout" positionX="160" positionY="192" width="128" height="240"/>
+    </elements>
+</model>
