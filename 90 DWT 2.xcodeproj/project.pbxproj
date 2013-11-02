@@ -17,6 +17,12 @@
 		5886AC2C1819CA99009C708A /* CoverFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5886AC2B1819CA99009C708A /* CoverFlowLayout.m */; };
 		5886AC321819F2B0009C708A /* photoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5886AC311819F2B0009C708A /* photoCollectionViewCell.m */; };
 		5889A62D1820A386009B1AD5 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5889A62C1820A386009B1AD5 /* SWRevealViewController.m */; };
+		58AC1A191825911700FBFA7D /* iPad_Core Fitness.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58AC1A181825911700FBFA7D /* iPad_Core Fitness.storyboard */; };
+		58AC1A1B1825912B00FBFA7D /* iPad_Complete Fitness.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58AC1A1A1825912B00FBFA7D /* iPad_Complete Fitness.storyboard */; };
+		58AC1A1D1825914500FBFA7D /* iPad_Strength + Stability.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58AC1A1C1825914500FBFA7D /* iPad_Strength + Stability.storyboard */; };
+		58AC1A1F1825915C00FBFA7D /* iPad_Chest + Back + Stability.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58AC1A1E1825915C00FBFA7D /* iPad_Chest + Back + Stability.storyboard */; };
+		58AC1A211825918600FBFA7D /* iPad_Shoulder + Bi + Tri.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58AC1A201825918600FBFA7D /* iPad_Shoulder + Bi + Tri.storyboard */; };
+		58AC1A23182591A000FBFA7D /* iPad_Legs + Back.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58AC1A22182591A000FBFA7D /* iPad_Legs + Back.storyboard */; };
 		58DE87DB1811E49600A63018 /* iPhone_Complete Fitness.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58DE87DA1811E49600A63018 /* iPhone_Complete Fitness.storyboard */; };
 		A50835D4165B402F0090B29D /* UIViewController+Social.m in Sources */ = {isa = PBXBuildFile; fileRef = A50835D3165B402F0090B29D /* UIViewController+Social.m */; };
 		A536DF9E166AC627006767A6 /* ProgressTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A536DF9D166AC627006767A6 /* ProgressTVC.m */; };
@@ -89,6 +95,12 @@
 		5886AC311819F2B0009C708A /* photoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = photoCollectionViewCell.m; sourceTree = "<group>"; };
 		5889A62B1820A386009B1AD5 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		5889A62C1820A386009B1AD5 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		58AC1A181825911700FBFA7D /* iPad_Core Fitness.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPad_Core Fitness.storyboard"; sourceTree = "<group>"; };
+		58AC1A1A1825912B00FBFA7D /* iPad_Complete Fitness.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPad_Complete Fitness.storyboard"; sourceTree = "<group>"; };
+		58AC1A1C1825914500FBFA7D /* iPad_Strength + Stability.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPad_Strength + Stability.storyboard"; sourceTree = "<group>"; };
+		58AC1A1E1825915C00FBFA7D /* iPad_Chest + Back + Stability.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPad_Chest + Back + Stability.storyboard"; sourceTree = "<group>"; };
+		58AC1A201825918600FBFA7D /* iPad_Shoulder + Bi + Tri.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPad_Shoulder + Bi + Tri.storyboard"; sourceTree = "<group>"; };
+		58AC1A22182591A000FBFA7D /* iPad_Legs + Back.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPad_Legs + Back.storyboard"; sourceTree = "<group>"; };
 		58DE87DA1811E49600A63018 /* iPhone_Complete Fitness.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "iPhone_Complete Fitness.storyboard"; sourceTree = "<group>"; };
 		A50835D2165B402F0090B29D /* UIViewController+Social.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Social.h"; sourceTree = "<group>"; };
 		A50835D3165B402F0090B29D /* UIViewController+Social.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Social.m"; sourceTree = "<group>"; };
@@ -306,6 +318,19 @@
 				5886AC311819F2B0009C708A /* photoCollectionViewCell.m */,
 			);
 			name = Layout;
+			sourceTree = "<group>";
+		};
+		58AC1A17182590E700FBFA7D /* iPad Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				58AC1A181825911700FBFA7D /* iPad_Core Fitness.storyboard */,
+				58AC1A1A1825912B00FBFA7D /* iPad_Complete Fitness.storyboard */,
+				58AC1A1C1825914500FBFA7D /* iPad_Strength + Stability.storyboard */,
+				58AC1A1E1825915C00FBFA7D /* iPad_Chest + Back + Stability.storyboard */,
+				58AC1A201825918600FBFA7D /* iPad_Shoulder + Bi + Tri.storyboard */,
+				58AC1A22182591A000FBFA7D /* iPad_Legs + Back.storyboard */,
+			);
+			name = "iPad Storyboards";
 			sourceTree = "<group>";
 		};
 		A50835C5165B1D5D0090B29D /* Categories */ = {
@@ -561,6 +586,7 @@
 				A54B63AF15CB1DF70085C0E5 /* MainStoryboard_iPad.storyboard */,
 				A54B638F15CB1BB00085C0E5 /* MainStoryboard_iPhone.storyboard */,
 				586337EB1814822400F437AC /* iPhone Storyboards */,
+				58AC1A17182590E700FBFA7D /* iPad Storyboards */,
 				A5454C6A16EE2B2500E8A3F0 /* MainTBC.h */,
 				A5454C6B16EE2B2500E8A3F0 /* MainTBC.m */,
 				A54B639915CB1D2D0085C0E5 /* ScrollViewContainer.h */,
@@ -772,11 +798,17 @@
 				A54B639015CB1BB10085C0E5 /* MainStoryboard_iPhone.storyboard in Resources */,
 				586337ED1814869500F437AC /* iPhone_Strength + Stability.storyboard in Resources */,
 				A54B63D115CB1DF90085C0E5 /* MainStoryboard_iPad.storyboard in Resources */,
+				58AC1A211825918600FBFA7D /* iPad_Shoulder + Bi + Tri.storyboard in Resources */,
 				586337F31814873500F437AC /* iPhone_Legs + Back.storyboard in Resources */,
+				58AC1A23182591A000FBFA7D /* iPad_Legs + Back.storyboard in Resources */,
 				5878B787180E31AE001599B5 /* Media.xcassets in Resources */,
+				58AC1A1D1825914500FBFA7D /* iPad_Strength + Stability.storyboard in Resources */,
+				58AC1A1F1825915C00FBFA7D /* iPad_Chest + Back + Stability.storyboard in Resources */,
 				586337F11814871D00F437AC /* iPhone_Shoulder + Bi + Tri.storyboard in Resources */,
 				586337EF181486F200F437AC /* iPhone_Chest + Back + Stability.storyboard in Resources */,
 				58DE87DB1811E49600A63018 /* iPhone_Complete Fitness.storyboard in Resources */,
+				58AC1A191825911700FBFA7D /* iPad_Core Fitness.storyboard in Resources */,
+				58AC1A1B1825912B00FBFA7D /* iPad_Complete Fitness.storyboard in Resources */,
 				586337EA181481F300F437AC /* iPhone_Core Fitness.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
