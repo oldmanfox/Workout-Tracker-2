@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (strong, nonatomic) NSMutableArray *arrayOfImages;
+@property (strong, nonatomic) UIPopoverController *myPopoverController;
 
 - (IBAction)shareActionSheet:(id)sender;
 @end

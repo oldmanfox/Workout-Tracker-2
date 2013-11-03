@@ -56,8 +56,8 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     int tableViewWidth = tableView.bounds.size.width;
-    NSArray *tableViewHeaderStrings = @[@"Record Your Measurements",
-                                        @"View Your Measurements"];
+    NSArray *tableViewHeaderStrings = @[@"RECORD YOUR MEASUREMENTS",
+                                        @"VIEW YOUR MEASUREMENTS"];
     
     return [self configureSectionHeader:tableViewHeaderStrings :tableViewWidth :section];
 }

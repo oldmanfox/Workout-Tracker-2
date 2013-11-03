@@ -81,9 +81,9 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     int tableViewWidth = tableView.bounds.size.width;
-    NSArray *tableViewHeaderStrings = @[@"Month 1",
-                                        @"Month 2",
-                                        @"Month 3"];
+    NSArray *tableViewHeaderStrings = @[@"MONTH 1",
+                                        @"MONTH 2",
+                                        @"MONTH 3"];
     
     return [self configureSectionHeader:tableViewHeaderStrings :tableViewWidth :section];
 }
@@ -204,7 +204,7 @@
 
     // Set the WorkoutTVC section header
     NSMutableString *tempSecionHeader = [NSMutableString stringWithCapacity:0];
-    [tempSecionHeader appendString:[NSString stringWithFormat:@"%@ - %@", ((DataNavController *)self.parentViewController).phase, ((DataNavController *)self.parentViewController).week]];
+    [tempSecionHeader appendString:[NSString stringWithFormat:@"%@ - %@", [((DataNavController *)self.parentViewController).phase uppercaseString], [((DataNavController *)self.parentViewController).week uppercaseString]]];
     
     workoutTVC.sectionHeader = tempSecionHeader;
 }

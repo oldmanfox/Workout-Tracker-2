@@ -62,8 +62,8 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     int tableViewWidth = tableView.bounds.size.width;
-    NSArray *tableViewHeaderStrings = @[@"Take Photos",
-                                        @"View Photos"];
+    NSArray *tableViewHeaderStrings = @[@"TAKE PHOTOS",
+                                        @"VIEW PHOTOS"];
     
     return [self configureSectionHeader:tableViewHeaderStrings :tableViewWidth :section];
 }

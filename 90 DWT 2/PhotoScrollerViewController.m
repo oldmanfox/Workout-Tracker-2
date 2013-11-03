@@ -13,6 +13,8 @@
 @property (strong, nonatomic) NSString *actionButtonType;
 @property (strong, nonatomic) NSString *whereToGetPhoto;
 @property (strong, nonatomic) NSString *selectedPhotoTitle;
+
+@property CGRect selectedImageRect;
 @property int selectedPhotoIndex;
 
 @end
@@ -48,7 +50,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self.collectionView reloadData];
+    //[self.collectionView reloadData];
     
 }
 
@@ -117,7 +119,7 @@
                 subjectTitle = [subjectTitle stringByAppendingFormat:@"90 DWT 2 %@ Photos", monthArray[i]];
                 
                 [mailComposer setSubject:subjectTitle];
-                NSLog(@"%@", subjectTitle);
+                //NSLog(@"%@", subjectTitle);
                 
                 for (int b = 0; b < picAngle.count; b++) {
                     
@@ -130,7 +132,7 @@
                         
                         photoAttachmentFileName = [photoAttachmentFileName stringByAppendingFormat:@"%@ %@.jpg", monthArray[i], picAngle[b]];
                         
-                        NSLog(@"File name = %@", photoAttachmentFileName);
+                        //NSLog(@"File name = %@", photoAttachmentFileName);
                         
                         [mailComposer addAttachmentData:imageData mimeType:@"image/jpg" fileName:photoAttachmentFileName];
                     }
@@ -260,7 +262,7 @@
             
             [self.arrayOfImages addObject:[photoNC loadImage:[currentPhase stringByAppendingString:photoAngle[i] ]]];
             
-            NSLog(@"Photo = %@", self.arrayOfImages[i]);
+            //NSLog(@"Photo = %@", self.arrayOfImages[i]);
             
         }
         
@@ -288,6 +290,17 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSArray *photoAngle = @[@" Front",
                             @" Side",
                             @" Back"];
+    
+    // Check to see what device you are using iPad or iPhone.
+    NSString *deviceModel = [UIDevice currentDevice].model;
+    
+    if ([deviceModel isEqualToString:@"iPad"] || [deviceModel isEqualToString:@"iPad Simulator"])
+    {
+        // Get the position of the image so the popover arrow can point to it.
+        static NSString *CellIdentifier = @"Cell";
+        photoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+        self.selectedImageRect = [collectionView convertRect:cell.frame toView:self.view];
+    }
     
     self.selectedPhotoTitle = [self.navigationItem.title stringByAppendingString:photoAngle[indexPath.item]];
     self.selectedPhotoIndex = indexPath.item;
@@ -323,11 +336,11 @@ didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (([deviceModel isEqualToString:@"iPad"] && imagePicker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary)
         || ([deviceModel isEqualToString:@"iPad Simulator"] && imagePicker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary)) {
         
-        //self.popoverController = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
-        //self.popoverController.delegate = self;
-        //[self.popoverController presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-        
+        self.myPopoverController = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
+        self.myPopoverController.delegate = self;
+        [self.myPopoverController presentPopoverFromRect:self.selectedImageRect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
+    
     else {
         [[UIApplication sharedApplication] setStatusBarHidden:YES];
         [self presentViewController:imagePicker animated:YES completion:nil];
@@ -338,44 +351,33 @@ didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    // Start new thread
-    dispatch_queue_t saveQueue = dispatch_queue_create("image saver", NULL);
-    dispatch_async(saveQueue, ^{
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    
+    [self.arrayOfImages replaceObjectAtIndex:self.selectedPhotoIndex withObject:image];
+    UIImage *scaledImage = nil;
+    
+    if (image.size.height > image.size.width) {
         
-        UIImage *image = info[UIImagePickerControllerOriginalImage];
+        // Image was taken in Portriat mode.
+        scaledImage = [image resizedImageWithSize:CGSizeMake(1536,2048)];
         
-        [self.arrayOfImages replaceObjectAtIndex:self.selectedPhotoIndex withObject:image];
-        UIImage *scaledImage = nil;
+    } else {
         
-        if (image.size.height > image.size.width) {
-            
-            // Image was taken in Portriat mode.
-            scaledImage = [image resizedImageWithSize:CGSizeMake(1536,2048)];
-            
-        } else {
-            
-            // Image was taken in Landscape mode.
-            scaledImage = [image resizedImageWithSize:CGSizeMake(2048,1536)];
-        }
-        
-        // Only save image to photo library if it is a new pic taken with the camera.
-        if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-            UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-        }
-        
-        PhotoNavController *photoNC = [[PhotoNavController alloc] init];
-        
-        
-        
-        // Save image to application documents directory.
-        [photoNC saveImage:scaledImage imageName:self.selectedPhotoTitle];
-        
-        // Go back to main thread
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Display newly scaled image.
-            
-        });
-    });
+        // Image was taken in Landscape mode.
+        scaledImage = [image resizedImageWithSize:CGSizeMake(2048,1536)];
+    }
+    
+    // Only save image to photo library if it is a new pic taken with the camera.
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    }
+    
+    PhotoNavController *photoNC = [[PhotoNavController alloc] init];
+    
+    // Save image to application documents directory.
+    [photoNC saveImage:scaledImage imageName:self.selectedPhotoTitle];
+
+    [self.collectionView reloadData];
     
     picker = nil;
 }

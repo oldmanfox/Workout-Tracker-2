@@ -2759,7 +2759,7 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Product description that is going to be vey long and neet and will be very long if needed. " lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="AAP-2O-f3B">
                                             <rect key="frame" x="20" y="29" width="290" height="90"/>
@@ -26090,18 +26090,18 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="LTp-Il-hYF"/>
-        <segue reference="r8Y-8K-rHR"/>
-        <segue reference="9zb-3i-g93"/>
-        <segue reference="WPN-7s-Vdi"/>
         <segue reference="c2n-ug-Wey"/>
+        <segue reference="r8Y-8K-rHR"/>
+        <segue reference="WPN-7s-Vdi"/>
+        <segue reference="PZ8-29-WEs"/>
         <segue reference="67Z-Q6-Hdk"/>
-        <segue reference="R7F-5a-6ac"/>
-        <segue reference="6OY-VO-x3s"/>
-        <segue reference="B6z-KB-85E"/>
-        <segue reference="GvB-6r-ZDV"/>
-        <segue reference="AyQ-4Q-f2k"/>
+        <segue reference="LTp-Il-hYF"/>
         <segue reference="Q1L-e8-eme"/>
+        <segue reference="AyQ-4Q-f2k"/>
+        <segue reference="yLz-pC-Bx6"/>
+        <segue reference="GqU-B1-yap"/>
+        <segue reference="xPj-gq-FG8"/>
         <segue reference="Y7J-aK-yKc"/>
+        <segue reference="GvB-6r-ZDV"/>
     </inferredMetricsTieBreakers>
 </document>

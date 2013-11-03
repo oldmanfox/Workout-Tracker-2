@@ -92,8 +92,8 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     int tableViewWidth = tableView.bounds.size.width;
-    NSArray *tableViewHeaderStrings = @[@"Defaults",
-                                        @"About"];
+    NSArray *tableViewHeaderStrings = @[@"DEFAULTS",
+                                        @"ABOUT"];
     
     return [self configureSectionHeader:tableViewHeaderStrings :tableViewWidth :section];
 }

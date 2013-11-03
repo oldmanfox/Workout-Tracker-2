@@ -19,34 +19,12 @@
     [self.tableView setBackgroundView:nil];
     [self.tableView setBackgroundView:[[UIView alloc] init]];
     
-    [self.tableView setBackgroundColor:[UIColor clearColor]]; // this is for iPhone
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] != UIUserInterfaceIdiomPhone) {
-        // iPad
-        //backgroundImage = [UIImage imageNamed:@"background-iPad-darkgrey.png"];
-        //backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-        
-        backgroundColor = [UIColor blackColor];
-        
-        //cellbackgroundImage = [UIImage imageNamed:@"tableviewcell-iPad-darkgrey.png"];
-        //cellbackgroundColor = [UIColor colorWithPatternImage:cellbackgroundImage];
-        
-        UIColor* headerColor = [UIColor colorWithRed:33/255.0f green:37/255.0f blue:41/255.0f alpha:1.0f];
-        cellbackgroundColor = headerColor;
-    }
-    else {
-        // iPhone
-        //backgroundImage = [UIImage imageNamed:@"background-iPhone-darkgrey.png"];
-        //backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-        
-        UIColor* headerColor = [UIColor colorWithRed:33/255.0f green:37/255.0f blue:41/255.0f alpha:1.0f];
-        backgroundColor = headerColor;
-        
-        //cellbackgroundImage = [UIImage imageNamed:@"tableviewcell-iPhone-darkgrey.png"];
-        //cellbackgroundColor = [UIColor colorWithPatternImage:cellbackgroundImage];
-        
-        cellbackgroundColor = [UIColor blackColor];
-    }
+    UIColor* headerColor = [UIColor colorWithRed:33/255.0f green:37/255.0f blue:41/255.0f alpha:1.0f];
+    backgroundColor = headerColor;
+    
+    cellbackgroundColor = [UIColor blackColor];
     
     // TableView background color
     self.tableView.backgroundColor = backgroundColor;
@@ -60,10 +38,6 @@
         
         // Cell background color
         cell.backgroundColor = cellbackgroundColor;
-        
-        // Label backgrounds
-        //cell.textLabel.backgroundColor = [UIColor clearColor];
-        //cell.detailTextLabel.backgroundColor = [UIColor clearColor];
         
         UIColor* detailTextColor = [UIColor colorWithRed:76/255.0f green:152/255.0f blue:213/255.0f alpha:1.0f];
         cell.textLabel.textColor = [UIColor whiteColor];
@@ -86,6 +60,7 @@
     int fontSize;
     int frameHeight;
     
+    /*
     if ([[UIDevice currentDevice] userInterfaceIdiom] != UIUserInterfaceIdiomPhone) {
         // iPad
         x = 55;
@@ -105,8 +80,22 @@
         {
             frameHeight = 40;
         }
-        
     }
+     */
+    
+    // iPhone
+    x = 14;
+    fontSize = 15;
+    
+    if (tvSection == 0) {
+        frameHeight = 76;
+    }
+    
+    else
+    {
+        frameHeight = 40;
+    }
+
 
     UILabel *hLabel = [[UILabel alloc] initWithFrame:CGRectMake(x, 0, tvWidth, frameHeight)];
     
