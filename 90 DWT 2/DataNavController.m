@@ -89,7 +89,7 @@
                         @"4 Square Round 1",
                         @"Side Sphinx Round 1",
                         @"Decline Sphinx Round 1",
-                        @"Twisting Overhead Lunges Round 1",
+                        @"Jump Lunges Round 1",
                         @"Plank Crunches Round 1",
                         @"Rowing Forearm Balance Round 1",
                         @"Hamstring Curls Round 1",

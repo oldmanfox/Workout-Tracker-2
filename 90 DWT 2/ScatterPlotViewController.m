@@ -49,7 +49,7 @@
 #pragma mark - Chart behavior
 -(void)initPlot {
     
-    if ([[DWT2IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT2.slidergraph"]) {
+    //if ([[DWT2IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT2.slidergraph"]) {
     
         //NSLog(@"Allow iPad Graph");
         
@@ -59,9 +59,9 @@
         [self configurePlots];
         [self configureAxes];
         [self configureLegend];
-    } else {
-        self.hostView.backgroundColor = [UIColor clearColor];
-    }
+   // } else {
+        //self.hostView.backgroundColor = [UIColor clearColor];
+    //}
 }
 
 -(void)configureHost {

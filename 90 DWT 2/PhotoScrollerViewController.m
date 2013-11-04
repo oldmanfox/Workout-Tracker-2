@@ -269,7 +269,7 @@
         else
             // Load a placeholder image.
         {
-            [self.arrayOfImages addObject:[UIImage imageNamed:@"icon-pics2.png"]];
+            [self.arrayOfImages addObject:[UIImage imageNamed:@"PhotoPlaceHolder.png"]];
             
         }
 

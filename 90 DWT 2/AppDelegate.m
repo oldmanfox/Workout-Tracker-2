@@ -33,7 +33,8 @@
         
         // make the status bar white
         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-        
+        //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    
         //[[UITabBar appearance] setBarTintColor:navColor];
         [[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
         [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];

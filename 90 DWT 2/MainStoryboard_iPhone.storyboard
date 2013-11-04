@@ -1752,7 +1752,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="1.3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="slO-nn-6Za">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="1.4" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="slO-nn-6Za">
                                                     <rect key="frame" x="281" y="11" width="24" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -12077,7 +12077,7 @@
                                 <items>
                                     <barButtonItem enabled="NO" image="icon-reveal" id="yh0-h8-FUf"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rY7-Gx-oJp"/>
-                                    <barButtonItem title="Twisting Overhead Lunges" style="done" id="sMD-9J-PE1"/>
+                                    <barButtonItem title="Jump Lunges" style="done" id="sMD-9J-PE1"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="j8p-1A-jt2"/>
                                     <barButtonItem enabled="NO" title="R1" id="LuT-zx-zZa"/>
                                 </items>
@@ -26081,7 +26081,7 @@
         <image name="icon-reveal" width="22" height="17"/>
         <image name="icon-ruler.png" width="23" height="23"/>
         <image name="icon-settings1.png" width="31" height="24"/>
-        <image name="icon-workout.png" width="22" height="17"/>
+        <image name="icon-workout.png" width="768" height="911"/>
         <image name="nav_r_arrow" width="22" height="23"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -26090,18 +26090,18 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="c2n-ug-Wey"/>
-        <segue reference="r8Y-8K-rHR"/>
-        <segue reference="WPN-7s-Vdi"/>
-        <segue reference="PZ8-29-WEs"/>
-        <segue reference="67Z-Q6-Hdk"/>
         <segue reference="LTp-Il-hYF"/>
+        <segue reference="PZ8-29-WEs"/>
+        <segue reference="WPN-7s-Vdi"/>
+        <segue reference="r8Y-8K-rHR"/>
+        <segue reference="c2n-ug-Wey"/>
+        <segue reference="67Z-Q6-Hdk"/>
+        <segue reference="GvB-6r-ZDV"/>
         <segue reference="Q1L-e8-eme"/>
+        <segue reference="woh-Jf-l6Y"/>
         <segue reference="AyQ-4Q-f2k"/>
-        <segue reference="yLz-pC-Bx6"/>
         <segue reference="GqU-B1-yap"/>
         <segue reference="xPj-gq-FG8"/>
-        <segue reference="Y7J-aK-yKc"/>
-        <segue reference="GvB-6r-ZDV"/>
+        <segue reference="dN8-QQ-hW4"/>
     </inferredMetricsTieBreakers>
 </document>

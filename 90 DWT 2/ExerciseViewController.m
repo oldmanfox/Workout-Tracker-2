@@ -384,6 +384,8 @@
     self.sliderButton.tintColor = blueColor;
     self.currentExercise.tintColor = blueColor;
     self.roundButton.tintColor = blueColor;
+    
+    self.currentExercise.style = UIBarButtonItemStyleDone;
 
     // Apply Background Colors
     self.previousReps.backgroundColor = lightGreyColor;
