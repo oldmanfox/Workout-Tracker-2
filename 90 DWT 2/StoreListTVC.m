@@ -145,6 +145,7 @@
     cell.titleLabel.textColor = [UIColor whiteColor];
     cell.descriptionLabel.text = product.localizedDescription;
     cell.priceLabel.text = [_priceFormatter stringFromNumber:product.price];
+    cell.buyButton.tag = indexPath.row;
     
     cell.priceLabel.textColor = [UIColor colorWithRed:48/255.0f green:137/255.0f blue:210/255.0f alpha:1];
     

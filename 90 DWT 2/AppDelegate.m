@@ -20,25 +20,27 @@
     // Override point for customization after application launch.
     
     // For In App Purchases - check to see if any transactions were purchased but not completed due to network loss or somethign similar.
-        [DWT2IAPHelper sharedInstance];
+    [DWT2IAPHelper sharedInstance];
 
-        //  Configure for iOS 7
+    //  Configure for iOS 7
+
+    // style the navigation bar
+    //UIColor* navColor = [UIColor colorWithRed:0.175f green:0.458f blue:0.831f alpha:1.0f];
+    UIColor* navColor = [UIColor colorWithRed:0/255.0f green:167/255.0f blue:255/255.0f alpha:1.0f];
+    [[UINavigationBar appearance] setBarTintColor:navColor];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     
-        // style the navigation bar
-        //UIColor* navColor = [UIColor colorWithRed:0.175f green:0.458f blue:0.831f alpha:1.0f];
-        UIColor* navColor = [UIColor colorWithRed:0/255.0f green:167/255.0f blue:255/255.0f alpha:1.0f];
-        [[UINavigationBar appearance] setBarTintColor:navColor];
-        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
-        
-        // make the status bar white
-        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-        //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-    
-        //[[UITabBar appearance] setBarTintColor:navColor];
-        [[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
-        [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
+    // make the status bar white
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+
+    //[[UITabBar appearance] setBarTintColor:navColor];
+    [[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
+    [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
    
+    [UIViewController prepareInterstitialAds];
+    
     return YES;
 }
 

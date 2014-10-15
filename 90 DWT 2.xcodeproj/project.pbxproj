@@ -17,7 +17,6 @@
 		A53AAE7A174674BD00FC3521 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53AAE79174674BC00FC3521 /* QuartzCore.framework */; };
 		A53AAE861746770D00FC3521 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = A53AAE7F1746770D00FC3521 /* NSData+Base64.m */; };
 		A53AAE871746770D00FC3521 /* StoreListTVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A53AAE821746770D00FC3521 /* StoreListTVCCell.m */; };
-		A53AAE881746770D00FC3521 /* VerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A53AAE851746770D00FC3521 /* VerificationController.m */; };
 		A53AAE8D1746772800FC3521 /* DWT2IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A53AAE8A1746772800FC3521 /* DWT2IAPHelper.m */; };
 		A53AAE8E1746772800FC3521 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A53AAE8C1746772800FC3521 /* IAPHelper.m */; };
 		A53AAEDB1746775B00FC3521 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A53AAEDA1746775B00FC3521 /* libCorePlot-CocoaTouch.a */; };
@@ -87,8 +86,6 @@
 		A53AAE7F1746770D00FC3521 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		A53AAE811746770D00FC3521 /* StoreListTVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreListTVCCell.h; sourceTree = "<group>"; };
 		A53AAE821746770D00FC3521 /* StoreListTVCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreListTVCCell.m; sourceTree = "<group>"; };
-		A53AAE841746770D00FC3521 /* VerificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationController.h; sourceTree = "<group>"; };
-		A53AAE851746770D00FC3521 /* VerificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationController.m; sourceTree = "<group>"; };
 		A53AAE891746772800FC3521 /* DWT2IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWT2IAPHelper.h; sourceTree = "<group>"; };
 		A53AAE8A1746772800FC3521 /* DWT2IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWT2IAPHelper.m; sourceTree = "<group>"; };
 		A53AAE8B1746772800FC3521 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
@@ -309,7 +306,6 @@
 				A53AAE8C1746772800FC3521 /* IAPHelper.m */,
 				A53AAE7D1746770D00FC3521 /* Base64 */,
 				A53AAE801746770D00FC3521 /* Cells */,
-				A53AAE831746770D00FC3521 /* VerificationController */,
 			);
 			name = "In-App Purchases";
 			sourceTree = "<group>";
@@ -339,15 +335,6 @@
 				A53AAE821746770D00FC3521 /* StoreListTVCCell.m */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		A53AAE831746770D00FC3521 /* VerificationController */ = {
-			isa = PBXGroup;
-			children = (
-				A53AAE841746770D00FC3521 /* VerificationController.h */,
-				A53AAE851746770D00FC3521 /* VerificationController.m */,
-			);
-			path = VerificationController;
 			sourceTree = "<group>";
 		};
 		A53AAE8F1746775B00FC3521 /* CorePlotHeaders */ = {
@@ -712,7 +699,7 @@
 		A54B62EB15CB13F10085C0E5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Grant, Jared";
 				TargetAttributes = {
 					A54B62F315CB13F10085C0E5 = {
@@ -789,7 +776,6 @@
 				A5454C6C16EE2B2600E8A3F0 /* MainTBC.m in Sources */,
 				A53AAE861746770D00FC3521 /* NSData+Base64.m in Sources */,
 				A53AAE871746770D00FC3521 /* StoreListTVCCell.m in Sources */,
-				A53AAE881746770D00FC3521 /* VerificationController.m in Sources */,
 				A53AAE8D1746772800FC3521 /* DWT2IAPHelper.m in Sources */,
 				A53AAE8E1746772800FC3521 /* IAPHelper.m in Sources */,
 				A53AAEE2174677D000FC3521 /* UIViewController+CoreData.m in Sources */,
@@ -824,9 +810,11 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -860,9 +848,11 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -895,9 +885,11 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/90 DWT 2\"",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -918,9 +910,11 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/90 DWT 2\"",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -936,9 +930,11 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jared Grant";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -972,10 +968,12 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/90 DWT 2\"",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E35FD92D-D2A1-4241-BFCD-C36E8B166AF1";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "App Store";

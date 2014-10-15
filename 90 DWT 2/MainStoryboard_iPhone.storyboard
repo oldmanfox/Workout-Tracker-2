@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ceL-td-bbF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ceL-td-bbF">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--ProgressTVC - Current Progress-->
+        <!--Current Progress-->
         <scene sceneID="fJO-Hb-F5s">
             <objects>
                 <tableViewController id="occ-Ha-XuT" customClass="ProgressTVC" sceneMemberID="viewController">
@@ -314,7 +313,7 @@
             </objects>
             <point key="canvasLocation" x="675" y="183"/>
         </scene>
-        <!--WorkoutTVC - Foundation-->
+        <!--Foundation-->
         <scene sceneID="Z4f-lO-KJb">
             <objects>
                 <tableViewController title="Foundation" id="AL8-5J-3D9" customClass="WorkoutTVC" sceneMemberID="viewController">
@@ -511,7 +510,7 @@
             </objects>
             <point key="canvasLocation" x="1907" y="183"/>
         </scene>
-        <!--WorkoutTVC - Performance-->
+        <!--Performance-->
         <scene sceneID="xt6-iD-khw">
             <objects>
                 <tableViewController title="Performance" id="rWM-MW-1ff" customClass="WorkoutTVC" sceneMemberID="viewController">
@@ -701,7 +700,7 @@
             </objects>
             <point key="canvasLocation" x="1907" y="1351"/>
         </scene>
-        <!--WorkoutTVC - Strength-->
+        <!--Strength-->
         <scene sceneID="6dW-5t-fIq">
             <objects>
                 <tableViewController title="Strength" id="9Rq-Bm-Np8" customClass="WorkoutTVC" sceneMemberID="viewController">
@@ -912,13 +911,12 @@
             </objects>
             <point key="canvasLocation" x="1907" y="760"/>
         </scene>
-        <!--Data Nav Controller - Workouts-->
+        <!--Workouts-->
         <scene sceneID="4Qw-se-aii">
             <objects>
                 <navigationController definesPresentationContext="YES" id="qss-Su-z6N" customClass="DataNavController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Workouts" image="icon-workout.png" id="SdD-Fk-Z26"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="PMz-PL-fLD">
-                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Euj-W7-Ks6">
@@ -933,7 +931,7 @@
             </objects>
             <point key="canvasLocation" x="300" y="183"/>
         </scene>
-        <!--PhotoTVC - Photos-->
+        <!--Photos-->
         <scene sceneID="rBE-Au-Erc">
             <objects>
                 <tableViewController id="B9f-5f-GNI" customClass="PhotoTVC" sceneMemberID="viewController">
@@ -1146,7 +1144,6 @@
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jbk-f2-kLs">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O9r-JF-Lfx">
                                     <size key="itemSize" width="152" height="204"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1163,11 +1160,9 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="184" translatesAutoresizingMaskIntoConstraints="NO" id="O9m-Q2-Fin">
                                                     <rect key="frame" x="0.0" y="0.0" width="152" height="184"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNM-C1-lw8">
                                                     <rect key="frame" x="0.0" y="183" width="152" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.32407852920000002" green="0.6958822201" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1211,7 +1206,7 @@
             </objects>
             <point key="canvasLocation" x="1109" y="-395"/>
         </scene>
-        <!--MeasurementsTVC - Measurements-->
+        <!--Measurements-->
         <scene sceneID="oea-eR-sgX">
             <objects>
                 <tableViewController id="J9Q-FS-kAg" customClass="MeasurementsTVC" sceneMemberID="viewController">
@@ -1499,7 +1494,6 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tag-zI-mXj">
                                 <rect key="frame" x="242" y="81" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="d4d-Yq-q1C"/>
                                     <constraint firstAttribute="width" constant="46" id="yel-hd-93K"/>
@@ -1595,7 +1589,6 @@
                     <navigationItem key="navigationItem" id="PeM-bR-6AH"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BxD-9x-Kki">
-                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tabBar>
                     <connections>
@@ -1610,7 +1603,7 @@
             </objects>
             <point key="canvasLocation" x="-226" y="183"/>
         </scene>
-        <!--Photo Nav Controller - Photos-->
+        <!--Photos-->
         <scene sceneID="KY8-3X-7Zk">
             <objects>
                 <navigationController id="pp7-dv-m4v" customClass="PhotoNavController" sceneMemberID="viewController">
@@ -1629,7 +1622,7 @@
             </objects>
             <point key="canvasLocation" x="300" y="-395"/>
         </scene>
-        <!--Measurements Nav Controller - Measure-->
+        <!--Measure-->
         <scene sceneID="RRR-Ek-xsM">
             <objects>
                 <navigationController id="nMN-R6-wgJ" customClass="MeasurementsNavController" sceneMemberID="viewController">
@@ -1648,7 +1641,7 @@
             </objects>
             <point key="canvasLocation" x="300" y="-971"/>
         </scene>
-        <!--Settings Nav Controller - Settings-->
+        <!--Settings-->
         <scene sceneID="goj-xi-MiF">
             <objects>
                 <navigationController id="b43-xA-tnH" customClass="SettingsNavController" sceneMemberID="viewController">
@@ -1667,7 +1660,7 @@
             </objects>
             <point key="canvasLocation" x="300" y="-1549"/>
         </scene>
-        <!--SettingsTVC - Settings-->
+        <!--Settings-->
         <scene sceneID="SPd-Pa-6b1">
             <objects>
                 <tableViewController id="JTo-8f-q0F" customClass="SettingsTVC" sceneMemberID="viewController">
@@ -1752,7 +1745,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="1.4" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="slO-nn-6Za">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="1.5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="slO-nn-6Za">
                                                     <rect key="frame" x="281" y="11" width="24" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1836,7 +1829,7 @@
             </objects>
             <point key="canvasLocation" x="675" y="-1549"/>
         </scene>
-        <!--Email View Controller - Default Email-->
+        <!--Default Email-->
         <scene sceneID="59Z-cl-sva">
             <objects>
                 <viewController id="siZ-nA-OBt" customClass="EmailViewController" sceneMemberID="viewController">
@@ -1905,7 +1898,7 @@
             </objects>
             <point key="canvasLocation" x="1109" y="-1549"/>
         </scene>
-        <!--Website View Controller - Website-->
+        <!--Website-->
         <scene sceneID="JQX-So-ghi">
             <objects>
                 <viewController id="CWD-sL-clQ" customClass="WebsiteViewController" sceneMemberID="viewController">
@@ -1994,7 +1987,6 @@
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="M55-7r-cAJ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fUr-u4-NL7">
                                     <size key="itemSize" width="152" height="204"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -2011,14 +2003,12 @@
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5m-1g-UnA">
                                                     <rect key="frame" x="0.0" y="183" width="152" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.32407852920000002" green="0.6958822201" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="184" translatesAutoresizingMaskIntoConstraints="NO" id="Z1a-kU-C0T">
                                                     <rect key="frame" x="0.0" y="0.0" width="152" height="184"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2058,7 +2048,7 @@
             </objects>
             <point key="canvasLocation" x="1506" y="-395"/>
         </scene>
-        <!--Results View Controller - Summary-->
+        <!--Summary-->
         <scene sceneID="Zuz-X7-VsJ">
             <objects>
                 <viewController id="5dw-5N-VwB" customClass="ResultsViewController" sceneMemberID="viewController">
@@ -2101,7 +2091,7 @@
             </objects>
             <point key="canvasLocation" x="13129" y="-3410"/>
         </scene>
-        <!--Workout Ab Ripper Results View Controller - Summary-->
+        <!--Summary-->
         <scene sceneID="TKa-Wk-S2B">
             <objects>
                 <viewController id="7db-pb-3MB" customClass="Workout_AbRipper_ResultsViewController" sceneMemberID="viewController">
@@ -2144,7 +2134,7 @@
             </objects>
             <point key="canvasLocation" x="13129" y="-1009"/>
         </scene>
-        <!--Notes View Controller - Plyometrics-->
+        <!--Plyometrics-->
         <scene sceneID="ItQ-cf-2Ys">
             <objects>
                 <viewController id="vyX-v5-UKv" customClass="NotesViewController" sceneMemberID="viewController">
@@ -2262,7 +2252,7 @@
             </objects>
             <point key="canvasLocation" x="2672" y="183"/>
         </scene>
-        <!--Notes View Controller - Stretch or Rest-->
+        <!--Stretch or Rest-->
         <scene sceneID="BzI-gg-qZ4">
             <objects>
                 <viewController id="u73-Nc-2wE" customClass="NotesViewController" sceneMemberID="viewController">
@@ -2380,7 +2370,7 @@
             </objects>
             <point key="canvasLocation" x="2672" y="765"/>
         </scene>
-        <!--Notes View Controller - Yoga-->
+        <!--Yoga-->
         <scene sceneID="atK-iG-hqV">
             <objects>
                 <viewController id="D3w-BM-Yxr" customClass="NotesViewController" sceneMemberID="viewController">
@@ -2498,7 +2488,7 @@
             </objects>
             <point key="canvasLocation" x="2672" y="1351"/>
         </scene>
-        <!--Notes View Controller - Lower Agility-->
+        <!--Lower Agility-->
         <scene sceneID="RSP-WK-cpC">
             <objects>
                 <viewController id="bke-6l-GtV" customClass="NotesViewController" sceneMemberID="viewController">
@@ -2616,7 +2606,7 @@
             </objects>
             <point key="canvasLocation" x="2672" y="1927"/>
         </scene>
-        <!--Notes View Controller - Upper Agility-->
+        <!--Upper Agility-->
         <scene sceneID="zgf-OW-n12">
             <objects>
                 <viewController id="YD7-8L-Yns" customClass="NotesViewController" sceneMemberID="viewController">
@@ -2778,11 +2768,13 @@
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIk-ec-CHH">
                                             <rect key="frame" x="237" y="7" width="73" height="22"/>
+                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="73" id="fsY-14-Du3"/>
                                                 <constraint firstAttribute="height" constant="22" id="ikj-Ot-vBa"/>
                                             </constraints>
-                                            <state key="normal" title="Buy" backgroundImage="icon-button-blue-iPhone">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <state key="normal" title="Buy">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -2821,7 +2813,7 @@
             </objects>
             <point key="canvasLocation" x="674" y="760"/>
         </scene>
-        <!--Navigation Controller - Store-->
+        <!--Store-->
         <scene sceneID="Bkw-dP-1w6">
             <objects>
                 <navigationController id="a5F-aU-EjR" sceneMemberID="viewController">
@@ -2953,7 +2945,7 @@
             </objects>
             <point key="canvasLocation" x="-599" y="1134"/>
         </scene>
-        <!--Exercise View Controller - Core Fitness-->
+        <!--Core Fitness-->
         <scene sceneID="eKq-pH-gve">
             <objects>
                 <viewController id="oOb-hr-Sqy" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -3140,7 +3132,7 @@
             </objects>
             <point key="canvasLocation" x="2681" y="-3410"/>
         </scene>
-        <!--Exercise View Controller - Core Fitness-->
+        <!--Core Fitness-->
         <scene sceneID="S7n-ap-tCM">
             <objects>
                 <viewController id="B87-10-cwE" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -3327,7 +3319,7 @@
             </objects>
             <point key="canvasLocation" x="3068" y="-3410"/>
         </scene>
-        <!--Exercise View Controller - Core Fitness-->
+        <!--Core Fitness-->
         <scene sceneID="wDP-pp-n4C">
             <objects>
                 <viewController id="QYJ-E2-lDe" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -3514,7 +3506,7 @@
             </objects>
             <point key="canvasLocation" x="3458" y="-3410"/>
         </scene>
-        <!--Exercise View Controller - Core Fitness-->
+        <!--Core Fitness-->
         <scene sceneID="hnF-HA-wmZ">
             <objects>
                 <viewController id="KyO-7V-qls" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -3701,7 +3693,7 @@
             </objects>
             <point key="canvasLocation" x="3845" y="-3410"/>
         </scene>
-        <!--Exercise View Controller - Core Fitness-->
+        <!--Core Fitness-->
         <scene sceneID="yiK-ae-qfl">
             <objects>
                 <viewController id="CIe-QM-PuV" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -3888,7 +3880,7 @@
             </objects>
             <point key="canvasLocation" x="4227" y="-3410"/>
         </scene>
-        <!--Exercise View Controller - Core Fitness-->
+        <!--Core Fitness-->
         <scene sceneID="zOA-sE-d3g">
             <objects>
                 <viewController id="9a5-g8-bDL" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -4075,7 +4067,7 @@
             </objects>
             <point key="canvasLocation" x="4614" y="-3410"/>
         </scene>
-        <!--Exercise View Controller - Core Fitness-->
+        <!--Core Fitness-->
         <scene sceneID="xPc-Zu-kxx">
             <objects>
                 <viewController id="UMn-hu-Fvy" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -4262,7 +4254,7 @@
             </objects>
             <point key="canvasLocation" x="5004" y="-3410"/>
         </scene>
-        <!--Exercise View Controller - Core Fitness-->
+        <!--Core Fitness-->
         <scene sceneID="llp-qz-rRT">
             <objects>
                 <viewController id="M80-Ya-8vO" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -4449,7 +4441,7 @@
             </objects>
             <point key="canvasLocation" x="5391" y="-3410"/>
         </scene>
-        <!--Exercise View Controller - Core Fitness-->
+        <!--Core Fitness-->
         <scene sceneID="PCT-l8-Xh6">
             <objects>
                 <viewController id="Uol-mi-3PC" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -4636,7 +4628,7 @@
             </objects>
             <point key="canvasLocation" x="5780" y="-3410"/>
         </scene>
-        <!--Exercise View Controller - Core Fitness-->
+        <!--Core Fitness-->
         <scene sceneID="Z1C-Ib-iJh">
             <objects>
                 <viewController id="3mE-lc-1cp" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -4823,7 +4815,7 @@
             </objects>
             <point key="canvasLocation" x="6167" y="-3410"/>
         </scene>
-        <!--Exercise View Controller - Core Fitness-->
+        <!--Core Fitness-->
         <scene sceneID="haU-7t-zhq">
             <objects>
                 <viewController id="mle-xp-Io7" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -5010,7 +5002,7 @@
             </objects>
             <point key="canvasLocation" x="6557" y="-3410"/>
         </scene>
-        <!--Exercise View Controller - Core Fitness-->
+        <!--Core Fitness-->
         <scene sceneID="6PD-jK-oef">
             <objects>
                 <viewController id="phz-D6-Vu2" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -5197,7 +5189,7 @@
             </objects>
             <point key="canvasLocation" x="6944" y="-3410"/>
         </scene>
-        <!--Exercise View Controller - Core Fitness-->
+        <!--Core Fitness-->
         <scene sceneID="z9Q-Mu-C1F">
             <objects>
                 <viewController id="7nN-mf-SbR" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -5384,7 +5376,7 @@
             </objects>
             <point key="canvasLocation" x="7326" y="-3410"/>
         </scene>
-        <!--Exercise View Controller - Core Fitness-->
+        <!--Core Fitness-->
         <scene sceneID="l77-Pp-hmq">
             <objects>
                 <viewController id="BVI-tc-oOW" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -5571,7 +5563,7 @@
             </objects>
             <point key="canvasLocation" x="7713" y="-3410"/>
         </scene>
-        <!--Exercise View Controller - Core Fitness-->
+        <!--Core Fitness-->
         <scene sceneID="6sb-Sa-BCa">
             <objects>
                 <viewController id="8Rs-n0-pyX" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -5758,7 +5750,7 @@
             </objects>
             <point key="canvasLocation" x="8103" y="-3410"/>
         </scene>
-        <!--Exercise View Controller - Core Fitness-->
+        <!--Core Fitness-->
         <scene sceneID="sc3-UH-4fl">
             <objects>
                 <viewController id="30l-NE-8JW" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -5945,7 +5937,7 @@
             </objects>
             <point key="canvasLocation" x="8490" y="-3410"/>
         </scene>
-        <!--Exercise View Controller - Core Fitness-->
+        <!--Core Fitness-->
         <scene sceneID="9qr-BC-KdK">
             <objects>
                 <viewController id="h3j-ct-8Mp" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -6132,7 +6124,7 @@
             </objects>
             <point key="canvasLocation" x="8875" y="-3410"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="CjL-Vs-spw">
             <objects>
                 <viewController id="yQn-UF-NTz" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -6319,7 +6311,7 @@
             </objects>
             <point key="canvasLocation" x="2681" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="GKv-h5-qFM">
             <objects>
                 <viewController id="qFJ-BZ-ghJ" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -6506,7 +6498,7 @@
             </objects>
             <point key="canvasLocation" x="3076" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="ZBN-eE-QE7">
             <objects>
                 <viewController id="EaY-hb-YXX" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -6693,7 +6685,7 @@
             </objects>
             <point key="canvasLocation" x="3468" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="JB7-NF-Evf">
             <objects>
                 <viewController id="Khg-pq-b83" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -6880,7 +6872,7 @@
             </objects>
             <point key="canvasLocation" x="3853" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="pTm-2L-46d">
             <objects>
                 <viewController id="Klc-Tj-nds" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -7067,7 +7059,7 @@
             </objects>
             <point key="canvasLocation" x="4248" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="jml-LJ-8vV">
             <objects>
                 <viewController id="2CD-6B-Eeq" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -7254,7 +7246,7 @@
             </objects>
             <point key="canvasLocation" x="4640" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="Rou-ZS-UZR">
             <objects>
                 <viewController id="ekp-dE-VB7" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -7441,7 +7433,7 @@
             </objects>
             <point key="canvasLocation" x="5032" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="dhS-s7-UEj">
             <objects>
                 <viewController id="onC-0R-IGL" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -7628,7 +7620,7 @@
             </objects>
             <point key="canvasLocation" x="5427" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="L4M-MO-Ix7">
             <objects>
                 <viewController id="u1t-5s-bG4" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -7815,7 +7807,7 @@
             </objects>
             <point key="canvasLocation" x="5819" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="0VC-KM-dUS">
             <objects>
                 <viewController id="8Lh-kb-cf2" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -8002,7 +7994,7 @@
             </objects>
             <point key="canvasLocation" x="6204" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="1Lp-D0-xam">
             <objects>
                 <viewController id="eO9-vv-Ev3" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -8189,7 +8181,7 @@
             </objects>
             <point key="canvasLocation" x="6599" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="5y7-f0-iOo">
             <objects>
                 <viewController id="1Jf-Lp-Zle" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -8376,7 +8368,7 @@
             </objects>
             <point key="canvasLocation" x="6991" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="hfl-Xm-v25">
             <objects>
                 <viewController id="zPd-3Q-xfQ" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -8563,7 +8555,7 @@
             </objects>
             <point key="canvasLocation" x="7380" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="yxd-Fe-I0g">
             <objects>
                 <viewController id="PoS-Yb-LPN" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -8750,7 +8742,7 @@
             </objects>
             <point key="canvasLocation" x="7775" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="SJn-bv-Sfy">
             <objects>
                 <viewController id="via-SI-KdM" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -8937,7 +8929,7 @@
             </objects>
             <point key="canvasLocation" x="8167" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="Mze-uc-iha">
             <objects>
                 <viewController id="xPI-da-ZXc" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -9124,7 +9116,7 @@
             </objects>
             <point key="canvasLocation" x="8552" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="cCg-Su-81H">
             <objects>
                 <viewController id="H0Z-8I-uc3" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -9311,7 +9303,7 @@
             </objects>
             <point key="canvasLocation" x="8947" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="URt-CS-9oR">
             <objects>
                 <viewController id="JPF-33-ucH" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -9498,7 +9490,7 @@
             </objects>
             <point key="canvasLocation" x="9339" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="e6R-NJ-pDY">
             <objects>
                 <viewController id="zrF-Wz-Aaq" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -9685,7 +9677,7 @@
             </objects>
             <point key="canvasLocation" x="9731" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="iVn-BK-Do4">
             <objects>
                 <viewController id="DZp-8d-Ie0" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -9872,7 +9864,7 @@
             </objects>
             <point key="canvasLocation" x="10126" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="bzH-ee-tt7">
             <objects>
                 <viewController id="pqc-Eb-DYp" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -10059,7 +10051,7 @@
             </objects>
             <point key="canvasLocation" x="10518" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="zA2-P4-AVt">
             <objects>
                 <viewController id="SwT-Je-ahU" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -10246,7 +10238,7 @@
             </objects>
             <point key="canvasLocation" x="10903" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="erf-MZ-Xxf">
             <objects>
                 <viewController id="ruQ-F2-jqv" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -10433,7 +10425,7 @@
             </objects>
             <point key="canvasLocation" x="11298" y="-2820"/>
         </scene>
-        <!--Exercise View Controller - Complete Fitness-->
+        <!--Complete Fitness-->
         <scene sceneID="uJs-Cw-hxf">
             <objects>
                 <viewController id="xNS-Vb-cff" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -10620,7 +10612,7 @@
             </objects>
             <point key="canvasLocation" x="11690" y="-2820"/>
         </scene>
-        <!--Notes View Controller - Ab Workout-->
+        <!--Ab Workout-->
         <scene sceneID="Hko-sI-ghu">
             <objects>
                 <viewController id="Ict-7A-IZ4" customClass="NotesViewController" sceneMemberID="viewController">
@@ -10739,7 +10731,7 @@
             </objects>
             <point key="canvasLocation" x="12736" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="ilS-qV-SEw">
             <objects>
                 <viewController id="kUO-bF-u2d" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -10926,7 +10918,7 @@
             </objects>
             <point key="canvasLocation" x="2681" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="iQb-Bx-WXD">
             <objects>
                 <viewController id="Kay-2e-SJM" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -11113,7 +11105,7 @@
             </objects>
             <point key="canvasLocation" x="3068" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="fNe-r6-z3v">
             <objects>
                 <viewController id="e20-pL-KcQ" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -11300,7 +11292,7 @@
             </objects>
             <point key="canvasLocation" x="3457" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="f8f-9z-HYO">
             <objects>
                 <viewController id="bxZ-5g-9Oe" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -11487,7 +11479,7 @@
             </objects>
             <point key="canvasLocation" x="3844" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="Zt1-As-HRi">
             <objects>
                 <viewController id="gDq-2F-tUM" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -11674,7 +11666,7 @@
             </objects>
             <point key="canvasLocation" x="4230" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="PT4-Qo-gud">
             <objects>
                 <viewController id="Kqr-Nq-Vsn" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -11861,7 +11853,7 @@
             </objects>
             <point key="canvasLocation" x="4617" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="tdS-gG-FWn">
             <objects>
                 <viewController id="cq8-oX-RiY" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -12048,7 +12040,7 @@
             </objects>
             <point key="canvasLocation" x="5006" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="6WG-gY-jtk">
             <objects>
                 <viewController id="G3F-Xc-uGA" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -12235,7 +12227,7 @@
             </objects>
             <point key="canvasLocation" x="5393" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="xCF-ts-JP2">
             <objects>
                 <viewController id="ZyE-Sn-ncK" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -12422,7 +12414,7 @@
             </objects>
             <point key="canvasLocation" x="5781" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="fSw-mA-rut">
             <objects>
                 <viewController id="9yg-y6-1xl" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -12609,7 +12601,7 @@
             </objects>
             <point key="canvasLocation" x="6168" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="V9a-co-M6M">
             <objects>
                 <viewController id="zws-cB-qTy" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -12796,7 +12788,7 @@
             </objects>
             <point key="canvasLocation" x="6557" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="Pbw-gM-yI7">
             <objects>
                 <viewController id="Cmj-pm-0hB" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -12983,7 +12975,7 @@
             </objects>
             <point key="canvasLocation" x="6944" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="Nu6-WL-4Y5">
             <objects>
                 <viewController id="Goa-Ka-Oj6" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -13170,7 +13162,7 @@
             </objects>
             <point key="canvasLocation" x="7330" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="NGv-cI-Hco">
             <objects>
                 <viewController id="UPV-mR-PLu" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -13357,7 +13349,7 @@
             </objects>
             <point key="canvasLocation" x="7717" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="ZoW-wF-O1x">
             <objects>
                 <viewController id="gjU-Hl-ydc" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -13544,7 +13536,7 @@
             </objects>
             <point key="canvasLocation" x="8106" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="4WL-Xa-AUD">
             <objects>
                 <viewController id="dBa-Ne-hQR" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -13731,7 +13723,7 @@
             </objects>
             <point key="canvasLocation" x="8493" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="geF-nb-BBu">
             <objects>
                 <viewController id="OkP-lu-GaP" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -13918,7 +13910,7 @@
             </objects>
             <point key="canvasLocation" x="8880" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="EXV-Wd-5Q1">
             <objects>
                 <viewController id="5pU-2h-hmG" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -14105,7 +14097,7 @@
             </objects>
             <point key="canvasLocation" x="9266" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="gTK-OS-SBZ">
             <objects>
                 <viewController id="4G1-lp-Taj" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -14292,7 +14284,7 @@
             </objects>
             <point key="canvasLocation" x="9653" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="ZrA-10-QFG">
             <objects>
                 <viewController id="Ub6-bt-dGY" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -14479,7 +14471,7 @@
             </objects>
             <point key="canvasLocation" x="10042" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Strength + Stability-->
+        <!--Strength + Stability-->
         <scene sceneID="OmA-RR-YNQ">
             <objects>
                 <viewController id="3Ae-Gh-QyB" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -14666,7 +14658,7 @@
             </objects>
             <point key="canvasLocation" x="10429" y="-2235"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="MwL-wW-Zpq">
             <objects>
                 <viewController id="LKr-mo-m6z" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -14853,7 +14845,7 @@
             </objects>
             <point key="canvasLocation" x="2681" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="MUT-xC-bM5">
             <objects>
                 <viewController id="aCb-kX-Hvt" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -15040,7 +15032,7 @@
             </objects>
             <point key="canvasLocation" x="3065" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="fHm-eB-Ttr">
             <objects>
                 <viewController id="nkn-ue-IUg" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -15227,7 +15219,7 @@
             </objects>
             <point key="canvasLocation" x="3452" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="UCd-ES-Pxi">
             <objects>
                 <viewController id="tO3-Au-kJv" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -15414,7 +15406,7 @@
             </objects>
             <point key="canvasLocation" x="3836" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="EkY-gq-vTA">
             <objects>
                 <viewController id="ATO-G4-rzb" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -15601,7 +15593,7 @@
             </objects>
             <point key="canvasLocation" x="4221" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="fzu-U5-QT2">
             <objects>
                 <viewController id="Dy8-vw-OQK" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -15788,7 +15780,7 @@
             </objects>
             <point key="canvasLocation" x="4605" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="oMt-Nn-jzA">
             <objects>
                 <viewController id="M3u-Yt-Nmv" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -15975,7 +15967,7 @@
             </objects>
             <point key="canvasLocation" x="4992" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="NhA-rL-q9P">
             <objects>
                 <viewController id="A0p-a6-i2x" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -16162,7 +16154,7 @@
             </objects>
             <point key="canvasLocation" x="5376" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="A9O-G0-RPd">
             <objects>
                 <viewController id="GmP-YA-C1T" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -16349,7 +16341,7 @@
             </objects>
             <point key="canvasLocation" x="5760" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="Q7A-mJ-LPV">
             <objects>
                 <viewController id="cKz-bL-w1L" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -16536,7 +16528,7 @@
             </objects>
             <point key="canvasLocation" x="6144" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="jLO-pH-Gso">
             <objects>
                 <viewController id="Gkg-GE-hKH" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -16723,7 +16715,7 @@
             </objects>
             <point key="canvasLocation" x="6531" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="vEp-ag-MFb">
             <objects>
                 <viewController id="JCw-yg-JEh" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -16910,7 +16902,7 @@
             </objects>
             <point key="canvasLocation" x="6915" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="NJH-uO-PJN">
             <objects>
                 <viewController id="j0O-Dq-1jO" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -17097,7 +17089,7 @@
             </objects>
             <point key="canvasLocation" x="7300" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="BpP-7E-au0">
             <objects>
                 <viewController id="8BO-gM-He6" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -17284,7 +17276,7 @@
             </objects>
             <point key="canvasLocation" x="7684" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="FO3-dj-2Ys">
             <objects>
                 <viewController id="KhK-cD-fDP" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -17471,7 +17463,7 @@
             </objects>
             <point key="canvasLocation" x="8071" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="1DM-8G-BMm">
             <objects>
                 <viewController id="oNN-V9-zs3" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -17658,7 +17650,7 @@
             </objects>
             <point key="canvasLocation" x="8455" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="sHZ-UO-nf2">
             <objects>
                 <viewController id="uzJ-eL-Kud" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -17845,7 +17837,7 @@
             </objects>
             <point key="canvasLocation" x="8841" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="B4P-dV-ed5">
             <objects>
                 <viewController id="WHf-mR-nFY" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -18032,7 +18024,7 @@
             </objects>
             <point key="canvasLocation" x="9225" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="3j7-2e-M5b">
             <objects>
                 <viewController id="Iyi-6X-PvU" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -18219,7 +18211,7 @@
             </objects>
             <point key="canvasLocation" x="9612" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Chest/Back/Stability-->
+        <!--Chest/Back/Stability-->
         <scene sceneID="c6v-hz-N62">
             <objects>
                 <viewController id="jSL-0a-4KG" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -18406,7 +18398,7 @@
             </objects>
             <point key="canvasLocation" x="9996" y="-1625"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="kIX-m7-2Nh">
             <objects>
                 <viewController id="FBo-5e-Z9s" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -18593,7 +18585,7 @@
             </objects>
             <point key="canvasLocation" x="2681" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="hOP-9a-5Mh">
             <objects>
                 <viewController id="6TO-OX-vOM" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -18780,7 +18772,7 @@
             </objects>
             <point key="canvasLocation" x="3070" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="h8n-fO-V4q">
             <objects>
                 <viewController id="toY-cU-J8H" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -18967,7 +18959,7 @@
             </objects>
             <point key="canvasLocation" x="3457" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="s0p-Gh-2Bl">
             <objects>
                 <viewController id="cpZ-JL-kzj" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -19154,7 +19146,7 @@
             </objects>
             <point key="canvasLocation" x="3846" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="1WN-GR-2j7">
             <objects>
                 <viewController id="8Vw-LT-7oa" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -19341,7 +19333,7 @@
             </objects>
             <point key="canvasLocation" x="4240" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="2ge-i9-Nuh">
             <objects>
                 <viewController id="xAc-Qb-9nn" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -19528,7 +19520,7 @@
             </objects>
             <point key="canvasLocation" x="4627" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="RCB-qW-Haa">
             <objects>
                 <viewController id="TbO-vV-yyQ" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -19715,7 +19707,7 @@
             </objects>
             <point key="canvasLocation" x="5016" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="6CD-KP-VqQ">
             <objects>
                 <viewController id="FfQ-sN-tIs" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -19902,7 +19894,7 @@
             </objects>
             <point key="canvasLocation" x="5409" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="jL2-Vz-9Jw">
             <objects>
                 <viewController id="UDq-N7-ATd" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -20089,7 +20081,7 @@
             </objects>
             <point key="canvasLocation" x="5798" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="0Qp-oO-Lyu">
             <objects>
                 <viewController id="NeH-bK-UgN" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -20276,7 +20268,7 @@
             </objects>
             <point key="canvasLocation" x="6185" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="vLp-fZ-xQA">
             <objects>
                 <viewController id="EL5-B9-kC8" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -20463,7 +20455,7 @@
             </objects>
             <point key="canvasLocation" x="6574" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="cxB-Vp-Ax9">
             <objects>
                 <viewController id="gsJ-2J-iOu" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -20650,7 +20642,7 @@
             </objects>
             <point key="canvasLocation" x="6968" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="ynl-Xw-8Xq">
             <objects>
                 <viewController id="ENY-o5-UEV" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -20837,7 +20829,7 @@
             </objects>
             <point key="canvasLocation" x="7355" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="cni-H1-Lou">
             <objects>
                 <viewController id="8cF-y6-AjE" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -21024,7 +21016,7 @@
             </objects>
             <point key="canvasLocation" x="7744" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="77T-zt-Bbk">
             <objects>
                 <viewController id="tfB-eO-ru3" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -21211,7 +21203,7 @@
             </objects>
             <point key="canvasLocation" x="8130" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="Kys-sl-4ST">
             <objects>
                 <viewController id="udo-R2-2zh" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -21398,7 +21390,7 @@
             </objects>
             <point key="canvasLocation" x="8519" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="wgF-vV-6wc">
             <objects>
                 <viewController id="8Lk-T4-gCg" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -21585,7 +21577,7 @@
             </objects>
             <point key="canvasLocation" x="8906" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="agA-qe-L7W">
             <objects>
                 <viewController id="Ori-Bp-1Tk" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -21772,7 +21764,7 @@
             </objects>
             <point key="canvasLocation" x="9295" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="pRl-55-naI">
             <objects>
                 <viewController id="Yeo-dS-yxh" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -21959,7 +21951,7 @@
             </objects>
             <point key="canvasLocation" x="9689" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="nkq-nw-Bc7">
             <objects>
                 <viewController id="2AQ-ge-ejs" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -22146,7 +22138,7 @@
             </objects>
             <point key="canvasLocation" x="10076" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Shoulder/Bi/Tri-->
+        <!--Shoulder/Bi/Tri-->
         <scene sceneID="ZYt-ZR-Okd">
             <objects>
                 <viewController id="oKV-8Z-T17" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -22333,7 +22325,7 @@
             </objects>
             <point key="canvasLocation" x="10465" y="-1009"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="MXv-22-BEy">
             <objects>
                 <viewController id="1Q7-LB-dE2" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -22520,7 +22512,7 @@
             </objects>
             <point key="canvasLocation" x="2681" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="JgA-It-7C8">
             <objects>
                 <viewController id="N5N-MG-co1" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -22707,7 +22699,7 @@
             </objects>
             <point key="canvasLocation" x="3070" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="HF7-sr-8Jv">
             <objects>
                 <viewController id="kER-kk-gHG" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -22894,7 +22886,7 @@
             </objects>
             <point key="canvasLocation" x="3462" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="88d-O6-Vz9">
             <objects>
                 <viewController id="eUx-rs-nPX" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -23081,7 +23073,7 @@
             </objects>
             <point key="canvasLocation" x="3851" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="rXL-Pc-sjg">
             <objects>
                 <viewController id="kKI-Vn-5bn" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -23268,7 +23260,7 @@
             </objects>
             <point key="canvasLocation" x="4243" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="xux-d9-Ztc">
             <objects>
                 <viewController id="gL8-Op-4re" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -23455,7 +23447,7 @@
             </objects>
             <point key="canvasLocation" x="4632" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="Wul-ud-vsQ">
             <objects>
                 <viewController id="d2H-1Y-zlk" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -23642,7 +23634,7 @@
             </objects>
             <point key="canvasLocation" x="5024" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="tke-R7-r2t">
             <objects>
                 <viewController id="4aD-LT-6ck" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -23829,7 +23821,7 @@
             </objects>
             <point key="canvasLocation" x="5413" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="3BY-9s-uIu">
             <objects>
                 <viewController id="SPj-4O-dL3" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -24016,7 +24008,7 @@
             </objects>
             <point key="canvasLocation" x="5806" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="Dob-wc-7oM">
             <objects>
                 <viewController id="YEc-Ao-lMG" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -24203,7 +24195,7 @@
             </objects>
             <point key="canvasLocation" x="6195" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="1Ld-mh-R2y">
             <objects>
                 <viewController id="OAh-3s-sUK" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -24390,7 +24382,7 @@
             </objects>
             <point key="canvasLocation" x="6589" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="nwX-QH-2hf">
             <objects>
                 <viewController id="Dz0-zR-Ria" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -24577,7 +24569,7 @@
             </objects>
             <point key="canvasLocation" x="6978" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="WCK-uM-exU">
             <objects>
                 <viewController id="b23-7b-L3y" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -24764,7 +24756,7 @@
             </objects>
             <point key="canvasLocation" x="7370" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="QHa-5y-80F">
             <objects>
                 <viewController id="kig-jM-7Es" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -24951,7 +24943,7 @@
             </objects>
             <point key="canvasLocation" x="7759" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="AkS-Cj-0Kf">
             <objects>
                 <viewController id="fPd-Ox-RZH" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -25138,7 +25130,7 @@
             </objects>
             <point key="canvasLocation" x="8151" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="U60-HF-dLf">
             <objects>
                 <viewController id="KZf-l7-DVw" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -25325,7 +25317,7 @@
             </objects>
             <point key="canvasLocation" x="8540" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="nMY-lW-WWQ">
             <objects>
                 <viewController id="MHa-am-sNt" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -25512,7 +25504,7 @@
             </objects>
             <point key="canvasLocation" x="8932" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="nSN-rt-CPr">
             <objects>
                 <viewController id="8Id-qk-lp1" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -25699,7 +25691,7 @@
             </objects>
             <point key="canvasLocation" x="9321" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="DEk-Ap-d9a">
             <objects>
                 <viewController id="Mah-Po-VVw" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -25886,7 +25878,7 @@
             </objects>
             <point key="canvasLocation" x="9714" y="-395"/>
         </scene>
-        <!--Exercise View Controller - Legs + Back-->
+        <!--Legs + Back-->
         <scene sceneID="R7j-Le-VEY">
             <objects>
                 <viewController id="bQS-UM-tRk" customClass="ExerciseViewController" sceneMemberID="viewController">
@@ -26075,13 +26067,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-button-blue-iPhone" width="176" height="39"/>
         <image name="icon-cart.png" width="30" height="26"/>
         <image name="icon-pics2.png" width="24" height="25"/>
         <image name="icon-reveal" width="22" height="17"/>
         <image name="icon-ruler.png" width="23" height="23"/>
         <image name="icon-settings1.png" width="31" height="24"/>
-        <image name="icon-workout.png" width="768" height="911"/>
+        <image name="icon-workout.png" width="22" height="23"/>
         <image name="nav_r_arrow" width="22" height="23"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
