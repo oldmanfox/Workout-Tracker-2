@@ -210,7 +210,7 @@
     workoutTVC.sectionHeader = tempSecionHeader;
     
     // Show or Hide Ads
-    if ([[DWT2IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT2.removeads"]) {
+    if ([[DWT2IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT2.removeads1"]) {
         
         // User purchased the Remove Ads in-app purchase so don't show any ads.
         
