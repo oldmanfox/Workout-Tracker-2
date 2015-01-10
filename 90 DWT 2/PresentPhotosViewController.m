@@ -273,7 +273,7 @@
     
     UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email", @"Facebook", @"Twitter", nil];
     
-    [action showFromTabBar:self.tabBarController.tabBar];
+    [action showFromBarButtonItem:sender animated:YES];
     
 }
 
@@ -323,4 +323,20 @@
     
     return cell;
 }
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath  {
+    
+    // Size cell for iPhone
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        
+        return CGSizeMake(152.f, 204.f);
+    }
+    
+    // Size cell for iPad
+    else {
+        
+        return CGSizeMake(304.f, 408.f);
+    }
+}
+
 @end

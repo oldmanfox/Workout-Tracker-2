@@ -170,7 +170,7 @@
     UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email", @"Facebook", @"Twitter", nil];
     
     self.actionButtonType = @"Share";
-    [action showFromTabBar:self.tabBarController.tabBar];
+    [action showFromBarButtonItem:sender animated:YES];
 
 }
 
@@ -198,15 +198,20 @@
         if (buttonIndex == 0) {
             
             self.whereToGetPhoto = @"Camera";
-            [self cameraOrPhotoLibrary];
         }
         
         if (buttonIndex == 1) {
             
             self.whereToGetPhoto = @"Photo Library";
-            [self cameraOrPhotoLibrary];
         }
         
+    }
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    
+    if (![self.actionButtonType isEqualToString:@"Share"]) {
+        [self cameraOrPhotoLibrary];
     }
 }
 
@@ -292,9 +297,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
                             @" Back"];
     
     // Check to see what device you are using iPad or iPhone.
-    NSString *deviceModel = [UIDevice currentDevice].model;
-    
-    if ([deviceModel isEqualToString:@"iPad"] || [deviceModel isEqualToString:@"iPad Simulator"])
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
         // Get the position of the image so the popover arrow can point to it.
         static NSString *CellIdentifier = @"Cell";
@@ -305,12 +308,23 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.selectedPhotoTitle = [self.navigationItem.title stringByAppendingString:photoAngle[indexPath.item]];
     self.selectedPhotoIndex = indexPath.item;
     
-    [photoAction showFromTabBar:self.tabBarController.tabBar];
+    self.whereToGetPhoto = @"";
+    [photoAction showFromRect:self.selectedImageRect inView:self.view animated:YES];
 }
 
-- (void)collectionView:(UICollectionView *)collectionView
-didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO: Deselect item
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath  {
+    
+    // Size cell for iPhone
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        
+        return CGSizeMake(152.f, 204.f);
+    }
+    
+    // Size cell for iPad
+    else {
+        
+        return CGSizeMake(304.f, 408.f);
+    }
 }
 
 - (void)cameraOrPhotoLibrary {
@@ -321,7 +335,28 @@ didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.whereToGetPhoto isEqualToString:@"Camera"]) {
         
         // Use Camera
-        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            
+            // Camera is available.  Use Camera
+            imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        }
+        
+        else {
+            
+            // No camera detected.  Use Photo Library
+            UIAlertView *alert;
+            
+            alert = [[UIAlertView alloc] initWithTitle:@"Camera Not Found"
+                                               message:@"No camera was detected.  Using photo library instead."
+                                              delegate:self
+                                     cancelButtonTitle:@"Ok"
+                                     otherButtonTitles:nil, nil];
+            
+            [alert show];
+            
+            imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        
     } else {
         
         // Use Photo Library
@@ -329,19 +364,17 @@ didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     // Check to see what device you are using iPad or iPhone.
-    NSString *deviceModel = [UIDevice currentDevice].model;
     
     // If your device is iPad then show the imagePicker in a popover.
     // If not iPad then show the imagePicker modally.
-    if (([deviceModel isEqualToString:@"iPad"] && imagePicker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary)
-        || ([deviceModel isEqualToString:@"iPad Simulator"] && imagePicker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary)) {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad && ![self.whereToGetPhoto isEqualToString:@""]) {
         
         self.myPopoverController = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
         self.myPopoverController.delegate = self;
         [self.myPopoverController presentPopoverFromRect:self.selectedImageRect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
     
-    else {
+    else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [[UIApplication sharedApplication] setStatusBarHidden:YES];
         [self presentViewController:imagePicker animated:YES completion:nil];
     }
