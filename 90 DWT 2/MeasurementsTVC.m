@@ -27,6 +27,8 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"ruler_selected"];
+    
     // Configure tableview.
     NSArray *tableCell = @[self.cell1,
                             self.cell2,
@@ -59,7 +61,8 @@
     NSArray *tableViewHeaderStrings = @[@"RECORD YOUR MEASUREMENTS",
                                         @"VIEW YOUR MEASUREMENTS"];
     
-    return [self configureSectionHeader:tableViewHeaderStrings :tableViewWidth :section];
+    double tempSection = section;
+    return [self configureSectionHeader:tableViewHeaderStrings :tableViewWidth :tempSection];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

@@ -1,6 +1,5 @@
 #import "CPTDefinitions.h"
 #import "CPTPlot.h"
-#import <Foundation/Foundation.h>
 
 @class CPTLineStyle;
 @class CPTFill;
@@ -103,6 +102,7 @@ CPTRangePlotField;
 #pragma mark -
 
 @interface CPTRangePlot : CPTPlot {
+    @private
     CPTLineStyle *barLineStyle;
     CGFloat barWidth;
     CGFloat gapHeight;
@@ -121,6 +121,7 @@ CPTRangePlotField;
 /// @name Drawing
 /// @{
 @property (nonatomic, copy) CPTFill *areaFill;
+@property (nonatomic, readwrite, copy) CPTLineStyle *areaBorderLineStyle;
 /// @}
 
 @end

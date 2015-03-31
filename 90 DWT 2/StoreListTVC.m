@@ -27,6 +27,8 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"shop_cart_selected"];
+    
     UIImage *backgroundImage;
     UIColor *backgroundColor;
     UIImage *cellbackgroundImage;

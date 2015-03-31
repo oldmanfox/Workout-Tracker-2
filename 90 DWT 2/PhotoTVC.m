@@ -27,6 +27,8 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"pic_mountains_selected"];
+    
     // Configure tableview.
     NSArray *tableCell = @[self.cell1,
                             self.cell2,
@@ -65,7 +67,8 @@
     NSArray *tableViewHeaderStrings = @[@"TAKE PHOTOS",
                                         @"VIEW PHOTOS"];
     
-    return [self configureSectionHeader:tableViewHeaderStrings :tableViewWidth :section];
+    double tempSection = section;
+    return [self configureSectionHeader:tableViewHeaderStrings :tableViewWidth :tempSection];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -93,11 +96,12 @@
     PresentPhotosViewController *ppvc = (PresentPhotosViewController *)segue.destinationViewController;
     psvc.navigationItem.title = segue.identifier;
     ppvc.navigationItem.title = segue.identifier;
-
+    
     
     // View Photos
-    PhotoNavController *photoNC = [[PhotoNavController alloc]  init];
+    PhotoNavController *photoNC = [[PhotoNavController alloc] init];
     NSMutableArray *monthPhotoAngle = [[NSMutableArray alloc] init];
+    NSMutableArray *foundMonthPhotoAngle = [[NSMutableArray alloc] init];
     NSArray *tempMonthPhotoAngle = [[NSArray alloc] init];
     
     // ALL
@@ -151,12 +155,13 @@
             if ([[NSFileManager defaultManager] fileExistsAtPath:[photoNC fileLocation:tempMonthPhotoAngle[i] ]]) {
                 
                 [monthPhotoAngle addObject:[photoNC loadImage:tempMonthPhotoAngle[i] ]];
+                [foundMonthPhotoAngle addObject:tempMonthPhotoAngle[i] ];
             }
         }
         
         // Convert the mutable array to a normal unmutable array.
         ppvc.arrayOfImages = [monthPhotoAngle copy];
-        ppvc.arrayOfImageTitles = tempMonthPhotoAngle;
+        ppvc.arrayOfImageTitles = foundMonthPhotoAngle;
     }
 }
 @end

@@ -30,7 +30,7 @@
     self.tableView.backgroundColor = backgroundColor;
     
     // Accessory view icon
-    UIImage* accessory = [UIImage imageNamed:@"icon-arrow-blue.png"];
+    UIImage* accessory = [UIImage imageNamed:@"cell_r_arrow"];
     
     for (int i = 0; i < tableCell.count; i++) {
         

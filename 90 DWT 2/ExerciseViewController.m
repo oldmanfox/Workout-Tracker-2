@@ -103,7 +103,7 @@
     NSError *error;
     NSArray *objects = [context executeFetchRequest:request error:&error];
     
-    int workoutIndex = [((DataNavController *)self.parentViewController).index integerValue];
+    int workoutIndex = [((DataNavController *)self.parentViewController).index intValue];
     
     // 1st time exercise is done only.
     if (workoutIndex == 1) {
@@ -218,6 +218,16 @@
 
 - (void)createSliderButton {
     
+    
+    //NSLog(@"Allow Slider");
+    self.sliderButton.enabled = YES;
+    
+    // Slider Setup
+    [self.sliderButton setTarget: self.revealViewController];
+    [self.sliderButton setAction: @selector(revealToggle:)];
+    [self.toolbar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    
+    /*
     if ([[DWT2IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT2.slidergraph"]) {
         
         //NSLog(@"Allow Slider");
@@ -228,6 +238,7 @@
         [self.sliderButton setAction: @selector(revealToggle:)];
         [self.toolbar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
     }
+     */
 }
 
 - (void)didReceiveMemoryWarning

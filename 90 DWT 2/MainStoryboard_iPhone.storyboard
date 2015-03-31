@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ceL-td-bbF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1066" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ceL-td-bbF">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--Current Progress-->
@@ -916,7 +916,7 @@
         <scene sceneID="4Qw-se-aii">
             <objects>
                 <navigationController definesPresentationContext="YES" id="qss-Su-z6N" customClass="DataNavController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Workouts" image="icon-workout.png" id="SdD-Fk-Z26"/>
+                    <tabBarItem key="tabBarItem" title="Workouts" image="weight_lifting" id="SdD-Fk-Z26"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="PMz-PL-fLD">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1159,7 +1159,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="152" height="204"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="184" translatesAutoresizingMaskIntoConstraints="NO" id="O9m-Q2-Fin">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="184" translatesAutoresizingMaskIntoConstraints="NO" id="O9m-Q2-Fin">
                                                     <rect key="frame" x="0.0" y="0.0" width="152" height="184"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNM-C1-lw8">
@@ -1608,7 +1608,7 @@
         <scene sceneID="KY8-3X-7Zk">
             <objects>
                 <navigationController id="pp7-dv-m4v" customClass="PhotoNavController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Photos" image="icon-pics2.png" id="qAy-GZ-gQq"/>
+                    <tabBarItem key="tabBarItem" title="Photos" image="pic_mountains" id="qAy-GZ-gQq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="OzV-X1-hMB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1627,7 +1627,7 @@
         <scene sceneID="RRR-Ek-xsM">
             <objects>
                 <navigationController id="nMN-R6-wgJ" customClass="MeasurementsNavController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Measure" image="icon-ruler.png" id="T1z-lP-Hdg"/>
+                    <tabBarItem key="tabBarItem" title="Measure" image="ruler" id="T1z-lP-Hdg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="tmg-vq-hqd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1646,7 +1646,7 @@
         <scene sceneID="goj-xi-MiF">
             <objects>
                 <navigationController id="b43-xA-tnH" customClass="SettingsNavController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="icon-settings1.png" id="CXu-sr-II6"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="cogs" id="CXu-sr-II6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="1H4-0K-BcN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1746,7 +1746,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="1.6" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="slO-nn-6Za">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="1.6.1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="slO-nn-6Za">
                                                     <rect key="frame" x="281" y="11" width="24" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -2008,7 +2008,7 @@
                                                     <color key="textColor" red="0.32407852920000002" green="0.6958822201" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="184" translatesAutoresizingMaskIntoConstraints="NO" id="Z1a-kU-C0T">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" placeholderIntrinsicWidth="152" placeholderIntrinsicHeight="184" translatesAutoresizingMaskIntoConstraints="NO" id="Z1a-kU-C0T">
                                                     <rect key="frame" x="0.0" y="0.0" width="152" height="184"/>
                                                 </imageView>
                                             </subviews>
@@ -2818,7 +2818,7 @@
         <scene sceneID="Bkw-dP-1w6">
             <objects>
                 <navigationController id="a5F-aU-EjR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Store" image="icon-cart.png" id="ksf-ct-aup"/>
+                    <tabBarItem key="tabBarItem" title="Store" image="shop_cart" id="ksf-ct-aup"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QI7-zk-MdL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -26068,13 +26068,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-cart.png" width="30" height="26"/>
-        <image name="icon-pics2.png" width="24" height="25"/>
-        <image name="icon-reveal" width="22" height="17"/>
-        <image name="icon-ruler.png" width="23" height="23"/>
-        <image name="icon-settings1.png" width="31" height="24"/>
-        <image name="icon-workout.png" width="22" height="23"/>
+        <image name="cogs" width="32" height="32"/>
+        <image name="icon-reveal" width="22" height="22"/>
         <image name="nav_r_arrow" width="22" height="23"/>
+        <image name="pic_mountains" width="32" height="32"/>
+        <image name="ruler" width="32" height="32"/>
+        <image name="shop_cart" width="32" height="32"/>
+        <image name="weight_lifting" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -237,7 +237,7 @@
     
     photoCollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor blackColor];
     cell.myImage.image = [self.arrayOfImages objectAtIndex:indexPath.item];
     
     NSArray *photoAngle = @[@"Front",
@@ -305,8 +305,9 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         self.selectedImageRect = [collectionView convertRect:cell.frame toView:self.view];
     }
     
+    double tempItem = indexPath.item;
     self.selectedPhotoTitle = [self.navigationItem.title stringByAppendingString:photoAngle[indexPath.item]];
-    self.selectedPhotoIndex = indexPath.item;
+    self.selectedPhotoIndex = tempItem;
     
     self.whereToGetPhoto = @"";
     [photoAction showFromRect:self.selectedImageRect inView:self.view animated:YES];
@@ -357,12 +358,20 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
             imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         }
         
-    } else {
+    }
+    
+    else if ([self.whereToGetPhoto isEqualToString:@"Photo Library"]) {
         
         // Use Photo Library
         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     
+    else {
+        
+        // User Canceled the action sheet.
+        return;
+    }
+
     // Check to see what device you are using iPad or iPhone.
     
     // If your device is iPad then show the imagePicker in a popover.
@@ -387,6 +396,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     
     [self.arrayOfImages replaceObjectAtIndex:self.selectedPhotoIndex withObject:image];
+    
+    /*
     UIImage *scaledImage = nil;
     
     if (image.size.height > image.size.width) {
@@ -399,6 +410,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         // Image was taken in Landscape mode.
         scaledImage = [image resizedImageWithSize:CGSizeMake(2048,1536)];
     }
+    */
     
     // Only save image to photo library if it is a new pic taken with the camera.
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
@@ -408,7 +420,7 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     PhotoNavController *photoNC = [[PhotoNavController alloc] init];
     
     // Save image to application documents directory.
-    [photoNC saveImage:scaledImage imageName:self.selectedPhotoTitle];
+    [photoNC saveImage:image imageName:self.selectedPhotoTitle];
 
     [self.collectionView reloadData];
     

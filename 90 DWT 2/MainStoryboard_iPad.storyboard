@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="0O5-qL-gPD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1066" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="0O5-qL-gPD">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--Workout-->
@@ -1389,7 +1389,7 @@
         <scene sceneID="820-Fj-b8m">
             <objects>
                 <navigationController definesPresentationContext="YES" id="z8w-Mv-tM2" customClass="DataNavController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Workouts" image="icon-workout.png" id="1ZE-NC-7Ni"/>
+                    <tabBarItem key="tabBarItem" title="Workouts" image="weight_lifting" id="1ZE-NC-7Ni"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="CW0-pk-HPq">
                         <autoresizingMask key="autoresizingMask"/>
@@ -2165,7 +2165,7 @@
         <scene sceneID="5JL-EX-Eoi">
             <objects>
                 <navigationController id="wL3-bP-hGS" customClass="SettingsNavController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="icon-settings1.png" id="cYL-Xu-4Qb"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="cogs" id="cYL-Xu-4Qb"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="3tN-2Z-Sw4">
@@ -2256,7 +2256,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="1.6" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oDf-fF-XfQ">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="1.6.1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oDf-fF-XfQ">
                                                     <rect key="frame" x="729" y="12" width="24" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -2440,7 +2440,7 @@
         <scene sceneID="Txu-xS-ooV">
             <objects>
                 <navigationController id="qaP-rt-SJY" customClass="MeasurementsNavController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Measure" image="icon-ruler.png" id="CgG-MH-WaA"/>
+                    <tabBarItem key="tabBarItem" title="Measure" image="ruler" id="CgG-MH-WaA"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="RSt-8e-hO5">
@@ -2460,7 +2460,7 @@
         <scene sceneID="Tpn-3d-wMh">
             <objects>
                 <navigationController id="IaL-px-enw" customClass="PhotoNavController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Photos" image="icon-pics2.png" id="4id-MJ-6st"/>
+                    <tabBarItem key="tabBarItem" title="Photos" image="pic_mountains" id="4id-MJ-6st"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="zHh-6p-Bat">
@@ -2695,7 +2695,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="361"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gN5-In-UT0">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gN5-In-UT0">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="340"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T43-zh-1Qw">
@@ -2791,7 +2791,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="deA-gT-UFm">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="deA-gT-UFm">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="340"/>
                                                 </imageView>
                                             </subviews>
@@ -2934,7 +2934,7 @@
         <scene sceneID="QB5-o2-GtH">
             <objects>
                 <navigationController id="8G1-ej-HVU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Store" image="icon-cart.png" id="fdy-gL-bDr"/>
+                    <tabBarItem key="tabBarItem" title="Store" image="shop_cart" id="fdy-gL-bDr"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="awI-fj-EgA">
@@ -32373,12 +32373,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon-cart.png" width="30" height="26"/>
-        <image name="icon-pics2.png" width="24" height="25"/>
-        <image name="icon-ruler.png" width="23" height="23"/>
-        <image name="icon-settings1.png" width="31" height="24"/>
-        <image name="icon-workout.png" width="22" height="23"/>
+        <image name="cogs" width="32" height="32"/>
         <image name="nav_r_arrow" width="22" height="23"/>
+        <image name="pic_mountains" width="32" height="32"/>
+        <image name="ruler" width="32" height="32"/>
+        <image name="shop_cart" width="32" height="32"/>
+        <image name="weight_lifting" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -32386,32 +32386,32 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="po9-15-xDk"/>
-        <segue reference="DuN-kS-laY"/>
-        <segue reference="DMA-SG-Z9Q"/>
-        <segue reference="Zhz-oe-uR3"/>
-        <segue reference="p5F-0t-jiy"/>
         <segue reference="ijP-1T-d5U"/>
-        <segue reference="1r9-0x-VGI"/>
+        <segue reference="Zhz-oe-uR3"/>
+        <segue reference="DMA-SG-Z9Q"/>
+        <segue reference="DuN-kS-laY"/>
+        <segue reference="po9-15-xDk"/>
+        <segue reference="p5F-0t-jiy"/>
+        <segue reference="tqu-uG-bCS"/>
+        <segue reference="9Vh-Xl-Ri1"/>
+        <segue reference="KtD-NO-UK8"/>
+        <segue reference="WpQ-ea-uJK"/>
+        <segue reference="ALH-Vh-4yj"/>
+        <segue reference="k7I-pS-zGT"/>
+        <segue reference="lUZ-j5-731"/>
         <segue reference="bIy-Uf-jgd"/>
-        <segue reference="0Ax-04-MBy"/>
+        <segue reference="1r9-0x-VGI"/>
+        <segue reference="y10-mO-HN6"/>
+        <segue reference="USB-Qr-1qN"/>
+        <segue reference="8KD-O3-gqP"/>
         <segue reference="ISO-Ez-w8K"/>
-        <segue reference="KE8-iM-5RU"/>
+        <segue reference="0Ax-04-MBy"/>
         <segue reference="uuU-WQ-at7"/>
+        <segue reference="KE8-iM-5RU"/>
         <segue reference="xnm-gR-cjV"/>
         <segue reference="H4I-dX-GdV"/>
         <segue reference="ars-Hm-ZeR"/>
-        <segue reference="0wB-LD-kZ0"/>
         <segue reference="sIU-3f-YSe"/>
-        <segue reference="BZw-4Q-ASa"/>
-        <segue reference="p0n-pg-gAi"/>
-        <segue reference="hh0-bw-HEB"/>
-        <segue reference="WpQ-ea-uJK"/>
-        <segue reference="ALH-Vh-4yj"/>
-        <segue reference="SYR-hg-Zf8"/>
-        <segue reference="3H2-Nj-2j3"/>
-        <segue reference="KtD-NO-UK8"/>
-        <segue reference="k7I-pS-zGT"/>
-        <segue reference="lUZ-j5-731"/>
+        <segue reference="0wB-LD-kZ0"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -3,16 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "icon-reveal.png"
+      "filename" : "node_graph.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "icon-reveal@2x.png"
+      "filename" : "node_graph@2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "node_graph@3x.png"
     }
   ],
   "info" : {

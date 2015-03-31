@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"cogs_selected"];
     
     // Configure tableview
     NSArray *tableCell = @[self.cellEmail,
@@ -94,8 +95,8 @@
     int tableViewWidth = tableView.bounds.size.width;
     NSArray *tableViewHeaderStrings = @[@"DEFAULTS",
                                         @"ABOUT"];
-    
-    return [self configureSectionHeader:tableViewHeaderStrings :tableViewWidth :section];
+    double tempSection = section;
+    return [self configureSectionHeader:tableViewHeaderStrings :tableViewWidth :tempSection];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {

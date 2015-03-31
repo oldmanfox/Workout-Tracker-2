@@ -1,15 +1,46 @@
 #import "CPTAnnotationHostLayer.h"
 #import "CPTGraph.h"
 #import "CPTLayer.h"
-#import <Foundation/Foundation.h>
 
 @class CPTAxis;
 @class CPTAxisLabelGroup;
 @class CPTAxisSet;
 @class CPTGridLineGroup;
+@class CPTPlotArea;
 @class CPTPlotGroup;
 @class CPTLineStyle;
 @class CPTFill;
+
+/**
+ *  @brief Plot area delegate.
+ **/
+@protocol CPTPlotAreaDelegate<NSObject>
+
+@optional
+
+/// @name Plot Area Selection
+/// @{
+
+/** @brief @optional Informs the delegate that a plot area was
+ *  @if MacOnly clicked. @endif
+ *  @if iOSOnly touched. @endif
+ *  @param plotArea The plot area.
+ **/
+-(void)plotAreaWasSelected:(CPTPlotArea *)plotArea;
+
+/** @brief @optional Informs the delegate that a plot area was
+ *  @if MacOnly clicked. @endif
+ *  @if iOSOnly touched. @endif
+ *  @param plotArea The plot area.
+ *  @param event The event that triggered the selection.
+ **/
+-(void)plotAreaWasSelected:(CPTPlotArea *)plotArea withEvent:(CPTNativeEvent *)event;
+
+/// @}
+
+@end
+
+#pragma mark -
 
 @interface CPTPlotArea : CPTAnnotationHostLayer {
     @private

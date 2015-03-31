@@ -10,6 +10,7 @@
 #import "DataNavController.h"
 #import "WorkoutTVC.h"
 #import "UITableViewController+Design.h"
+#import <iAd/iAd.h>
 
 @interface ProgressTVC : UITableViewController
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell1;

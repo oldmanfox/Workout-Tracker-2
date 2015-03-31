@@ -30,6 +30,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    //NSLog(@"Allow iPad Table");
+    
+    [self.htmlView loadHTMLString:[self createHTML] baseURL:nil];
+    self.htmlView.hidden = NO;
+    
+    /*
     if ([[DWT2IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT2.slidergraph"]) {
         
         //NSLog(@"Allow iPad Table");
@@ -40,6 +46,7 @@
     } else {
         self.htmlView.hidden = YES;
     }
+     */
 }
 
 - (void)viewDidAppear:(BOOL)animated {

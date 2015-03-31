@@ -313,7 +313,7 @@
     
     photoCollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor blackColor];
     cell.myImage.image = [self.arrayOfImages objectAtIndex:indexPath.item];
     
     cell.myLabel.text = self.arrayOfImageTitles[indexPath.item];
