@@ -49,16 +49,6 @@
 #pragma mark - Chart behavior
 -(void)initPlot {
     
-    //NSLog(@"Allow iPad Graph");
-    
-    self.matches = [self databaseMatches];
-    [self configureHost];
-    [self configureGraph];
-    [self configurePlots];
-    [self configureAxes];
-    [self configureLegend];
-
-    /*
     if ([[DWT2IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT2.slidergraph"]) {
     
         //NSLog(@"Allow iPad Graph");
@@ -72,7 +62,6 @@
     } else {
         self.hostView.backgroundColor = [UIColor clearColor];
     }
-     */
 }
 
 -(void)configureHost {
@@ -252,7 +241,7 @@
 	for (NSInteger j = minorIncrement; j <= yMax; j += minorIncrement) {
 		NSUInteger mod = j % majorIncrement;
 		if (mod == 0) {
-			CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%i", j] textStyle:y.labelTextStyle];
+			CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%li", (long)j] textStyle:y.labelTextStyle];
 			NSDecimal location = CPTDecimalFromInteger(j);
 			label.tickLocation = location;
 			label.offset = -y.majorTickLength - y.labelOffset;
