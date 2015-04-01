@@ -384,14 +384,15 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+        //[[UIApplication sharedApplication] setStatusBarHidden:YES];
         [self presentViewController:imagePicker animated:YES completion:nil];
     }
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     
