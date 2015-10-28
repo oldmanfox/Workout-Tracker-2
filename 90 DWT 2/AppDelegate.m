@@ -39,26 +39,14 @@
     [[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
     [[UITabBar appearance] setBackgroundColor:[UIColor blackColor]];
    
-    [UIViewController prepareInterstitialAds];
+    //[UIViewController prepareInterstitialAds];
     
+    if ([[DWT2IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT2.removeads1"]) {
+        
+        self.purchasedAdRemoveBeforeAppLaunch = YES;
+    }
+
     return YES;
-}
-
-// These bannerView methods have to do with displaying iAds.
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner {
-    
-}
-
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
-    
-}
-
-- (void)bannerViewActionDidFinish:(ADBannerView *)banner {
-    
-}
-
-- (void)bannerViewWillLoadAd:(ADBannerView *)banner {
-    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

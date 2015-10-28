@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <iAd/iAd.h>
+//#import <iAd/iAd.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -23,6 +23,8 @@
 @property (strong, nonatomic) NSNumber *index;          // The number of times this workout has been done.
 @property (strong, nonatomic) NSString *exerciseName;   // Full name of an individual exercise.
 @property (strong, nonatomic) NSString *exerciseRound;  // Round of an individual exercise (1 or 2).
+
+@property BOOL purchasedAdRemoveBeforeAppLaunch;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

@@ -29,18 +29,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    // Show or Hide Ads
-    if ([[DWT2IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT2.removeads1"]) {
-        
-        // User purchased the Remove Ads in-app purchase so don't show any ads.
-        self.canDisplayBannerAds = NO;
-        
-    } else {
-        
-        // Show the Banner Ad
-        self.canDisplayBannerAds = YES;
-    }
-
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
@@ -94,6 +82,51 @@
     }
     
     self.workoutSummary.text = writeString;
+    
+    // Show or Hide Ads
+    if ([[DWT2IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT2.removeads1"]) {
+        
+        // User purchased the Remove Ads in-app purchase so don't show any ads.
+        //self.canDisplayBannerAds = NO;
+        
+    } else {
+        
+        // Show the Banner Ad
+        //self.canDisplayBannerAds = YES;
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            
+            // iPhone
+            self.adView = [[MPAdView alloc] initWithAdUnitId:@"4bed96fcb70a4371b972bf19d149e433"
+                                                        size:MOPUB_BANNER_SIZE];
+            self.bannerSize = MOPUB_BANNER_SIZE;
+            
+        } else {
+            
+            // iPad
+            self.adView = [[MPAdView alloc] initWithAdUnitId:@"7c80f30698634a22b77778b084e3087e"
+                                                        size:MOPUB_LEADERBOARD_SIZE];
+            self.bannerSize = MOPUB_LEADERBOARD_SIZE;
+            
+        }
+        
+        self.adView.delegate = self;
+        self.adView.frame = CGRectMake((self.view.bounds.size.width - self.bannerSize.width) / 2,
+                                       self.view.bounds.size.height - self.bannerSize.height - self.tabBarController.tabBar.bounds.size.height,
+                                       self.bannerSize.width, self.bannerSize.height);
+        
+        [self.view addSubview:self.adView];
+        
+        [self.adView loadAd];
+    }
+
+    // Set Content Insets to account for the new Adview on the screen
+    CGFloat top = self.workoutSummary.contentInset.top;
+    CGFloat left = self.workoutSummary.contentInset.left;
+    CGFloat bottom = self.workoutSummary.contentInset.bottom + self.bannerSize.height;
+    CGFloat right = self.workoutSummary.contentInset.right;
+    
+    [self.workoutSummary setContentInset:UIEdgeInsetsMake(top, left, bottom, right)];
 }
 
 - (void)viewDidUnload
@@ -110,9 +143,48 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
--(void)viewWillAppear:(BOOL)animated 
+-(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:YES];
+    
+    // Show or Hide Ads
+    if ([[DWT2IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT2.removeads1"]) {
+        
+        // User purchased the Remove Ads in-app purchase so don't show any ads.
+        //self.canDisplayBannerAds = NO;
+        self.adView.delegate = nil;
+        self.adView = nil;
+        [self.adView removeFromSuperview];
+        
+    } else {
+        
+        // Show the Banner Ad
+        //self.canDisplayBannerAds = YES;
+        
+        self.adView.hidden = YES;
+    }
+    
+}
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    // Show or Hide Ads
+    if ([[DWT2IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT2.removeads1"]) {
+        
+        // Don't show ads.
+        self.adView.delegate = nil;
+        self.adView = nil;
+        [self.adView removeFromSuperview];
+        
+    } else {
+        
+        // Show ads
+        self.adView.frame = CGRectMake((self.view.bounds.size.width - self.bannerSize.width) / 2,
+                                       self.view.bounds.size.height - self.bannerSize.height - self.tabBarController.tabBar.bounds.size.height,
+                                       self.bannerSize.width, self.bannerSize.height);
+        self.adView.hidden = NO;
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -123,26 +195,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error 
-{
-
-}
-
-- (void)bannerViewActionDidFinish:(ADBannerView *)banner 
-{
-
-}
-
-- (void)bannerViewDidLoadAd:(ADBannerView *)banner 
-{
-
-}
-
-- (void)bannerViewWillLoadAd:(ADBannerView *)banner 
-{
-    
 }
 
 - (void)emailResults
@@ -277,12 +329,31 @@
     }
 }
 
--(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    
+#pragma mark - <MPAdViewDelegate>
+- (UIViewController *)viewControllerForPresentingModalView {
+    return self;
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    
+- (void)adViewDidLoadAd:(MPAdView *)view
+{
+    CGSize size = [view adContentViewSize];
+    CGFloat centeredX = (self.view.bounds.size.width - size.width) / 2;
+    CGFloat bottomAlignedY = self.view.bounds.size.height - size.height - self.tabBarController.tabBar.bounds.size.height;
+    view.frame = CGRectMake(centeredX, bottomAlignedY, size.width, size.height);
 }
 
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                duration:(NSTimeInterval)duration {
+    self.adView.hidden = YES;
+    [self.adView rotateToOrientation:toInterfaceOrientation];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    CGSize size = [self.adView adContentViewSize];
+    CGFloat centeredX = (self.view.bounds.size.width - size.width) / 2;
+    CGFloat bottomAlignedY = self.view.bounds.size.height - size.height - self.tabBarController.tabBar.bounds.size.height;
+    self.adView.frame = CGRectMake(centeredX, bottomAlignedY, size.width, size.height);
+    
+    self.adView.hidden = NO;
+}
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "DataNavController.h"
+#import "DWT2IAPHelper.h"
+#import "AppDelegate.h"
 
 @interface DataNavController ()
 
@@ -25,7 +27,19 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    
+    if ([[DWT2IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT2.removeads1"]) {
+        
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        if (appDelegate.purchasedAdRemoveBeforeAppLaunch) {
+            
+            // Do nothing.  No need to pop to root view controller.
+            
+        } else {
+            
+            [self popToRootViewControllerAnimated:YES];
+        }
+    }
 }
 
 - (void)viewDidLoad

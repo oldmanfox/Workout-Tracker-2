@@ -34,12 +34,39 @@
     if ([[DWT2IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT2.removeads1"]) {
         
         // User purchased the Remove Ads in-app purchase so don't show any ads.
-        self.canDisplayBannerAds = NO;
+        //self.canDisplayBannerAds = NO;
         
     } else {
         
         // Show the Banner Ad
-        self.canDisplayBannerAds = YES;
+        //self.canDisplayBannerAds = YES;
+        
+        self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 0)];
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            
+            // iPhone
+            self.adView = [[MPAdView alloc] initWithAdUnitId:@"6232cd4a1e374ecebed0f15440ba2a65"
+                                                        size:MOPUB_BANNER_SIZE];
+            self.bannerSize = MOPUB_BANNER_SIZE;
+            
+        } else {
+            
+            // iPad
+            self.adView = [[MPAdView alloc] initWithAdUnitId:@"05f5a06e1c8e4560ba24068341868285"
+                                                        size:MOPUB_LEADERBOARD_SIZE];
+            self.bannerSize = MOPUB_LEADERBOARD_SIZE;
+            
+        }
+        
+        self.adView.delegate = self;
+        self.adView.frame = CGRectMake((self.view.bounds.size.width - self.bannerSize.width) / 2,
+                                       self.bannerSize.height - self.bannerSize.height,
+                                       self.bannerSize.width, self.bannerSize.height);
+        
+        [self.headerView addSubview:self.adView];
+        
+        [self.adView loadAd];
     }
 
     // Configure tableview.
@@ -86,13 +113,35 @@
     // Show or Hide Ads
     if ([[DWT2IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT2.removeads1"]) {
         
-        // User purchased the Remove Ads in-app purchase so don't show any ads.
-        self.canDisplayBannerAds = NO;
+        // Don't show ads.
+        self.tableView.tableHeaderView = nil;
+        self.adView.delegate = nil;
+        self.adView = nil;
         
     } else {
         
-        // Show the Banner Ad
-        self.canDisplayBannerAds = YES;
+        // Show ads
+        self.adView.hidden = YES;
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+
+    // Show or Hide Ads
+    if ([[DWT2IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT2.removeads1"]) {
+        
+        // Don't show ads.
+        self.tableView.tableHeaderView = nil;
+        self.adView.delegate = nil;
+        self.adView = nil;
+        
+    } else {
+        
+        // Show ads
+        self.adView.frame = CGRectMake((self.view.bounds.size.width - self.bannerSize.width) / 2,
+                                       self.bannerSize.height - self.bannerSize.height,
+                                       self.bannerSize.width, self.bannerSize.height);
+        self.adView.hidden = NO;
     }
 }
 
@@ -248,9 +297,9 @@
     } else {
         
         // Show the Interstitial Ad
-        UIViewController *c = segue.destinationViewController;
+        //UIViewController *c = segue.destinationViewController;
         
-        c.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
+        //c.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
     }
 }
 
@@ -265,4 +314,50 @@
      */
 }
 
+#pragma mark - <MPAdViewDelegate>
+- (UIViewController *)viewControllerForPresentingModalView {
+    return self;
+}
+
+- (void)adViewDidLoadAd:(MPAdView *)view
+{
+    CGSize size = [view adContentViewSize];
+    CGFloat centeredX = (self.view.bounds.size.width - size.width) / 2;
+    CGFloat bottomAlignedY = self.bannerSize.height - size.height;
+    view.frame = CGRectMake(centeredX, bottomAlignedY, size.width, size.height);
+    
+    if (self.headerView.frame.size.height == 0) {
+        
+        // No ads shown yet.  Animate showing the ad.
+        CGRect headerViewFrame = CGRectMake(0, 0, self.view.bounds.size.width, self.bannerSize.height);
+        
+        [UIView animateWithDuration:0.25 animations:^{ self.headerView.frame = headerViewFrame;
+            self.tableView.tableHeaderView = self.headerView;
+            self.adView.hidden = YES;}
+         
+                         completion:^(BOOL finished) {self.adView.hidden = NO;
+                         }];
+        
+    } else {
+        
+        // Ad is already showing.
+        self.tableView.tableHeaderView = self.headerView;
+    }
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                duration:(NSTimeInterval)duration {
+    
+    self.adView.hidden = YES;
+    [self.adView rotateToOrientation:toInterfaceOrientation];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    CGSize size = [self.adView adContentViewSize];
+    CGFloat centeredX = (self.view.bounds.size.width - size.width) / 2;
+    CGFloat bottomAlignedY = self.headerView.bounds.size.height - size.height;
+    self.adView.frame = CGRectMake(centeredX, bottomAlignedY, size.width, size.height);
+    
+    self.adView.hidden = NO;
+}
 @end

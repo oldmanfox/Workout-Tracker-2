@@ -127,13 +127,23 @@
 	[graph addPlot:googPlot toPlotSpace:plotSpace];
     
     // 3 - Set up plot space
-	[plotSpace scaleToFitPlots:[NSArray arrayWithObjects:aaplPlot, googPlot, nil]];
-	CPTMutablePlotRange *xRange = [plotSpace.xRange mutableCopy];
-	[xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
-	plotSpace.xRange = xRange;
-	CPTMutablePlotRange *yRange = [plotSpace.yRange mutableCopy];
-	[yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
-	plotSpace.yRange = yRange;
+    [plotSpace scaleToFitPlots:[NSArray arrayWithObjects:aaplPlot, googPlot, nil]];
+    CPTMutablePlotRange *xRange = [plotSpace.xRange mutableCopy];
+    
+    
+    //[xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
+    [xRange expandRangeByFactor:[NSNumber numberWithFloat:(1.1f)]];
+    
+    
+    plotSpace.xRange = xRange;
+    CPTMutablePlotRange *yRange = [plotSpace.yRange mutableCopy];
+    
+    
+    //[yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
+    [yRange expandRangeByFactor:[NSNumber numberWithFloat:(1.2f)]];
+    
+    
+    plotSpace.yRange = yRange;
     
 	// 4 - Create styles and symbols
 	CPTMutableLineStyle *aaplLineStyle = [aaplPlot.dataLineStyle mutableCopy];
@@ -201,16 +211,21 @@
 	NSInteger i = 0;
 	for (NSString *date in [[self matches] valueForKey:@"week"]) {
         
-        // Remove the work "week " from the string leaving only the number at the end 
+        // Remove the work "week " from the string leaving only the number at the end
         NSString *cleanDate = [[NSString alloc] initWithString:[date substringFromIndex:5]];
-		CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:cleanDate  textStyle:x.labelTextStyle];
-		CGFloat location = i++;
-		label.tickLocation = CPTDecimalFromCGFloat(location);
-		label.offset = x.majorTickLength;
-		if (label) {
-			[xLabels addObject:label];
-			[xLocations addObject:[NSNumber numberWithFloat:location]];
-		}
+        CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:cleanDate  textStyle:x.labelTextStyle];
+        CGFloat location = i++;
+        
+        
+        //label.tickLocation = CPTDecimalFromCGFloat(location);
+        label.tickLocation = [NSNumber numberWithFloat:(location)];
+        
+        
+        label.offset = x.majorTickLength;
+        if (label) {
+            [xLabels addObject:label];
+            [xLocations addObject:[NSNumber numberWithFloat:location]];
+        }
 	}
 	x.axisLabels = xLabels;
 	x.majorTickLocations = xLocations;
@@ -242,13 +257,19 @@
 		NSUInteger mod = j % majorIncrement;
 		if (mod == 0) {
 			CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%li", (long)j] textStyle:y.labelTextStyle];
-			NSDecimal location = CPTDecimalFromInteger(j);
-			label.tickLocation = location;
-			label.offset = -y.majorTickLength - y.labelOffset;
-			if (label) {
-				[yLabels addObject:label];
-			}
-			[yMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
+            
+            
+            //NSDecimal location = CPTDecimalFromInteger(j);
+            NSNumber *location = [NSNumber numberWithInteger:j];
+            
+            
+            label.tickLocation = location;
+            
+            label.offset = -y.majorTickLength - y.labelOffset;
+            if (label) {
+                [yLabels addObject:label];
+            }
+            [yMajorLocations addObject:location];
 		} else {
 			[yMinorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:CPTDecimalFromInteger(j)]];
 		}

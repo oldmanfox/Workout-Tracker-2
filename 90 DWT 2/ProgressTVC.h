@@ -10,9 +10,17 @@
 #import "DataNavController.h"
 #import "WorkoutTVC.h"
 #import "UITableViewController+Design.h"
-#import <iAd/iAd.h>
+//#import <iAd/iAd.h>
+#import "MPAdView.h"
 
-@interface ProgressTVC : UITableViewController
+@interface ProgressTVC : UITableViewController <MPAdViewDelegate>
+
+@property (nonatomic) MPAdView *adView;
+
+@property (nonatomic, strong) UIView *headerView;
+
+@property CGSize bannerSize;
+
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell1;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell2;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cell3;
