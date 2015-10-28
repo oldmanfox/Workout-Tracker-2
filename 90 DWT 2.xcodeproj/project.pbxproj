@@ -253,6 +253,18 @@
 		A59A6F2C1BE113EB00021100 /* MPRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A59A6E6E1BE113EB00021100 /* MPRewardedVideoCustomEvent.m */; };
 		A59A6F2D1BE113EB00021100 /* MPRewardedVideoError.m in Sources */ = {isa = PBXBuildFile; fileRef = A59A6E701BE113EB00021100 /* MPRewardedVideoError.m */; };
 		A59A6F2E1BE113EB00021100 /* MPRewardedVideoReward.m in Sources */ = {isa = PBXBuildFile; fileRef = A59A6E721BE113EB00021100 /* MPRewardedVideoReward.m */; };
+		A59A6F301BE1151100021100 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F2F1BE1151100021100 /* AdSupport.framework */; };
+		A59A6F321BE1152400021100 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F311BE1152400021100 /* AVFoundation.framework */; };
+		A59A6F341BE1153600021100 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F331BE1153600021100 /* CoreLocation.framework */; };
+		A59A6F361BE1153F00021100 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F351BE1153F00021100 /* CoreTelephony.framework */; };
+		A59A6F381BE1156300021100 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F371BE1156300021100 /* MobileCoreServices.framework */; };
+		A59A6F3A1BE1156C00021100 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F391BE1156C00021100 /* PassKit.framework */; };
+		A59A6F3C1BE1159400021100 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F3B1BE1159400021100 /* Twitter.framework */; };
+		A59A6F3E1BE11D1600021100 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F3D1BE11D1600021100 /* CoreMedia.framework */; };
+		A59A6F411BE11D2700021100 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F3F1BE11D2700021100 /* EventKit.framework */; };
+		A59A6F421BE11D2700021100 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F401BE11D2700021100 /* EventKitUI.framework */; };
+		A59A6F441BE11D6200021100 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F431BE11D6200021100 /* libxml2.tbd */; };
+		A59A6F461BE11D6C00021100 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F451BE11D6C00021100 /* CoreBluetooth.framework */; };
 		A5FD70F5164E0B85004E4884 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FD70F4164E0B84004E4884 /* Social.framework */; };
 /* End PBXBuildFile section */
 
@@ -805,6 +817,18 @@
 		A59A6E701BE113EB00021100 /* MPRewardedVideoError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPRewardedVideoError.m; sourceTree = "<group>"; };
 		A59A6E711BE113EB00021100 /* MPRewardedVideoReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPRewardedVideoReward.h; sourceTree = "<group>"; };
 		A59A6E721BE113EB00021100 /* MPRewardedVideoReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPRewardedVideoReward.m; sourceTree = "<group>"; };
+		A59A6F2F1BE1151100021100 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		A59A6F311BE1152400021100 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A59A6F331BE1153600021100 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A59A6F351BE1153F00021100 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		A59A6F371BE1156300021100 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A59A6F391BE1156C00021100 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
+		A59A6F3B1BE1159400021100 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		A59A6F3D1BE11D1600021100 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		A59A6F3F1BE11D2700021100 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		A59A6F401BE11D2700021100 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		A59A6F431BE11D6200021100 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		A59A6F451BE11D6C00021100 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		A5FD70F4164E0B84004E4884 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -813,22 +837,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A59A6F461BE11D6C00021100 /* CoreBluetooth.framework in Frameworks */,
+				A59A6F441BE11D6200021100 /* libxml2.tbd in Frameworks */,
+				A59A6F411BE11D2700021100 /* EventKit.framework in Frameworks */,
+				A59A6F421BE11D2700021100 /* EventKitUI.framework in Frameworks */,
+				A59A6F3E1BE11D1600021100 /* CoreMedia.framework in Frameworks */,
+				A59A6F3C1BE1159400021100 /* Twitter.framework in Frameworks */,
+				A54B632015CB14DA0085C0E5 /* SystemConfiguration.framework in Frameworks */,
+				A53AAEEF174678D800FC3521 /* StoreKit.framework in Frameworks */,
+				A5FD70F5164E0B85004E4884 /* Social.framework in Frameworks */,
+				A53AAE7A174674BD00FC3521 /* QuartzCore.framework in Frameworks */,
+				A59A6F3A1BE1156C00021100 /* PassKit.framework in Frameworks */,
+				A59A6F381BE1156300021100 /* MobileCoreServices.framework in Frameworks */,
+				A54B631F15CB14DA0085C0E5 /* MessageUI.framework in Frameworks */,
+				A54B631E15CB14DA0085C0E5 /* MediaPlayer.framework in Frameworks */,
+				A54B631D15CB14DA0085C0E5 /* iAd.framework in Frameworks */,
+				A59A6F361BE1153F00021100 /* CoreTelephony.framework in Frameworks */,
+				A59A6F341BE1153600021100 /* CoreLocation.framework in Frameworks */,
+				A54B62FD15CB13F10085C0E5 /* CoreGraphics.framework in Frameworks */,
+				A59A6F321BE1152400021100 /* AVFoundation.framework in Frameworks */,
+				A54B631B15CB14DA0085C0E5 /* AudioToolbox.framework in Frameworks */,
+				A59A6F301BE1151100021100 /* AdSupport.framework in Frameworks */,
 				A59A6E7B1BE113EB00021100 /* MMAdSDK.framework in Frameworks */,
 				A58EB9171ACB309F00503170 /* Accelerate.framework in Frameworks */,
-				A53AAEEF174678D800FC3521 /* StoreKit.framework in Frameworks */,
 				A53AAEED174678D100FC3521 /* Security.framework in Frameworks */,
-				A53AAE7A174674BD00FC3521 /* QuartzCore.framework in Frameworks */,
-				A54B632015CB14DA0085C0E5 /* SystemConfiguration.framework in Frameworks */,
-				A5FD70F5164E0B85004E4884 /* Social.framework in Frameworks */,
-				A54B631B15CB14DA0085C0E5 /* AudioToolbox.framework in Frameworks */,
 				A54B631C15CB14DA0085C0E5 /* CoreImage.framework in Frameworks */,
-				A54B631D15CB14DA0085C0E5 /* iAd.framework in Frameworks */,
-				A54B631E15CB14DA0085C0E5 /* MediaPlayer.framework in Frameworks */,
-				A54B631F15CB14DA0085C0E5 /* MessageUI.framework in Frameworks */,
 				A59A6CE61BE1067800021100 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				A54B62F915CB13F10085C0E5 /* UIKit.framework in Frameworks */,
 				A54B62FB15CB13F10085C0E5 /* Foundation.framework in Frameworks */,
-				A54B62FD15CB13F10085C0E5 /* CoreGraphics.framework in Frameworks */,
 				A59A6E751BE113EB00021100 /* GoogleMobileAds.framework in Frameworks */,
 				A54B62FF15CB13F10085C0E5 /* CoreData.framework in Frameworks */,
 			);
@@ -981,6 +1017,18 @@
 		A54B62F715CB13F10085C0E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A59A6F451BE11D6C00021100 /* CoreBluetooth.framework */,
+				A59A6F431BE11D6200021100 /* libxml2.tbd */,
+				A59A6F3F1BE11D2700021100 /* EventKit.framework */,
+				A59A6F401BE11D2700021100 /* EventKitUI.framework */,
+				A59A6F3D1BE11D1600021100 /* CoreMedia.framework */,
+				A59A6F3B1BE1159400021100 /* Twitter.framework */,
+				A59A6F391BE1156C00021100 /* PassKit.framework */,
+				A59A6F371BE1156300021100 /* MobileCoreServices.framework */,
+				A59A6F351BE1153F00021100 /* CoreTelephony.framework */,
+				A59A6F331BE1153600021100 /* CoreLocation.framework */,
+				A59A6F311BE1152400021100 /* AVFoundation.framework */,
+				A59A6F2F1BE1151100021100 /* AdSupport.framework */,
 				A58EB9161ACB309F00503170 /* Accelerate.framework */,
 				A53AAEEE174678D800FC3521 /* StoreKit.framework */,
 				A53AAEEC174678D100FC3521 /* Security.framework */,
