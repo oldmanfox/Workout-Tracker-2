@@ -13,9 +13,9 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+//@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+//@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+//@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (strong, nonatomic) NSString *month;          // Current month.
 @property (strong, nonatomic) NSString *week;           // Current week of workout.
@@ -26,7 +26,8 @@
 
 @property BOOL purchasedAdRemoveBeforeAppLaunch;
 
-- (void)saveContext;
-- (NSURL *)applicationDocumentsDirectory;
+- (NSString *)getCurrentSession;
+//- (void)saveContext;
+//- (NSURL *)applicationDocumentsDirectory;
 
 @end

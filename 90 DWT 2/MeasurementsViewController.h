@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "UIViewController+Social.h"
+#import "CoreDataHelper.h"
+#import "MeasurementsNavController.h"
 
-@interface MeasurementsViewController : UIViewController<MFMailComposeViewControllerDelegate, UIActionSheetDelegate, UIScrollViewDelegate>
+@interface MeasurementsViewController : UIViewController<MFMailComposeViewControllerDelegate, UIActionSheetDelegate>
+
+// Text Fields
 @property (weak, nonatomic) IBOutlet UITextField *weight;
 @property (weak, nonatomic) IBOutlet UITextField *chest;
 @property (weak, nonatomic) IBOutlet UITextField *leftArm;
@@ -20,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *leftThigh;
 @property (weak, nonatomic) IBOutlet UITextField *rightThigh;
 
+// Labels
 @property (weak, nonatomic) IBOutlet UILabel *weightLabel;
 @property (weak, nonatomic) IBOutlet UILabel *leftArmLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rightArmLabel;

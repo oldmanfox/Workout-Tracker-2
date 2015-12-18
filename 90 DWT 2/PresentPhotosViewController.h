@@ -13,6 +13,7 @@
 #import <MessageUI/MessageUI.h>
 #import "UIViewController+Social.h"
 #import "photoCollectionViewCell.h"
+#import "CoreDataHelper.h"
 
 @interface PresentPhotosViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, MPMediaPickerControllerDelegate, MFMailComposeViewControllerDelegate, UIActionSheetDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 

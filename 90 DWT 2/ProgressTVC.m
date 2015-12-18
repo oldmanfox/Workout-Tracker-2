@@ -15,6 +15,8 @@
 
 @implementation ProgressTVC
 
+#define debug 0
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -27,6 +29,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (debug==1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+    
+    // Respond to changes in underlying store
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateUI)
+                                                 name:@"SomethingChanged"
+                                               object:nil];
     
     self.navigationController.tabBarItem.selectedImage = [UIImage imageNamed:@"weight_lifting_selected"];
     
@@ -99,11 +111,11 @@
     
     [self configureTableView:tableCell :accessoryIcon];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self convertPhotosToCoreData];
+    [self convertMeasurementsToCoreData];
+    [self convertSettingsToCoreData];
+    [self addSession1ToExistingCoreDataObjects];
+    [self findAutoLockSetting];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -277,7 +289,7 @@
             
             if ([monthWeeks[m + 1][w] isEqualToString:((DataNavController *)self.parentViewController).week]) {
                 
-                ((DataNavController *)self.parentViewController).phase = monthWeeks[0][m];
+                ((DataNavController *)self.parentViewController).month = monthWeeks[0][m];
                 //NSLog(@"Month = %@", monthWeeks[0][m]);
             }
         }
@@ -285,7 +297,7 @@
 
     // Set the WorkoutTVC section header
     NSMutableString *tempSecionHeader = [NSMutableString stringWithCapacity:0];
-    [tempSecionHeader appendString:[NSString stringWithFormat:@"%@ - %@", [((DataNavController *)self.parentViewController).phase uppercaseString], [((DataNavController *)self.parentViewController).week uppercaseString]]];
+    [tempSecionHeader appendString:[NSString stringWithFormat:@"%@ - %@", [((DataNavController *)self.parentViewController).month uppercaseString], [((DataNavController *)self.parentViewController).week uppercaseString]]];
     
     workoutTVC.sectionHeader = tempSecionHeader;
     
@@ -359,5 +371,62 @@
     self.adView.frame = CGRectMake(centeredX, bottomAlignedY, size.width, size.height);
     
     self.adView.hidden = NO;
+}
+
+- (void)updateUI {
+    
+    if ([CoreDataHelper sharedHelper].iCloudStore) {
+        
+        [self performSelector:@selector(findAutoLockSetting) withObject:nil afterDelay:5.0 ];
+    }
+    else {
+        
+        [self findAutoLockSetting];
+    }
+}
+
+- (void)findAutoLockSetting {
+    
+    // Fetch useBands objects
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"AutoLock" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
+    
+    NSManagedObject *matches = nil;
+    NSError *error;
+    NSArray *objects = [context executeFetchRequest:request error:&error];
+    
+    NSString *coredataAutoLockSetting;
+    
+    if ([objects count] != 0) {
+        
+        // Object has already been created. Get value of autolock from it.
+        matches = objects[[objects count] - 1];
+        
+        coredataAutoLockSetting = [matches valueForKey:@"useAutoLock"];
+    }
+    
+    else {
+        
+        // No matches.
+        if (debug==1) {
+            NSLog(@"No match found");
+        }
+        
+        // Default setting is OFF
+        coredataAutoLockSetting = @"OFF";
+    }
+    
+    if ([coredataAutoLockSetting isEqualToString:@"ON"]) {
+        
+        // User wants to disable the autolock timer.
+        [UIApplication sharedApplication].idleTimerDisabled = YES;
+    }
+    
+    else {
+        // User doesn't want to disable the autolock timer.
+        [UIApplication sharedApplication].idleTimerDisabled = NO;
+    }
 }
 @end

@@ -71,6 +71,17 @@
     return 2;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    if (section == 0) {
+        return 4;
+    }
+    else {
+        return 1;
+    }
+}
+
 #pragma mark - Table view delegate
 /*
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -80,12 +91,30 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 0) {
+        
+        if (indexPath.row == 0) {
+            ((MeasurementsNavController *)self.parentViewController).monthString = @"1";
+        }
+        
+        if (indexPath.row == 1) {
+            ((MeasurementsNavController *)self.parentViewController).monthString = @"2";
+        }
+        
+        if (indexPath.row == 2) {
+            ((MeasurementsNavController *)self.parentViewController).monthString = @"3";
+        }
+        
+        if (indexPath.row == 3) {
+            ((MeasurementsNavController *)self.parentViewController).monthString = @"4";
+        }
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Set navigation bar title
-    ((MeasurementsNavController *)self.parentViewController).phase = segue.identifier;
+    ((MeasurementsNavController *)self.parentViewController).month = segue.identifier;
     MeasurementsViewController *mvc = (MeasurementsViewController *)segue.destinationViewController;
     MeasurementsReportViewController *mrvc = (MeasurementsReportViewController *)segue.destinationViewController;
     mvc.navigationItem.title = segue.identifier;

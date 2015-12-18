@@ -7,6 +7,7 @@
 //
 
 #import "PhotoScrollerViewController.h"
+#import "AppDelegate.h"
 
 @interface PhotoScrollerViewController ()
 
@@ -15,7 +16,7 @@
 @property (strong, nonatomic) NSString *selectedPhotoTitle;
 
 @property CGRect selectedImageRect;
-@property int selectedPhotoIndex;
+@property NSInteger selectedPhotoIndex;
 
 @end
 
@@ -30,7 +31,6 @@
     return self;
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -39,7 +39,13 @@
     
     self.arrayOfImages = [[NSMutableArray alloc] init];
     
-    [self getPhotos];
+    [self getPhotosFromDatabase];
+    
+    // Respond to changes in underlying store
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateUI)
+                                                 name:@"SomethingChanged"
+                                               object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -49,8 +55,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    //[self.collectionView reloadData];
     
 }
 
@@ -69,38 +73,38 @@
     MFMailComposeViewController *mailComposer;
     mailComposer = [[MFMailComposeViewController alloc] init];
     mailComposer.mailComposeDelegate = self;
+    mailComposer.navigationBar.tintColor = [UIColor whiteColor];
     
     // Check to see if the device has at least 1 email account configured.
     if ([MFMailComposeViewController canSendMail]) {
         
-        // Send email
-        //PhotoNavController *photoNC = [[PhotoNavController alloc] init];
+        // Get the objects for the current session
+        NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+        AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         
-        // Get path to documents directory to get default email address and images.
-        NSString *docDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-        //NSString *imageFile = nil;
+        // Fetch current session data.
+        NSString *currentSessionString = [mainAppDelegate getCurrentSession];
         
-        // Create MailComposerViewController object.
-        MFMailComposeViewController *mailComposer;
-        mailComposer = [[MFMailComposeViewController alloc] init];
-        mailComposer.mailComposeDelegate = self;
+        // Fetch defaultEmail data.
+        NSEntityDescription *entityDescEmail = [NSEntityDescription entityForName:@"Email" inManagedObjectContext:context];
+        NSFetchRequest *requestEmail = [[NSFetchRequest alloc] init];
+        [requestEmail setEntity:entityDescEmail];
+        NSManagedObject *matches = nil;
+        NSError *error = nil;
+        NSArray *objects = [context executeFetchRequest:requestEmail error:&error];
         
         // Array to store the default email address.
-        NSArray *emailAddresses; 
+        NSArray *emailAddresses;
         
-        NSString *defaultEmailFile = nil;
-        defaultEmailFile = [docDir stringByAppendingPathComponent:@"Default Email.out"];
-        
-        if ([[NSFileManager defaultManager] fileExistsAtPath:defaultEmailFile]) {
-            NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:defaultEmailFile];
+        if ([objects count] != 0) {
             
-            NSString *defaultEmail = [[NSString alloc] initWithData:[fileHandle availableData] encoding:NSUTF8StringEncoding];
-            [fileHandle closeFile];
+            matches = objects[[objects count] - 1];
             
             // There is a default email address.
-            emailAddresses = @[defaultEmail];
+            emailAddresses = @[[matches valueForKey:@"defaultEmail"]];
         }
         else {
+            
             // There is NOT a default email address.  Put an empty email address in the arrary.
             emailAddresses = @[@""];
         }
@@ -116,22 +120,23 @@
                 
                 // Prepare string for the Subject of the email
                 NSString *subjectTitle = @"";
-                subjectTitle = [subjectTitle stringByAppendingFormat:@"90 DWT 2 %@ Photos", monthArray[i]];
+                subjectTitle = [subjectTitle stringByAppendingFormat:@"90 DWT 2 %@ Photos - Session %@", monthArray[i], currentSessionString];
                 
                 [mailComposer setSubject:subjectTitle];
                 //NSLog(@"%@", subjectTitle);
                 
                 for (int b = 0; b < picAngle.count; b++) {
                     
-                    if (self.arrayOfImages[b] != [UIImage imageNamed:@"icon-pics2.png"]) {
+                    if (self.arrayOfImages[b] != [UIImage imageNamed:@"PhotoPlaceHolder.png"]) {
                         
                         // Don't attach photos that just use the placeholder image.
                         
                         NSData *imageData = UIImageJPEGRepresentation(self.arrayOfImages[b], 1.0); //convert image into .JPG format.
                         NSString *photoAttachmentFileName = @"";
                         
-                        photoAttachmentFileName = [photoAttachmentFileName stringByAppendingFormat:@"%@ %@.jpg", monthArray[i], picAngle[b]];
+                        photoAttachmentFileName = [photoAttachmentFileName stringByAppendingFormat:@"%@ %@ - Session %@.jpg", monthArray[i], picAngle[b], currentSessionString];
                         
+                        //NSLog(@"Image = %@", self.arrayOfImages[b]);
                         //NSLog(@"File name = %@", photoAttachmentFileName);
                         
                         [mailComposer addAttachmentData:imageData mimeType:@"image/jpg" fileName:photoAttachmentFileName];
@@ -140,7 +145,9 @@
             }
         }
         
-        [self presentViewController:mailComposer animated:YES completion:nil];
+        [self presentViewController:mailComposer animated:YES completion:^{
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        }];
     }
     
 }
@@ -252,34 +259,48 @@
     return cell;
 }
 
-- (void)getPhotos {
+- (void)getPhotosFromDatabase {
     
-    PhotoNavController *photoNC = [[PhotoNavController alloc] init];
-    NSString *currentPhase = ((PhotoNavController *)self.parentViewController).phase;
+    // Get the objects for the current session
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    NSArray *photoAngle = @[@" Front",
-                            @" Side",
-                            @" Back"];
+    // Fetch current session data.
+    NSString *currentSessionString = [mainAppDelegate getCurrentSession];
+    
+    // Get photo data with the current session
+    NSArray *photoAngle = @[@"Front",
+                            @"Side",
+                            @"Back"];
     
     for (int i = 0; i < photoAngle.count; i++) {
         
-        if ([[NSFileManager defaultManager] fileExistsAtPath: [photoNC fileLocation:[currentPhase stringByAppendingString:photoAngle[i] ]]]) {
-            
-            [self.arrayOfImages addObject:[photoNC loadImage:[currentPhase stringByAppendingString:photoAngle[i] ]]];
-            
-            //NSLog(@"Photo = %@", self.arrayOfImages[i]);
-            
-        }
+        NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Photo" inManagedObjectContext:context];
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        [request setEntity:entityDesc];
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (month = %@) AND (angle = %@)",
+                             currentSessionString,
+                             ((PhotoNavController *)self.parentViewController).photoMonthSelected,
+                             photoAngle[i]];
+        [request setPredicate:pred];
+        NSManagedObject *matches = nil;
+        NSError *error = nil;
+        NSArray *objects = [context executeFetchRequest:request error:&error];
         
-        else
-            // Load a placeholder image.
-        {
-            [self.arrayOfImages addObject:[UIImage imageNamed:@"PhotoPlaceHolder.png"]];
+        if ([objects count] != 0) {
             
+            matches = objects[[objects count] - 1];
+            UIImage *image = [UIImage imageWithData:[matches valueForKey:@"image"]];
+            
+            // Add image to array.
+            [self.arrayOfImages addObject:image];
+            
+        } else {
+            
+            // Load a placeholder image.
+            [self.arrayOfImages addObject:[UIImage imageNamed:@"PhotoPlaceHolder.png"]];
         }
-
     }
-    
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -305,9 +326,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
         self.selectedImageRect = [collectionView convertRect:cell.frame toView:self.view];
     }
     
-    double tempItem = indexPath.item;
     self.selectedPhotoTitle = [self.navigationItem.title stringByAppendingString:photoAngle[indexPath.item]];
-    self.selectedPhotoIndex = tempItem;
+    self.selectedPhotoIndex = indexPath.item;
     
     self.whereToGetPhoto = @"";
     [photoAction showFromRect:self.selectedImageRect inView:self.view animated:YES];
@@ -398,31 +418,68 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     [self.arrayOfImages replaceObjectAtIndex:self.selectedPhotoIndex withObject:image];
     
-    /*
-    UIImage *scaledImage = nil;
+    NSString *selectedAngle;
     
-    if (image.size.height > image.size.width) {
+    if (self.selectedPhotoIndex == 0) {
+        selectedAngle = @"Front";
+    }
+    
+    if (self.selectedPhotoIndex == 1) {
+        selectedAngle = @"Side";
+    }
+    
+    if (self.selectedPhotoIndex == 2) {
+        selectedAngle = @"Back";
+    }
+    
+    NSDate *todaysDate = [NSDate date];
+    
+    NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+    
+    // Get the objects for the current session
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Fetch current session data.
+    NSString *currentSessionString = [mainAppDelegate getCurrentSession];
+    
+    // Save the image data with the current session
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Photo" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (month = %@) AND (angle = %@)",
+                         currentSessionString,
+                         ((PhotoNavController *)self.parentViewController).photoMonthSelected,
+                         selectedAngle];
+    [request setPredicate:pred];
+    NSManagedObject *matches = nil;
+    NSError *error = nil;
+    NSArray *objects = [context executeFetchRequest:request error:&error];
+    
+    if ([objects count] == 0) {
+        //NSLog(@"submitEntry = No matches - create new record and save");
         
-        // Image was taken in Portriat mode.
-        scaledImage = [image resizedImageWithSize:CGSizeMake(1536,2048)];
+        NSManagedObject *newExercise;
+        newExercise = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
+        [newExercise setValue:currentSessionString forKey:@"session"];
+        [newExercise setValue:((PhotoNavController *)self.parentViewController).photoMonthSelected forKey:@"month"];
+        [newExercise setValue:selectedAngle forKey:@"angle"];
+        [newExercise setValue:todaysDate forKey:@"date"];
+        [newExercise setValue:imageData forKey:@"image"];
         
     } else {
+        //NSLog(@"submitEntry = Match found - update existing record and save");
         
-        // Image was taken in Landscape mode.
-        scaledImage = [image resizedImageWithSize:CGSizeMake(2048,1536)];
-    }
-    */
-    
-    // Only save image to photo library if it is a new pic taken with the camera.
-    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-        UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+        matches = objects[[objects count]-1];
+        
+        // Only update the fields that have been changed.
+        [matches setValue:imageData forKey:@"image"];
+        [matches setValue:todaysDate forKey:@"date"];
     }
     
-    PhotoNavController *photoNC = [[PhotoNavController alloc] init];
+    //[context save:&error];
+    [[CoreDataHelper sharedHelper] backgroundSaveContext];
     
-    // Save image to application documents directory.
-    [photoNC saveImage:image imageName:self.selectedPhotoTitle];
-
     [self.collectionView reloadData];
     
     picker = nil;
@@ -455,5 +512,14 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     [alert show];
      */
+}
+
+- (void)updateUI {
+    
+    if ([CoreDataHelper sharedHelper].iCloudStore) {
+        [self.arrayOfImages removeAllObjects];
+        [self getPhotosFromDatabase];
+        [self.collectionView reloadData];
+    }
 }
 @end

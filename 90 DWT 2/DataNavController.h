@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @interface DataNavController : UINavigationController
-@property (strong, nonatomic) NSString *phase;    // Current phase.
+@property (strong, nonatomic) NSString *month;    // Current month.
 @property (strong, nonatomic) NSString *week;     // Current week of workout.
 @property (strong, nonatomic) NSString *workout;  // Full name of an individual workout.
 @property (strong, nonatomic) NSNumber *index;    // The number of times this workout has been done.

@@ -10,6 +10,7 @@
 
 @interface MeasurementsNavController : UINavigationController
 
-@property (strong, nonatomic) NSString *phase; // Current phase for pictures.
+@property (strong, nonatomic) NSString *month; // Current month for pictures.
+@property (strong, nonatomic) NSString *monthString; // Current month for measurements.
 
 @end

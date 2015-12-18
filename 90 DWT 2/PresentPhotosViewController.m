@@ -7,6 +7,7 @@
 //
 
 #import "PresentPhotosViewController.h"
+#import "AppDelegate.h"
 
 @interface PresentPhotosViewController ()
 
@@ -28,6 +29,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
+    // Respond to changes in underlying store
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateUI)
+                                                 name:@"SomethingChanged"
+                                               object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -51,201 +57,85 @@
     MFMailComposeViewController *mailComposer;
     mailComposer = [[MFMailComposeViewController alloc] init];
     mailComposer.mailComposeDelegate = self;
+    mailComposer.navigationBar.tintColor = [UIColor whiteColor];
+    
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // Check to see if the device has at least 1 email account configured.
     if ([MFMailComposeViewController canSendMail]) {
         
         // Send email
-        PhotoNavController *photoNC = [[PhotoNavController alloc] init];
-        
-        // Get path to documents directory to get default email address and images./
-        NSString *docDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-        
-        NSString *imageFile = nil;
+        // Get the current session string.
+        NSString *currentSessionString = [mainAppDelegate getCurrentSession];
         
         // Array to store the default email address.
-        NSArray *emailAddresses; 
-        
-        NSString *defaultEmailFile = nil;
-        defaultEmailFile = [docDir stringByAppendingPathComponent:@"Default Email.out"];
-        
-        if ([[NSFileManager defaultManager] fileExistsAtPath:defaultEmailFile]) {
-            NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:defaultEmailFile];
-            
-            NSString *defaultEmail = [[NSString alloc] initWithData:[fileHandle availableData] encoding:NSUTF8StringEncoding];
-            [fileHandle closeFile];
-            
-            // There is a default email address.
-            emailAddresses = @[defaultEmail];
-        }
-        else {
-            // There is NOT a default email address.  Put an empty email address in the arrary.
-            emailAddresses = @[@""];
-        }
+        NSArray *emailAddresses = [self getDefaultEmailAddress];
         
         [mailComposer setToRecipients:emailAddresses];
         
         // ALL PHOTOS
         if ([self.navigationItem.title isEqualToString:@"All"]) {
-            [mailComposer setSubject:@"90 DWT 2 All Photos"];
+            NSString *emailTitle = [NSString stringWithFormat:@"90 DWT 2 All Photos - Session %@", currentSessionString];
+            [mailComposer setSubject:emailTitle];
             
-            // PHASE 1
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 1 Front.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
+            for (int i = 0; i < self.arrayOfImages.count; i++) {
                 
-                NSData *imageForEmail = [photoNC emailImage:@"Start Month 1 Front"];
-                [mailComposer addAttachmentData:imageForEmail mimeType:@"image/jpg" fileName:@"Start Month 1 Front.jpg"];
-            }
-            
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 1 Side.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 1 Side"] mimeType:@"image/jpg" fileName:@"Start Month 1 Side.jpg"];
-            }
-            
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 1 Back.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 1 Back"] mimeType:@"image/jpg" fileName:@"Start Month 1 Back.jpg"];
-            }
-
-            // PHASE 2
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 2 Front.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 2 Front"] mimeType:@"image/jpg" fileName:@"Start Month 2 Front.jpg"];
-            }
-            
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 2 Side.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 2 Side"] mimeType:@"image/jpg" fileName:@"Start Month 2 Side.jpg"];
-            }
-            
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 2 Back.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 2 Back"] mimeType:@"image/jpg" fileName:@"Start Month 2 Back.jpg"];
-            }
-
-            // PHASE 3
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 3 Front.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 3 Front"] mimeType:@"image/jpg" fileName:@"Start Month 3 Front.jpg"];
-            }
-            
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 3 Side.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 3 Side"] mimeType:@"image/jpg" fileName:@"Start Month 3 Side.jpg"];
-            }
-            
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 3 Back.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 3 Back"] mimeType:@"image/jpg" fileName:@"Start Month 3 Back.jpg"];
-            }
-            
-            // FINAL
-            imageFile = [docDir stringByAppendingPathComponent:@"Final Front.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Final Front"] mimeType:@"image/jpg" fileName:@"Final Front.jpg"];
-            }
-            
-            imageFile = [docDir stringByAppendingPathComponent:@"Final Side.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Final Side"] mimeType:@"image/jpg" fileName:@"Final Side.jpg"];
-            }
-            
-            imageFile = [docDir stringByAppendingPathComponent:@"Final Back.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Final Back"] mimeType:@"image/jpg" fileName:@"Final Back.jpg"];
+                NSString *photoAttachmentFileName = [NSString stringWithFormat:@"%@ - Session %@.jpg", self.arrayOfImageTitles[i], currentSessionString];
+                
+                NSData *imageData = UIImageJPEGRepresentation(self.arrayOfImages[i], 1.0); //convert image into .JPG format.
+                
+                [mailComposer addAttachmentData:imageData mimeType:@"image/jpg" fileName:photoAttachmentFileName];
             }
         }
         
         // FRONT PHOTOS
         else if ([self.navigationItem.title isEqualToString:@"Front"]) {
-            [mailComposer setSubject:@"90 DWT 2 Front Photos"];
+            NSString *emailTitle = [NSString stringWithFormat:@"90 DWT 2 Front Photos - Session %@", currentSessionString];
+            [mailComposer setSubject:emailTitle];
             
-            // PHASE 1
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 1 Front.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
+            for (int i = 0; i < self.arrayOfImages.count; i++) {
                 
-                NSData *imageForEmail = [photoNC emailImage:@"Start Month 1 Front"];
-                [mailComposer addAttachmentData:imageForEmail mimeType:@"image/jpg" fileName:@"Start Month 1 Front.JPG"];
-            }
-            
-            // PHASE 2
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 2 Front.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 2 Front"] mimeType:@"image/jpg" fileName:@"Start Month 2 Front.jpg"];
-            }
-            
-            // PHASE 3
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 3 Front.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 3 Front"] mimeType:@"image/jpg" fileName:@"Start Month 3 Front.jpg"];
-            }
-            
-            // FINAL
-            imageFile = [docDir stringByAppendingPathComponent:@"Final Front.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Final Front"] mimeType:@"image/jpg" fileName:@"Final Front.jpg"];
+                NSString *photoAttachmentFileName = [NSString stringWithFormat:@"%@ - Session %@.jpg", self.arrayOfImageTitles[i], currentSessionString];
+                
+                NSData *imageData = UIImageJPEGRepresentation(self.arrayOfImages[i], 1.0); //convert image into .JPG format.
+                
+                [mailComposer addAttachmentData:imageData mimeType:@"image/jpg" fileName:photoAttachmentFileName];
             }
         }
         
         // SIDE PHOTOS
         else if ([self.navigationItem.title isEqualToString:@"Side"]) {
-            [mailComposer setSubject:@"90 DWT 2 Side Photos"];
+            NSString *emailTitle = [NSString stringWithFormat:@"90 DWT 2 Side Photos - Session %@", currentSessionString];
+            [mailComposer setSubject:emailTitle];
             
-            // PHASE 1
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 1 Side.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 1 Side"] mimeType:@"image/jpg" fileName:@"Start Month 1 Side.jpg"];
-            }
-            
-            // PHASE 2
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 2 Side.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 2 Side"] mimeType:@"image/jpg" fileName:@"Start Month 2 Side.jpg"];
-            }
-            
-            // PHASE 3
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 3 Side.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 3 Side"] mimeType:@"image/jpg" fileName:@"Start Month 3 Side.jpg"];
-            }
-            
-            // FINAL
-            imageFile = [docDir stringByAppendingPathComponent:@"Final Side.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Final Side"] mimeType:@"image/jpg" fileName:@"Final Side.jpg"];
+            for (int i = 0; i < self.arrayOfImages.count; i++) {
+                
+                NSString *photoAttachmentFileName = [NSString stringWithFormat:@"%@ - Session %@.jpg", self.arrayOfImageTitles[i], currentSessionString];
+                
+                NSData *imageData = UIImageJPEGRepresentation(self.arrayOfImages[i], 1.0); //convert image into .JPG format.
+                
+                [mailComposer addAttachmentData:imageData mimeType:@"image/jpg" fileName:photoAttachmentFileName];
             }
         }
         
         // BACK PHOTOS
         else if ([self.navigationItem.title isEqualToString:@"Back"]) {
-            [mailComposer setSubject:@"90 DWT 2 Back Photos"];
+            NSString *emailTitle = [NSString stringWithFormat:@"90 DWT 2 Back Photos - Session %@", currentSessionString];
+            [mailComposer setSubject:emailTitle];
             
-            // PHASE 1
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 1 Back.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 1 Back"] mimeType:@"image/jpg" fileName:@"Start Month 1 Back.jpg"];
-            }
-            
-            // PHASE 2
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 2 Back.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 2 Back"] mimeType:@"image/jpg" fileName:@"Start Month 2 Back.jpg"];
-            }
-            
-            // PHASE 3
-            imageFile = [docDir stringByAppendingPathComponent:@"Start Month 3 Back.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Start Month 3 Back"] mimeType:@"image/jpg" fileName:@"Start Month 3 Back.jpg"];
-            }
-            
-            // FINAL
-            imageFile = [docDir stringByAppendingPathComponent:@"Final Back.JPG"];
-            if ([[NSFileManager defaultManager] fileExistsAtPath:imageFile]) {
-                [mailComposer addAttachmentData:[photoNC emailImage:@"Final Back"] mimeType:@"image/jpg" fileName:@"Final Back.jpg"];
+            for (int i = 0; i < self.arrayOfImages.count; i++) {
+                
+                NSString *photoAttachmentFileName = [NSString stringWithFormat:@"%@ - Session %@.jpg", self.arrayOfImageTitles[i], currentSessionString];
+                
+                NSData *imageData = UIImageJPEGRepresentation(self.arrayOfImages[i], 1.0); //convert image into .JPG format.
+                
+                [mailComposer addAttachmentData:imageData mimeType:@"image/jpg" fileName:photoAttachmentFileName];
             }
         }
         
-        [self presentViewController:mailComposer animated:YES completion:nil];
+        [self presentViewController:mailComposer animated:YES completion:^{
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        }];
     }
 }
 
@@ -339,4 +229,44 @@
     }
 }
 
+- (NSArray *)getDefaultEmailAddress {
+    
+    // Fetch defaultEmail data.
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    
+    // Fetch current session data.
+    NSEntityDescription *entityDescEmail = [NSEntityDescription entityForName:@"Email" inManagedObjectContext:context];
+    NSFetchRequest *requestEmail = [[NSFetchRequest alloc] init];
+    [requestEmail setEntity:entityDescEmail];
+    
+    NSManagedObject *matches = nil;
+    NSError *error = nil;
+    NSArray *objects = [context executeFetchRequest:requestEmail error:&error];
+    
+    // Array to store the default email address.
+    NSArray *emailAddresses;
+    
+    if ([objects count] != 0) {
+        
+        matches = objects[[objects count] - 1];
+        
+        // There is a default email address.
+        emailAddresses = @[[matches valueForKey:@"defaultEmail"]];
+    }
+    else {
+        
+        // There is NOT a default email address.  Put an empty email address in the arrary.
+        emailAddresses = @[@""];
+    }
+    return emailAddresses;
+}
+
+- (void)updateUI {
+    
+    if ([CoreDataHelper sharedHelper].iCloudStore) {
+        //[self.arrayOfImages removeAllObjects];
+        //[self getPhotosFromDatabase];
+        //[self.collectionView reloadData];
+    }
+}
 @end

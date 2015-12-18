@@ -111,8 +111,8 @@ static const double kVideoFinishedBufferingAllowedError = 0.1;
 - (void)layoutLoadingIndicator
 {
     if (_loadingIndicator) {
-        _loadingIndicator.x = CGRectGetWidth(self.view.bounds) - kLoadingIndicatorRightMargin - CGRectGetWidth(_loadingIndicator.bounds);
-        _loadingIndicator.y = kLoadingIndicatorTopMargin;
+        _loadingIndicator.mp_x = CGRectGetWidth(self.view.bounds) - kLoadingIndicatorRightMargin - CGRectGetWidth(_loadingIndicator.bounds);
+        _loadingIndicator.mp_y = kLoadingIndicatorTopMargin;
     }
 }
 
@@ -236,8 +236,8 @@ static const double kVideoFinishedBufferingAllowedError = 0.1;
 {
     if (!self.muteButton) {
         self.muteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self.muteButton setImage:[UIImage imageNamed:@"MPMutedBtn"] forState:UIControlStateNormal];
-        [self.muteButton setImage:[UIImage imageNamed:@"MPUnmutedBtn"] forState:UIControlStateSelected];
+        [self.muteButton setImage:[UIImage imageNamed:MPResourcePathForResource(@"MPMutedBtn")] forState:UIControlStateNormal];
+        [self.muteButton setImage:[UIImage imageNamed:MPResourcePathForResource(@"MPUnmutedBtn")] forState:UIControlStateSelected];
         [self.muteButton addTarget:self action:@selector(muteButtonTapped) forControlEvents:UIControlEventTouchUpInside];
         self.muteButton.mp_TouchAreaInsets = UIEdgeInsetsMake(kMuteIconInlineModeTouchAreaInsets, kMuteIconInlineModeTouchAreaInsets, kMuteIconInlineModeTouchAreaInsets, kMuteIconInlineModeTouchAreaInsets);
         [self.muteButton sizeToFit];
@@ -301,8 +301,7 @@ static const double kVideoFinishedBufferingAllowedError = 0.1;
 
 - (void)setMuted:(BOOL)muted
 {
-    MPVideoEventType eventType = muted ? MPVideoEventTypeMuted : MPVideoEventTypeUnmuted;
-    [self.vastTracking handleVideoEvent:eventType videoTimeOffset:self.avPlayer.currentPlaybackTime];
+    _muted = muted;
     [self.muteButton setSelected:!muted];
     self.avPlayer.muted = muted;
 }
@@ -365,6 +364,9 @@ static const double kVideoFinishedBufferingAllowedError = 0.1;
 {
     self.muteButton.selected = !self.muteButton.selected;
     self.muted = !self.muteButton.selected;
+
+    MPVideoEventType eventType = self.muted ? MPVideoEventTypeMuted : MPVideoEventTypeUnmuted;
+    [self.vastTracking handleVideoEvent:eventType videoTimeOffset:self.avPlayer.currentPlaybackTime];
 }
 
 # pragma mark - KVO
@@ -595,7 +597,10 @@ static const double kVideoFinishedBufferingAllowedError = 0.1;
 
 - (void)applicationDidEnterForeground:(NSNotification *)notification
 {
-    if (self.avPlayer && self.isReadyToPlay && !self.finishedPlaying) {
+    // Resume video playback only if the visible area is larger than or equal to the autoplay threshold.
+
+    BOOL playVisible = MPViewIntersectsParentWindowWithPercent(self.playerView, self.nativeVideoAdConfig.playVisiblePercent/100.0f);
+    if (self.avPlayer && self.isReadyToPlay && !self.finishedPlaying && playVisible) {
         [self resume];
     }
 }

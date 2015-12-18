@@ -7,6 +7,7 @@
 //
 
 #import "MeasurementsViewController.h"
+#import "AppDelegate.h"
 
 @interface MeasurementsViewController ()
 
@@ -28,9 +29,14 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    // Respond to changes in underlying store
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateUI)
+                                                 name:@"SomethingChanged"
+                                               object:nil];
+
     [self configureViewForIOSVersion];
     [self loadMeasurements];
-    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -44,57 +50,83 @@
     MFMailComposeViewController *mailComposer;
     mailComposer = [[MFMailComposeViewController alloc] init];
     mailComposer.mailComposeDelegate = self;
+    mailComposer.navigationBar.tintColor = [UIColor whiteColor];
     
     // Check to see if the device has at least 1 email account configured.
     if ([MFMailComposeViewController canSendMail]) {
         
-        // Send email
+        AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        
+        NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+        
+        NSString *currentSessionString = [mainAppDelegate getCurrentSession];
+        
         NSMutableString *writeString = [NSMutableString stringWithCapacity:0];
-        [writeString appendString:[NSString stringWithFormat:@"Phase,Weight,Chest,Left Arm,Right Arm,Waist,Hips,Left Thigh,Right Thigh\n"]];
+        [writeString appendString:[NSString stringWithFormat:@"Session,Month,Weight,Chest,Left Arm,Right Arm,Waist,Hips,Left Thigh,Right Thigh\n"]];
         
-        [writeString appendString:[NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@\n",
-                                   self.navigationItem.title, 
-                                   self.measurementsDictonary[@"Weight"],
-                                   self.measurementsDictonary[@"Chest"], 
-                                   self.measurementsDictonary[@"Left Arm"], 
-                                   self.measurementsDictonary[@"Right Arm"], 
-                                   self.measurementsDictonary[@"Waist"], 
-                                   self.measurementsDictonary[@"Hips"],
-                                   self.measurementsDictonary[@"Left Thigh"], 
-                                   self.measurementsDictonary[@"Right Thigh"]]];
+        // Get workout data with the current session
+        NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Measurement" inManagedObjectContext:context];
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        [request setEntity:entityDesc];
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"(session = %@)", currentSessionString];
+        [request setPredicate:pred];
+        NSManagedObject *matches = nil;
+        NSError *error = nil;
+        NSArray *objects = [context executeFetchRequest:request error:&error];
         
-        NSData *csvData = [writeString dataUsingEncoding:NSASCIIStringEncoding];
-        NSString *fileName = [self.navigationItem.title stringByAppendingString:@" Measurements.csv"];
-        
-        // Array to store the default email address.
-        NSArray *emailAddresses; 
-        
-        // Get path to documents directory to get default email address.
-        NSString *docDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-        NSString *defaultEmailFile = nil;
-        defaultEmailFile = [docDir stringByAppendingPathComponent:@"Default Email.out"];
-        
-        if ([[NSFileManager defaultManager] fileExistsAtPath:defaultEmailFile]) {
-            NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:defaultEmailFile];
+        if ([objects count] >= 1) {
+            matches = objects[[objects count]-1];
             
-            NSString *defaultEmail = [[NSString alloc] initWithData:[fileHandle availableData] encoding:NSUTF8StringEncoding];
-            [fileHandle closeFile];
+            [writeString appendString:[NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@,%@,%@,%@,%@\n",
+                                       currentSessionString,
+                                       self.navigationItem.title,
+                                       [matches valueForKey:@"weight"],
+                                       [matches valueForKey:@"chest"],
+                                       [matches valueForKey:@"leftArm"],
+                                       [matches valueForKey:@"rightArm"],
+                                       [matches valueForKey:@"waist"],
+                                       [matches valueForKey:@"hips"],
+                                       [matches valueForKey:@"leftThigh"],
+                                       [matches valueForKey:@"rightThigh"]]];
             
-            // There is a default email address.
-            emailAddresses = @[defaultEmail];
+            NSData *csvData = [writeString dataUsingEncoding:NSASCIIStringEncoding];
+            //NSString *fileName = [self.navigationItem.title stringByAppendingString:@" Measurements - Session %@.csv", currentSessionString];
+            NSString *fileName = [NSString stringWithFormat:@"90 DWT 2 %@ Measurements - Session %@.csv", self.navigationItem.title, currentSessionString];
+            
+            // Fetch defaultEmail data.
+            entityDesc = [NSEntityDescription entityForName:@"Email" inManagedObjectContext:context];
+            request = [[NSFetchRequest alloc] init];
+            [request setEntity:entityDesc];
+            matches = nil;
+            error = nil;
+            objects = [context executeFetchRequest:request error:&error];
+            
+            // Array to store the default email address.
+            NSArray *emailAddresses;
+            
+            if ([objects count] != 0) {
+                
+                matches = objects[[objects count] - 1];
+                
+                // There is a default email address.
+                emailAddresses = @[[matches valueForKey:@"defaultEmail"]];
+            }
+            else {
+                
+                // There is NOT a default email address.  Put an empty email address in the arrary.
+                emailAddresses = @[@""];
+            }
+            
+            [mailComposer setToRecipients:emailAddresses];
+            
+            NSString *subject = @"90 DWT 2";
+            subject = [subject stringByAppendingFormat:@" %@ Measurements - Session %@", self.navigationItem.title, currentSessionString];
+            [mailComposer setSubject:subject];
+            [mailComposer addAttachmentData:csvData mimeType:@"text/csv" fileName:fileName];
+            [self presentViewController:mailComposer animated:YES completion:^{
+                [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+            }];
         }
-        else {
-            // There is NOT a default email address.  Put an empty email address in the arrary.
-            emailAddresses = @[@""];
-        }
-        
-        [mailComposer setToRecipients:emailAddresses];
-        
-        NSString *subject = @"90 DWT 2";
-        subject = [subject stringByAppendingFormat:@" %@ Measurements", self.navigationItem.title];
-        [mailComposer setSubject:subject];
-        [mailComposer addAttachmentData:csvData mimeType:@"text/csv" fileName:fileName];
-        [self presentViewController:mailComposer animated:YES completion:nil];
     }
 }
 
@@ -104,34 +136,46 @@
 }
 
 - (void)loadMeasurements {
-    NSString *fileTitle = self.navigationItem.title;
-    fileTitle = [fileTitle stringByAppendingString:@" Measurements.out"];
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //create an array and store result of our search for the documents directory in it
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    NSString *documentsDirectory = paths[0]; //create NSString object, that holds our exact path to the documents directory
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
     
-    NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:fileTitle]; //add our title to the path
+    NSString *currentSessionString = [mainAppDelegate getCurrentSession];
     
-    if ([[NSFileManager defaultManager] fileExistsAtPath:fullPath]) {
-        // Read back in new collection
-        self.measurementsDictonary = nil;
-        self.measurementsDictonary = [NSDictionary dictionaryWithContentsOfFile:fullPath];
+    // Get workout data with the current session
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Measurement" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (month = %@)", currentSessionString, ((MeasurementsNavController *)self.parentViewController).monthString];
+    [request setPredicate:pred];
+    NSManagedObject *matches = nil;
+    NSError *error = nil;
+    NSArray *objects = [context executeFetchRequest:request error:&error];
+    
+    if ([objects count] >= 1) {
+        matches = objects[[objects count]-1];
         
-        self.weight.text = self.measurementsDictonary[@"Weight"];
-        self.chest.text = self.measurementsDictonary[@"Chest"];
-        self.leftArm.text = self.measurementsDictonary[@"Left Arm"];
-        self.rightArm.text = self.measurementsDictonary[@"Right Arm"];
-        self.waist.text = self.measurementsDictonary[@"Waist"];
-        self.hips.text = self.measurementsDictonary[@"Hips"];
-        self.leftThigh.text = self.measurementsDictonary[@"Left Thigh"];
-        self.rightThigh.text = self.measurementsDictonary[@"Right Thigh"];
+        self.weight.text = [matches valueForKey:@"weight"];
+        self.chest.text = [matches valueForKey:@"chest"];
+        self.waist.text = [matches valueForKey:@"waist"];
+        self.hips.text = [matches valueForKey:@"hips"];
+        self.leftArm.text = [matches valueForKey:@"leftArm"];
+        self.rightArm.text = [matches valueForKey:@"rightArm"];
+        self.leftThigh.text = [matches valueForKey:@"leftThigh"];
+        self.rightThigh.text = [matches valueForKey:@"rightThigh"];
     }
 }
  
 - (void)saveMeasurements {
-    NSString *fileTitle = self.navigationItem.title;
-    fileTitle = [fileTitle stringByAppendingString:@" Measurements.out"];
+    
+    NSDate *todaysDate = [NSDate date];
+    
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    
+    NSString *currentSessionString = [mainAppDelegate getCurrentSession];
     
     if (self.weight.text == nil) {
         self.weight.text = @"0";
@@ -140,55 +184,80 @@
     if (self.chest.text == nil) {
         self.chest.text = @"0";
     }
-
+    
     if (self.leftArm.text == nil) {
         self.leftArm.text = @"0";
     }
-
+    
     if (self.rightArm.text == nil) {
         self.rightArm.text = @"0";
     }
-
+    
     if (self.waist.text == nil) {
         self.waist.text = @"0";
     }
-
+    
     if (self.hips.text == nil) {
         self.hips.text = @"0";
     }
-
+    
     if (self.leftThigh.text == nil) {
         self.leftThigh.text = @"0";
     }
-
+    
     if (self.rightThigh.text == nil) {
         self.rightThigh.text = @"0";
     }
     
-    self.measurementsDictonary = nil;
-    self.measurementsDictonary = @{@"Weight": self.weight.text,
-                           @"Chest": self.chest.text,
-                           @"Left Arm": self.leftArm.text,
-                           @"Right Arm": self.rightArm.text,
-                           @"Waist": self.waist.text,
-                           @"Hips": self.hips.text,
-                           @"Left Thigh": self.leftThigh.text,
-                           @"Right Thigh": self.rightThigh.text};
+    // Save the workout data with the current session
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Measurement" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (month = %@)", currentSessionString, ((MeasurementsNavController *)self.parentViewController).monthString];
+    [request setPredicate:pred];
+    NSManagedObject *matches = nil;
+    NSError *error = nil;
+    NSArray *objects = [context executeFetchRequest:request error:&error];
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); //create an array and store result of our search for the documents directory in it
+    if ([objects count] == 0) {
+        //NSLog(@"submitEntry = No matches - create new record and save");
+        
+        NSManagedObject *newMeasurement;
+        newMeasurement = [NSEntityDescription insertNewObjectForEntityForName:@"Measurement" inManagedObjectContext:context];
+        [newMeasurement setValue:currentSessionString forKey:@"session"];
+        [newMeasurement setValue:((MeasurementsNavController *)self.parentViewController).monthString forKey:@"month"];
+        [newMeasurement setValue:todaysDate forKey:@"date"];
+        [newMeasurement setValue:self.weight.text forKey:@"weight"];
+        [newMeasurement setValue:self.chest.text forKey:@"chest"];
+        [newMeasurement setValue:self.waist.text forKey:@"waist"];
+        [newMeasurement setValue:self.hips.text forKey:@"hips"];
+        [newMeasurement setValue:self.leftArm.text forKey:@"leftArm"];
+        [newMeasurement setValue:self.rightArm.text forKey:@"rightArm"];
+        [newMeasurement setValue:self.leftThigh.text forKey:@"leftThigh"];
+        [newMeasurement setValue:self.rightThigh.text forKey:@"rightThigh"];
+        
+    } else {
+        //NSLog(@"submitEntry = Match found - update existing record and save");
+        
+        matches = objects[[objects count]-1];
+        
+        [matches setValue:todaysDate forKey:@"date"];
+        [matches setValue:self.weight.text forKey:@"weight"];
+        [matches setValue:self.chest.text forKey:@"chest"];
+        [matches setValue:self.waist.text forKey:@"waist"];
+        [matches setValue:self.hips.text forKey:@"hips"];
+        [matches setValue:self.leftArm.text forKey:@"leftArm"];
+        [matches setValue:self.rightArm.text forKey:@"rightArm"];
+        [matches setValue:self.leftThigh.text forKey:@"leftThigh"];
+        [matches setValue:self.rightThigh.text forKey:@"rightThigh"];
+    }
     
-    NSString *documentsDirectory = paths[0]; //create NSString object, that holds our exact path to the documents directory
-    
-    NSString *fullPath = [documentsDirectory stringByAppendingPathComponent:fileTitle]; //add our title to the path
-    
-    // Write dictionary
-    [self.measurementsDictonary writeToFile:fullPath atomically:YES];    
-    //NSLog(@"dictionary saved");
+    [[CoreDataHelper sharedHelper] backgroundSaveContext];
     
     UIAlertView *alert;
     
     alert = [[UIAlertView alloc] initWithTitle:@"Save Success!"
-                                    message:@"Your data was successfully saved."
+                                       message:@"Your data was successfully saved."
                                       delegate:self
                              cancelButtonTitle:@"Ok"
                              otherButtonTitles:nil, nil];
@@ -260,5 +329,13 @@
     self.hips.keyboardAppearance = UIKeyboardAppearanceDark;
     self.leftThigh.keyboardAppearance = UIKeyboardAppearanceDark;
     self.rightThigh.keyboardAppearance = UIKeyboardAppearanceDark;
+}
+
+- (void)updateUI {
+    
+    if ([CoreDataHelper sharedHelper].iCloudStore) {
+        
+        [self loadMeasurements];
+    }
 }
 @end

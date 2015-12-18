@@ -8,6 +8,7 @@
 
 #import "ExerciseViewController.h"
 #import "SWRevealViewController.h"
+#import "CoreDataHelper.h"
 
 @interface ExerciseViewController ()
 
@@ -53,14 +54,38 @@
 
 -(void)keyboardType {
     
+    NSString *coredataBandSetting = nil;
+    
+    // Read setting from core data.
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Bands" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
+    
+    NSManagedObject *matches = nil;
+    NSError *error;
+    NSArray *objects = [context executeFetchRequest:request error:&error];
+    
+    if ([objects count] != 0) {
+        
+        // Object has already been created. Get value of bands from it.
+        matches = objects[[objects count] - 1];
+        coredataBandSetting = [matches valueForKey:@"useBands"];
+    }
+    else {
+        
+        // Object has not been created so this is the first time the app has been opened or user has not changed band setting.
+        coredataBandSetting = @"OFF";  // NOT using bands.
+    }
+    
     // Set keyboard type
-    if (self.view.frame.size.width <= 640) {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         
         // IPHONE - Set the keyboard type of the REPS text box to DECIMAL NUMBER PAD.
         self.currentReps.keyboardType = UIKeyboardTypeDecimalPad;
         
         // Set the keyboard type of the WEIGHT field
-        if ([((MainTBC *)self.parentViewController.parentViewController).bandSetting isEqualToString:@"ON"]) {
+        if ([coredataBandSetting isEqualToString:@"ON"]) {
             self.currentWeight.keyboardType = UIKeyboardTypeDefault;
         }
         
@@ -75,7 +100,7 @@
         self.currentReps.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         
         // Set the keyboard type of the WEIGHT field
-        if ([((MainTBC *)self.parentViewController.parentViewController).bandSetting isEqualToString:@"ON"]) {
+        if ([coredataBandSetting isEqualToString:@"ON"]) {
             self.currentWeight.keyboardType = UIKeyboardTypeDefault;
         }
         
@@ -87,13 +112,19 @@
 
 -(void)queryDatabase {
     
-    // Get Data from database.
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    // Get the objects for the current session
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Fetch current session data.
+    NSString *currentSessionString = [mainAppDelegate getCurrentSession];
+    
+    // Get workout data with the current session
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDesc];
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %d)",
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %d)",
+                         currentSessionString,
                          ((DataNavController *)self.parentViewController).workout,
                          self.currentExercise.title,
                          self.renamedRound,
@@ -103,7 +134,10 @@
     NSError *error;
     NSArray *objects = [context executeFetchRequest:request error:&error];
     
+    //NSLog(@"Objects count = %lu", (unsigned long)[objects count]);
+    
     int workoutIndex = [((DataNavController *)self.parentViewController).index intValue];
+    //NSLog(@"Workout = %@ index = %@", ((DataNavController *)self.parentViewController).workout, ((DataNavController *)self.parentViewController).index);
     
     // 1st time exercise is done only.
     if (workoutIndex == 1) {
@@ -143,7 +177,7 @@
         // This workout with this index has been done before.
         // User came back to look at his results so display this weeks results in the current results section.
         
-        if ([objects count] == 1) {
+        if ([objects count] >= 1) {
             matches = objects[[objects count] -1];
             
             self.currentReps.placeholder = [matches valueForKey:@"reps"];
@@ -162,8 +196,8 @@
         // This is at least the 2nd time a particular workout has been started.
         // Get the previous workout data and present it to the user in the previous section.
         
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"(workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %d)",
-                             //((DataNavController *)self.parentViewController).week,
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %d)",
+                             currentSessionString,
                              ((DataNavController *)self.parentViewController).workout,
                              self.currentExercise.title,
                              self.renamedRound,
@@ -173,7 +207,9 @@
         NSError *error;
         NSArray *objects = [context executeFetchRequest:request error:&error];
         
-        if ([objects count] == 1) {
+        //NSLog(@"Objects count = %lu", (unsigned long)[objects count]);
+        
+        if ([objects count] >= 1) {
             matches = objects[[objects count]-1];
             
             self.previousReps.text = [matches valueForKey:@"reps"];
@@ -197,7 +233,13 @@
     [self renameRoundText];
     [self queryDatabase];
     
-    if (self.view.frame.size.width < 768) {
+    // Respond to changes in underlying store
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateUI)
+                                                 name:@"SomethingChanged"
+                                               object:nil];
+
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [self createSliderButton];
     }
     
@@ -245,6 +287,7 @@
     [self renameRoundText];
     [self setUpVariables];
     [self queryDatabase];
+    [self keyboardType];
     
     // Show or Hide Ads
     if ([[DWT2IAPHelper sharedInstance] productPurchased:@"com.grantsoftware.90DWT2.removeads1"]) {
@@ -312,13 +355,19 @@
 {
     NSDate *todaysDate = [NSDate date];
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    // Get the objects for the current session
+    NSManagedObjectContext *context = [[CoreDataHelper sharedHelper] context];
+    AppDelegate *mainAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
+    // Fetch current session data.
+    NSString *currentSessionString = [mainAppDelegate getCurrentSession];
+    
+    // Save the workout data with the current session
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Workout" inManagedObjectContext:context];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDesc];
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %d)",
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(session = %@) AND (workout = %@) AND (exercise = %@) AND (round = %@) AND (index = %d)",
+                         currentSessionString,
                          ((DataNavController *)self.parentViewController).workout,
                          self.currentExercise.title,
                          self.renamedRound,
@@ -333,13 +382,14 @@
         
         NSManagedObject *newExercise;
         newExercise = [NSEntityDescription insertNewObjectForEntityForName:@"Workout" inManagedObjectContext:context];
+        [newExercise setValue:currentSessionString forKey:@"session"];
         [newExercise setValue:self.currentReps.text forKey:@"reps"];
         [newExercise setValue:self.currentWeight.text forKey:@"weight"];
         [newExercise setValue:self.currentNotes.text forKey:@"notes"];
         [newExercise setValue:todaysDate forKey:@"date"];
         [newExercise setValue:self.currentExercise.title forKey:@"exercise"];
         [newExercise setValue:self.renamedRound forKey:@"round"];
-        [newExercise setValue:((DataNavController *)self.parentViewController).phase forKey:@"phase"];
+        [newExercise setValue:((DataNavController *)self.parentViewController).month forKey:@"month"];
         [newExercise setValue:((DataNavController *)self.parentViewController).week forKey:@"week"];
         [newExercise setValue:((DataNavController *)self.parentViewController).workout forKey:@"workout"];
         [newExercise setValue:((DataNavController *)self.parentViewController).index forKey:@"index"];
@@ -365,14 +415,15 @@
         
     }
     
-    [context save:&error];
+    //[context save:&error];
+    [[CoreDataHelper sharedHelper] backgroundSaveContext];
     
     [request setPredicate:pred];
     matches = nil;
     objects = nil;
     objects = [context executeFetchRequest:request error:&error];
     
-    if ([objects count] == 1) {
+    if ([objects count] >= 1) {
         matches = objects[[objects count]-1];
         self.currentReps.placeholder = [matches valueForKey:@"reps"];
         self.currentWeight.placeholder = [matches valueForKey:@"weight"];
@@ -465,5 +516,12 @@
     self.adView.frame = CGRectMake(centeredX, bottomAlignedY, size.width, size.height);
     
     self.adView.hidden = NO;
+}
+
+- (void)updateUI {
+    
+    if ([CoreDataHelper sharedHelper].iCloudStore) {
+        [self viewDidAppear:YES];
+    }
 }
 @end

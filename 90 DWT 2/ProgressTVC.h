@@ -12,6 +12,9 @@
 #import "UITableViewController+Design.h"
 //#import <iAd/iAd.h>
 #import "MPAdView.h"
+#import "CoreDataHelper.h"
+#import "AppDelegate.h"
+#import "UITableViewController+ConvertAllToCoreData.h"
 
 @interface ProgressTVC : UITableViewController <MPAdViewDelegate>
 

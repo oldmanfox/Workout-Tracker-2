@@ -7,12 +7,15 @@
 //
 
 #import "MainTBC.h"
+#import "CoreDataHelper.h"
 
 @interface MainTBC ()
 
 @end
 
 @implementation MainTBC
+
+#define debug 0
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,7 +31,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self readBandSetting];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,25 +41,5 @@
 
 - (void)readBandSetting {
     
-    // Get path to documents directory
-    NSString *docDir = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-    NSString *defaultWorkoutFile = nil;
-    defaultWorkoutFile = [docDir stringByAppendingPathComponent:@"Band Setting.out"];
-    
-    if  ([[NSFileManager defaultManager] fileExistsAtPath:defaultWorkoutFile]) {
-        
-        // File has already been created. Get value of routine from it.
-        NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:defaultWorkoutFile];
-        self.bandSetting = [[NSString alloc] initWithData:[fileHandle availableData] encoding:NSUTF8StringEncoding];
-        [fileHandle closeFile];
-    }
-    
-    else {
-        
-        // File has not been created so this is the first time the app has been opened or user has not changed band setting.
-        self.bandSetting = @"OFF";  // NOT using bands.
-    }
-    
-    //NSLog(@"BandSetting = %@", self.bandSetting);
 }
 @end
