@@ -772,7 +772,7 @@
     }
     else {
         
-        self.iCloudAppStatusLabel.text = @"NO.  Change in Device Settings -> 90 DTW 1";
+        self.iCloudAppStatusLabel.text = @"NO.  Change in Device Settings -> 90 DWT 2";
     }
 }
 
