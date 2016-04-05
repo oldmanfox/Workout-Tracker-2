@@ -35,6 +35,7 @@
 		5886AC321819F2B0009C708A /* photoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5886AC311819F2B0009C708A /* photoCollectionViewCell.m */; };
 		5889A62D1820A386009B1AD5 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5889A62C1820A386009B1AD5 /* SWRevealViewController.m */; };
 		A50835D4165B402F0090B29D /* UIViewController+Social.m in Sources */ = {isa = PBXBuildFile; fileRef = A50835D3165B402F0090B29D /* UIViewController+Social.m */; };
+		A5219FA11CB43C05007292C3 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6CE51BE1067800021100 /* libCorePlot-CocoaTouch.a */; };
 		A536DF9E166AC627006767A6 /* ProgressTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A536DF9D166AC627006767A6 /* ProgressTVC.m */; };
 		A53AAE7A174674BD00FC3521 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53AAE79174674BC00FC3521 /* QuartzCore.framework */; };
 		A53AAE861746770D00FC3521 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = A53AAE7F1746770D00FC3521 /* NSData+Base64.m */; };
@@ -287,7 +288,6 @@
 		A5CDAFB81CB4377C0057EE8A /* MPRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CDAEF91CB4377C0057EE8A /* MPRewardedVideoCustomEvent.m */; };
 		A5CDAFB91CB4377C0057EE8A /* MPRewardedVideoError.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CDAEFB1CB4377C0057EE8A /* MPRewardedVideoError.m */; };
 		A5CDAFBA1CB4377C0057EE8A /* MPRewardedVideoReward.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CDAEFD1CB4377C0057EE8A /* MPRewardedVideoReward.m */; };
-		A5CDAFBB1CB439250057EE8A /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6CE51BE1067800021100 /* libCorePlot-CocoaTouch.a */; };
 		A5E11E521C21B9EE00761C00 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E11E451C21B9EE00761C00 /* CoreDataHelper.m */; };
 		A5E11E531C21B9EE00761C00 /* CoreDataImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E11E471C21B9EE00761C00 /* CoreDataImporter.m */; };
 		A5E11E541C21B9EE00761C00 /* CoreDataPickerTF.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E11E491C21B9EE00761C00 /* CoreDataPickerTF.m */; };
@@ -917,7 +917,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5CDAFBB1CB439250057EE8A /* libCorePlot-CocoaTouch.a in Frameworks */,
+				A5219FA11CB43C05007292C3 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				A5CDAF061CB4377C0057EE8A /* MMAdSDK.framework in Frameworks */,
 				A5CDAF001CB4377C0057EE8A /* GoogleMobileAds.framework in Frameworks */,
 				A59A6F461BE11D6C00021100 /* CoreBluetooth.framework in Frameworks */,
