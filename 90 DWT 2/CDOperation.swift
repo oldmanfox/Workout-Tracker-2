@@ -206,7 +206,6 @@ class CDOperation {
                     let insertWorkoutInfo = NSEntityDescription.insertNewObject(forEntityName: "Workout", into: CoreDataHelper.shared().context) as! Workout
                     
                     insertWorkoutInfo.session = session
-                    //insertWorkoutInfo.routine = routine
                     insertWorkoutInfo.workout = workout
                     insertWorkoutInfo.month = month
                     insertWorkoutInfo.week = week
@@ -253,7 +252,7 @@ class CDOperation {
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
 
-    class func saveWeightWithPredicate(_ session: String, routine: String, workout: String, month: String, week: String, exercise: String, index: NSNumber, weight: String, round: String) {
+    class func saveWeightWithPredicate(_ session: String, workout: String, month: String, week: String, exercise: String, index: NSNumber, weight: String, round: String) {
         
         let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortRound = NSSortDescriptor( key: "round", ascending: true)
@@ -262,9 +261,8 @@ class CDOperation {
         request.sortDescriptors = [sortWorkout, sortExercise, sortRound]
         
         // Weight with index and round
-        let filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise == %@ AND index = %@ AND round == %@",
+        let filter = NSPredicate(format: "session == %@ AND workout == %@ AND exercise == %@ AND index = %@ AND round == %@",
                                  session,
-                                 routine,
                                  workout,
                                  exercise,
                                  index,
@@ -285,7 +283,6 @@ class CDOperation {
                     let insertWorkoutInfo = NSEntityDescription.insertNewObject(forEntityName: "Workout", into: CoreDataHelper.shared().context) as! Workout
                     
                     insertWorkoutInfo.session = session
-                    insertWorkoutInfo.routine = routine
                     insertWorkoutInfo.workout = workout
                     insertWorkoutInfo.month = month
                     insertWorkoutInfo.week = week
@@ -332,7 +329,7 @@ class CDOperation {
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
-    class func saveNoteWithPredicate(_ session: String, routine: String, workout: String, month: String, week: String, exercise: String, index: NSNumber, note: String, round: String) {
+    class func saveNoteWithPredicate(_ session: String, workout: String, month: String, week: String, exercise: String, index: NSNumber, note: String, round: String) {
         
         let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortRound = NSSortDescriptor( key: "round", ascending: true)
@@ -341,9 +338,8 @@ class CDOperation {
         request.sortDescriptors = [sortWorkout, sortExercise, sortRound]
         
         // Weight with index and round
-        let filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise == %@ AND index = %@ AND round == %@",
+        let filter = NSPredicate(format: "session == %@ AND workout == %@ AND exercise == %@ AND index = %@ AND round == %@",
                                  session,
-                                 routine,
                                  workout,
                                  exercise,
                                  index,
@@ -364,7 +360,6 @@ class CDOperation {
                     let insertWorkoutInfo = NSEntityDescription.insertNewObject(forEntityName: "Workout", into: CoreDataHelper.shared().context) as! Workout
                     
                     insertWorkoutInfo.session = session
-                    insertWorkoutInfo.routine = routine
                     insertWorkoutInfo.workout = workout
                     insertWorkoutInfo.month = month
                     insertWorkoutInfo.week = week
@@ -411,7 +406,7 @@ class CDOperation {
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
-    class func saveNoteWithPredicateNoExercise(_ session: String, routine: String, workout: String, month: String, week: String, index: NSNumber, note: String, round: String) {
+    class func saveNoteWithPredicateNoExercise(_ session: String, workout: String, month: String, week: String, index: NSNumber, note: String, round: String) {
         
         let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortRound = NSSortDescriptor( key: "round", ascending: true)
@@ -420,9 +415,8 @@ class CDOperation {
         request.sortDescriptors = [sortWorkout, sortExercise, sortRound]
         
         // Weight with index and round
-        let filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND index = %@ AND round == %@",
+        let filter = NSPredicate(format: "session == %@ AND workout == %@ AND index = %@ AND round == %@",
                                  session,
-                                 routine,
                                  workout,
                                  index,
                                  round)
@@ -442,7 +436,6 @@ class CDOperation {
                     let insertWorkoutInfo = NSEntityDescription.insertNewObject(forEntityName: "Workout", into: CoreDataHelper.shared().context) as! Workout
                     
                     insertWorkoutInfo.session = session
-                    insertWorkoutInfo.routine = routine
                     insertWorkoutInfo.workout = workout
                     insertWorkoutInfo.month = month
                     insertWorkoutInfo.week = week
@@ -488,7 +481,7 @@ class CDOperation {
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
-    class func getRepWeightTextForExercise(_ session: String, routine: String, workout: String, exercise: String, index: NSNumber) -> [NSManagedObject] {
+    class func getRepWeightTextForExercise(_ session: String, workout: String, exercise: String, index: NSNumber) -> [NSManagedObject] {
         
         let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortRound = NSSortDescriptor( key: "round", ascending: true)
@@ -496,9 +489,8 @@ class CDOperation {
         request.sortDescriptors = [sortRound, sortDate]
         
         // Weight with index and round
-        let filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise == %@ AND index = %@",
+        let filter = NSPredicate(format: "session == %@ AND workout == %@ AND exercise == %@ AND index = %@",
                                  session,
-                                 routine,
                                  workout,
                                  exercise,
                                  index)
@@ -537,16 +529,15 @@ class CDOperation {
         return []
     }
     
-    class func getRepsTextForExerciseRound(_ session: String, routine: String, workout: String, exercise: String, round: String, index: NSNumber) -> String? {
+    class func getRepsTextForExerciseRound(_ session: String, workout: String, exercise: String, round: String, index: NSNumber) -> String? {
         
         let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
         // Reps with index and round
-        let filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise == %@ AND index = %@ AND round = %@",
+        let filter = NSPredicate(format: "session == %@ AND workout == %@ AND exercise == %@ AND index = %@ AND round = %@",
                                  session,
-                                 routine,
                                  workout,
                                  exercise,
                                  index,
@@ -584,16 +575,15 @@ class CDOperation {
         return "0.0"
     }
     
-    class func getWeightTextForExerciseRound(_ session: String, routine: String, workout: String, exercise: String, round: String, index: NSNumber) -> String? {
+    class func getWeightTextForExerciseRound(_ session: String, workout: String, exercise: String, round: String, index: NSNumber) -> String? {
         
         let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
         // Weight with index and round
-        let filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise == %@ AND index = %@ AND round = %@",
+        let filter = NSPredicate(format: "session == %@ AND workout == %@ AND exercise == %@ AND index = %@ AND round = %@",
                                  session,
-                                 routine,
                                  workout,
                                  exercise,
                                  index,
@@ -645,16 +635,15 @@ class CDOperation {
         return "0.0"
     }
     
-    class func getNotesTextForRound(_ session: String, routine: String, workout: String, round: String, index: NSNumber) -> String? {
+    class func getNotesTextForRound(_ session: String, workout: String, round: String, index: NSNumber) -> String? {
         
         let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
         // Weight with index and round
-        let filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND index = %@ AND round = %@",
+        let filter = NSPredicate(format: "session == %@ AND workout == %@ AND index = %@ AND round = %@",
                                  session,
-                                 routine,
                                  workout,
                                  index,
                                  round)
@@ -691,7 +680,7 @@ class CDOperation {
         return ""
     }
     
-    class func getNoteObjects(_ session: NSString, routine: NSString, workout: NSString, index: NSNumber) -> [Workout] {
+    class func getNoteObjects(_ session: NSString, workout: NSString, index: NSNumber) -> [Workout] {
         
         let tempWorkoutCompleteArray = [Workout]()
         
@@ -699,9 +688,8 @@ class CDOperation {
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
-        let filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND index = %@",
+        let filter = NSPredicate(format: "session == %@ AND workout == %@ AND index = %@",
                                  session,
-                                 routine,
                                  workout,
                                  index)
         
@@ -718,66 +706,6 @@ class CDOperation {
         } catch { print(" ERROR executing a fetch request: \( error)") }
         
         return tempWorkoutCompleteArray
-    }
-    
-    class func getCurrentRoutine() -> String {
-        
-        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Routine")
-        let sortDate = NSSortDescriptor( key: "date", ascending: true)
-        request.sortDescriptors = [sortDate]
-        
-        do {
-            if let routineObjects = try CoreDataHelper.shared().context.fetch(request) as? [Routine] {
-                
-                // print("routineObjects.count = \(routineObjects.count)")
-                
-                switch routineObjects.count {
-                case 0:
-                    // No matches for this object.
-                    // Create a new record with the default routine - Normal
-                    let insertRoutineInfo = NSEntityDescription.insertNewObject(forEntityName: "Routine", into: CoreDataHelper.shared().context) as! Routine
-                    
-                    insertRoutineInfo.defaultRoutine = "Normal"
-                    insertRoutineInfo.date = Date() as NSDate?
-                    
-                    CoreDataHelper.shared().backgroundSaveContext()
-                    
-                    // Return the default routine.
-                    // Will be Normal until the user changes it in settings tab.
-                    return "Normal"
-                    
-                case 1:
-                    // Found an existing record
-                    let matchedRoutineInfo = routineObjects[0]
-                    
-                    return matchedRoutineInfo.defaultRoutine!
-                    
-                default:
-                    // More than one match
-                    // Sort by most recent date and pick the newest
-                    // print("More than one match for object")
-                    var routineString = ""
-                    for index in 0..<routineObjects.count {
-                        
-                        if (index == routineObjects.count - 1) {
-                            // Get data from the newest existing record.  Usually the last record sorted by date.
-                            
-                            let matchedRoutineInfo = routineObjects[index]
-                            routineString = matchedRoutineInfo.defaultRoutine!
-                        }
-                        else {
-                            // Delete duplicate records.
-                            CoreDataHelper.shared().context.delete(routineObjects[index])
-                        }
-                    }
-                    
-                    CoreDataHelper.shared().backgroundSaveContext()
-                    return routineString
-                }
-            }
-        } catch { print(" ERROR executing a fetch request: \( error)") }
-
-        return "Normal"
     }
     
     class func getCurrentSession() -> String {
@@ -802,7 +730,7 @@ class CDOperation {
                     
                     CoreDataHelper.shared().backgroundSaveContext()
                     
-                    // Return the default routine.
+                    // Return the default session.
                     // Will be 1 until the user changes it in settings tab.
                     return "1"
                     
@@ -840,15 +768,14 @@ class CDOperation {
         return "1"
     }
     
-    class func saveWorkoutCompleteDate(_ session: NSString, routine: NSString, workout: NSString, index: NSNumber, useDate: Date) {
+    class func saveWorkoutCompleteDate(_ session: NSString, workout: NSString, index: NSNumber, useDate: Date) {
         
         let request = NSFetchRequest<NSFetchRequestResult>( entityName: "WorkoutCompleteDate")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
-        let filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND index = %@",
+        let filter = NSPredicate(format: "session == %@ AND workout == %@ AND index = %@",
                                  session,
-                                 routine,
                                  workout,
                                  index)
         
@@ -867,7 +794,6 @@ class CDOperation {
                     let insertWorkoutInfo = NSEntityDescription.insertNewObject(forEntityName: "WorkoutCompleteDate", into: CoreDataHelper.shared().context) as! WorkoutCompleteDate
                     
                     insertWorkoutInfo.session = session as String
-                    insertWorkoutInfo.routine = routine as String
                     insertWorkoutInfo.workout = workout as String
                     insertWorkoutInfo.index = index
                     insertWorkoutInfo.workoutCompleted = true
@@ -912,7 +838,7 @@ class CDOperation {
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
-    class func getWorkoutCompletedObjects(_ session: NSString, routine: NSString, workout: NSString, index: NSNumber) -> [WorkoutCompleteDate] {
+    class func getWorkoutCompletedObjects(_ session: NSString, workout: NSString, index: NSNumber) -> [WorkoutCompleteDate] {
         
         let tempWorkoutCompleteArray = [WorkoutCompleteDate]()
         
@@ -920,9 +846,8 @@ class CDOperation {
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
-        let filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND index = %@",
+        let filter = NSPredicate(format: "session == %@ AND workout == %@ AND index = %@",
                                  session,
-                                 routine,
                                  workout,
                                  index)
         
@@ -942,15 +867,14 @@ class CDOperation {
         return tempWorkoutCompleteArray
     }
     
-    class func deleteDate(_ session: NSString, routine: NSString, workout: NSString, index: NSNumber) {
+    class func deleteDate(_ session: NSString, workout: NSString, index: NSNumber) {
         
         let request = NSFetchRequest<NSFetchRequestResult>( entityName: "WorkoutCompleteDate")
         let sortDate = NSSortDescriptor( key: "date", ascending: true)
         request.sortDescriptors = [sortDate]
         
-        let filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND index = %@",
+        let filter = NSPredicate(format: "session == %@ AND workout == %@ AND index = %@",
                                  session,
-                                 routine,
                                  workout,
                                  index)
         
@@ -1167,1032 +1091,336 @@ class CDOperation {
 
     class func loadWorkoutNameArray() -> [[String]] {
         
-        switch getCurrentRoutine() {
-        case "Normal":
-            // Normal
-            let normal_Week1_WorkoutNameArray = ["Chest + Back & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Plyometrics",
-                                                 "Shoulders + Arms & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Yoga",
-                                                 "Legs + Back & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Judo Chop",
-                                                 "Stretch or Rest",
-                                                 "Rest"]
-            
-            let normal_Week2_WorkoutNameArray = ["Chest + Back & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Plyometrics",
-                                                 "Shoulders + Arms & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Yoga",
-                                                 "Legs + Back & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Judo Chop",
-                                                 "Stretch or Rest",
-                                                 "Rest"]
-            
-            let normal_Week3_WorkoutNameArray = ["Chest + Back & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Plyometrics",
-                                                 "Shoulders + Arms & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Yoga",
-                                                 "Legs + Back & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Judo Chop",
-                                                 "Stretch or Rest",
-                                                 "Rest"]
-            
-            let normal_Week4_WorkoutNameArray = ["Yoga",
-                                                 "Core Fitness",
-                                                 "Judo Chop",
-                                                 "Stretch or Rest",
-                                                 "Core Fitness",
-                                                 "Yoga",
-                                                 "Stretch or Rest",
-                                                 "Rest"]
-            
-            let normal_Week5_WorkoutNameArray = ["Chest + Shoulders + Tri & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Plyometrics",
-                                                 "Back + Biceps & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Yoga",
-                                                 "Legs + Back & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Judo Chop",
-                                                 "Stretch or Rest",
-                                                 "Rest"]
-            
-            let normal_Week6_WorkoutNameArray = ["Chest + Shoulders + Tri & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Plyometrics",
-                                                 "Back + Biceps & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Yoga",
-                                                 "Legs + Back & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Judo Chop",
-                                                 "Stretch or Rest",
-                                                 "Rest"]
-            
-            let normal_Week7_WorkoutNameArray = ["Chest + Shoulders + Tri & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Plyometrics",
-                                                 "Back + Biceps & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Yoga",
-                                                 "Legs + Back & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Judo Chop",
-                                                 "Stretch or Rest",
-                                                 "Rest"]
-            
-            let normal_Week8_WorkoutNameArray = ["Yoga",
-                                                 "Core Fitness",
-                                                 "Judo Chop",
-                                                 "Stretch or Rest",
-                                                 "Core Fitness",
-                                                 "Yoga",
-                                                 "Stretch or Rest",
-                                                 "Rest"]
-            
-            let normal_Week9_WorkoutNameArray = ["Chest + Back & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Plyometrics",
-                                                 "Shoulders + Arms & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Yoga",
-                                                 "Legs + Back & Ab Workout",
-                                                 "Ab Workout",
-                                                 "Judo Chop",
-                                                 "Stretch or Rest",
-                                                 "Rest"]
-            
-            let normal_Week10_WorkoutNameArray = ["Chest + Shoulders + Tri & Ab Workout",
-                                                  "Ab Workout",
-                                                  "Plyometrics",
-                                                  "Back + Biceps & Ab Workout",
-                                                  "Ab Workout",
-                                                  "Yoga",
-                                                  "Legs + Back & Ab Workout",
-                                                  "Ab Workout",
-                                                  "Judo Chop",
-                                                  "Stretch or Rest",
-                                                  "Rest"]
-            
-            let normal_Week11_WorkoutNameArray = ["Chest + Back & Ab Workout",
-                                                  "Ab Workout",
-                                                  "Plyometrics",
-                                                  "Shoulders + Arms & Ab Workout",
-                                                  "Ab Workout",
-                                                  "Yoga",
-                                                  "Legs + Back & Ab Workout",
-                                                  "Ab Workout",
-                                                  "Judo Chop",
-                                                  "Stretch or Rest",
-                                                  "Rest"]
-            
-            let normal_Week12_WorkoutNameArray = ["Chest + Shoulders + Tri & Ab Workout",
-                                                  "Ab Workout",
-                                                  "Plyometrics",
-                                                  "Back + Biceps & Ab Workout",
-                                                  "Ab Workout",
-                                                  "Yoga",
-                                                  "Legs + Back & Ab Workout",
-                                                  "Ab Workout",
-                                                  "Judo Chop",
-                                                  "Stretch or Rest",
-                                                  "Rest"]
-            
-            let normal_Week13_WorkoutNameArray = ["Yoga",
-                                                  "Core Fitness",
-                                                  "Judo Chop",
-                                                  "Stretch or Rest",
-                                                  "Core Fitness",
-                                                  "Yoga",
-                                                  "Stretch or Rest",
-                                                  "Rest"]
-            
-            let normal_WorkoutNameArray = [normal_Week1_WorkoutNameArray,
-                                           normal_Week2_WorkoutNameArray,
-                                           normal_Week3_WorkoutNameArray,
-                                           normal_Week4_WorkoutNameArray,
-                                           normal_Week5_WorkoutNameArray,
-                                           normal_Week6_WorkoutNameArray,
-                                           normal_Week7_WorkoutNameArray,
-                                           normal_Week8_WorkoutNameArray,
-                                           normal_Week9_WorkoutNameArray,
-                                           normal_Week10_WorkoutNameArray,
-                                           normal_Week11_WorkoutNameArray,
-                                           normal_Week12_WorkoutNameArray,
-                                           normal_Week13_WorkoutNameArray]
-            
-            return normal_WorkoutNameArray
-            
-        case "Tone":
-            // Tone
-            let tone_Week1_WorkoutNameArray = ["Core Fitness",
-                                               "Full on Cardio",
-                                               "Shoulders + Arms & Ab Workout",
-                                               "Ab Workout",
-                                               "Yoga",
-                                               "Legs + Back & Ab Workout",
-                                               "Ab Workout",
-                                               "Judo Chop",
-                                               "Stretch or Rest",
-                                               "Rest"]
-            
-            let tone_Week2_WorkoutNameArray = ["Core Fitness",
-                                               "Full on Cardio",
-                                               "Shoulders + Arms & Ab Workout",
-                                               "Ab Workout",
-                                               "Yoga",
-                                               "Legs + Back & Ab Workout",
-                                               "Ab Workout",
-                                               "Judo Chop",
-                                               "Stretch or Rest",
-                                               "Rest"]
-            
-            let tone_Week3_WorkoutNameArray = ["Core Fitness",
-                                               "Full on Cardio",
-                                               "Shoulders + Arms & Ab Workout",
-                                               "Ab Workout",
-                                               "Yoga",
-                                               "Legs + Back & Ab Workout",
-                                               "Ab Workout",
-                                               "Judo Chop",
-                                               "Stretch or Rest",
-                                               "Rest"]
-            
-            let tone_Week4_WorkoutNameArray = ["Yoga",
-                                               "Core Fitness",
-                                               "Judo Chop",
-                                               "Stretch or Rest",
-                                               "Core Fitness",
-                                               "Yoga",
-                                               "Stretch or Rest",
-                                               "Rest"]
-            
-            let tone_Week5_WorkoutNameArray = ["Core Fitness",
-                                               "Full on Cardio",
-                                               "Chest + Shoulders + Tri & Ab Workout",
-                                               "Ab Workout",
-                                               "Yoga",
-                                               "Legs + Back & Ab Workout",
-                                               "Ab Workout",
-                                               "Judo Chop",
-                                               "Stretch or Rest",
-                                               "Rest"]
-            
-            let tone_Week6_WorkoutNameArray = ["Core Fitness",
-                                               "Full on Cardio",
-                                               "Chest + Shoulders + Tri & Ab Workout",
-                                               "Ab Workout",
-                                               "Yoga",
-                                               "Legs + Back & Ab Workout",
-                                               "Ab Workout",
-                                               "Judo Chop",
-                                               "Stretch or Rest",
-                                               "Rest"]
-            
-            let tone_Week7_WorkoutNameArray = ["Core Fitness",
-                                               "Full on Cardio",
-                                               "Chest + Shoulders + Tri & Ab Workout",
-                                               "Ab Workout",
-                                               "Yoga",
-                                               "Legs + Back & Ab Workout",
-                                               "Ab Workout",
-                                               "Judo Chop",
-                                               "Stretch or Rest",
-                                               "Rest"]
-            
-            let tone_Week8_WorkoutNameArray = ["Yoga",
-                                               "Core Fitness",
-                                               "Judo Chop",
-                                               "Stretch or Rest",
-                                               "Full on Cardio",
-                                               "Yoga",
-                                               "Stretch or Rest",
-                                               "Rest"]
-            
-            let tone_Week9_WorkoutNameArray = ["Chest + Back & Ab Workout",
-                                               "Ab Workout",
-                                               "Full on Cardio",
-                                               "Shoulders + Arms & Ab Workout",
-                                               "Ab Workout",
-                                               "Yoga",
-                                               "Core Fitness",
-                                               "Judo Chop",
-                                               "Stretch or Rest",
-                                               "Rest"]
-            
-            let tone_Week10_WorkoutNameArray = ["Chest + Shoulders + Tri & Ab Workout",
-                                                "Ab Workout",
-                                                "Full on Cardio",
-                                                "Back + Biceps & Ab Workout",
-                                                "Ab Workout",
-                                                "Yoga",
-                                                "Core Fitness",
-                                                "Judo Chop",
-                                                "Stretch or Rest",
-                                                "Rest"]
-            
-            let tone_Week11_WorkoutNameArray = ["Chest + Back & Ab Workout",
-                                                "Ab Workout",
-                                                "Full on Cardio",
-                                                "Shoulders + Arms & Ab Workout",
-                                                "Ab Workout",
-                                                "Yoga",
-                                                "Core Fitness",
-                                                "Judo Chop",
-                                                "Stretch or Rest",
-                                                "Rest"]
-            
-            let tone_Week12_WorkoutNameArray = ["Chest + Shoulders + Tri & Ab Workout",
-                                                "Ab Workout",
-                                                "Full on Cardio",
-                                                "Back + Biceps & Ab Workout",
-                                                "Ab Workout",
-                                                "Yoga",
-                                                "Core Fitness",
-                                                "Judo Chop",
-                                                "Stretch or Rest",
-                                                "Rest"]
-            
-            let tone_Week13_WorkoutNameArray = ["Yoga",
-                                                "Core Fitness",
-                                                "Judo Chop",
-                                                "Stretch or Rest",
-                                                "Full on Cardio",
-                                                "Yoga",
-                                                "Stretch or Rest",
-                                                "Rest"]
-            
-            let tone_WorkoutNameArray = [tone_Week1_WorkoutNameArray,
-                                         tone_Week2_WorkoutNameArray,
-                                         tone_Week3_WorkoutNameArray,
-                                         tone_Week4_WorkoutNameArray,
-                                         tone_Week5_WorkoutNameArray,
-                                         tone_Week6_WorkoutNameArray,
-                                         tone_Week7_WorkoutNameArray,
-                                         tone_Week8_WorkoutNameArray,
-                                         tone_Week9_WorkoutNameArray,
-                                         tone_Week10_WorkoutNameArray,
-                                         tone_Week11_WorkoutNameArray,
-                                         tone_Week12_WorkoutNameArray,
-                                         tone_Week13_WorkoutNameArray]
-            
-            return tone_WorkoutNameArray
-            
-        default:
-            // 2-A-Days
-            let two_A_Days_Week1_WorkoutNameArray = ["Chest + Back & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Plyometrics",
-                                                     "Shoulders + Arms & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Yoga",
-                                                     "Legs + Back & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Judo Chop",
-                                                     "Stretch or Rest",
-                                                     "Rest"]
-            
-            let two_A_Days_Week2_WorkoutNameArray = ["Chest + Back & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Plyometrics",
-                                                     "Shoulders + Arms & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Yoga",
-                                                     "Legs + Back & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Judo Chop",
-                                                     "Stretch or Rest",
-                                                     "Rest"]
-            
-            let two_A_Days_Week3_WorkoutNameArray = ["Chest + Back & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Plyometrics",
-                                                     "Shoulders + Arms & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Yoga",
-                                                     "Legs + Back & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Judo Chop",
-                                                     "Stretch or Rest",
-                                                     "Rest"]
-            
-            let two_A_Days_Week4_WorkoutNameArray = ["Yoga",
-                                                     "Core Fitness",
-                                                     "Judo Chop",
-                                                     "Stretch or Rest",
-                                                     "Core Fitness",
-                                                     "Yoga",
-                                                     "Stretch or Rest",
-                                                     "Rest"]
-            
-            let two_A_Days_Week5_WorkoutNameArray = ["Full on Cardio",
-                                                     "Chest + Shoulders + Tri & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Plyometrics",
-                                                     "Full on Cardio",
-                                                     "Back + Biceps & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Yoga",
-                                                     "Full on Cardio",
-                                                     "Legs + Back & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Judo Chop",
-                                                     "Stretch or Rest",
-                                                     "Rest"]
-            
-            let two_A_Days_Week6_WorkoutNameArray = ["Full on Cardio",
-                                                     "Chest + Shoulders + Tri & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Plyometrics",
-                                                     "Full on Cardio",
-                                                     "Back + Biceps & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Yoga",
-                                                     "Full on Cardio",
-                                                     "Legs + Back & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Judo Chop",
-                                                     "Stretch or Rest",
-                                                     "Rest"]
-            
-            let two_A_Days_Week7_WorkoutNameArray = ["Full on Cardio",
-                                                     "Chest + Shoulders + Tri & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Plyometrics",
-                                                     "Full on Cardio",
-                                                     "Back + Biceps & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Yoga",
-                                                     "Full on Cardio",
-                                                     "Legs + Back & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Judo Chop",
-                                                     "Stretch or Rest",
-                                                     "Rest"]
-            
-            let two_A_Days_Week8_WorkoutNameArray = ["Yoga",
-                                                     "Core Fitness",
-                                                     "Judo Chop",
-                                                     "Stretch or Rest",
-                                                     "Core Fitness",
-                                                     "Yoga",
-                                                     "Stretch or Rest",
-                                                     "Rest"]
-            
-            let two_A_Days_Week9_WorkoutNameArray = ["Full on Cardio",
-                                                     "Chest + Back & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Full on Cardio",
-                                                     "Plyometrics",
-                                                     "Shoulders + Arms & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Full on Cardio",
-                                                     "Yoga",
-                                                     "Full on Cardio",
-                                                     "Legs + Back & Ab Workout",
-                                                     "Ab Workout",
-                                                     "Judo Chop",
-                                                     "Stretch or Rest",
-                                                     "Rest"]
-            
-            let two_A_Days_Week10_WorkoutNameArray = ["Full on Cardio",
-                                                      "Chest + Shoulders + Tri & Ab Workout",
-                                                      "Ab Workout",
-                                                      "Full on Cardio",
-                                                      "Plyometrics",
-                                                      "Back + Biceps & Ab Workout",
-                                                      "Ab Workout",
-                                                      "Full on Cardio",
-                                                      "Yoga",
-                                                      "Full on Cardio",
-                                                      "Legs + Back & Ab Workout",
-                                                      "Ab Workout",
-                                                      "Judo Chop",
-                                                      "Stretch or Rest",
-                                                      "Rest"]
-            
-            let two_A_Days_Week11_WorkoutNameArray = ["Full on Cardio",
-                                                      "Chest + Back & Ab Workout",
-                                                      "Ab Workout",
-                                                      "Full on Cardio",
-                                                      "Plyometrics",
-                                                      "Shoulders + Arms & Ab Workout",
-                                                      "Ab Workout",
-                                                      "Full on Cardio",
-                                                      "Yoga",
-                                                      "Full on Cardio",
-                                                      "Legs + Back & Ab Workout",
-                                                      "Ab Workout",
-                                                      "Judo Chop",
-                                                      "Stretch or Rest",
-                                                      "Rest"]
-            
-            let two_A_Days_Week12_WorkoutNameArray = ["Full on Cardio",
-                                                      "Chest + Shoulders + Tri & Ab Workout",
-                                                      "Ab Workout",
-                                                      "Full on Cardio",
-                                                      "Plyometrics",
-                                                      "Back + Biceps & Ab Workout",
-                                                      "Ab Workout",
-                                                      "Full on Cardio",
-                                                      "Yoga",
-                                                      "Full on Cardio",
-                                                      "Legs + Back & Ab Workout",
-                                                      "Ab Workout",
-                                                      "Judo Chop",
-                                                      "Stretch or Rest",
-                                                      "Rest"]
-            
-            let two_A_Days_Week13_WorkoutNameArray = ["Yoga",
-                                                      "Core Fitness",
-                                                      "Judo Chop",
-                                                      "Stretch or Rest",
-                                                      "Core Fitness",
-                                                      "Yoga",
-                                                      "Stretch or Rest",
-                                                      "Rest"]
-            
-            let two_A_Days_WorkoutNameArray = [two_A_Days_Week1_WorkoutNameArray,
-                                               two_A_Days_Week2_WorkoutNameArray,
-                                               two_A_Days_Week3_WorkoutNameArray,
-                                               two_A_Days_Week4_WorkoutNameArray,
-                                               two_A_Days_Week5_WorkoutNameArray,
-                                               two_A_Days_Week6_WorkoutNameArray,
-                                               two_A_Days_Week7_WorkoutNameArray,
-                                               two_A_Days_Week8_WorkoutNameArray,
-                                               two_A_Days_Week9_WorkoutNameArray,
-                                               two_A_Days_Week10_WorkoutNameArray,
-                                               two_A_Days_Week11_WorkoutNameArray,
-                                               two_A_Days_Week12_WorkoutNameArray,
-                                               two_A_Days_Week13_WorkoutNameArray]
-
-            return two_A_Days_WorkoutNameArray
-        }
+        // Normal
+        let normal_Week1_WorkoutNameArray = ["Chest + Back & Ab Workout",
+                                             "Ab Workout",
+                                             "Plyometrics",
+                                             "Shoulders + Arms & Ab Workout",
+                                             "Ab Workout",
+                                             "Yoga",
+                                             "Legs + Back & Ab Workout",
+                                             "Ab Workout",
+                                             "Judo Chop",
+                                             "Stretch or Rest",
+                                             "Rest"]
+        
+        let normal_Week2_WorkoutNameArray = ["Chest + Back & Ab Workout",
+                                             "Ab Workout",
+                                             "Plyometrics",
+                                             "Shoulders + Arms & Ab Workout",
+                                             "Ab Workout",
+                                             "Yoga",
+                                             "Legs + Back & Ab Workout",
+                                             "Ab Workout",
+                                             "Judo Chop",
+                                             "Stretch or Rest",
+                                             "Rest"]
+        
+        let normal_Week3_WorkoutNameArray = ["Chest + Back & Ab Workout",
+                                             "Ab Workout",
+                                             "Plyometrics",
+                                             "Shoulders + Arms & Ab Workout",
+                                             "Ab Workout",
+                                             "Yoga",
+                                             "Legs + Back & Ab Workout",
+                                             "Ab Workout",
+                                             "Judo Chop",
+                                             "Stretch or Rest",
+                                             "Rest"]
+        
+        let normal_Week4_WorkoutNameArray = ["Yoga",
+                                             "Core Fitness",
+                                             "Judo Chop",
+                                             "Stretch or Rest",
+                                             "Core Fitness",
+                                             "Yoga",
+                                             "Stretch or Rest",
+                                             "Rest"]
+        
+        let normal_Week5_WorkoutNameArray = ["Chest + Shoulders + Tri & Ab Workout",
+                                             "Ab Workout",
+                                             "Plyometrics",
+                                             "Back + Biceps & Ab Workout",
+                                             "Ab Workout",
+                                             "Yoga",
+                                             "Legs + Back & Ab Workout",
+                                             "Ab Workout",
+                                             "Judo Chop",
+                                             "Stretch or Rest",
+                                             "Rest"]
+        
+        let normal_Week6_WorkoutNameArray = ["Chest + Shoulders + Tri & Ab Workout",
+                                             "Ab Workout",
+                                             "Plyometrics",
+                                             "Back + Biceps & Ab Workout",
+                                             "Ab Workout",
+                                             "Yoga",
+                                             "Legs + Back & Ab Workout",
+                                             "Ab Workout",
+                                             "Judo Chop",
+                                             "Stretch or Rest",
+                                             "Rest"]
+        
+        let normal_Week7_WorkoutNameArray = ["Chest + Shoulders + Tri & Ab Workout",
+                                             "Ab Workout",
+                                             "Plyometrics",
+                                             "Back + Biceps & Ab Workout",
+                                             "Ab Workout",
+                                             "Yoga",
+                                             "Legs + Back & Ab Workout",
+                                             "Ab Workout",
+                                             "Judo Chop",
+                                             "Stretch or Rest",
+                                             "Rest"]
+        
+        let normal_Week8_WorkoutNameArray = ["Yoga",
+                                             "Core Fitness",
+                                             "Judo Chop",
+                                             "Stretch or Rest",
+                                             "Core Fitness",
+                                             "Yoga",
+                                             "Stretch or Rest",
+                                             "Rest"]
+        
+        let normal_Week9_WorkoutNameArray = ["Chest + Back & Ab Workout",
+                                             "Ab Workout",
+                                             "Plyometrics",
+                                             "Shoulders + Arms & Ab Workout",
+                                             "Ab Workout",
+                                             "Yoga",
+                                             "Legs + Back & Ab Workout",
+                                             "Ab Workout",
+                                             "Judo Chop",
+                                             "Stretch or Rest",
+                                             "Rest"]
+        
+        let normal_Week10_WorkoutNameArray = ["Chest + Shoulders + Tri & Ab Workout",
+                                              "Ab Workout",
+                                              "Plyometrics",
+                                              "Back + Biceps & Ab Workout",
+                                              "Ab Workout",
+                                              "Yoga",
+                                              "Legs + Back & Ab Workout",
+                                              "Ab Workout",
+                                              "Judo Chop",
+                                              "Stretch or Rest",
+                                              "Rest"]
+        
+        let normal_Week11_WorkoutNameArray = ["Chest + Back & Ab Workout",
+                                              "Ab Workout",
+                                              "Plyometrics",
+                                              "Shoulders + Arms & Ab Workout",
+                                              "Ab Workout",
+                                              "Yoga",
+                                              "Legs + Back & Ab Workout",
+                                              "Ab Workout",
+                                              "Judo Chop",
+                                              "Stretch or Rest",
+                                              "Rest"]
+        
+        let normal_Week12_WorkoutNameArray = ["Chest + Shoulders + Tri & Ab Workout",
+                                              "Ab Workout",
+                                              "Plyometrics",
+                                              "Back + Biceps & Ab Workout",
+                                              "Ab Workout",
+                                              "Yoga",
+                                              "Legs + Back & Ab Workout",
+                                              "Ab Workout",
+                                              "Judo Chop",
+                                              "Stretch or Rest",
+                                              "Rest"]
+        
+        let normal_Week13_WorkoutNameArray = ["Yoga",
+                                              "Core Fitness",
+                                              "Judo Chop",
+                                              "Stretch or Rest",
+                                              "Core Fitness",
+                                              "Yoga",
+                                              "Stretch or Rest",
+                                              "Rest"]
+        
+        let normal_WorkoutNameArray = [normal_Week1_WorkoutNameArray,
+                                       normal_Week2_WorkoutNameArray,
+                                       normal_Week3_WorkoutNameArray,
+                                       normal_Week4_WorkoutNameArray,
+                                       normal_Week5_WorkoutNameArray,
+                                       normal_Week6_WorkoutNameArray,
+                                       normal_Week7_WorkoutNameArray,
+                                       normal_Week8_WorkoutNameArray,
+                                       normal_Week9_WorkoutNameArray,
+                                       normal_Week10_WorkoutNameArray,
+                                       normal_Week11_WorkoutNameArray,
+                                       normal_Week12_WorkoutNameArray,
+                                       normal_Week13_WorkoutNameArray]
+        
+        return normal_WorkoutNameArray
     }
     
     class func loadWorkoutIndexArray() -> [[Int]] {
         
-        switch getCurrentRoutine() {
-        case "Normal":
-            // Normal
-            let normal_Week1_WorkoutIndexArray = [1,
-                                                  1,
-                                                  1,
-                                                  1,
-                                                  2,
-                                                  1,
-                                                  1,
-                                                  3,
-                                                  1,
-                                                  1,
-                                                  1]
-            
-            let normal_Week2_WorkoutIndexArray = [2,
-                                                  4,
-                                                  2,
-                                                  2,
-                                                  5,
-                                                  2,
-                                                  2,
-                                                  6,
-                                                  2,
-                                                  2,
-                                                  2]
-            
-            let normal_Week3_WorkoutIndexArray = [3,
-                                                  7,
-                                                  3,
-                                                  3,
-                                                  8,
-                                                  3,
-                                                  3,
-                                                  9,
-                                                  3,
-                                                  3,
-                                                  3]
-            
-            let normal_Week4_WorkoutIndexArray = [4,
-                                                  1,
-                                                  4,
-                                                  4,
-                                                  2,
-                                                  5,
-                                                  5,
-                                                  4]
-            
-            let normal_Week5_WorkoutIndexArray = [1,
-                                                  10,
-                                                  4,
-                                                  1,
-                                                  11,
-                                                  6,
-                                                  4,
-                                                  12,
-                                                  5,
-                                                  6,
-                                                  5]
-            
-            let normal_Week6_WorkoutIndexArray = [2,
-                                                  13,
-                                                  5,
-                                                  2,
-                                                  14,
-                                                  7,
-                                                  5,
-                                                  15,
-                                                  6,
-                                                  7,
-                                                  6]
-            
-            let normal_Week7_WorkoutIndexArray = [3,
-                                                  16,
-                                                  6,
-                                                  3,
-                                                  17,
-                                                  8,
-                                                  6,
-                                                  18,
-                                                  7,
-                                                  8,
-                                                  7]
-            
-            let normal_Week8_WorkoutIndexArray = [9,
-                                                  3,
-                                                  8,
-                                                  9,
-                                                  4,
-                                                  10,
-                                                  10,
-                                                  8]
-            
-            let normal_Week9_WorkoutIndexArray = [4,
-                                                  19,
-                                                  7,
-                                                  4,
-                                                  20,
-                                                  11,
-                                                  7,
-                                                  21,
-                                                  9,
-                                                  11,
-                                                  9]
-            
-            let normal_Week10_WorkoutIndexArray = [4,
-                                                   22,
-                                                   8,
-                                                   4,
-                                                   23,
-                                                   12,
-                                                   8,
-                                                   24,
-                                                   10,
-                                                   12,
-                                                   10]
-            
-            let normal_Week11_WorkoutIndexArray = [5,
-                                                   25,
-                                                   9,
-                                                   5,
-                                                   26,
-                                                   13,
-                                                   9,
-                                                   27,
-                                                   11,
-                                                   13,
-                                                   11]
-            
-            let normal_Week12_WorkoutIndexArray = [5,
-                                                   28,
-                                                   10,
-                                                   5,
-                                                   29,
-                                                   14,
-                                                   10,
-                                                   30,
-                                                   12,
-                                                   14,
-                                                   12]
-            
-            let normal_Week13_WorkoutIndexArray = [15,
-                                                   5,
-                                                   13,
-                                                   15,
-                                                   6,
-                                                   16,
-                                                   16,
-                                                   13]
-            
-            let normal_WorkoutIndexArray = [normal_Week1_WorkoutIndexArray,
-                                            normal_Week2_WorkoutIndexArray,
-                                            normal_Week3_WorkoutIndexArray,
-                                            normal_Week4_WorkoutIndexArray,
-                                            normal_Week5_WorkoutIndexArray,
-                                            normal_Week6_WorkoutIndexArray,
-                                            normal_Week7_WorkoutIndexArray,
-                                            normal_Week8_WorkoutIndexArray,
-                                            normal_Week9_WorkoutIndexArray,
-                                            normal_Week10_WorkoutIndexArray,
-                                            normal_Week11_WorkoutIndexArray,
-                                            normal_Week12_WorkoutIndexArray,
-                                            normal_Week13_WorkoutIndexArray]
-            
-            return normal_WorkoutIndexArray
-
-            case "Tone":
-                // TONE
-                let tone_Week1_WorkoutIndexArray = [1,
-                                                    1,
-                                                    1,
-                                                    1,
-                                                    1,
-                                                    1,
-                                                    2,
-                                                    1,
-                                                    1,
-                                                    1]
-                
-                let tone_Week2_WorkoutIndexArray = [2,
-                                                    2,
-                                                    2,
-                                                    3,
-                                                    2,
-                                                    2,
-                                                    4,
-                                                    2,
-                                                    2,
-                                                    2]
-                
-                let tone_Week3_WorkoutIndexArray = [3,
-                                                    3,
-                                                    3,
-                                                    5,
-                                                    3,
-                                                    3,
-                                                    6,
-                                                    3,
-                                                    3,
-                                                    3]
-                
-                let tone_Week4_WorkoutIndexArray = [4,
-                                                    4,
-                                                    4,
-                                                    4,
-                                                    5,
-                                                    5,
-                                                    5,
-                                                    4]
-                
-                let tone_Week5_WorkoutIndexArray = [6,
-                                                    4,
-                                                    1,
-                                                    7,
-                                                    6,
-                                                    4,
-                                                    8,
-                                                    5,
-                                                    6,
-                                                    5]
-                
-                let tone_Week6_WorkoutIndexArray = [7,
-                                                    5,
-                                                    2,
-                                                    9,
-                                                    7,
-                                                    5,
-                                                    10,
-                                                    6,
-                                                    7,
-                                                    6]
-                
-                let tone_Week7_WorkoutIndexArray = [8,
-                                                    6,
-                                                    3,
-                                                    11,
-                                                    8,
-                                                    6,
-                                                    12,
-                                                    7,
-                                                    8,
-                                                    7]
-                
-                let tone_Week8_WorkoutIndexArray = [9,
-                                                    9,
-                                                    8,
-                                                    9,
-                                                    7,
-                                                    10,
-                                                    10,
-                                                    8]
-                
-                let tone_Week9_WorkoutIndexArray = [1,
-                                                    13,
-                                                    8,
-                                                    4,
-                                                    14,
-                                                    11,
-                                                    10,
-                                                    9,
-                                                    11,
-                                                    9]
-                
-                let tone_Week10_WorkoutIndexArray = [4,
-                                                     15,
-                                                     9,
-                                                     1,
-                                                     16,
-                                                     12,
-                                                     11,
-                                                     10,
-                                                     12,
-                                                     10]
-                
-                let tone_Week11_WorkoutIndexArray = [2,
-                                                     17,
-                                                     10,
-                                                     5,
-                                                     18,
-                                                     13,
-                                                     12,
-                                                     11,
-                                                     13,
-                                                     11]
-                
-                let tone_Week12_WorkoutIndexArray = [5,
-                                                     19,
-                                                     11,
-                                                     2,
-                                                     20,
-                                                     14,
-                                                     13,
-                                                     12,
-                                                     14,
-                                                     12]
-                
-                let tone_Week13_WorkoutIndexArray = [15,
-                                                     14,
-                                                     13,
-                                                     15,
-                                                     12,
-                                                     16,
-                                                     16,
-                                                     13]
-                
-                let tone_WorkoutIndexArray = [tone_Week1_WorkoutIndexArray,
-                                              tone_Week2_WorkoutIndexArray,
-                                              tone_Week3_WorkoutIndexArray,
-                                              tone_Week4_WorkoutIndexArray,
-                                              tone_Week5_WorkoutIndexArray,
-                                              tone_Week6_WorkoutIndexArray,
-                                              tone_Week7_WorkoutIndexArray,
-                                              tone_Week8_WorkoutIndexArray,
-                                              tone_Week9_WorkoutIndexArray,
-                                              tone_Week10_WorkoutIndexArray,
-                                              tone_Week11_WorkoutIndexArray,
-                                              tone_Week12_WorkoutIndexArray,
-                                              tone_Week13_WorkoutIndexArray]
-                
-                return tone_WorkoutIndexArray
-
-        default:
-            // 2-A-Days
-            let two_A_Days_Week1_WorkoutIndexArray = [1,
-                                                      1,
-                                                      1,
-                                                      1,
-                                                      2,
-                                                      1,
-                                                      1,
-                                                      3,
-                                                      1,
-                                                      1,
-                                                      1]
-            
-            let two_A_Days_Week2_WorkoutIndexArray = [2,
-                                                      4,
-                                                      2,
-                                                      2,
-                                                      5,
-                                                      2,
-                                                      2,
-                                                      6,
-                                                      2,
-                                                      2,
-                                                      2]
-            
-            let two_A_Days_Week3_WorkoutIndexArray = [3,
-                                                      7,
-                                                      3,
-                                                      3,
-                                                      8,
-                                                      3,
-                                                      3,
-                                                      9,
-                                                      3,
-                                                      3,
-                                                      3]
-            
-            let two_A_Days_Week4_WorkoutIndexArray = [4,
-                                                      1,
-                                                      4,
-                                                      4,
-                                                      2,
-                                                      5,
-                                                      5,
-                                                      4]
-            
-            let two_A_Days_Week5_WorkoutIndexArray = [1,
-                                                      1,
-                                                      10,
-                                                      4,
-                                                      2,
-                                                      1,
-                                                      11,
-                                                      6,
-                                                      3,
-                                                      4,
-                                                      12,
-                                                      5,
-                                                      6,
-                                                      5]
-            
-            let two_A_Days_Week6_WorkoutIndexArray = [4,
-                                                      2,
-                                                      13,
-                                                      5,
-                                                      5,
-                                                      2,
-                                                      14,
-                                                      7,
-                                                      6,
-                                                      5,
-                                                      15,
-                                                      6,
-                                                      7,
-                                                      6]
-            
-            let two_A_Days_Week7_WorkoutIndexArray = [7,
-                                                      3,
-                                                      16,
-                                                      6,
-                                                      8,
-                                                      3,
-                                                      17,
-                                                      8,
-                                                      9,
-                                                      6,
-                                                      18,
-                                                      7,
-                                                      8,
-                                                      7]
-            
-            let two_A_Days_Week8_WorkoutIndexArray = [9,
-                                                      3,
-                                                      8,
-                                                      9,
-                                                      4,
-                                                      10,
-                                                      10,
-                                                      8]
-            
-            let two_A_Days_Week9_WorkoutIndexArray = [10,
-                                                      4,
-                                                      19,
-                                                      11,
-                                                      7,
-                                                      4,
-                                                      20,
-                                                      12,
-                                                      11,
-                                                      13,
-                                                      7,
-                                                      21,
-                                                      9,
-                                                      11,
-                                                      9]
-            
-            let two_A_Days_Week10_WorkoutIndexArray = [14,
-                                                       4,
-                                                       22,
-                                                       15,
-                                                       8,
-                                                       4,
-                                                       23,
-                                                       16,
-                                                       12,
-                                                       17,
-                                                       8,
-                                                       24,
-                                                       10,
-                                                       12,
-                                                       10]
-            
-            let two_A_Days_Week11_WorkoutIndexArray = [18,
-                                                       5,
-                                                       25,
-                                                       19,
-                                                       9,
-                                                       5,
-                                                       26,
-                                                       20,
-                                                       13,
-                                                       21,
-                                                       9,
-                                                       27,
-                                                       11,
-                                                       13,
-                                                       11]
-            
-            let two_A_Days_Week12_WorkoutIndexArray = [22,
-                                                       5,
-                                                       28,
-                                                       23,
-                                                       10,
-                                                       5,
-                                                       29,
-                                                       24,
-                                                       14,
-                                                       25,
-                                                       10,
-                                                       30,
-                                                       12,
-                                                       14,
-                                                       12]
-            
-            let two_A_Days_Week13_WorkoutIndexArray = [15,
-                                                       5,
-                                                       13,
-                                                       15,
-                                                       6,
-                                                       16,
-                                                       16,
-                                                       13]
-            
-            let two_A_Days_WorkoutIndexArray = [two_A_Days_Week1_WorkoutIndexArray,
-                                                two_A_Days_Week2_WorkoutIndexArray,
-                                                two_A_Days_Week3_WorkoutIndexArray,
-                                                two_A_Days_Week4_WorkoutIndexArray,
-                                                two_A_Days_Week5_WorkoutIndexArray,
-                                                two_A_Days_Week6_WorkoutIndexArray,
-                                                two_A_Days_Week7_WorkoutIndexArray,
-                                                two_A_Days_Week8_WorkoutIndexArray,
-                                                two_A_Days_Week9_WorkoutIndexArray,
-                                                two_A_Days_Week10_WorkoutIndexArray,
-                                                two_A_Days_Week11_WorkoutIndexArray,
-                                                two_A_Days_Week12_WorkoutIndexArray,
-                                                two_A_Days_Week13_WorkoutIndexArray]
-            
-            return two_A_Days_WorkoutIndexArray
-        }
+        // Normal
+        let normal_Week1_WorkoutIndexArray = [1,
+                                              1,
+                                              1,
+                                              1,
+                                              2,
+                                              1,
+                                              1,
+                                              3,
+                                              1,
+                                              1,
+                                              1]
+        
+        let normal_Week2_WorkoutIndexArray = [2,
+                                              4,
+                                              2,
+                                              2,
+                                              5,
+                                              2,
+                                              2,
+                                              6,
+                                              2,
+                                              2,
+                                              2]
+        
+        let normal_Week3_WorkoutIndexArray = [3,
+                                              7,
+                                              3,
+                                              3,
+                                              8,
+                                              3,
+                                              3,
+                                              9,
+                                              3,
+                                              3,
+                                              3]
+        
+        let normal_Week4_WorkoutIndexArray = [4,
+                                              1,
+                                              4,
+                                              4,
+                                              2,
+                                              5,
+                                              5,
+                                              4]
+        
+        let normal_Week5_WorkoutIndexArray = [1,
+                                              10,
+                                              4,
+                                              1,
+                                              11,
+                                              6,
+                                              4,
+                                              12,
+                                              5,
+                                              6,
+                                              5]
+        
+        let normal_Week6_WorkoutIndexArray = [2,
+                                              13,
+                                              5,
+                                              2,
+                                              14,
+                                              7,
+                                              5,
+                                              15,
+                                              6,
+                                              7,
+                                              6]
+        
+        let normal_Week7_WorkoutIndexArray = [3,
+                                              16,
+                                              6,
+                                              3,
+                                              17,
+                                              8,
+                                              6,
+                                              18,
+                                              7,
+                                              8,
+                                              7]
+        
+        let normal_Week8_WorkoutIndexArray = [9,
+                                              3,
+                                              8,
+                                              9,
+                                              4,
+                                              10,
+                                              10,
+                                              8]
+        
+        let normal_Week9_WorkoutIndexArray = [4,
+                                              19,
+                                              7,
+                                              4,
+                                              20,
+                                              11,
+                                              7,
+                                              21,
+                                              9,
+                                              11,
+                                              9]
+        
+        let normal_Week10_WorkoutIndexArray = [4,
+                                               22,
+                                               8,
+                                               4,
+                                               23,
+                                               12,
+                                               8,
+                                               24,
+                                               10,
+                                               12,
+                                               10]
+        
+        let normal_Week11_WorkoutIndexArray = [5,
+                                               25,
+                                               9,
+                                               5,
+                                               26,
+                                               13,
+                                               9,
+                                               27,
+                                               11,
+                                               13,
+                                               11]
+        
+        let normal_Week12_WorkoutIndexArray = [5,
+                                               28,
+                                               10,
+                                               5,
+                                               29,
+                                               14,
+                                               10,
+                                               30,
+                                               12,
+                                               14,
+                                               12]
+        
+        let normal_Week13_WorkoutIndexArray = [15,
+                                               5,
+                                               13,
+                                               15,
+                                               6,
+                                               16,
+                                               16,
+                                               13]
+        
+        let normal_WorkoutIndexArray = [normal_Week1_WorkoutIndexArray,
+                                        normal_Week2_WorkoutIndexArray,
+                                        normal_Week3_WorkoutIndexArray,
+                                        normal_Week4_WorkoutIndexArray,
+                                        normal_Week5_WorkoutIndexArray,
+                                        normal_Week6_WorkoutIndexArray,
+                                        normal_Week7_WorkoutIndexArray,
+                                        normal_Week8_WorkoutIndexArray,
+                                        normal_Week9_WorkoutIndexArray,
+                                        normal_Week10_WorkoutIndexArray,
+                                        normal_Week11_WorkoutIndexArray,
+                                        normal_Week12_WorkoutIndexArray,
+                                        normal_Week13_WorkoutIndexArray]
+        
+        return normal_WorkoutIndexArray
     }
     
     class func allWorkoutTitleArray() -> [String] {
@@ -2385,350 +1613,15 @@ class CDOperation {
         let allExerciseTitlesArray = self.allExerciseTitleArray()
         let writeString = NSMutableString()
         
-        let routineArray = ["Normal",
-                            "Tone",
-                            "2-A-Days"]
-        
         // Get the highest session value stored in the database
         let maxSession = Int(self.findMaxSessionValue())
         
-        // For each session, list each workouts data.  Normal then tone then 2-A-Days.
+        // For each session, list each workouts data.
         // Sessions start at 1.  Cannot have a 0 session.
         for sessionCounter in 1...maxSession! {
             
             // Get session value.
             let currentSessionString = String(sessionCounter)
-            
-            // Routine
-            for routineIndex in 0..<routineArray.count {
-                
-                // Workout
-                for i in 0..<allWorkoutTitlesArray.count {
-                    
-                    let tempExerciseTitlesArray = allExerciseTitlesArray[i]
-                    
-                    // Get workout data with the current session.  Sort by INDEX.
-                    let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
-                    let sortIndex = NSSortDescriptor( key: "index", ascending: true)
-                    let sortDate = NSSortDescriptor( key: "date", ascending: true)
-                    request.sortDescriptors = [sortIndex, sortDate]
-                    
-                    let filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@",
-                                             currentSessionString,
-                                             routineArray[routineIndex],
-                                             allWorkoutTitlesArray[i])
-                    
-                    request.predicate = filter
-                    
-                    do {
-                        if let workoutObjects1 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
-                            
-                            // print("workoutObjects1.count = \(workoutObjects1.count)")
-                            
-                            var maxIndex = 0
-                            
-                            if workoutObjects1.count != 0 {
-                                
-                                maxIndex = Int((workoutObjects1.last?.index)!)
-                                
-                                var localSession = ""
-                                var localRoutine = ""
-                                var localWeek = ""
-                                var localWorkout = ""
-                                var localDate = Date()
-                                var dateString = ""
-                                
-                                var tempExerciseName = ""
-                                var tempWeightData = ""
-                                var tempRepData = ""
-                                var tempNotesData = ""
-                                var roundConvertedToString = ""
-                                
-                                // Get the values for each index that was found for this workout.
-                                // Workout indexes start at 1.  Cannot have a 0 index.
-                                for index in 1...maxIndex {
-                                    
-                                    let convertedIndex = NSNumber(value: index as Int)
-                                    
-                                    // Get workout data with workout index
-                                    let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
-                                    
-                                    var filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND index == %@",
-                                                             currentSessionString,
-                                                             routineArray[routineIndex],
-                                                             allWorkoutTitlesArray[i],
-                                                             convertedIndex)
-                                    
-                                    request.predicate = filter
-                                    
-                                    do {
-                                        if let workoutObjects2 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
-                                            
-                                            //print("workoutObjects.count = \(workoutObjects.count)")
-                                            
-                                            // Check if there are any matches for the given index.  If none skip the index.
-                                            if workoutObjects2.count == 0 {
-                                                
-                                                // No Matches for this workout with index
-                                            }
-                                            else {
-                                                
-                                                // Matches found
-                                                
-                                                // Add column headers
-                                                for a in 0..<1 {
-                                                    
-                                                    //  Add the column headers for Routine, Month, Week, Workout, and Date to the string
-                                                    writeString.append("Session,Routine,Week,Try,Workout,Date\n")
-                                                    
-                                                    localSession = workoutObjects2[a].session!
-                                                    localRoutine = workoutObjects2[a].routine!
-                                                    localWeek = workoutObjects2[a].week!
-                                                    localWorkout = workoutObjects2[a].workout!
-                                                    localDate = workoutObjects2[a].date! as Date
-                                                    
-                                                    dateString = DateFormatter.localizedString(from: localDate, dateStyle: .short, timeStyle: .none)
-                                                    
-                                                    // Add column headers for indivialual workouts based on workout index number
-                                                    writeString.append("\(localSession),\(localRoutine),\(localWeek),\(index),\(self.trimStringForWorkoutName(localWorkout)),\(dateString)\n")
-                                                }
-                                                
-                                                let workoutIndex = NSNumber(value: index as Int)
-                                                
-                                                //  Add the exercise name, reps and weight
-                                                for b in 0..<tempExerciseTitlesArray.count {
-                                                    
-                                                    tempExerciseName = tempExerciseTitlesArray[b]
-                                                    
-                                                    //  Add the exercise title to the string
-                                                    writeString.append(",\n\(tempExerciseName)\n, Round 1, Round 2, ,Notes\n")
-                                                    
-                                                    // Add the "Reps" to the row
-                                                    writeString.append("Reps,")
-                                                    
-                                                    //  Add the reps and notes to the string
-                                                    for round in 0..<2 {
-                                                        
-                                                        roundConvertedToString = self.renameRoundIntToString(round)
-                                                        tempRepData = ""
-                                                        tempNotesData = ""
-                                                        
-                                                        filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
-                                                                             currentSessionString,
-                                                                             localRoutine,
-                                                                             localWorkout,
-                                                                             tempExerciseName,
-                                                                             roundConvertedToString,
-                                                                             workoutIndex)
-                                                        
-                                                        request.predicate = filter
-                                                        
-                                                        do {
-                                                            if let workoutObjects3 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
-                                                                
-                                                                //print("workoutObjects.count = \(workoutObjects.count)")
-                                                                
-                                                                if workoutObjects3.count >= 1 {
-                                                                    
-                                                                    // Match found
-                                                                    
-                                                                    // Reps is not nil
-                                                                    if workoutObjects3.last?.reps != nil {
-                                                                        
-                                                                        tempRepData = (workoutObjects3.last?.reps)!
-                                                                        
-                                                                        if round == 1 {
-                                                                            
-                                                                            //  Inserts a """" into the string
-                                                                            writeString.append("\(tempRepData),,")
-                                                                        }
-                                                                        else {
-                                                                            
-                                                                            //  Inserts a "" into the string
-                                                                            writeString.append("\(tempRepData),")
-                                                                        }
-                                                                    }
-                                                                    else {
-                                                                        
-                                                                        // There was a record found, but only had data for the weight or notes and not the reps.
-                                                                        if round == 1 {
-                                                                            
-                                                                            //  Inserts a """" into the string
-                                                                            writeString.append("\(tempRepData),,")
-                                                                        }
-                                                                        else {
-                                                                            
-                                                                            //  Inserts a "" into the string
-                                                                            writeString.append("\(tempRepData),")
-                                                                        }
-                                                                    }
-                                                                }
-                                                                else {
-                                                                    // No match found
-                                                                    if round == 1 {
-                                                                        
-                                                                        //  Inserts a """" into the string
-                                                                        writeString.append("\(tempRepData),,")
-                                                                    }
-                                                                    else {
-                                                                        
-                                                                        //  Inserts a "" into the string
-                                                                        writeString.append("\(tempRepData),")
-                                                                    }
-                                                                }
-                                                            }
-                                                        } catch { print(" ERROR executing a fetch request: \( error)") }
-                                                        
-                                                        //  Notes
-                                                        if round == 1 {
-                                                            
-                                                            filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
-                                                                                 currentSessionString,
-                                                                                 localRoutine,
-                                                                                 localWorkout,
-                                                                                 tempExerciseName,
-                                                                                 "Round 1",
-                                                                                 workoutIndex)
-                                                            
-                                                            request.predicate = filter
-                                                            
-                                                            do {
-                                                                if let workoutObjectsNotes = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
-                                                                    
-                                                                    if workoutObjectsNotes.count >= 1 {
-                                                                        
-                                                                        //  Match found
-                                                                        
-                                                                        //  Weight is not nil
-                                                                        if workoutObjectsNotes.last?.notes != nil {
-                                                                            
-                                                                            tempNotesData = (workoutObjectsNotes.last?.notes)!
-                                                                            
-                                                                            writeString.append("\(tempNotesData)\n")
-                                                                        }
-                                                                        else {
-                                                                            
-                                                                            writeString.append("\(tempNotesData)\n")
-                                                                        }
-                                                                    }
-                                                                    else {
-                                                                        
-                                                                        //  No match found
-                                                                        
-                                                                        writeString.append("\(tempNotesData)\n")
-                                                                    }
-                                                                }
-                                                            } catch { print(" ERROR executing a fetch request: \( error)") }
-                                                        }
-                                                    }
-                                                    
-                                                    // Add the "Weight" to the row
-                                                    writeString.append("Weight,")
-                                                    
-                                                    //  Add the weight line from the database
-                                                    for round in 0..<2 {
-                                                        
-                                                        roundConvertedToString = self.renameRoundIntToString(round)
-                                                        tempWeightData = ""
-                                                        
-                                                        filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
-                                                                             currentSessionString,
-                                                                             localRoutine,
-                                                                             localWorkout,
-                                                                             tempExerciseName,
-                                                                             roundConvertedToString,
-                                                                             workoutIndex)
-                                                        
-                                                        request.predicate = filter
-                                                        
-                                                        do {
-                                                            if let workoutObjects4 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
-                                                                
-                                                                //print("workoutObjects.count = \(workoutObjects.count)")
-                                                                
-                                                                if workoutObjects4.count >= 1 {
-                                                                    
-                                                                    //  Match found
-                                                                    
-                                                                    //  Weight is not nil
-                                                                    if workoutObjects4.last?.weight != nil {
-                                                                        
-                                                                        tempWeightData = (workoutObjects4.last?.weight)!
-                                                                        
-                                                                        if round == 1 {
-                                                                            
-                                                                            writeString.append("\(tempWeightData)\n")
-                                                                        }
-                                                                        else {
-                                                                            
-                                                                            writeString.append("\(tempWeightData),")
-                                                                        }
-                                                                    }
-                                                                    else {
-                                                                        
-                                                                        //  There was a record found, but only had data for the reps or notes and not the weight.
-                                                                        if round == 1 {
-                                                                            
-                                                                            writeString.append("\(tempWeightData)\n")
-                                                                        }
-                                                                        else {
-                                                                            
-                                                                            writeString.append("\(tempWeightData),")
-                                                                        }
-                                                                    }
-                                                                }
-                                                                else {
-                                                                    
-                                                                    //  No Weight
-                                                                    //  Inserts a "" into the string
-                                                                    if round == 1 {
-                                                                        
-                                                                        writeString.append("\(tempWeightData)\n")
-                                                                    }
-                                                                    else {
-                                                                        
-                                                                        writeString.append("\(tempWeightData),")
-                                                                    }
-                                                                }
-                                                            }
-                                                        } catch { print(" ERROR executing a fetch request: \( error)") }
-                                                    }
-                                                }
-                                            }
-                                            
-                                            //  Ends the workout with a return mark \n before starting the next workout
-                                            writeString.append(",\n")
-                                            
-                                        }
-                                    } catch { print(" ERROR executing a fetch request: \( error)") }
-                                }
-                            }
-                        }
-                    } catch { print(" ERROR executing a fetch request: \( error)") }
-                }
-            }
-        }
-        
-        //  Return the string
-        return writeString as String
-    }
-    
-    class func currentSessionStringForEmail() -> String {
-        
-        // Get Data from the database.
-        let allWorkoutTitlesArray = self.allWorkoutTitleArray()
-        let allExerciseTitlesArray = self.allExerciseTitleArray()
-        let writeString = NSMutableString()
-        
-        let routineArray = ["Normal",
-                            "Tone",
-                            "2-A-Days"]
-        
-        // Get the current session value stored in the database
-        let currentSessionString = self.getCurrentSession()
-        
-        // Routine
-        for routineIndex in 0..<routineArray.count {
             
             // Workout
             for i in 0..<allWorkoutTitlesArray.count {
@@ -2741,9 +1634,8 @@ class CDOperation {
                 let sortDate = NSSortDescriptor( key: "date", ascending: true)
                 request.sortDescriptors = [sortIndex, sortDate]
                 
-                let filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@",
+                let filter = NSPredicate(format: "session == %@ AND workout == %@",
                                          currentSessionString,
-                                         routineArray[routineIndex],
                                          allWorkoutTitlesArray[i])
                 
                 request.predicate = filter
@@ -2760,7 +1652,6 @@ class CDOperation {
                             maxIndex = Int((workoutObjects1.last?.index)!)
                             
                             var localSession = ""
-                            var localRoutine = ""
                             var localWeek = ""
                             var localWorkout = ""
                             var localDate = Date()
@@ -2781,9 +1672,8 @@ class CDOperation {
                                 // Get workout data with workout index
                                 let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
                                 
-                                var filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND index == %@",
+                                var filter = NSPredicate(format: "session == %@ AND workout == %@ AND index == %@",
                                                          currentSessionString,
-                                                         routineArray[routineIndex],
                                                          allWorkoutTitlesArray[i],
                                                          convertedIndex)
                                 
@@ -2806,11 +1696,10 @@ class CDOperation {
                                             // Add column headers
                                             for a in 0..<1 {
                                                 
-                                                //  Add the column headers for Routine, Month, Week, Workout, and Date to the string
-                                                writeString.append("Session,Routine,Week,Try,Workout,Date\n")
+                                                //  Add the column headers for Month, Week, Workout, and Date to the string
+                                                writeString.append("Session,Week,Try,Workout,Date\n")
                                                 
                                                 localSession = workoutObjects2[a].session!
-                                                localRoutine = workoutObjects2[a].routine!
                                                 localWeek = workoutObjects2[a].week!
                                                 localWorkout = workoutObjects2[a].workout!
                                                 localDate = workoutObjects2[a].date! as Date
@@ -2818,7 +1707,7 @@ class CDOperation {
                                                 dateString = DateFormatter.localizedString(from: localDate, dateStyle: .short, timeStyle: .none)
                                                 
                                                 // Add column headers for indivialual workouts based on workout index number
-                                                writeString.append("\(localSession),\(localRoutine),\(localWeek),\(index),\(self.trimStringForWorkoutName(localWorkout)),\(dateString)\n")
+                                                writeString.append("\(localSession),\(localWeek),\(index),\(self.trimStringForWorkoutName(localWorkout)),\(dateString)\n")
                                             }
                                             
                                             let workoutIndex = NSNumber(value: index as Int)
@@ -2833,7 +1722,7 @@ class CDOperation {
                                                 
                                                 // Add the "Reps" to the row
                                                 writeString.append("Reps,")
-
+                                                
                                                 //  Add the reps and notes to the string
                                                 for round in 0..<2 {
                                                     
@@ -2841,9 +1730,8 @@ class CDOperation {
                                                     tempRepData = ""
                                                     tempNotesData = ""
                                                     
-                                                    filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
+                                                    filter = NSPredicate(format: "session == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
                                                                          currentSessionString,
-                                                                         localRoutine,
                                                                          localWorkout,
                                                                          tempExerciseName,
                                                                          roundConvertedToString,
@@ -2910,9 +1798,8 @@ class CDOperation {
                                                     //  Notes
                                                     if round == 1 {
                                                         
-                                                        filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
+                                                        filter = NSPredicate(format: "session == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
                                                                              currentSessionString,
-                                                                             localRoutine,
                                                                              localWorkout,
                                                                              tempExerciseName,
                                                                              "Round 1",
@@ -2959,9 +1846,8 @@ class CDOperation {
                                                     roundConvertedToString = self.renameRoundIntToString(round)
                                                     tempWeightData = ""
                                                     
-                                                    filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
+                                                    filter = NSPredicate(format: "session == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
                                                                          currentSessionString,
-                                                                         localRoutine,
                                                                          localWorkout,
                                                                          tempExerciseName,
                                                                          roundConvertedToString,
@@ -3040,6 +1926,318 @@ class CDOperation {
         return writeString as String
     }
     
+    class func currentSessionStringForEmail() -> String {
+        
+        // Get Data from the database.
+        let allWorkoutTitlesArray = self.allWorkoutTitleArray()
+        let allExerciseTitlesArray = self.allExerciseTitleArray()
+        let writeString = NSMutableString()
+        
+        // Get the current session value stored in the database
+        let currentSessionString = self.getCurrentSession()
+            
+        // Workout
+        for i in 0..<allWorkoutTitlesArray.count {
+            
+            let tempExerciseTitlesArray = allExerciseTitlesArray[i]
+            
+            // Get workout data with the current session.  Sort by INDEX.
+            let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
+            let sortIndex = NSSortDescriptor( key: "index", ascending: true)
+            let sortDate = NSSortDescriptor( key: "date", ascending: true)
+            request.sortDescriptors = [sortIndex, sortDate]
+            
+            let filter = NSPredicate(format: "session == %@ AND workout == %@",
+                                     currentSessionString,
+                                     allWorkoutTitlesArray[i])
+            
+            request.predicate = filter
+            
+            do {
+                if let workoutObjects1 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
+                    
+                    // print("workoutObjects1.count = \(workoutObjects1.count)")
+                    
+                    var maxIndex = 0
+                    
+                    if workoutObjects1.count != 0 {
+                        
+                        maxIndex = Int((workoutObjects1.last?.index)!)
+                        
+                        var localSession = ""
+                        var localWeek = ""
+                        var localWorkout = ""
+                        var localDate = Date()
+                        var dateString = ""
+                        
+                        var tempExerciseName = ""
+                        var tempWeightData = ""
+                        var tempRepData = ""
+                        var tempNotesData = ""
+                        var roundConvertedToString = ""
+                        
+                        // Get the values for each index that was found for this workout.
+                        // Workout indexes start at 1.  Cannot have a 0 index.
+                        for index in 1...maxIndex {
+                            
+                            let convertedIndex = NSNumber(value: index as Int)
+                            
+                            // Get workout data with workout index
+                            let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
+                            
+                            var filter = NSPredicate(format: "session == %@ AND workout == %@ AND index == %@",
+                                                     currentSessionString,
+                                                     allWorkoutTitlesArray[i],
+                                                     convertedIndex)
+                            
+                            request.predicate = filter
+                            
+                            do {
+                                if let workoutObjects2 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
+                                    
+                                    //print("workoutObjects.count = \(workoutObjects.count)")
+                                    
+                                    // Check if there are any matches for the given index.  If none skip the index.
+                                    if workoutObjects2.count == 0 {
+                                        
+                                        // No Matches for this workout with index
+                                    }
+                                    else {
+                                        
+                                        // Matches found
+                                        
+                                        // Add column headers
+                                        for a in 0..<1 {
+                                            
+                                            //  Add the column headers for Month, Week, Workout, and Date to the string
+                                            writeString.append("Session,Week,Try,Workout,Date\n")
+                                            
+                                            localSession = workoutObjects2[a].session!
+                                            localWeek = workoutObjects2[a].week!
+                                            localWorkout = workoutObjects2[a].workout!
+                                            localDate = workoutObjects2[a].date! as Date
+                                            
+                                            dateString = DateFormatter.localizedString(from: localDate, dateStyle: .short, timeStyle: .none)
+                                            
+                                            // Add column headers for indivialual workouts based on workout index number
+                                            writeString.append("\(localSession),\(localWeek),\(index),\(self.trimStringForWorkoutName(localWorkout)),\(dateString)\n")
+                                        }
+                                        
+                                        let workoutIndex = NSNumber(value: index as Int)
+                                        
+                                        //  Add the exercise name, reps and weight
+                                        for b in 0..<tempExerciseTitlesArray.count {
+                                            
+                                            tempExerciseName = tempExerciseTitlesArray[b]
+                                            
+                                            //  Add the exercise title to the string
+                                            writeString.append(",\n\(tempExerciseName)\n, Round 1, Round 2, ,Notes\n")
+                                            
+                                            // Add the "Reps" to the row
+                                            writeString.append("Reps,")
+                                            
+                                            //  Add the reps and notes to the string
+                                            for round in 0..<2 {
+                                                
+                                                roundConvertedToString = self.renameRoundIntToString(round)
+                                                tempRepData = ""
+                                                tempNotesData = ""
+                                                
+                                                filter = NSPredicate(format: "session == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
+                                                                     currentSessionString,
+                                                                     localWorkout,
+                                                                     tempExerciseName,
+                                                                     roundConvertedToString,
+                                                                     workoutIndex)
+                                                
+                                                request.predicate = filter
+                                                
+                                                do {
+                                                    if let workoutObjects3 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
+                                                        
+                                                        //print("workoutObjects.count = \(workoutObjects.count)")
+                                                        
+                                                        if workoutObjects3.count >= 1 {
+                                                            
+                                                            // Match found
+                                                            
+                                                            // Reps is not nil
+                                                            if workoutObjects3.last?.reps != nil {
+                                                                
+                                                                tempRepData = (workoutObjects3.last?.reps)!
+                                                                
+                                                                if round == 1 {
+                                                                    
+                                                                    //  Inserts a """" into the string
+                                                                    writeString.append("\(tempRepData),,")
+                                                                }
+                                                                else {
+                                                                    
+                                                                    //  Inserts a "" into the string
+                                                                    writeString.append("\(tempRepData),")
+                                                                }
+                                                            }
+                                                            else {
+                                                                
+                                                                // There was a record found, but only had data for the weight or notes and not the reps.
+                                                                if round == 1 {
+                                                                    
+                                                                    //  Inserts a """" into the string
+                                                                    writeString.append("\(tempRepData),,")
+                                                                }
+                                                                else {
+                                                                    
+                                                                    //  Inserts a "" into the string
+                                                                    writeString.append("\(tempRepData),")
+                                                                }
+                                                            }
+                                                        }
+                                                        else {
+                                                            // No match found
+                                                            if round == 1 {
+                                                                
+                                                                //  Inserts a """" into the string
+                                                                writeString.append("\(tempRepData),,")
+                                                            }
+                                                            else {
+                                                                
+                                                                //  Inserts a "" into the string
+                                                                writeString.append("\(tempRepData),")
+                                                            }
+                                                        }
+                                                    }
+                                                } catch { print(" ERROR executing a fetch request: \( error)") }
+                                                
+                                                //  Notes
+                                                if round == 1 {
+                                                    
+                                                    filter = NSPredicate(format: "session == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
+                                                                         currentSessionString,
+                                                                         localWorkout,
+                                                                         tempExerciseName,
+                                                                         "Round 1",
+                                                                         workoutIndex)
+                                                    
+                                                    request.predicate = filter
+                                                    
+                                                    do {
+                                                        if let workoutObjectsNotes = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
+                                                            
+                                                            if workoutObjectsNotes.count >= 1 {
+                                                                
+                                                                //  Match found
+                                                                
+                                                                //  Weight is not nil
+                                                                if workoutObjectsNotes.last?.notes != nil {
+                                                                    
+                                                                    tempNotesData = (workoutObjectsNotes.last?.notes)!
+                                                                    
+                                                                    writeString.append("\(tempNotesData)\n")
+                                                                }
+                                                                else {
+                                                                    
+                                                                    writeString.append("\(tempNotesData)\n")
+                                                                }
+                                                            }
+                                                            else {
+                                                                
+                                                                //  No match found
+                                                                
+                                                                writeString.append("\(tempNotesData)\n")
+                                                            }
+                                                        }
+                                                    } catch { print(" ERROR executing a fetch request: \( error)") }
+                                                }
+                                            }
+                                            
+                                            // Add the "Weight" to the row
+                                            writeString.append("Weight,")
+                                            
+                                            //  Add the weight line from the database
+                                            for round in 0..<2 {
+                                                
+                                                roundConvertedToString = self.renameRoundIntToString(round)
+                                                tempWeightData = ""
+                                                
+                                                filter = NSPredicate(format: "session == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
+                                                                     currentSessionString,
+                                                                     localWorkout,
+                                                                     tempExerciseName,
+                                                                     roundConvertedToString,
+                                                                     workoutIndex)
+                                                
+                                                request.predicate = filter
+                                                
+                                                do {
+                                                    if let workoutObjects4 = try CoreDataHelper.shared().context.fetch(request) as? [Workout] {
+                                                        
+                                                        //print("workoutObjects.count = \(workoutObjects.count)")
+                                                        
+                                                        if workoutObjects4.count >= 1 {
+                                                            
+                                                            //  Match found
+                                                            
+                                                            //  Weight is not nil
+                                                            if workoutObjects4.last?.weight != nil {
+                                                                
+                                                                tempWeightData = (workoutObjects4.last?.weight)!
+                                                                
+                                                                if round == 1 {
+                                                                    
+                                                                    writeString.append("\(tempWeightData)\n")
+                                                                }
+                                                                else {
+                                                                    
+                                                                    writeString.append("\(tempWeightData),")
+                                                                }
+                                                            }
+                                                            else {
+                                                                
+                                                                //  There was a record found, but only had data for the reps or notes and not the weight.
+                                                                if round == 1 {
+                                                                    
+                                                                    writeString.append("\(tempWeightData)\n")
+                                                                }
+                                                                else {
+                                                                    
+                                                                    writeString.append("\(tempWeightData),")
+                                                                }
+                                                            }
+                                                        }
+                                                        else {
+                                                            
+                                                            //  No Weight
+                                                            //  Inserts a "" into the string
+                                                            if round == 1 {
+                                                                
+                                                                writeString.append("\(tempWeightData)\n")
+                                                            }
+                                                            else {
+                                                                
+                                                                writeString.append("\(tempWeightData),")
+                                                            }
+                                                        }
+                                                    }
+                                                } catch { print(" ERROR executing a fetch request: \( error)") }
+                                            }
+                                        }
+                                    }
+                                    
+                                    //  Ends the workout with a return mark \n before starting the next workout
+                                    writeString.append(",\n")
+                                    
+                                }
+                            } catch { print(" ERROR executing a fetch request: \( error)") }
+                        }
+                    }
+                }
+            } catch { print(" ERROR executing a fetch request: \( error)") }
+        }
+        
+        //  Return the string
+        return writeString as String
+    }
+    
     class func singleWorkoutStringForEmail(_ workoutName: String, index: Int) -> String {
         
         let writeString = NSMutableString()
@@ -3058,9 +2256,6 @@ class CDOperation {
         
         // Get the current session value stored in the database
         let currentSessionString = self.getCurrentSession()
-        
-        // Get the current routine value stored in the database
-        let currentRoutineString = self.getCurrentRoutine()
 
         // Convert the index Int into an NSNumber
         let convertedIndex = NSNumber(value: index as Int)
@@ -3068,9 +2263,8 @@ class CDOperation {
         // Get workout data with workout index
         let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Workout")
         
-        var filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND index == %@",
+        var filter = NSPredicate(format: "session == %@ AND workout == %@ AND index == %@",
                                  currentSessionString,
-                                 currentRoutineString,
                                  workoutName,
                                  convertedIndex)
         
@@ -3093,11 +2287,10 @@ class CDOperation {
                     // Add column headers
                     for a in 0..<1 {
                         
-                        //  Add the column headers for Routine, Month, Week, Workout, and Date to the string
-                        writeString.append("Session,Routine,Week,Try,Workout,Date\n")
+                        //  Add the column headers for Month, Week, Workout, and Date to the string
+                        writeString.append("Session,Week,Try,Workout,Date\n")
                         
                         let localSession = workoutObjects2[a].session!
-                        let localRoutine = workoutObjects2[a].routine!
                         let localWeek = workoutObjects2[a].week!
                         let localWorkout = self.trimStringForWorkoutName(workoutObjects2[a].workout!) 
                         let localDate = workoutObjects2[a].date!
@@ -3105,7 +2298,7 @@ class CDOperation {
                         let dateString = DateFormatter.localizedString(from: localDate as Date, dateStyle: .short, timeStyle: .none)
                         
                         // Add column headers for indivialual workouts based on workout index number
-                        writeString.append("\(localSession),\(localRoutine),\(localWeek),\(index),\(localWorkout),\(dateString)\n")
+                        writeString.append("\(localSession),\(localWeek),\(index),\(localWorkout),\(dateString)\n")
                     }
                     
                     //  Add the exercise name, reps and weight
@@ -3126,9 +2319,8 @@ class CDOperation {
                             var tempRepData = ""
                             var tempNotesData = ""
                             
-                            filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
+                            filter = NSPredicate(format: "session == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
                                                  currentSessionString,
-                                                 currentRoutineString,
                                                  workoutName,
                                                  tempExerciseName,
                                                  roundConvertedToString,
@@ -3195,9 +2387,8 @@ class CDOperation {
                             //  Notes
                             if round == 1 {
                                 
-                                filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
+                                filter = NSPredicate(format: "session == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
                                                      currentSessionString,
-                                                     currentRoutineString,
                                                      workoutName,
                                                      tempExerciseName,
                                                      "Round 1",
@@ -3244,9 +2435,8 @@ class CDOperation {
                             let roundConvertedToString = self.renameRoundIntToString(round)
                             var tempWeightData = ""
                             
-                            filter = NSPredicate(format: "session == %@ AND routine == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
+                            filter = NSPredicate(format: "session == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
                                                  currentSessionString,
-                                                 currentRoutineString,
                                                  workoutName,
                                                  tempExerciseName,
                                                  roundConvertedToString,

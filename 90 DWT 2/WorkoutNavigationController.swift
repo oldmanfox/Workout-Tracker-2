@@ -14,18 +14,9 @@ class WorkoutNavigationController: UINavigationController {
         
         let parentTBC = self.tabBarController as! MainTBC
         
-        if parentTBC.routineChangedForWorkoutNC || parentTBC.sessionChangedForWorkoutNC {
+        if  parentTBC.sessionChangedForWorkoutNC {
             
-            if parentTBC.routineChangedForWorkoutNC {
-                
-                parentTBC.routineChangedForWorkoutNC = false
-            }
-            
-            if parentTBC.sessionChangedForWorkoutNC {
-                
-                parentTBC.sessionChangedForWorkoutNC = false
-            }
-            
+            parentTBC.sessionChangedForWorkoutNC = false
             self.popToRootViewController(animated: true)
         }
     }

@@ -16,7 +16,6 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
 
     var sectionsArray = [[], []]
     var weekOfMonthColorList =  [[], []]
-    var lightWorkoutList = [[], []]
     
     var session = ""
     var longPGR = UILongPressGestureRecognizer()
@@ -57,7 +56,9 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         
         super.viewDidLoad()
         
-        if Products.store.isProductPurchased("com.grantsoftware.90DWT1.removeads1") {
+        self.navigationItem.title = "Current Progress"
+        
+        if Products.store.isProductPurchased("com.grantsoftware.90DWT2.removeads1") {
             
             // User purchased the Remove Ads in-app purchase so don't show any ads.
         }
@@ -70,17 +71,16 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 
                 // iPhone
                 // Month Ad Unit
-                self.adView = MPAdView(adUnitId: "4bed96fcb70a4371b972bf19d149e433", size: MOPUB_BANNER_SIZE)
+                self.adView = MPAdView(adUnitId: "6232cd4a1e374ecebed0f15440ba2a65", size: MOPUB_BANNER_SIZE)
                 self.bannerSize = MOPUB_BANNER_SIZE
             }
             else {
                 
                 // iPad
                 // Month Ad Unit
-                self.adView = MPAdView(adUnitId: "7c80f30698634a22b77778b084e3087e", size: MOPUB_LEADERBOARD_SIZE)
+                self.adView = MPAdView(adUnitId: "05f5a06e1c8e4560ba24068341868285", size: MOPUB_LEADERBOARD_SIZE)
                 self.bannerSize = MOPUB_LEADERBOARD_SIZE
             }
-            
             
             self.adView.delegate = self
             self.adView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
@@ -106,13 +106,10 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         // Get the current session
         session = CDOperation.getCurrentSession()
         
-        // Get the current routine
-        navigationItem.title = CDOperation.getCurrentRoutine()
-        
         loadArraysForCell()
         
         // Show or Hide Ads
-        if Products.store.isProductPurchased("com.grantsoftware.90DWT1.removeads1") {
+        if Products.store.isProductPurchased("com.grantsoftware.90DWT2.removeads1") {
             
             // Don't show ads.
             self.tableView.tableHeaderView = nil
@@ -142,16 +139,13 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         // Get the current session
         session = CDOperation.getCurrentSession()
         
-        // Get the current routine
-        navigationItem.title = CDOperation.getCurrentRoutine()
-        
         loadArraysForCell()
         
         // Force fetch when notified of significant data changes
         NotificationCenter.default.addObserver(self, selector: #selector(self.doNothing), name: NSNotification.Name(rawValue: "SomethingChanged"), object: nil)
         
         // Show or Hide Ads
-        if Products.store.isProductPurchased("com.grantsoftware.90DWT1.removeads1") {
+        if Products.store.isProductPurchased("com.grantsoftware.90DWT2.removeads1") {
             
             // Don't show ads.
             self.tableView.tableHeaderView = nil
@@ -223,25 +217,8 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
             
         default:
             // Section 3
-            if CDOperation.getCurrentRoutine() == "Normal" {
-                
-                //  Normal 9-13
-                weekNum = indexPath.row + 9
-            }
-            else {
-                
-                // Tone 9-13
-                weekNum = indexPath.row + 9
-            }
-        }
-        
-        if lightWorkoutList[indexPath.section][indexPath.row] as! Bool == false {
-            
-            // Don't show the "Light" label
-            cell.detailLabel.isHidden = true
-        }
-        else {
-            cell.detailLabel.isHidden = false
+            // Normal 9-13
+            weekNum = indexPath.row + 9
         }
 
         switch weekOfMonthColorList[indexPath.section][indexPath.row] as! String {
@@ -328,7 +305,6 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
             let selectedRow = tableView.indexPathForSelectedRow
             
             destinationVC?.session = session
-            destinationVC?.workoutRoutine = navigationItem.title!
             destinationVC?.workoutWeek = (sectionsArray[(selectedRow?.section)!][(selectedRow?.row)!] as? String)!
             
             switch (selectedRow?.section)! as Int {
@@ -350,39 +326,14 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
     
     func loadArraysForCell() {
         
-        switch navigationItem.title! {
-        case "Normal":
-            sectionsArray = [[Week.week1, Week.week2, Week.week3, Week.week4],
-                             [Week.week5, Week.week6, Week.week7, Week.week8],
-                             [Week.week9, Week.week10, Week.week11, Week.week12, Week.week13]]
-            
-            weekOfMonthColorList = [[Color.light, Color.light, Color.light, Color.red],
-                                    [Color.dark, Color.dark, Color.dark, Color.red],
-                                    [Color.light, Color.dark, Color.light, Color.dark, Color.red]]
-            
-        case "Tone":
-            sectionsArray = [[Week.week1, Week.week2, Week.week3, Week.week4],
-                             [Week.week5, Week.week6, Week.week7, Week.week8],
-                             [Week.week9, Week.week10, Week.week11, Week.week12, Week.week13]]
-            
-            weekOfMonthColorList = [[Color.light, Color.light, Color.light, Color.red],
-                                    [Color.dark, Color.dark, Color.dark, Color.red],
-                                    [Color.purple, Color.tan, Color.purple, Color.tan, Color.red]]
-            
-        case "2-A-Days":
-            sectionsArray = [[Week.week1, Week.week2, Week.week3, Week.week4],
-                             [Week.week5, Week.week6, Week.week7, Week.week8],
-                             [Week.week9, Week.week10, Week.week11, Week.week12, Week.week13]]
-            
-            weekOfMonthColorList = [[Color.light, Color.light, Color.light, Color.red],
-                                    [Color.dark, Color.dark, Color.dark, Color.red],
-                                    [Color.purple, Color.tan, Color.purple, Color.tan, Color.red]]
-            
-        default:
-            sectionsArray = [[], []]
-        }
+        sectionsArray = [[Week.week1, Week.week2, Week.week3, Week.week4],
+                         [Week.week5, Week.week6, Week.week7, Week.week8],
+                         [Week.week9, Week.week10, Week.week11, Week.week12, Week.week13]]
         
-        lightWorkoutList = [[false, false, false, true], [false, false, false, true], [false, false, false, false, true]]
+        weekOfMonthColorList = [[Color.light, Color.light, Color.light, Color.red],
+                                [Color.dark, Color.dark, Color.dark, Color.red],
+                                [Color.light, Color.dark, Color.light, Color.dark, Color.red]]
+        
     }
     
     func longPressGRAction(_ sender: UILongPressGestureRecognizer) {
@@ -403,7 +354,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                     
                     let titleText = cell.titleLabel.text
                     
-                    let tempMessage = ("Set the status for all \(CDOperation.getCurrentRoutine())-\(titleText!) workouts.")
+                    let tempMessage = ("Set the status for all \(titleText!) workouts.")
                     
                     let alertController = UIAlertController(title: "Workout Status", message: tempMessage, preferredStyle: .actionSheet)
                     
@@ -444,7 +395,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
     
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
         
-        let tempMessage = "Set the status for every week of \(CDOperation.getCurrentRoutine()) workouts."
+        let tempMessage = "Set the status for every week of workouts."
         
         let alertController = UIAlertController(title: "Workout Status", message: tempMessage, preferredStyle: .actionSheet)
         
@@ -486,58 +437,26 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         case "Not Completed":
             
             // ***DELETE***
+            // Normal
+            let nameArray = CDOperation.loadWorkoutNameArray()[self.position]
+            let indexArray = CDOperation.loadWorkoutIndexArray()[self.position]
             
-            switch CDOperation.getCurrentRoutine() {
-            case "Normal":
+            for i in 0..<nameArray.count {
                 
-                // Normal
-                let nameArray = CDOperation.loadWorkoutNameArray()[self.position]
-                let indexArray = CDOperation.loadWorkoutIndexArray()[self.position]
-                
-                for i in 0..<nameArray.count {
-                    
-                    CDOperation.deleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[i] as NSString, index: indexArray[1] as NSNumber)
-                }
-
-            default:
-                
-                // Tone
-                let nameArray = CDOperation.loadWorkoutNameArray()[self.position]
-                let indexArray = CDOperation.loadWorkoutIndexArray()[self.position]
-                
-                for i in 0..<nameArray.count {
-                    
-                    CDOperation.deleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[i] as NSString, index: indexArray[1] as NSNumber)
-                }
+                CDOperation.deleteDate(CDOperation.getCurrentSession() as NSString, workout: nameArray[i] as NSString, index: indexArray[1] as NSNumber)
             }
-            
+
         default:
             
             // "Completed"
             // ***ADD***
+            // Normal
+            let nameArray = CDOperation.loadWorkoutNameArray()[self.position]
+            let indexArray = CDOperation.loadWorkoutIndexArray()[self.position]
             
-            switch CDOperation.getCurrentRoutine() {
-            case "Normal":
+            for i in 0..<nameArray.count {
                 
-                // Normal
-                let nameArray = CDOperation.loadWorkoutNameArray()[self.position]
-                let indexArray = CDOperation.loadWorkoutIndexArray()[self.position]
-                
-                for i in 0..<nameArray.count {
-                    
-                    CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[i] as NSString, index: indexArray[i] as NSNumber, useDate: Date())
-                }
-                
-            default:
-                
-                // Tone
-                let nameArray = CDOperation.loadWorkoutNameArray()[self.position]
-                let indexArray = CDOperation.loadWorkoutIndexArray()[self.position]
-                
-                for i in 0..<nameArray.count {
-                    
-                    CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[i] as NSString, index: indexArray[i] as NSNumber, useDate: Date())
-                }
+                CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession() as NSString, workout: nameArray[i] as NSString, index: indexArray[i] as NSNumber, useDate: Date())
             }
         }
     }
@@ -548,69 +467,31 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         case "Not Completed":
             
             // ***DELETE***
-            
-            switch CDOperation.getCurrentRoutine() {
-            case "Normal":
+            // Normal
+            for i in 0..<CDOperation.loadWorkoutNameArray().count {
                 
-                // Normal
-                for i in 0..<CDOperation.loadWorkoutNameArray().count {
-                    
-                    let nameArray = CDOperation.loadWorkoutNameArray()[i]
-                    let indexArray = CDOperation.loadWorkoutIndexArray()[i]
-                    
-                    for j in 0..<nameArray.count {
-                        
-                        CDOperation.deleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[j] as NSString, index: indexArray[j] as NSNumber)
-                    }
-                }
+                let nameArray = CDOperation.loadWorkoutNameArray()[i]
+                let indexArray = CDOperation.loadWorkoutIndexArray()[i]
                 
-            default:
-                
-                // Tone
-                for i in 0..<CDOperation.loadWorkoutNameArray().count {
+                for j in 0..<nameArray.count {
                     
-                    let nameArray = CDOperation.loadWorkoutNameArray()[i]
-                    let indexArray = CDOperation.loadWorkoutIndexArray()[i]
-                    
-                    for j in 0..<nameArray.count {
-                        
-                        CDOperation.deleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[j] as NSString, index: indexArray[j] as NSNumber)
-                    }
+                    CDOperation.deleteDate(CDOperation.getCurrentSession() as NSString, workout: nameArray[j] as NSString, index: indexArray[j] as NSNumber)
                 }
             }
-            
+
         default:
             
             // "Completed"
             // ***ADD***
-            
-            switch CDOperation.getCurrentRoutine() {
-            case "Normal":
+            // Normal
+            for i in 0..<CDOperation.loadWorkoutNameArray().count {
                 
-                // Normal
-                for i in 0..<CDOperation.loadWorkoutNameArray().count {
-                    
-                    let nameArray = CDOperation.loadWorkoutNameArray()[i]
-                    let indexArray = CDOperation.loadWorkoutIndexArray()[i]
-                    
-                    for j in 0..<nameArray.count {
-                        
-                        CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[j] as NSString, index: indexArray[j] as NSNumber, useDate: Date())
-                    }
-                }
-
-            default:
+                let nameArray = CDOperation.loadWorkoutNameArray()[i]
+                let indexArray = CDOperation.loadWorkoutIndexArray()[i]
                 
-                // Tone
-                for i in 0..<CDOperation.loadWorkoutNameArray().count {
+                for j in 0..<nameArray.count {
                     
-                    let nameArray = CDOperation.loadWorkoutNameArray()[i]
-                    let indexArray = CDOperation.loadWorkoutIndexArray()[i]
-                    
-                    for j in 0..<nameArray.count {
-                        
-                        CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: nameArray[j] as NSString, index: indexArray[j] as NSNumber, useDate: Date())
-                    }
+                    CDOperation.saveWorkoutCompleteDate(CDOperation.getCurrentSession() as NSString, workout: nameArray[j] as NSString, index: indexArray[j] as NSNumber, useDate: Date())
                 }
             }
         }
@@ -625,7 +506,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         
         let titleText = cell.titleLabel.text
         
-        let tempMessage = ("You are about to set the status for all \(CDOperation.getCurrentRoutine())-\(titleText!) workouts to:\n\n\(self.request)\n\nDo you want to proceed?")
+        let tempMessage = ("You are about to set the status for all \(titleText!) workouts to:\n\n\(self.request)\n\nDo you want to proceed?")
         
         let alertController = UIAlertController(title: "Warning", message: tempMessage, preferredStyle: .alert)
         
@@ -646,7 +527,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
     
     func verifyAddDeleteRequestFromBarButtonItem() {
         
-        let tempMessage = ("You are about to set the status for every week of the \(CDOperation.getCurrentRoutine()) workout to:\n\n\(self.request)\n\nDo you want to proceed?")
+        let tempMessage = ("You are about to set the status for every week to:\n\n\(self.request)\n\nDo you want to proceed?")
         
         let alertController = UIAlertController(title: "Warning", message: tempMessage, preferredStyle: .alert)
         
@@ -692,23 +573,13 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         var tempWorkoutIndexArray = [Int]()
         var resultsArray = [String]()
         
-        switch CDOperation.getCurrentRoutine() {
-        case "Normal":
-            
-            // Get Build Workout Arrays
-            tempWorkoutNameArray = CDOperation.loadWorkoutNameArray()[week - 1]
-            tempWorkoutIndexArray = CDOperation.loadWorkoutIndexArray()[week - 1]
-            
-        default:
-            
-            // Get Tone Workout Arrays
-            tempWorkoutNameArray = CDOperation.loadWorkoutNameArray()[week - 1]
-            tempWorkoutIndexArray = CDOperation.loadWorkoutIndexArray()[week - 1]
-        }
+        // Get Workout Arrays
+        tempWorkoutNameArray = CDOperation.loadWorkoutNameArray()[week - 1]
+        tempWorkoutIndexArray = CDOperation.loadWorkoutIndexArray()[week - 1]
         
         for i in 0..<tempWorkoutIndexArray.count {
             
-            let workoutCompletedObjects = CDOperation.getWorkoutCompletedObjects(CDOperation.getCurrentSession() as NSString, routine: CDOperation.getCurrentRoutine() as NSString, workout: tempWorkoutNameArray[i] as NSString, index: tempWorkoutIndexArray[i] as NSNumber)
+            let workoutCompletedObjects = CDOperation.getWorkoutCompletedObjects(CDOperation.getCurrentSession() as NSString, workout: tempWorkoutNameArray[i] as NSString, index: tempWorkoutIndexArray[i] as NSNumber)
             
             if workoutCompletedObjects.count != 0 {
                 
@@ -726,1352 +597,452 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         var completed = false
         
         // Complete when the week ones are finished
-        switch CDOperation.getCurrentRoutine() {
-        case "Normal":
+        // ***Normal***
+        switch week {
+        case 1:
             
-            // ***Normal***
-            switch week {
-            case 1:
+            var group1 = "NO"
+            
+            for i in 0..<resultsArray.count {
                 
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
+                if i == 9 || i == 10 {
                     
-                    if i == 9 || i == 10 {
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
                         
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
+                        group1 = "YES"
                     }
                 }
-                
-                if workoutsCompleted == 9 && group1 == "YES" {
                     
-                    completed = true
-                }
                 else {
                     
-                    completed = false
-                }
-                
-            case 2:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 9 || i == 10 {
+                    // User needs to do all these workouts
+                    if resultsArray[i] == "YES" {
                         
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
+                        workoutsCompleted += 1
                     }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 9 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 3:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 9 || i == 10 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 9 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 4:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 6 || i == 7 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 6 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 5:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 9 || i == 10 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 9 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 6:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 9 || i == 10 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 9 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 7:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 9 || i == 10 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 9 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 8:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 6 || i == 7 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 6 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 9:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 9 || i == 10 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 9 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 10:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 9 || i == 10 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 9 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-
-            case 11:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 9 || i == 10 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 9 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 12:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 9 || i == 10 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 9 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-
-            default:
-                
-                // Case 13
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 6 || i == 7 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 6 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
                 }
             }
-          
-        case "Tone":
             
-            // ***TONE***
-            switch week {
-            case 1:
+            if workoutsCompleted == 9 && group1 == "YES" {
                 
-                var group1 = "NO"
+                completed = true
+            }
+            else {
                 
-                for i in 0..<resultsArray.count {
+                completed = false
+            }
+            
+        case 2:
+            
+            var group1 = "NO"
+            
+            for i in 0..<resultsArray.count {
+                
+                if i == 9 || i == 10 {
                     
-                    if i == 8 || i == 9 {
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
                         
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
+                        group1 = "YES"
                     }
                 }
-                
-                if workoutsCompleted == 8 && group1 == "YES" {
                     
-                    completed = true
-                }
                 else {
                     
-                    completed = false
-                }
-                
-            case 2:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 8 || i == 9 {
+                    // User needs to do all these workouts
+                    if resultsArray[i] == "YES" {
                         
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
+                        workoutsCompleted += 1
                     }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 8 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 3:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 8 || i == 9 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 8 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 4:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 6 || i == 7 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 6 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 5:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 8 || i == 9 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 8 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 6:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 8 || i == 9 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 8 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-
-            case 7:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 8 || i == 9 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 8 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 8:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 6 || i == 7 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 6 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 9:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 8 || i == 9 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 8 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 10:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 8 || i == 9 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 8 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 11:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 8 || i == 9 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 8 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 12:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 8 || i == 9 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 8 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-
-            default:
-                
-                // Case 13
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 6 || i == 7 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 6 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
                 }
             }
-
+            
+            if workoutsCompleted == 9 && group1 == "YES" {
+                
+                completed = true
+            }
+            else {
+                
+                completed = false
+            }
+            
+        case 3:
+            
+            var group1 = "NO"
+            
+            for i in 0..<resultsArray.count {
+                
+                if i == 9 || i == 10 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group1 = "YES"
+                    }
+                }
+                    
+                else {
+                    
+                    // User needs to do all these workouts
+                    if resultsArray[i] == "YES" {
+                        
+                        workoutsCompleted += 1
+                    }
+                }
+            }
+            
+            if workoutsCompleted == 9 && group1 == "YES" {
+                
+                completed = true
+            }
+            else {
+                
+                completed = false
+            }
+            
+        case 4:
+            
+            var group1 = "NO"
+            
+            for i in 0..<resultsArray.count {
+                
+                if i == 6 || i == 7 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group1 = "YES"
+                    }
+                }
+                    
+                else {
+                    
+                    // User needs to do all these workouts
+                    if resultsArray[i] == "YES" {
+                        
+                        workoutsCompleted += 1
+                    }
+                }
+            }
+            
+            if workoutsCompleted == 6 && group1 == "YES" {
+                
+                completed = true
+            }
+            else {
+                
+                completed = false
+            }
+            
+        case 5:
+            
+            var group1 = "NO"
+            
+            for i in 0..<resultsArray.count {
+                
+                if i == 9 || i == 10 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group1 = "YES"
+                    }
+                }
+                    
+                else {
+                    
+                    // User needs to do all these workouts
+                    if resultsArray[i] == "YES" {
+                        
+                        workoutsCompleted += 1
+                    }
+                }
+            }
+            
+            if workoutsCompleted == 9 && group1 == "YES" {
+                
+                completed = true
+            }
+            else {
+                
+                completed = false
+            }
+            
+        case 6:
+            
+            var group1 = "NO"
+            
+            for i in 0..<resultsArray.count {
+                
+                if i == 9 || i == 10 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group1 = "YES"
+                    }
+                }
+                    
+                else {
+                    
+                    // User needs to do all these workouts
+                    if resultsArray[i] == "YES" {
+                        
+                        workoutsCompleted += 1
+                    }
+                }
+            }
+            
+            if workoutsCompleted == 9 && group1 == "YES" {
+                
+                completed = true
+            }
+            else {
+                
+                completed = false
+            }
+            
+        case 7:
+            
+            var group1 = "NO"
+            
+            for i in 0..<resultsArray.count {
+                
+                if i == 9 || i == 10 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group1 = "YES"
+                    }
+                }
+                    
+                else {
+                    
+                    // User needs to do all these workouts
+                    if resultsArray[i] == "YES" {
+                        
+                        workoutsCompleted += 1
+                    }
+                }
+            }
+            
+            if workoutsCompleted == 9 && group1 == "YES" {
+                
+                completed = true
+            }
+            else {
+                
+                completed = false
+            }
+            
+        case 8:
+            
+            var group1 = "NO"
+            
+            for i in 0..<resultsArray.count {
+                
+                if i == 6 || i == 7 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group1 = "YES"
+                    }
+                }
+                    
+                else {
+                    
+                    // User needs to do all these workouts
+                    if resultsArray[i] == "YES" {
+                        
+                        workoutsCompleted += 1
+                    }
+                }
+            }
+            
+            if workoutsCompleted == 6 && group1 == "YES" {
+                
+                completed = true
+            }
+            else {
+                
+                completed = false
+            }
+            
+        case 9:
+            
+            var group1 = "NO"
+            
+            for i in 0..<resultsArray.count {
+                
+                if i == 9 || i == 10 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group1 = "YES"
+                    }
+                }
+                    
+                else {
+                    
+                    // User needs to do all these workouts
+                    if resultsArray[i] == "YES" {
+                        
+                        workoutsCompleted += 1
+                    }
+                }
+            }
+            
+            if workoutsCompleted == 9 && group1 == "YES" {
+                
+                completed = true
+            }
+            else {
+                
+                completed = false
+            }
+            
+        case 10:
+            
+            var group1 = "NO"
+            
+            for i in 0..<resultsArray.count {
+                
+                if i == 9 || i == 10 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group1 = "YES"
+                    }
+                }
+                    
+                else {
+                    
+                    // User needs to do all these workouts
+                    if resultsArray[i] == "YES" {
+                        
+                        workoutsCompleted += 1
+                    }
+                }
+            }
+            
+            if workoutsCompleted == 9 && group1 == "YES" {
+                
+                completed = true
+            }
+            else {
+                
+                completed = false
+            }
+            
+        case 11:
+            
+            var group1 = "NO"
+            
+            for i in 0..<resultsArray.count {
+                
+                if i == 9 || i == 10 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group1 = "YES"
+                    }
+                }
+                    
+                else {
+                    
+                    // User needs to do all these workouts
+                    if resultsArray[i] == "YES" {
+                        
+                        workoutsCompleted += 1
+                    }
+                }
+            }
+            
+            if workoutsCompleted == 9 && group1 == "YES" {
+                
+                completed = true
+            }
+            else {
+                
+                completed = false
+            }
+            
+        case 12:
+            
+            var group1 = "NO"
+            
+            for i in 0..<resultsArray.count {
+                
+                if i == 9 || i == 10 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group1 = "YES"
+                    }
+                }
+                    
+                else {
+                    
+                    // User needs to do all these workouts
+                    if resultsArray[i] == "YES" {
+                        
+                        workoutsCompleted += 1
+                    }
+                }
+            }
+            
+            if workoutsCompleted == 9 && group1 == "YES" {
+                
+                completed = true
+            }
+            else {
+                
+                completed = false
+            }
+            
         default:
             
-            // ***2-A-Days***
-            switch week {
-            case 1:
+            // Case 13
+            var group1 = "NO"
+            
+            for i in 0..<resultsArray.count {
                 
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
+                if i == 6 || i == 7 {
                     
-                    if i == 9 || i == 10 {
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
                         
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
+                        group1 = "YES"
                     }
                 }
-                
-                if workoutsCompleted == 9 && group1 == "YES" {
                     
-                    completed = true
-                }
                 else {
                     
-                    completed = false
-                }
-                
-            case 2:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 9 || i == 10 {
+                    // User needs to do all these workouts
+                    if resultsArray[i] == "YES" {
                         
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
+                        workoutsCompleted += 1
                     }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 9 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 3:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 9 || i == 10 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 9 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 4:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 6 || i == 7 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 6 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-
-            case 5:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 12 || i == 13 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 12 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 6:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 12 || i == 13 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 12 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 7:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 12 || i == 13 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 12 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 8:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 6 || i == 7 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 6 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 9:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 13 || i == 14 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 13 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 10:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 13 || i == 14 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 13 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 11:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 13 || i == 14 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 13 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            case 12:
-                
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 13 || i == 14 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 13 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
-                }
-                
-            default:
-                
-                // Case 13
-                var group1 = "NO"
-                
-                for i in 0..<resultsArray.count {
-                    
-                    if i == 6 || i == 7 {
-                        
-                        // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
-                        if resultsArray[i] == "YES" {
-                            
-                            group1 = "YES"
-                        }
-                    }
-                        
-                    else {
-                        
-                        // User needs to do all these workouts
-                        if resultsArray[i] == "YES" {
-                            
-                            workoutsCompleted += 1
-                        }
-                    }
-                }
-                
-                if workoutsCompleted == 6 && group1 == "YES" {
-                    
-                    completed = true
-                }
-                else {
-                    
-                    completed = false
                 }
             }
+            
+            if workoutsCompleted == 6 && group1 == "YES" {
+                
+                completed = true
+            }
+            else {
+                
+                completed = false
+            }
         }
-        
+
         return completed
     }
     

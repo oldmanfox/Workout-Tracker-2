@@ -17,7 +17,6 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
     // **********
     
     var session = ""
-    var workoutRoutine = ""
     var selectedWorkout = ""
     var workoutIndex = 0
     var originalNoteText = ""
@@ -65,15 +64,15 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         // Get data to display in the textfields
         // Current textfield
-        currentNotes.text = CDOperation.getNotesTextForRound(session, routine: workoutRoutine, workout: selectedWorkout, round: "Round 1", index: workoutIndex as NSNumber)
+        currentNotes.text = CDOperation.getNotesTextForRound(session, workout: selectedWorkout, round: "Round 1", index: workoutIndex as NSNumber)
         self.originalNoteText = currentNotes.text
         
         // Previous textfield
-        previousNotes.text = CDOperation.getNotesTextForRound(session, routine: workoutRoutine, workout: selectedWorkout, round: "Round 1", index: workoutIndex - 1  as NSNumber)
+        previousNotes.text = CDOperation.getNotesTextForRound(session, workout: selectedWorkout, round: "Round 1", index: workoutIndex - 1  as NSNumber)
         
         updateWorkoutCompleteCellUI()
         
-        if Products.store.isProductPurchased("com.grantsoftware.90DWT1.removeads1") {
+        if Products.store.isProductPurchased("com.grantsoftware.90DWT2.removeads1") {
             
             // User purchased the Remove Ads in-app purchase so don't show any ads.
         }
@@ -83,14 +82,14 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
                 
                 // iPhone
                 // Month Ad Unit
-                self.adView = MPAdView(adUnitId: "4bed96fcb70a4371b972bf19d149e433", size: MOPUB_BANNER_SIZE)
+                self.adView = MPAdView(adUnitId: "6232cd4a1e374ecebed0f15440ba2a65", size: MOPUB_BANNER_SIZE)
                 self.bannerSize = MOPUB_BANNER_SIZE
             }
             else {
                 
                 // iPad
                 // Month Ad Unit
-                self.adView = MPAdView(adUnitId: "7c80f30698634a22b77778b084e3087e", size: MOPUB_LEADERBOARD_SIZE)
+                self.adView = MPAdView(adUnitId: "05f5a06e1c8e4560ba24068341868285", size: MOPUB_LEADERBOARD_SIZE)
                 self.bannerSize = MOPUB_LEADERBOARD_SIZE
             }
             
@@ -108,7 +107,7 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         super.viewWillAppear(animated)
         
         // Show or Hide Ads
-        if Products.store.isProductPurchased("com.grantsoftware.90DWT1.removeads1") {
+        if Products.store.isProductPurchased("com.grantsoftware.90DWT2.removeads1") {
             
             // Don't show ads.
             self.adView.delegate = nil
@@ -131,7 +130,7 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         NotificationCenter.default.addObserver(self, selector: #selector(self.doNothing), name: NSNotification.Name(rawValue: "SomethingChanged"), object: nil)
         
         // Show or Hide Ads
-        if Products.store.isProductPurchased("com.grantsoftware.90DWT1.removeads1") {
+        if Products.store.isProductPurchased("com.grantsoftware.90DWT2.removeads1") {
             
             // Don't show ads.
             self.adView.delegate = nil
@@ -170,11 +169,11 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         // Get data to display in the textfields
         // Current textfield
-        currentNotes.text = CDOperation.getNotesTextForRound(session, routine: workoutRoutine, workout: selectedWorkout, round: "Round 1", index: workoutIndex as NSNumber)
+        currentNotes.text = CDOperation.getNotesTextForRound(session, workout: selectedWorkout, round: "Round 1", index: workoutIndex as NSNumber)
         self.originalNoteText = currentNotes.text
         
         // Previous textfield
-        previousNotes.text = CDOperation.getNotesTextForRound(session, routine: workoutRoutine, workout: selectedWorkout, round: "Round 1", index: workoutIndex - 1 as NSNumber)
+        previousNotes.text = CDOperation.getNotesTextForRound(session, workout: selectedWorkout, round: "Round 1", index: workoutIndex - 1 as NSNumber)
         
         updateWorkoutCompleteCellUI()
     }
@@ -183,7 +182,7 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         if currentNotes.text != "" && currentNotes.text != originalNoteText {
             
-            CDOperation.saveNoteWithPredicateNoExercise(session, routine: workoutRoutine, workout: selectedWorkout, month: month, week: workoutWeek, index: workoutIndex as NSNumber, note: currentNotes.text, round: "Round 1")
+            CDOperation.saveNoteWithPredicateNoExercise(session, workout: selectedWorkout, month: month, week: workoutWeek, index: workoutIndex as NSNumber, note: currentNotes.text, round: "Round 1")
         }
     }
     
@@ -281,14 +280,14 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     @IBAction func deleteDateButtonPressed(_ sender: UIButton) {
         
-        CDOperation.deleteDate(session as NSString, routine: workoutRoutine as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber)
+        CDOperation.deleteDate(session as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber)
         
         updateWorkoutCompleteCellUI()
     }
     
     @IBAction func todayDateButtonPressed(_ sender: UIButton) {
         
-        CDOperation.saveWorkoutCompleteDate(session as NSString, routine: workoutRoutine as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber, useDate: Date())
+        CDOperation.saveWorkoutCompleteDate(session as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber, useDate: Date())
         
         updateWorkoutCompleteCellUI()
     }
@@ -303,7 +302,6 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         let popOverContent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DatePickerViewController") as! DatePickerViewController
         
         popOverContent.session = session
-        popOverContent.workoutRoutine = workoutRoutine
         popOverContent.selectedWorkout = selectedWorkout
         popOverContent.workoutIndex = workoutIndex
         
@@ -320,7 +318,7 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     func updateWorkoutCompleteCellUI () {
         
-        let workoutCompletedObjects = CDOperation.getWorkoutCompletedObjects(session as NSString, routine: workoutRoutine as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber)
+        let workoutCompletedObjects = CDOperation.getWorkoutCompletedObjects(session as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber)
         
         switch  workoutCompletedObjects.count {
         case 0:
@@ -369,27 +367,26 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         if MFMailComposeViewController.canSendMail() {
             
             // Get the objects for the current session
-            let workoutObjects = CDOperation.getNoteObjects(session as NSString, routine: workoutRoutine as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber)
+            let workoutObjects = CDOperation.getNoteObjects(session as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber)
             
             let writeString = NSMutableString()
             
             if workoutObjects.count != 0 {
                 
-                writeString.append("Session,Routine,Month,Week,Workout,Notes,Date\n")
+                writeString.append("Session,Month,Week,Workout,Notes,Date\n")
                 
                 for i in 0..<workoutObjects.count {
                     
                     let session = workoutObjects[i].session
-                    let routine = workoutObjects[i].routine;
-                    let month = workoutObjects[i].month;
-                    let week  = workoutObjects[i].week;
-                    let workout = workoutObjects[i].workout;
-                    let notes = workoutObjects[i].notes;
-                    let date = workoutObjects[i].date;
+                    let month = workoutObjects[i].month
+                    let week  = workoutObjects[i].week
+                    let workout = workoutObjects[i].workout
+                    let notes = workoutObjects[i].notes
+                    let date = workoutObjects[i].date
 
                     let dateString = DateFormatter.localizedString(from: date! as Date, dateStyle: .short, timeStyle: .none)
                     
-                    writeString.append("\(session!),\(routine!),\(month),\(week),\(workout!),\(notes!),\(dateString)\n")
+                    writeString.append("\(session!),\(month),\(week),\(workout!),\(notes!),\(dateString)\n")
                 }
             }
             

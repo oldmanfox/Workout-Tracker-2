@@ -11,7 +11,6 @@ import UIKit
 class WorkoutTVC_CompletionTableViewCell: UITableViewCell {
 
     var session = ""
-    var workoutRoutine = ""
     var selectedWorkout = ""
     var workoutIndex = 0
     var indexPath = IndexPath()
@@ -35,21 +34,21 @@ class WorkoutTVC_CompletionTableViewCell: UITableViewCell {
     
     @IBAction func workoutCompletedDelete(_ sender: UIButton) {
         
-        CDOperation.deleteDate(session as NSString, routine: workoutRoutine as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber)
+        CDOperation.deleteDate(session as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber)
         
         updateWorkoutCompleteCellUI()
     }
     
     @IBAction func workoutCompletedToday(_ sender: UIButton) {
         
-        CDOperation.saveWorkoutCompleteDate(session as NSString, routine: workoutRoutine as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber, useDate: Date())
+        CDOperation.saveWorkoutCompleteDate(session as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber, useDate: Date())
         
         updateWorkoutCompleteCellUI()
     }
     
     func updateWorkoutCompleteCellUI () {
         
-        let workoutCompletedObjects = CDOperation.getWorkoutCompletedObjects(session as NSString, routine: workoutRoutine as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber)
+        let workoutCompletedObjects = CDOperation.getWorkoutCompletedObjects(session as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber)
         
         switch  workoutCompletedObjects.count {
         case 0:

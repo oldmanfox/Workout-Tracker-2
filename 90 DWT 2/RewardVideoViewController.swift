@@ -24,22 +24,9 @@ class RewardVideoViewController: UIViewController {
         
         if shouldShowAd {
             
-//            MPRewardedVideo.presentAd(forAdUnitID: "1b90344b9bc749c4adc443909cbc09e4", from: self)
-//            shouldShowAd = false
-            
             // Fetch the rewarded video ad.
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
-                
-                // iPhone
-                // Rewarded Ad Unit
-                MPRewardedVideo.presentAd(forAdUnitID: "f41f0c37b0aa4e939b052e74322a8719", from: self)
-            }
-            else {
-                
-                // iPad
-                // Rewarded Ad Unit
-                MPRewardedVideo.presentAd(forAdUnitID: "895ad8786fb7436f86219a3bff896c1f", from: self)
-            }
+            // Rewarded Ad Unit
+            MPRewardedVideo.presentAd(forAdUnitID: "c9130834e2324aa281a4b59dbcc41301", from: self)
             
             shouldShowAd = false
         }

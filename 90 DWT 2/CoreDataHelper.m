@@ -30,7 +30,7 @@
 }
 
 #pragma mark - FILES
-NSString *storeFilename = @"_0_DWT_1.sqlite";
+NSString *storeFilename = @"_0_DWT_2.sqlite";
 NSString *sourceStoreFilename = @"DefaultData.sqlite";
 NSString *iCloudStoreFilename = @"iCloud.sqlite";
 
@@ -670,7 +670,7 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
         
         NSLog(@"*** STARTED DEEP COPY FROM DEFAULT DATA PERSISTENT STORE ***");
         
-        NSArray *entitiesToCopy = [NSArray arrayWithObjects:@"WorkoutCompleteDate", @"Workout", @"Session", @"Routine", @"Photo", @"Measurement", @"Email", @"AutoLock", nil];
+        NSArray *entitiesToCopy = [NSArray arrayWithObjects:@"WorkoutCompleteDate", @"Workout", @"Session", @"Photo", @"Measurement", @"Email", @"AutoLock", nil];
         
         CoreDataImporter *importer = [[CoreDataImporter alloc] initWithUniqueAttributes:[self selectedUniqueAttributes]];
         
@@ -809,7 +809,6 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
     [entities addObject:@"WorkoutCompleteDate"];[attributes addObject:@"date"];
     [entities addObject:@"Workout"];[attributes addObject:@"date"];
     [entities addObject:@"Session"];[attributes addObject:@"date"];
-    [entities addObject:@"Routine"];[attributes addObject:@"date"];
     [entities addObject:@"Photo"];[attributes addObject:@"date"];
     [entities addObject:@"Measurement"];[attributes addObject:@"date"];
     [entities addObject:@"Email"];[attributes addObject:@"date"];
@@ -1008,7 +1007,7 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
     @{
       NSMigratePersistentStoresAutomaticallyOption:@YES
       ,NSInferMappingModelAutomaticallyOption:@YES
-      ,NSPersistentStoreUbiquitousContentNameKey:@"_0_DWT_1"
+      ,NSPersistentStoreUbiquitousContentNameKey:@"_0_DWT_2"
       //,NSPersistentStoreUbiquitousContentURLKey:@"ChangeLogs" // Optional since iOS7
       };
     NSError *error;
@@ -1195,7 +1194,7 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
             NSLog(@"*** STARTED DEEP COPY FROM NON-ICLOUD STORE TO ICLOUD STORE ***");
 
             //#warning Customize this array to choose what entities should be merged with iCloud
-            NSArray *entitiesToCopy = [NSArray arrayWithObjects:@"WorkoutCompleteDate", @"Workout", @"Session", @"Routine", @"Photo", @"Measurement", @"Email", @"AutoLock", nil];
+            NSArray *entitiesToCopy = [NSArray arrayWithObjects:@"WorkoutCompleteDate", @"Workout", @"Session", @"Photo", @"Measurement", @"Email", @"AutoLock", nil];
             
             CoreDataImporter *importer = [[CoreDataImporter alloc] initWithUniqueAttributes:[self selectedUniqueAttributes]];
             
@@ -1329,7 +1328,7 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
     
     NSDictionary *options =
     @{
-      NSPersistentStoreUbiquitousContentNameKey:@"_0_DWT_1"
+      NSPersistentStoreUbiquitousContentNameKey:@"_0_DWT_2"
       //,NSPersistentStoreUbiquitousContentURLKey:@"ChangeLogs" // Optional since iOS7
       };
     NSError *error;

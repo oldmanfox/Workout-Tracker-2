@@ -58,18 +58,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MPRewardedVideoDelegate {
     func rewardedVideoAdDidDisappear(forAdUnitID adUnitID: String!) {
         
         // Fetch the rewarded video ad.
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
-            
-            // iPhone
-            // Rewarded Ad Unit
-            MPRewardedVideo.loadAd(withAdUnitID: "f41f0c37b0aa4e939b052e74322a8719", withMediationSettings: nil)
-        }
-        else {
-            
-            // iPad
-            // Rewarded Ad Unit
-            MPRewardedVideo.loadAd(withAdUnitID: "895ad8786fb7436f86219a3bff896c1f", withMediationSettings: nil)
-        }
+        // Rewarded Ad Unit
+        MPRewardedVideo.loadAd(withAdUnitID: "c9130834e2324aa281a4b59dbcc41301", withMediationSettings: nil)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -94,18 +84,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MPRewardedVideoDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
         // Fetch the rewarded video ad.
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
-            
-            // iPhone
-            // Rewarded Ad Unit
-            MPRewardedVideo.loadAd(withAdUnitID: "f41f0c37b0aa4e939b052e74322a8719", withMediationSettings: nil)
-        }
-        else {
-            
-            // iPad
-            // Rewarded Ad Unit
-            MPRewardedVideo.loadAd(withAdUnitID: "895ad8786fb7436f86219a3bff896c1f", withMediationSettings: nil)
-        }
+        // Rewarded Ad Unit
+        MPRewardedVideo.loadAd(withAdUnitID: "c9130834e2324aa281a4b59dbcc41301", withMediationSettings: nil)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

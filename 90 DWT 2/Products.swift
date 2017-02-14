@@ -24,7 +24,7 @@ import Foundation
 
 public struct Products {
     
-    fileprivate static let Prefix = "com.grantsoftware.90DWT1."
+    fileprivate static let Prefix = "com.grantsoftware.90DWT2."
     
     public static let removeAds = Prefix + "removeads1"
     

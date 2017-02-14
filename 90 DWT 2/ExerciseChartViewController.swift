@@ -38,7 +38,6 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
     @IBOutlet weak var chartView: UIView!
     
     var session = ""
-    var workoutRoutine = ""
     var selectedWorkout = ""
     var exerciseName = ""
     var graphDataPoints = [String?]()
@@ -228,50 +227,50 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
             switch seriesIndex {
             case 0:
                 // Reps 1
-                dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, routine: self.workoutRoutine, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 1", index: (dataIndex + 1) as NSNumber)!)
+                dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 1", index: (dataIndex + 1) as NSNumber)!)
                 
             case 1:
                 // Reps 2
-                dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, routine: self.workoutRoutine, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 2", index: (dataIndex + 1) as NSNumber)!)
+                dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 2", index: (dataIndex + 1) as NSNumber)!)
                 
             case 2:
                 // Weight 1
-                dataPoint.yValue = Double(CDOperation.getWeightTextForExerciseRound(self.session, routine: self.workoutRoutine, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 1", index: (dataIndex + 1) as NSNumber)!)
+                dataPoint.yValue = Double(CDOperation.getWeightTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 1", index: (dataIndex + 1) as NSNumber)!)
                 
             default:
                 // seriesIndex = 3
                 // Weight 2
-                dataPoint.yValue = Double(CDOperation.getWeightTextForExerciseRound(self.session, routine: self.workoutRoutine, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 2", index: (dataIndex + 1) as NSNumber)!)
+                dataPoint.yValue = Double(CDOperation.getWeightTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 2", index: (dataIndex + 1) as NSNumber)!)
             }
 
         case 1010:
             switch seriesIndex {
             case 0:
                 // Reps 1
-                dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, routine: self.workoutRoutine, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 1", index: (dataIndex + 1) as NSNumber)!)
+                dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 1", index: (dataIndex + 1) as NSNumber)!)
                 
             default:
                 // case 1:
                 // Reps 2
-                dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, routine: self.workoutRoutine, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 2", index: (dataIndex + 1) as NSNumber)!)
+                dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 2", index: (dataIndex + 1) as NSNumber)!)
             }
 
         case 1100:
             switch seriesIndex {
             case 0:
                 // Reps 1
-                dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, routine: self.workoutRoutine, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 1", index: (dataIndex + 1) as NSNumber)!)
+                dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 1", index: (dataIndex + 1) as NSNumber)!)
                 
             default:
                 // case 1:
                 // Weight 1
-                dataPoint.yValue = Double(CDOperation.getWeightTextForExerciseRound(self.session, routine: self.workoutRoutine, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 1", index: (dataIndex + 1) as NSNumber)!)
+                dataPoint.yValue = Double(CDOperation.getWeightTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 1", index: (dataIndex + 1) as NSNumber)!)
             }
             
         default:
             // case 1000:
             // Reps 1
-            dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, routine: self.workoutRoutine, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 1", index: (dataIndex + 1) as NSNumber)!)
+            dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 1", index: (dataIndex + 1) as NSNumber)!)
         }
         
         return dataPoint
@@ -281,76 +280,26 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
     
     func findMaxIndexForWorkout() -> Int {
         
-        switch self.workoutRoutine {
-        case "Normal":
+        // Normal
+        switch self.selectedWorkout {
+        case "Chest + Back & Ab Workout":
+            return 5
             
-            switch self.selectedWorkout {
-            case "Chest + Back & Ab Workout":
-                return 5
-                
-            case "Shoulders + Arms & Ab Workout":
-                return 5
-                
-            case "Legs + Back & Ab Workout":
-                return 10
-                
-            case "Chest + Shoulders + Tri & Ab Workout":
-                return 5
-                
-            case "Back + Biceps & Ab Workout":
-                return 5
-                
-            default:
-                // Core Fitness
-                return 6
-            }
+        case "Shoulders + Arms & Ab Workout":
+            return 5
             
-        case "Tone":
+        case "Legs + Back & Ab Workout":
+            return 10
             
-            switch self.selectedWorkout {
-            case "Chest + Back & Ab Workout":
-                return 2
-                
-            case "Shoulders + Arms & Ab Workout":
-                return 5
-                
-            case "Legs + Back & Ab Workout":
-                return 6
-                
-            case "Chest + Shoulders + Tri & Ab Workout":
-                return 5
-                
-            case "Back + Biceps & Ab Workout":
-                return 2
-                
-            default:
-                // Core Fitness
-                return 14
-            }
+        case "Chest + Shoulders + Tri & Ab Workout":
+            return 5
+            
+        case "Back + Biceps & Ab Workout":
+            return 5
             
         default:
-            
-            // 2-A-Days
-            switch self.selectedWorkout {
-            case "Chest + Back & Ab Workout":
-                return 5
-                
-            case "Shoulders + Arms & Ab Workout":
-                return 5
-                
-            case "Legs + Back & Ab Workout":
-                return 10
-                
-            case "Chest + Shoulders + Tri & Ab Workout":
-                return 5
-                
-            case "Back + Biceps & Ab Workout":
-                return 5
-                
-            default:
-                // Core Fitness
-                return 6
-            }
+            // Core Fitness
+            return 6
         }
     }
 }

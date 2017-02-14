@@ -17,7 +17,6 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
     // **********
     
     var session = ""
-    var workoutRoutine = ""
     var selectedWorkout = ""
     var workoutWeek = ""
     var month = ""
@@ -88,7 +87,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
         
         self.graphViewPurchased = self.wasGraphViewPurchased()
         
-        if Products.store.isProductPurchased("com.grantsoftware.90DWT1.removeads1") {
+        if Products.store.isProductPurchased("com.grantsoftware.90DWT2.removeads1") {
             
             // User purchased the Remove Ads in-app purchase so don't show any ads.
         }
@@ -101,14 +100,14 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                 
                 // iPhone
                 // Month Ad Unit
-                self.adView = MPAdView(adUnitId: "4bed96fcb70a4371b972bf19d149e433", size: MOPUB_BANNER_SIZE)
+                self.adView = MPAdView(adUnitId: "6232cd4a1e374ecebed0f15440ba2a65", size: MOPUB_BANNER_SIZE)
                 self.bannerSize = MOPUB_BANNER_SIZE
             }
             else {
                 
                 // iPad
                 // Month Ad Unit
-                self.adView = MPAdView(adUnitId: "7c80f30698634a22b77778b084e3087e", size: MOPUB_LEADERBOARD_SIZE)
+                self.adView = MPAdView(adUnitId: "05f5a06e1c8e4560ba24068341868285", size: MOPUB_LEADERBOARD_SIZE)
                 self.bannerSize = MOPUB_LEADERBOARD_SIZE
             }
             
@@ -123,7 +122,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
         super.viewWillAppear(animated)
         
         // Show or Hide Ads
-        if Products.store.isProductPurchased("com.grantsoftware.90DWT1.removeads1") {
+        if Products.store.isProductPurchased("com.grantsoftware.90DWT2.removeads1") {
             
             // Don't show ads.
             self.tableView.tableHeaderView = nil
@@ -151,7 +150,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
         self.graphViewPurchased = self.wasGraphViewPurchased()
         
         // Show or Hide Ads
-        if Products.store.isProductPurchased("com.grantsoftware.90DWT1.removeads1") {
+        if Products.store.isProductPurchased("com.grantsoftware.90DWT2.removeads1") {
             
             // Don't show ads.
             self.tableView.tableHeaderView = nil
@@ -221,7 +220,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
     
     func wasGraphViewPurchased() -> Bool {
         
-        if Products.store.isProductPurchased("com.grantsoftware.90DWT1.slidergraph") {
+        if Products.store.isProductPurchased("com.grantsoftware.90DWT2.slidergraph") {
             
             return true
         }
@@ -407,7 +406,6 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                     cell.title.text = (titleArray![0] as AnyObject).uppercased
                     cell.nonUpperCaseExerciseName = titleArray![0] as! String
                     
-                    cell.workoutRoutine = workoutRoutine // Bulk or Tone
                     cell.selectedWorkout = selectedWorkout // B1: Chest+Tri etc...
                     cell.workoutIndex = workoutIndex // Index of the workout in the program
                     cell.session = session
@@ -523,7 +521,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                     cell.previousNotes.text = "PREVIOUS NOTES"
 
                     // Current Weight Fields and Notes
-                    if let workoutObjects = CDOperation.getRepWeightTextForExercise(session, routine: workoutRoutine, workout: selectedWorkout, exercise: titleArray![0] as! String, index: workoutIndex as NSNumber) as? [Workout] {
+                    if let workoutObjects = CDOperation.getRepWeightTextForExercise(session, workout: selectedWorkout, exercise: titleArray![0] as! String, index: workoutIndex as NSNumber) as? [Workout] {
                         
                         if debug == 1 {
                             
@@ -653,7 +651,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                     }
 
                     // Previous Weight Fields
-                    if let workoutObjects = CDOperation.getRepWeightTextForExercise(session, routine: workoutRoutine, workout: selectedWorkout, exercise: titleArray![0] as! String, index: (workoutIndex - 1) as NSNumber) as? [Workout] {
+                    if let workoutObjects = CDOperation.getRepWeightTextForExercise(session, workout: selectedWorkout, exercise: titleArray![0] as! String, index: (workoutIndex - 1) as NSNumber) as? [Workout] {
                         
                         if debug == 1 {
                             
@@ -802,7 +800,6 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                     // CompletionCell
                     let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! WorkoutTVC_CompletionTableViewCell
                     
-                    cell.workoutRoutine = workoutRoutine // Bulk or Tone
                     cell.selectedWorkout = selectedWorkout // B1: Chest+Tri etc...
                     cell.workoutIndex = workoutIndex // Index of the workout in the program
                     cell.session = session
@@ -873,7 +870,6 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
         let popOverContent = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DatePickerViewController") as! DatePickerViewController
         
         popOverContent.session = session
-        popOverContent.workoutRoutine = workoutRoutine
         popOverContent.selectedWorkout = selectedWorkout
         popOverContent.workoutIndex = workoutIndex
         
@@ -901,7 +897,6 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
             let destinationVC = destinationNavController?.topViewController as! ExerciseChartViewController
             
             destinationVC.session = self.session
-            destinationVC.workoutRoutine = self.workoutRoutine
             destinationVC.selectedWorkout = self.selectedWorkout
             destinationVC.workoutIndex = self.workoutIndex
             

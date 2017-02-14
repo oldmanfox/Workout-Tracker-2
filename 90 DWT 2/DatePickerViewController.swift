@@ -15,7 +15,6 @@ class DatePickerViewController: UIViewController {
     // **********
     
     var session = ""
-    var workoutRoutine = ""
     var selectedWorkout = ""
     var workoutIndex = 0
     
@@ -32,7 +31,7 @@ class DatePickerViewController: UIViewController {
             print("Date: \(chosen)")
         }
         
-        CDOperation.saveWorkoutCompleteDate(session as NSString, routine: workoutRoutine as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber, useDate: chosen)
+        CDOperation.saveWorkoutCompleteDate(session as NSString, workout: selectedWorkout as NSString, index: workoutIndex as NSNumber, useDate: chosen)
 
     }
 }

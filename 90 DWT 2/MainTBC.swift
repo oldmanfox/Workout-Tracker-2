@@ -10,8 +10,6 @@ import UIKit
 
 class MainTBC: UITabBarController {
 
-    var routineChangedForWorkoutNC = false
-    
     var sessionChangedForWorkoutNC = false
     var sessionChangedForPhotoNC = false
     var sessionChangedForMeasurementNC = false

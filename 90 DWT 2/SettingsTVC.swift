@@ -16,7 +16,6 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
     // **********
     
     // MARK: Variables
-    @IBOutlet weak var routineCell: UITableViewCell!
     @IBOutlet weak var emailCell: UITableViewCell!
     @IBOutlet weak var autoLockCell: UITableViewCell!
     @IBOutlet weak var currentSessionCell: UITableViewCell!
@@ -27,7 +26,6 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
     @IBOutlet weak var versionCell: UITableViewCell!
     @IBOutlet weak var websiteCell: UITableViewCell!
     
-    @IBOutlet weak var defaultRoutine: UISegmentedControl! // Normal, Tone or 2-A-Days.  Default is Normal.
     @IBOutlet weak var emailDetail: UILabel! // Default is youremail@abc.com.
     @IBOutlet weak var autoLockSwitch: UISwitch! // Disable autolock while using the app.
     @IBOutlet weak var currentSessionLabel: UILabel!
@@ -59,7 +57,6 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
         session = CDOperation.getCurrentSession()
         self.currentSessionLabel.text = self.session
         
-        self.findRoutineSetting()
         self.findUseAutoLockSetting()
         self.findEmailSetting()
         self.findAppUsingiCloudStatus()
@@ -89,7 +86,6 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
         session = CDOperation.getCurrentSession()
         self.currentSessionLabel.text = self.session
         
-        self.findRoutineSetting()
         self.findUseAutoLockSetting()
         self.findEmailSetting()
         
@@ -149,43 +145,6 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
         self.exportCurrentSessionDataButton.layer.borderColor = red.cgColor
         self.exportCurrentSessionDataButton.layer.cornerRadius = 5
         self.exportCurrentSessionDataButton.clipsToBounds = true
-    }
-    
-    @IBAction func selectDefaultRoutine(_ sender: UISegmentedControl) {
-        
-        // Fetch Routine data.
-        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Routine")
-        let sortDate = NSSortDescriptor( key: "date", ascending: true)
-        request.sortDescriptors = [sortDate]
-        
-        do {
-            if let routineObjects = try CoreDataHelper.shared().context.fetch(request) as? [Routine] {
-                
-                if debug == 1 {
-                    
-                    print("routineObjects.count = \(routineObjects.count)")
-                }
-                
-                if routineObjects.count != 0 {
-                    
-                    // Match Found.  Update existing record.
-                    routineObjects.last?.defaultRoutine = self.defaultRoutine.titleForSegment(at: self.defaultRoutine.selectedSegmentIndex)
-                }
-                else {
-                    
-                    // No Matches Found.  Create new record and save.
-                    let insertRoutineInfo = NSEntityDescription.insertNewObject(forEntityName: "Routine", into: CoreDataHelper.shared().context) as! Routine
-                    
-                    insertRoutineInfo.defaultRoutine = self.defaultRoutine.titleForSegment(at: self.defaultRoutine.selectedSegmentIndex)
-                    insertRoutineInfo.date = Date() as NSDate?
-                }
-                
-                CoreDataHelper.shared().backgroundSaveContext()
-                
-                let parentTBC = self.tabBarController as! MainTBC
-                parentTBC.routineChangedForWorkoutNC = true
-            }
-        } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
     @IBAction func toggleAutoLock(_ sender: UISwitch) {
@@ -506,46 +465,6 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
                 }
             } catch { print(" ERROR executing a fetch request: \( error)") }
 
-            // DELETE all from entity - Routine
-            request = NSFetchRequest(entityName: "Routine")
-            
-            do {
-                if let routineObjects = try CoreDataHelper.shared().context.fetch(request) as? [Routine] {
-                    
-                    if self.debug == 1 {
-                        
-                        print("routineObjects.count = \(routineObjects.count)")
-                    }
-
-                    for object in routineObjects {
-                        
-                        // Delete duplicate records.
-                        CoreDataHelper.shared().context.delete(object)
-                    }
-                }
-            } catch { print(" ERROR executing a fetch request: \( error)") }
-            
-            // Set routine to default - Bulk
-            do {
-                if let routineObjects = try CoreDataHelper.shared().context.fetch(request) as? [Routine] {
-                    
-                    if self.debug == 1 {
-                        
-                        print("routineObjects.count = \(routineObjects.count)")
-                    }
-                    
-                    if routineObjects.count == 0 {
-                        
-                        self.defaultRoutine.selectedSegmentIndex = 1
-                        CDOperation.getCurrentRoutine()
-                        
-                        // Default routine changed
-                        let parentTBC = self.tabBarController as! MainTBC
-                        parentTBC.routineChangedForWorkoutNC = true
-                    }
-                }
-            } catch { print(" ERROR executing a fetch request: \( error)") }
-
             // DELETE all from entity - Email
             request = NSFetchRequest(entityName: "Email")
             
@@ -765,19 +684,6 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
         } catch { print(" ERROR executing a fetch request: \( error)") }
     }
     
-    func findRoutineSetting() {
-        
-        let routine = CDOperation.getCurrentRoutine()
-        
-        for i in 0..<3 {
-            
-            if self.defaultRoutine.titleForSegment(at: i) == routine {
-                
-                self.defaultRoutine.selectedSegmentIndex = i
-            }
-        }
-    }
-    
     func findUseAutoLockSetting() {
         
         // Fetch defaultEmail data.
@@ -905,7 +811,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
         }
         else {
             
-            self.iCloudAppStatusLabel.text = "OFF.  Change in Device Settings -> 90DWT1"
+            self.iCloudAppStatusLabel.text = "OFF.  Change in Device Settings -> 90DWT2"
         }
     }
 }
