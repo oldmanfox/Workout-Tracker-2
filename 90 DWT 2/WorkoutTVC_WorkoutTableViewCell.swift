@@ -1,6 +1,6 @@
 //
 //  WorkoutTVC_WorkoutTableViewCell.swift
-//  90 DWT 1
+//  90 DWT 2
 //
 //  Created by Jared Grant on 7/2/16.
 //  Copyright © 2016 Grant, Jared. All rights reserved.
@@ -53,8 +53,8 @@ class WorkoutTVC_WorkoutTableViewCell: UITableViewCell, UITextFieldDelegate {
     var originalCurrentRep2_Text = ""
     var originalCurrentWeight2_Text = ""
     
-//    var originalCurrentRep3_Text = ""
-//    var originalCurrentWeight3_Text = ""
+    var originalCurrentRep3_Text = ""
+    var originalCurrentWeight3_Text = ""
     
     var originalCurrentNotes_Text = ""
     
@@ -62,24 +62,31 @@ class WorkoutTVC_WorkoutTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var roundLabel1: UILabel!
     @IBOutlet weak var roundLabel2: UILabel!
+    @IBOutlet weak var roundLabel3: UILabel!
     
     @IBOutlet weak var repLabel1: UILabel!
     @IBOutlet weak var repLabel2: UILabel!
+    @IBOutlet weak var repLabel3: UILabel!
     
     @IBOutlet weak var weightLabel1: UILabel!
     @IBOutlet weak var weightLabel2: UILabel!
+    @IBOutlet weak var weightLabel3: UILabel!
     
     @IBOutlet weak var previousRep1: UITextField!
     @IBOutlet weak var previousRep2: UITextField!
+    @IBOutlet weak var previousRep3: UITextField!
     
     @IBOutlet weak var previousWeight1: UITextField!
     @IBOutlet weak var previousWeight2: UITextField!
+    @IBOutlet weak var previousWeight3: UITextField!
     
     @IBOutlet weak var currentRep1: UITextField!
     @IBOutlet weak var currentRep2: UITextField!
+    @IBOutlet weak var currentRep3: UITextField!
     
     @IBOutlet weak var currentWeight1: UITextField!
     @IBOutlet weak var currentWeight2: UITextField!
+    @IBOutlet weak var currentWeight3: UITextField!
     
     @IBOutlet weak var previousNotes: UITextField!
     @IBOutlet weak var currentNotes: UITextField!
@@ -160,6 +167,42 @@ class WorkoutTVC_WorkoutTableViewCell: UITableViewCell, UITextFieldDelegate {
         }
     }
     
+    @IBAction func saveCurrentRep3(_ sender: UITextField) {
+        
+        // Only update the fields that have been changed.
+        if (sender.text?.characters.count > 0 && sender.text != "0.0" && sender.text != originalCurrentRep3_Text) {
+            
+            if debug == 1 {
+                
+                print("String is: \(sender.text!)")
+            }
+            
+            CDOperation.saveRepsWithPredicate(session, workout: selectedWorkout, month: month, week: workoutWeek, exercise: nonUpperCaseExerciseName, index: workoutIndex as NSNumber, reps: sender.text!, round: "Round 3")
+        }
+        else {
+            
+            sender.text = originalCurrentRep3_Text
+        }
+    }
+    
+    @IBAction func saveCurrentWeight3(_ sender: UITextField) {
+        
+        // Only update the fields that have been changed.
+        if (sender.text?.characters.count > 0 && sender.text != "0.0" && sender.text != originalCurrentWeight3_Text) {
+            
+            if debug == 1 {
+                
+                print("String is: \(sender.text!)")
+            }
+            
+            CDOperation.saveWeightWithPredicate(session, workout: selectedWorkout, month: month, week: workoutWeek, exercise: nonUpperCaseExerciseName, index: workoutIndex as NSNumber, weight: sender.text!, round: "Round 3")
+        }
+        else {
+            
+            sender.text = originalCurrentWeight3_Text
+        }
+    }
+    
     @IBAction func saveCurrentNotes(_ sender: UITextField) {
         
         // Only update the fields that have been changed.
@@ -194,6 +237,12 @@ class WorkoutTVC_WorkoutTableViewCell: UITableViewCell, UITextFieldDelegate {
             saveCurrentWeight2(currentWeight2)
             
         case 4:
+            saveCurrentWeight2(currentWeight3)
+            
+        case 5:
+            saveCurrentWeight2(currentWeight3)
+            
+        case 6:
             saveCurrentNotes(currentNotes)
             
         default:
@@ -207,9 +256,11 @@ class WorkoutTVC_WorkoutTableViewCell: UITableViewCell, UITextFieldDelegate {
         
         currentRep1.delegate = self
         currentRep2.delegate = self
+        currentRep3.delegate = self
         
         currentWeight1.delegate = self
         currentWeight2.delegate = self
+        currentWeight3.delegate = self
         
         currentNotes.delegate = self
     }
@@ -230,9 +281,11 @@ class WorkoutTVC_WorkoutTableViewCell: UITableViewCell, UITextFieldDelegate {
         
         currentRep1.resignFirstResponder()
         currentRep2.resignFirstResponder()
+        currentRep3.resignFirstResponder()
         
         currentWeight1.resignFirstResponder()
         currentWeight2.resignFirstResponder()
+        currentWeight3.resignFirstResponder()
         
         currentNotes.resignFirstResponder()
         

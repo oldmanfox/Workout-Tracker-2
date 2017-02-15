@@ -1,6 +1,6 @@
 //
 //  WorkoutTVC_CompletionTableViewCell.swift
-//  90 DWT 1
+//  90 DWT 2
 //
 //  Created by Jared Grant on 7/2/16.
 //  Copyright © 2016 Grant, Jared. All rights reserved.

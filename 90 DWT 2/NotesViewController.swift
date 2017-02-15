@@ -1,6 +1,6 @@
 //
 //  NotesViewController.swift
-//  90 DWT 1
+//  90 DWT 2
 //
 //  Created by Grant, Jared on 8/1/16.
 //  Copyright © 2016 Grant, Jared. All rights reserved.
@@ -424,7 +424,7 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
             } catch { print(" ERROR executing a fetch request: \( error)") }
             
             mailcomposer.setToRecipients(emailAddress)
-            mailcomposer.setSubject("90 DWT 1 Workout Data")
+            mailcomposer.setSubject("90 DWT 2 Workout Data")
             mailcomposer.addAttachmentData(csvData!, mimeType: "text/csv", fileName: workoutName)
             
             present(mailcomposer, animated: true, completion: {

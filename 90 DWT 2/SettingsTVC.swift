@@ -1,6 +1,6 @@
 //
 //  SettingsTVC.swift
-//  90 DWT 1
+//  90 DWT 2
 //
 //  Created by Grant, Jared on 9/21/16.
 //  Copyright © 2016 Grant, Jared. All rights reserved.
@@ -737,12 +737,12 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
             switch sessionType {
             case "All":
                 fileName = "AllSessionsData.csv"
-                subject = "90 DWT 1 All Sessions Workout Data"
+                subject = "90 DWT 2 All Sessions Workout Data"
                 
             default:
                 // "Current"
                 fileName = "Session\(self.session)Data.csv"
-                subject = "90 DWT 1 Session \(self.session) Workout Data"
+                subject = "90 DWT 2 Session \(self.session) Workout Data"
             }
             
             

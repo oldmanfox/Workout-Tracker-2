@@ -1,6 +1,6 @@
 //
 //  WeekTVC.swift
-//  90 DWT 1
+//  90 DWT 2
 //
 //  Created by Jared Grant on 6/25/16.
 //  Copyright © 2016 Grant, Jared. All rights reserved.
@@ -51,19 +51,19 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
     
     fileprivate struct WorkoutName {
         
-        static let Chest_Back = "Chest + Back & Ab Workout"
-        static let Plyometrics = "Plyometrics"
-        static let Shoulders_Arms = "Shoulders + Arms & Ab Workout"
-        static let Yoga = "Yoga"
-        static let Legs_Back = "Legs + Back & Ab Workout"
-        static let Judo_Chop = "Judo Chop"
-        static let Chest_Shoulders_Tri = "Chest + Shoulders + Tri & Ab Workout"
-        static let Back_Bi = "Back + Biceps & Ab Workout"
         static let Core_Fitness = "Core Fitness"
-        static let Full_On_Cardio = "Full on Cardio"
+        static let Plyometrics = "Plyometrics"
+        static let Complete_Fitness = "Complete Fitness & Ab Workout"
+        static let Yoga = "Yoga"
+        static let Strength_Stability = "Strength + Stability"
+        static let Chest_Back_Stability = "Chest + Back + Stability & Ab Workout"
+        static let Shoulder_Bi_Tri = "Shoulder + Bi + Tri & Ab Workout"
+        static let Legs_Back = "Legs + Back & Ab Workout"
+        static let Lower_Agility = "Lower Agility"
+        static let Upper_Agility = "Upper Agility"
         
         static let Ab_Workout = "Ab Workout"
-        static let Stretch = "Stretch or Rest"
+        static let Stretch = "Stretch"
         static let Rest = "Rest"
     }
     
@@ -564,8 +564,8 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
                 cell.titleLabel.text == "Ab Workout" ||
                 cell.titleLabel.text == "Plyometrics" ||
                 cell.titleLabel.text == "Yoga" ||
-                cell.titleLabel.text == "Full on Cardio" ||
-                cell.titleLabel.text == "Judo Chop" {
+                cell.titleLabel.text == "Lower Agility" ||
+                cell.titleLabel.text == "Upper Agility" {
                 
                 self.performSegue(withIdentifier: "toNotes", sender: indexPath)
             }
@@ -672,273 +672,257 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
         // Normal
         switch workoutWeek {
         case "Week 1":
-            currentWeekWorkoutList = [[WorkoutName.Chest_Back, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Plyometrics],
-                                      [WorkoutName.Shoulders_Arms, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Yoga],
-                                      [WorkoutName.Legs_Back, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Judo_Chop],
+            currentWeekWorkoutList = [[WorkoutName.Core_Fitness, WorkoutName.Plyometrics],
+                                      [WorkoutName.Stretch, WorkoutName.Rest],
+                                      [WorkoutName.Complete_Fitness, WorkoutName.Ab_Workout],
+                                      [WorkoutName.Yoga, WorkoutName.Strength_Stability],
                                       [WorkoutName.Stretch, WorkoutName.Rest]]
             
-            daysOfWeekNumberList = [["1A", "1B"], ["2"], ["3A", "3B"], ["4"], ["5A", "5B"], ["6"], ["7", "7"]]
+            daysOfWeekNumberList = [["1", "2"], ["3", "3"], ["4A", "4B"], ["5", "6"], ["7", "7"]]
             
-            daysOfWeekColorList = [[Color.one, Color.red],
-                                   [Color.one],
+            daysOfWeekColorList = [[Color.one, Color .one],
+                                   [Color.one, Color.white],
                                    [Color.one, Color.red],
-                                   [Color.one],
-                                   [Color.one, Color.red],
-                                   [Color.one],
+                                   [Color.one, Color.one],
                                    [Color.one, Color.white]]
             
-            optionalWorkoutList = [[false, false], [false], [false, false], [false], [false, false], [false], [true, true]]
+            optionalWorkoutList = [[false, false], [true, true], [false, false], [false, false], [true, true]]
             
-            workoutIndexList = [[1, 1], [1], [1, 2], [1], [1, 3], [1], [1, 1]]
+            workoutIndexList = [[1, 1], [1, 1], [1, 1], [1, 1], [2, 2]]
             
         case "Week 2":
-            currentWeekWorkoutList = [[WorkoutName.Chest_Back, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Plyometrics],
-                                      [WorkoutName.Shoulders_Arms, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Yoga],
-                                      [WorkoutName.Legs_Back, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Judo_Chop],
+            currentWeekWorkoutList = [[WorkoutName.Core_Fitness, WorkoutName.Plyometrics],
+                                      [WorkoutName.Stretch, WorkoutName.Rest],
+                                      [WorkoutName.Complete_Fitness, WorkoutName.Ab_Workout],
+                                      [WorkoutName.Yoga, WorkoutName.Strength_Stability],
                                       [WorkoutName.Stretch, WorkoutName.Rest]]
             
-            daysOfWeekNumberList = [["1A", "1B"], ["2"], ["3A", "3B"], ["4"], ["5A", "5B"], ["6"], ["7", "7"]]
+            daysOfWeekNumberList = [["1", "2"], ["3", "3"], ["4A", "4B"], ["5", "6"], ["7", "7"]]
             
-            daysOfWeekColorList = [[Color.one, Color.red],
-                                   [Color.one],
+            daysOfWeekColorList = [[Color.one, Color .one],
+                                   [Color.one, Color.white],
                                    [Color.one, Color.red],
-                                   [Color.one],
-                                   [Color.one, Color.red],
-                                   [Color.one],
+                                   [Color.one, Color.one],
                                    [Color.one, Color.white]]
             
-            optionalWorkoutList = [[false, false], [false], [false, false], [false], [false, false], [false], [true, true]]
+            optionalWorkoutList = [[false, false], [true, true], [false, false], [false, false], [true, true]]
             
-            workoutIndexList = [[2, 4], [2], [2, 5], [2], [2, 6], [2], [2, 2]]
+            workoutIndexList = [[2, 2], [3, 3], [2, 2], [2, 2], [4, 4]]
             
         case "Week 3":
-            currentWeekWorkoutList = [[WorkoutName.Chest_Back, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Plyometrics],
-                                      [WorkoutName.Shoulders_Arms, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Yoga],
-                                      [WorkoutName.Legs_Back, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Judo_Chop],
+            currentWeekWorkoutList = [[WorkoutName.Core_Fitness, WorkoutName.Plyometrics],
+                                      [WorkoutName.Stretch, WorkoutName.Rest],
+                                      [WorkoutName.Complete_Fitness, WorkoutName.Ab_Workout],
+                                      [WorkoutName.Yoga, WorkoutName.Strength_Stability],
                                       [WorkoutName.Stretch, WorkoutName.Rest]]
             
-            daysOfWeekNumberList = [["1A", "1B"], ["2"], ["3A", "3B"], ["4"], ["5A", "5B"], ["6"], ["7", "7"]]
+            daysOfWeekNumberList = [["1", "2"], ["3", "3"], ["4A", "4B"], ["5", "6"], ["7", "7"]]
             
-            daysOfWeekColorList = [[Color.one, Color.red],
-                                   [Color.one],
+            daysOfWeekColorList = [[Color.one, Color .one],
+                                   [Color.one, Color.white],
                                    [Color.one, Color.red],
-                                   [Color.one],
-                                   [Color.one, Color.red],
-                                   [Color.one],
+                                   [Color.one, Color.one],
                                    [Color.one, Color.white]]
             
-            optionalWorkoutList = [[false, false], [false], [false, false], [false], [false, false], [false], [true, true]]
+            optionalWorkoutList = [[false, false], [true, true], [false, false], [false, false], [true, true]]
             
-            workoutIndexList = [[3, 7], [3], [3, 8], [3], [3, 9], [3], [3, 3]]
+            workoutIndexList = [[3, 3], [5, 5], [3, 3], [3, 3], [6, 6]]
             
         case "Week 4":
-            currentWeekWorkoutList = [[WorkoutName.Yoga, WorkoutName.Core_Fitness, WorkoutName.Judo_Chop, WorkoutName.Stretch, WorkoutName.Core_Fitness, WorkoutName.Yoga],
+            currentWeekWorkoutList = [[WorkoutName.Core_Fitness, WorkoutName.Plyometrics],
+                                      [WorkoutName.Stretch, WorkoutName.Rest],
+                                      [WorkoutName.Complete_Fitness, WorkoutName.Ab_Workout],
+                                      [WorkoutName.Yoga, WorkoutName.Strength_Stability],
                                       [WorkoutName.Stretch, WorkoutName.Rest]]
             
-            daysOfWeekNumberList = [["1", "2", "3", "4", "5", "6"], ["7", "7"]]
+            daysOfWeekNumberList = [["1", "2"], ["3", "3"], ["4A", "4B"], ["5", "6"], ["7", "7"]]
             
-            daysOfWeekColorList = [[Color.one, Color.two, Color.three, Color.four, Color.five, Color.six],
-                                   [Color.seven, Color.white]]
+            daysOfWeekColorList = [[Color.one, Color .one],
+                                   [Color.one, Color.white],
+                                   [Color.one, Color.red],
+                                   [Color.one, Color.one],
+                                   [Color.one, Color.white]]
             
-            optionalWorkoutList = [[false, false, false, false, false, false], [true, true]]
+            optionalWorkoutList = [[false, false], [true, true], [false, false], [false, false], [true, true]]
             
-            workoutIndexList = [[4, 1, 4, 4, 2, 5], [5, 4]]
+            workoutIndexList = [[4, 4], [7, 7], [4, 4], [4, 4], [8, 8]]
             
         case "Week 5":
-            currentWeekWorkoutList = [[WorkoutName.Chest_Shoulders_Tri, WorkoutName.Ab_Workout],
+            currentWeekWorkoutList = [[WorkoutName.Chest_Back_Stability, WorkoutName.Ab_Workout],
                                       [WorkoutName.Plyometrics],
-                                      [WorkoutName.Back_Bi, WorkoutName.Ab_Workout],
+                                      [WorkoutName.Stretch, WorkoutName.Rest],
+                                      [WorkoutName.Shoulder_Bi_Tri, WorkoutName.Ab_Workout],
                                       [WorkoutName.Yoga],
                                       [WorkoutName.Legs_Back, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Judo_Chop],
                                       [WorkoutName.Stretch, WorkoutName.Rest]]
             
-            daysOfWeekNumberList = [["1A", "1B"], ["2"], ["3A", "3B"], ["4"], ["5A", "5B"], ["6"], ["7", "7"]]
+            daysOfWeekNumberList = [["1A", "1B"], ["2"], ["3", "3"], ["4A", "4B"], ["5"], ["6A", "6B"], ["7", "7"]]
             
             daysOfWeekColorList = [[Color.seven, Color.red],
                                    [Color.seven],
+                                   [Color.seven, Color.white],
                                    [Color.seven, Color.red],
                                    [Color.seven],
                                    [Color.seven, Color.red],
-                                   [Color.seven],
                                    [Color.seven, Color.white]]
             
-            optionalWorkoutList = [[false, false], [false], [false, false], [false], [false, false], [false], [true, true]]
+            optionalWorkoutList = [[false, false], [false], [true, true], [false, false], [false], [false, false], [true, true]]
             
-            workoutIndexList = [[1, 10], [4], [1, 11], [6], [4, 12], [5], [6, 5]]
+            workoutIndexList = [[1, 5], [5], [9, 9], [1, 6], [5], [1, 7], [10, 10]]
             
         case "Week 6":
-            currentWeekWorkoutList = [[WorkoutName.Chest_Shoulders_Tri, WorkoutName.Ab_Workout],
+            currentWeekWorkoutList = [[WorkoutName.Chest_Back_Stability, WorkoutName.Ab_Workout],
                                       [WorkoutName.Plyometrics],
-                                      [WorkoutName.Back_Bi, WorkoutName.Ab_Workout],
+                                      [WorkoutName.Stretch, WorkoutName.Rest],
+                                      [WorkoutName.Shoulder_Bi_Tri, WorkoutName.Ab_Workout],
                                       [WorkoutName.Yoga],
                                       [WorkoutName.Legs_Back, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Judo_Chop],
                                       [WorkoutName.Stretch, WorkoutName.Rest]]
             
-            daysOfWeekNumberList = [["1A", "1B"], ["2"], ["3A", "3B"], ["4"], ["5A", "5B"], ["6"], ["7", "7"]]
+            daysOfWeekNumberList = [["1A", "1B"], ["2"], ["3", "3"], ["4A", "4B"], ["5"], ["6A", "6B"], ["7", "7"]]
             
             daysOfWeekColorList = [[Color.seven, Color.red],
                                    [Color.seven],
+                                   [Color.seven, Color.white],
                                    [Color.seven, Color.red],
                                    [Color.seven],
                                    [Color.seven, Color.red],
-                                   [Color.seven],
                                    [Color.seven, Color.white]]
             
-            optionalWorkoutList = [[false, false], [false], [false, false], [false], [false, false], [false], [true, true]]
+            optionalWorkoutList = [[false, false], [false], [true, true], [false, false], [false], [false, false], [true, true]]
             
-            workoutIndexList = [[2, 13], [5], [2, 14], [7], [5, 15], [6], [7, 6]]
+            workoutIndexList = [[2, 8], [6], [11, 11], [2, 9], [6], [2, 10], [12, 12]]
             
         case "Week 7":
-            currentWeekWorkoutList = [[WorkoutName.Chest_Shoulders_Tri, WorkoutName.Ab_Workout],
+            currentWeekWorkoutList = [[WorkoutName.Chest_Back_Stability, WorkoutName.Ab_Workout],
                                       [WorkoutName.Plyometrics],
-                                      [WorkoutName.Back_Bi, WorkoutName.Ab_Workout],
+                                      [WorkoutName.Stretch, WorkoutName.Rest],
+                                      [WorkoutName.Shoulder_Bi_Tri, WorkoutName.Ab_Workout],
                                       [WorkoutName.Yoga],
                                       [WorkoutName.Legs_Back, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Judo_Chop],
                                       [WorkoutName.Stretch, WorkoutName.Rest]]
             
-            daysOfWeekNumberList = [["1A", "1B"], ["2"], ["3A", "3B"], ["4"], ["5A", "5B"], ["6"], ["7", "7"]]
+            daysOfWeekNumberList = [["1A", "1B"], ["2"], ["3", "3"], ["4A", "4B"], ["5"], ["6A", "6B"], ["7", "7"]]
             
             daysOfWeekColorList = [[Color.seven, Color.red],
                                    [Color.seven],
+                                   [Color.seven, Color.white],
                                    [Color.seven, Color.red],
                                    [Color.seven],
                                    [Color.seven, Color.red],
-                                   [Color.seven],
                                    [Color.seven, Color.white]]
             
-            optionalWorkoutList = [[false, false], [false], [false, false], [false], [false, false], [false], [true, true]]
+            optionalWorkoutList = [[false, false], [false], [true, true], [false, false], [false], [false, false], [true, true]]
             
-            workoutIndexList = [[3, 16], [6], [3, 17], [8], [6, 18], [7], [8, 7]]
+            workoutIndexList = [[3, 11], [7], [13, 13], [3, 12], [7], [3, 13], [14, 14]]
             
         case "Week 8":
-            currentWeekWorkoutList = [[WorkoutName.Yoga, WorkoutName.Core_Fitness, WorkoutName.Judo_Chop, WorkoutName.Stretch, WorkoutName.Core_Fitness, WorkoutName.Yoga],
+            currentWeekWorkoutList = [[WorkoutName.Chest_Back_Stability, WorkoutName.Ab_Workout],
+                                      [WorkoutName.Plyometrics],
+                                      [WorkoutName.Stretch, WorkoutName.Rest],
+                                      [WorkoutName.Shoulder_Bi_Tri, WorkoutName.Ab_Workout],
+                                      [WorkoutName.Yoga],
+                                      [WorkoutName.Legs_Back, WorkoutName.Ab_Workout],
                                       [WorkoutName.Stretch, WorkoutName.Rest]]
             
-            daysOfWeekNumberList = [["1", "2", "3", "4", "5", "6"], ["7", "7"]]
+            daysOfWeekNumberList = [["1A", "1B"], ["2"], ["3", "3"], ["4A", "4B"], ["5"], ["6A", "6B"], ["7", "7"]]
             
-            daysOfWeekColorList = [[Color.one, Color.two, Color.three, Color.four, Color.five, Color.six],
+            daysOfWeekColorList = [[Color.seven, Color.red],
+                                   [Color.seven],
+                                   [Color.seven, Color.white],
+                                   [Color.seven, Color.red],
+                                   [Color.seven],
+                                   [Color.seven, Color.red],
                                    [Color.seven, Color.white]]
             
-            optionalWorkoutList = [[false, false, false, false, false, false], [true, true]]
+            optionalWorkoutList = [[false, false], [false], [true, true], [false, false], [false], [false, false], [true, true]]
             
-            workoutIndexList = [[9, 3, 8, 9, 4, 10], [10, 8]]
+            workoutIndexList = [[4, 14], [8], [15, 15], [4, 15], [8], [4, 16], [16, 16]]
             
         case "Week 9":
-            currentWeekWorkoutList = [[WorkoutName.Chest_Back, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Plyometrics],
-                                      [WorkoutName.Shoulders_Arms, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Yoga],
-                                      [WorkoutName.Legs_Back, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Judo_Chop],
+            currentWeekWorkoutList = [[WorkoutName.Lower_Agility, WorkoutName.Upper_Agility, WorkoutName.Yoga],
+                                      [WorkoutName.Stretch, WorkoutName.Rest],
+                                      [WorkoutName.Lower_Agility, WorkoutName.Upper_Agility],
                                       [WorkoutName.Stretch, WorkoutName.Rest]]
             
-            daysOfWeekNumberList = [["1A", "1B"], ["2"], ["3A", "3B"], ["4"], ["5A", "5B"], ["6"], ["7", "7"]]
+            daysOfWeekNumberList = [["1", "2", "3"], ["4", "4"], ["5", "6"], ["7", "7"]]
             
-            daysOfWeekColorList = [[Color.one, Color.red],
-                                   [Color.one],
-                                   [Color.one, Color.red],
-                                   [Color.one],
-                                   [Color.one, Color.red],
-                                   [Color.one],
-                                   [Color.one, Color.white]]
+            daysOfWeekColorList = [[Color.four, Color.four, Color.four],
+                                   [Color.four, Color.white],
+                                   [Color.four, Color.four],
+                                   [Color.four, Color.white]]
             
-            optionalWorkoutList = [[false, false], [false], [false, false], [false], [false, false], [false], [true, true]]
+            optionalWorkoutList = [[false, false, false], [true, true], [false, false], [true, true]]
             
-            workoutIndexList = [[4, 19], [7], [4, 20], [11], [7, 21], [9], [11, 9]]
+            workoutIndexList = [[1, 1, 9], [17, 17], [2, 2], [18, 18]]
             
         case "Week 10":
-            currentWeekWorkoutList = [[WorkoutName.Chest_Shoulders_Tri, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Plyometrics],
-                                      [WorkoutName.Back_Bi, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Yoga],
-                                      [WorkoutName.Legs_Back, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Judo_Chop],
+            currentWeekWorkoutList = [[WorkoutName.Lower_Agility, WorkoutName.Upper_Agility, WorkoutName.Yoga],
+                                      [WorkoutName.Stretch, WorkoutName.Rest],
+                                      [WorkoutName.Lower_Agility, WorkoutName.Upper_Agility],
                                       [WorkoutName.Stretch, WorkoutName.Rest]]
             
-            daysOfWeekNumberList = [["1A", "1B"], ["2"], ["3A", "3B"], ["4"], ["5A", "5B"], ["6"], ["7", "7"]]
+            daysOfWeekNumberList = [["1", "2", "3"], ["4", "4"], ["5", "6"], ["7", "7"]]
             
-            daysOfWeekColorList = [[Color.seven, Color.red],
-                                   [Color.seven],
-                                   [Color.seven, Color.red],
-                                   [Color.seven],
-                                   [Color.seven, Color.red],
-                                   [Color.seven],
-                                   [Color.seven, Color.white]]
+            daysOfWeekColorList = [[Color.four, Color.four, Color.four],
+                                   [Color.four, Color.white],
+                                   [Color.four, Color.four],
+                                   [Color.four, Color.white]]
             
-            optionalWorkoutList = [[false, false], [false], [false, false], [false], [false, false], [false], [true, true]]
+            optionalWorkoutList = [[false, false, false], [true, true], [false, false], [true, true]]
             
-            workoutIndexList = [[4, 22], [8], [4, 23], [12], [8, 24], [10], [12, 10]]
+            workoutIndexList = [[3, 3, 10], [19, 19], [4, 4], [20, 20]]
             
         case "Week 11":
-            currentWeekWorkoutList = [[WorkoutName.Chest_Back, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Plyometrics],
-                                      [WorkoutName.Shoulders_Arms, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Yoga],
-                                      [WorkoutName.Legs_Back, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Judo_Chop],
+            currentWeekWorkoutList = [[WorkoutName.Lower_Agility, WorkoutName.Upper_Agility, WorkoutName.Yoga],
+                                      [WorkoutName.Stretch, WorkoutName.Rest],
+                                      [WorkoutName.Lower_Agility, WorkoutName.Upper_Agility],
                                       [WorkoutName.Stretch, WorkoutName.Rest]]
             
-            daysOfWeekNumberList = [["1A", "1B"], ["2"], ["3A", "3B"], ["4"], ["5A", "5B"], ["6"], ["7", "7"]]
+            daysOfWeekNumberList = [["1", "2", "3"], ["4", "4"], ["5", "6"], ["7", "7"]]
             
-            daysOfWeekColorList = [[Color.one, Color.red],
-                                   [Color.one],
-                                   [Color.one, Color.red],
-                                   [Color.one],
-                                   [Color.one, Color.red],
-                                   [Color.one],
-                                   [Color.one, Color.white]]
+            daysOfWeekColorList = [[Color.four, Color.four, Color.four],
+                                   [Color.four, Color.white],
+                                   [Color.four, Color.four],
+                                   [Color.four, Color.white]]
             
-            optionalWorkoutList = [[false, false], [false], [false, false], [false], [false, false], [false], [true, true]]
+            optionalWorkoutList = [[false, false, false], [true, true], [false, false], [true, true]]
             
-            workoutIndexList = [[5, 25], [9], [5, 26], [13], [9, 27], [11], [13, 11]]
+            workoutIndexList = [[5, 5, 11], [21, 21], [6, 6], [22, 22]]
             
         case "Week 12":
-            currentWeekWorkoutList = [[WorkoutName.Chest_Shoulders_Tri, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Plyometrics],
-                                      [WorkoutName.Back_Bi, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Yoga],
-                                      [WorkoutName.Legs_Back, WorkoutName.Ab_Workout],
-                                      [WorkoutName.Judo_Chop],
+            currentWeekWorkoutList = [[WorkoutName.Lower_Agility, WorkoutName.Upper_Agility, WorkoutName.Yoga],
+                                      [WorkoutName.Stretch, WorkoutName.Rest],
+                                      [WorkoutName.Lower_Agility, WorkoutName.Upper_Agility],
                                       [WorkoutName.Stretch, WorkoutName.Rest]]
             
-            daysOfWeekNumberList = [["1A", "1B"], ["2"], ["3A", "3B"], ["4"], ["5A", "5B"], ["6"], ["7", "7"]]
+            daysOfWeekNumberList = [["1", "2", "3"], ["4", "4"], ["5", "6"], ["7", "7"]]
             
-            daysOfWeekColorList = [[Color.seven, Color.red],
-                                   [Color.seven],
-                                   [Color.seven, Color.red],
-                                   [Color.seven],
-                                   [Color.seven, Color.red],
-                                   [Color.seven],
-                                   [Color.seven, Color.white]]
+            daysOfWeekColorList = [[Color.four, Color.four, Color.four],
+                                   [Color.four, Color.white],
+                                   [Color.four, Color.four],
+                                   [Color.four, Color.white]]
             
-            optionalWorkoutList = [[false, false], [false], [false, false], [false], [false, false], [false], [true, true]]
+            optionalWorkoutList = [[false, false, false], [true, true], [false, false], [true, true]]
             
-            workoutIndexList = [[5, 28], [10], [5, 29], [14], [10, 30], [12], [14, 12]]
+            workoutIndexList = [[7, 7, 12], [23, 23], [8, 8], [24, 24]]
             
         case "Week 13":
-            currentWeekWorkoutList = [[WorkoutName.Yoga, WorkoutName.Core_Fitness, WorkoutName.Judo_Chop, WorkoutName.Stretch, WorkoutName.Core_Fitness, WorkoutName.Yoga],
+            currentWeekWorkoutList = [[WorkoutName.Lower_Agility, WorkoutName.Upper_Agility, WorkoutName.Yoga],
+                                      [WorkoutName.Stretch, WorkoutName.Rest],
+                                      [WorkoutName.Lower_Agility, WorkoutName.Upper_Agility],
                                       [WorkoutName.Stretch, WorkoutName.Rest]]
             
-            daysOfWeekNumberList = [["1", "2", "3", "4", "5", "6"], ["7", "7"]]
+            daysOfWeekNumberList = [["1", "2", "3"], ["4", "4"], ["5", "6"], ["7", "7"]]
             
-            daysOfWeekColorList = [[Color.one, Color.two, Color.three, Color.four, Color.five, Color.six],
-                                   [Color.seven, Color.white]]
+            daysOfWeekColorList = [[Color.four, Color.four, Color.four],
+                                   [Color.four, Color.white],
+                                   [Color.four, Color.four],
+                                   [Color.four, Color.white]]
             
-            optionalWorkoutList = [[false, false, false, false, false, false], [true, true]]
+            optionalWorkoutList = [[false, false, false], [true, true], [false, false], [true, true]]
             
-            workoutIndexList = [[15, 5, 13, 15, 6, 16], [16, 13]]
+            workoutIndexList = [[9, 9, 13], [25, 25], [10, 10], [26, 26]]
             
         default:
             currentWeekWorkoutList = [[],[]]

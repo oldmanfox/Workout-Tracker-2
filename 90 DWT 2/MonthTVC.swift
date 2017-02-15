@@ -1,6 +1,6 @@
 //
 //  MonthTVC.swift
-//  90 DWT 1
+//  90 DWT 2
 //
 //  Created by Jared Grant on 6/25/16.
 //  Copyright © 2016 Grant, Jared. All rights reserved.
@@ -602,10 +602,11 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         case 1:
             
             var group1 = "NO"
+            var group2 = "NO"
             
             for i in 0..<resultsArray.count {
                 
-                if i == 9 || i == 10 {
+                if i == 2 || i == 3 {
                     
                     // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
                     if resultsArray[i] == "YES" {
@@ -613,7 +614,16 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                         group1 = "YES"
                     }
                 }
+                  
+                else if i == 8 || i == 9 {
                     
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group2 = "YES"
+                    }
+                }
+
                 else {
                     
                     // User needs to do all these workouts
@@ -624,7 +634,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 }
             }
             
-            if workoutsCompleted == 9 && group1 == "YES" {
+            if workoutsCompleted == 6 && group1 == "YES" && group2 == "YES" {
                 
                 completed = true
             }
@@ -636,15 +646,25 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         case 2:
             
             var group1 = "NO"
+            var group2 = "NO"
             
             for i in 0..<resultsArray.count {
                 
-                if i == 9 || i == 10 {
+                if i == 2 || i == 3 {
                     
                     // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
                     if resultsArray[i] == "YES" {
                         
                         group1 = "YES"
+                    }
+                }
+                    
+                else if i == 8 || i == 9 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group2 = "YES"
                     }
                 }
                     
@@ -658,7 +678,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 }
             }
             
-            if workoutsCompleted == 9 && group1 == "YES" {
+            if workoutsCompleted == 6 && group1 == "YES" && group2 == "YES" {
                 
                 completed = true
             }
@@ -670,15 +690,25 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         case 3:
             
             var group1 = "NO"
+            var group2 = "NO"
             
             for i in 0..<resultsArray.count {
                 
-                if i == 9 || i == 10 {
+                if i == 2 || i == 3 {
                     
                     // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
                     if resultsArray[i] == "YES" {
                         
                         group1 = "YES"
+                    }
+                }
+                    
+                else if i == 8 || i == 9 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group2 = "YES"
                     }
                 }
                     
@@ -692,7 +722,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 }
             }
             
-            if workoutsCompleted == 9 && group1 == "YES" {
+            if workoutsCompleted == 6 && group1 == "YES" && group2 == "YES" {
                 
                 completed = true
             }
@@ -704,15 +734,25 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         case 4:
             
             var group1 = "NO"
+            var group2 = "NO"
             
             for i in 0..<resultsArray.count {
                 
-                if i == 6 || i == 7 {
+                if i == 2 || i == 3 {
                     
                     // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
                     if resultsArray[i] == "YES" {
                         
                         group1 = "YES"
+                    }
+                }
+                    
+                else if i == 8 || i == 9 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group2 = "YES"
                     }
                 }
                     
@@ -726,7 +766,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 }
             }
             
-            if workoutsCompleted == 6 && group1 == "YES" {
+            if workoutsCompleted == 6 && group1 == "YES" && group2 == "YES" {
                 
                 completed = true
             }
@@ -738,15 +778,25 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         case 5:
             
             var group1 = "NO"
+            var group2 = "NO"
             
             for i in 0..<resultsArray.count {
                 
-                if i == 9 || i == 10 {
+                if i == 3 || i == 4 {
                     
                     // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
                     if resultsArray[i] == "YES" {
                         
                         group1 = "YES"
+                    }
+                }
+                    
+                else if i == 10 || i == 11 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group2 = "YES"
                     }
                 }
                     
@@ -760,7 +810,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 }
             }
             
-            if workoutsCompleted == 9 && group1 == "YES" {
+            if workoutsCompleted == 8 && group1 == "YES" && group2 == "YES" {
                 
                 completed = true
             }
@@ -772,15 +822,25 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         case 6:
             
             var group1 = "NO"
+            var group2 = "NO"
             
             for i in 0..<resultsArray.count {
                 
-                if i == 9 || i == 10 {
+                if i == 3 || i == 4 {
                     
                     // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
                     if resultsArray[i] == "YES" {
                         
                         group1 = "YES"
+                    }
+                }
+                    
+                else if i == 10 || i == 11 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group2 = "YES"
                     }
                 }
                     
@@ -794,7 +854,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 }
             }
             
-            if workoutsCompleted == 9 && group1 == "YES" {
+            if workoutsCompleted == 8 && group1 == "YES" && group2 == "YES" {
                 
                 completed = true
             }
@@ -806,15 +866,25 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         case 7:
             
             var group1 = "NO"
+            var group2 = "NO"
             
             for i in 0..<resultsArray.count {
                 
-                if i == 9 || i == 10 {
+                if i == 3 || i == 4 {
                     
                     // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
                     if resultsArray[i] == "YES" {
                         
                         group1 = "YES"
+                    }
+                }
+                    
+                else if i == 10 || i == 11 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group2 = "YES"
                     }
                 }
                     
@@ -828,7 +898,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 }
             }
             
-            if workoutsCompleted == 9 && group1 == "YES" {
+            if workoutsCompleted == 8 && group1 == "YES" && group2 == "YES" {
                 
                 completed = true
             }
@@ -840,15 +910,25 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         case 8:
             
             var group1 = "NO"
+            var group2 = "NO"
             
             for i in 0..<resultsArray.count {
                 
-                if i == 6 || i == 7 {
+                if i == 3 || i == 4 {
                     
                     // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
                     if resultsArray[i] == "YES" {
                         
                         group1 = "YES"
+                    }
+                }
+                    
+                else if i == 10 || i == 11 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group2 = "YES"
                     }
                 }
                     
@@ -862,7 +942,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 }
             }
             
-            if workoutsCompleted == 6 && group1 == "YES" {
+            if workoutsCompleted == 8 && group1 == "YES" && group2 == "YES" {
                 
                 completed = true
             }
@@ -874,15 +954,25 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         case 9:
             
             var group1 = "NO"
+            var group2 = "NO"
             
             for i in 0..<resultsArray.count {
                 
-                if i == 9 || i == 10 {
+                if i == 3 || i == 4 {
                     
                     // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
                     if resultsArray[i] == "YES" {
                         
                         group1 = "YES"
+                    }
+                }
+                    
+                else if i == 7 || i == 8 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group2 = "YES"
                     }
                 }
                     
@@ -896,7 +986,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 }
             }
             
-            if workoutsCompleted == 9 && group1 == "YES" {
+            if workoutsCompleted == 5 && group1 == "YES" && group2 == "YES" {
                 
                 completed = true
             }
@@ -908,15 +998,25 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         case 10:
             
             var group1 = "NO"
+            var group2 = "NO"
             
             for i in 0..<resultsArray.count {
                 
-                if i == 9 || i == 10 {
+                if i == 3 || i == 4 {
                     
                     // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
                     if resultsArray[i] == "YES" {
                         
                         group1 = "YES"
+                    }
+                }
+                    
+                else if i == 7 || i == 8 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group2 = "YES"
                     }
                 }
                     
@@ -930,7 +1030,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 }
             }
             
-            if workoutsCompleted == 9 && group1 == "YES" {
+            if workoutsCompleted == 5 && group1 == "YES" && group2 == "YES" {
                 
                 completed = true
             }
@@ -942,15 +1042,25 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         case 11:
             
             var group1 = "NO"
+            var group2 = "NO"
             
             for i in 0..<resultsArray.count {
                 
-                if i == 9 || i == 10 {
+                if i == 3 || i == 4 {
                     
                     // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
                     if resultsArray[i] == "YES" {
                         
                         group1 = "YES"
+                    }
+                }
+                    
+                else if i == 7 || i == 8 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group2 = "YES"
                     }
                 }
                     
@@ -964,7 +1074,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 }
             }
             
-            if workoutsCompleted == 9 && group1 == "YES" {
+            if workoutsCompleted == 5 && group1 == "YES" && group2 == "YES" {
                 
                 completed = true
             }
@@ -976,15 +1086,25 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
         case 12:
             
             var group1 = "NO"
+            var group2 = "NO"
             
             for i in 0..<resultsArray.count {
                 
-                if i == 9 || i == 10 {
+                if i == 3 || i == 4 {
                     
                     // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
                     if resultsArray[i] == "YES" {
                         
                         group1 = "YES"
+                    }
+                }
+                    
+                else if i == 7 || i == 8 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group2 = "YES"
                     }
                 }
                     
@@ -998,7 +1118,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 }
             }
             
-            if workoutsCompleted == 9 && group1 == "YES" {
+            if workoutsCompleted == 5 && group1 == "YES" && group2 == "YES" {
                 
                 completed = true
             }
@@ -1011,15 +1131,25 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
             
             // Case 13
             var group1 = "NO"
+            var group2 = "NO"
             
             for i in 0..<resultsArray.count {
                 
-                if i == 6 || i == 7 {
+                if i == 3 || i == 4 {
                     
                     // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
                     if resultsArray[i] == "YES" {
                         
                         group1 = "YES"
+                    }
+                }
+                    
+                else if i == 7 || i == 8 {
+                    
+                    // User has a choice to do 1 of 2 workouts.  Only needs to do 1.
+                    if resultsArray[i] == "YES" {
+                        
+                        group2 = "YES"
                     }
                 }
                     
@@ -1033,7 +1163,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                 }
             }
             
-            if workoutsCompleted == 6 && group1 == "YES" {
+            if workoutsCompleted == 5 && group1 == "YES" && group2 == "YES" {
                 
                 completed = true
             }

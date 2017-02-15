@@ -1,6 +1,6 @@
 //
 //  ViewPhotosViewController.swift
-//  90 DWT 1
+//  90 DWT 2
 //
 //  Created by Grant, Jared on 9/19/16.
 //  Copyright © 2016 Grant, Jared. All rights reserved.
@@ -229,7 +229,7 @@ class ViewPhotosViewController: UIViewController, UIImagePickerControllerDelegat
             case "All":
                 
                 // ALL PHOTOS
-                let emailTitle = String.localizedStringWithFormat("90 DWT 1 All Photos - Session %@", self.session)
+                let emailTitle = String.localizedStringWithFormat("90 DWT 2 All Photos - Session %@", self.session)
                 mailcomposer.setSubject(emailTitle)
                 
                 for arraySection in 0..<self.arrayOfImages.count {
@@ -251,7 +251,7 @@ class ViewPhotosViewController: UIViewController, UIImagePickerControllerDelegat
             case "Front":
                 
                 // FRONT PHOTOS
-                let emailTitle = String.localizedStringWithFormat("90 DWT 1 Front Photos - Session %@", self.session)
+                let emailTitle = String.localizedStringWithFormat("90 DWT 2 Front Photos - Session %@", self.session)
                 mailcomposer.setSubject(emailTitle)
                 
                 for arraySection in 0..<self.arrayOfImages.count {
@@ -274,7 +274,7 @@ class ViewPhotosViewController: UIViewController, UIImagePickerControllerDelegat
             case "Side":
                 
                 // SIDE PHOTOS
-                let emailTitle = String.localizedStringWithFormat("90 DWT 1 Side Photos - Session %@", self.session)
+                let emailTitle = String.localizedStringWithFormat("90 DWT 2 Side Photos - Session %@", self.session)
                 mailcomposer.setSubject(emailTitle)
                 
                 for arraySection in 0..<self.arrayOfImages.count {
@@ -296,7 +296,7 @@ class ViewPhotosViewController: UIViewController, UIImagePickerControllerDelegat
             default:
                 
                 // BACK PHOTOS
-                let emailTitle = String.localizedStringWithFormat("90 DWT 1 Back Photos - Session %@", self.session)
+                let emailTitle = String.localizedStringWithFormat("90 DWT 2 Back Photos - Session %@", self.session)
                 mailcomposer.setSubject(emailTitle)
                 
                 for arraySection in 0..<self.arrayOfImages.count {

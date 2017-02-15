@@ -1,6 +1,6 @@
 //
 //  RewardVideoViewController.swift
-//  90 DWT 1
+//  90 DWT 2
 //
 //  Created by Grant, Jared on 1/11/17.
 //  Copyright © 2017 Jared Grant. All rights reserved.

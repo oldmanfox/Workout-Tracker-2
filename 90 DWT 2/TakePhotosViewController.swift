@@ -1,6 +1,6 @@
 //
 //  TakePhotosViewController.swift
-//  90 DWT 1
+//  90 DWT 2
 //
 //  Created by Grant, Jared on 9/16/16.
 //  Copyright © 2016 Grant, Jared. All rights reserved.
@@ -201,7 +201,7 @@ class TakePhotosViewController: UIViewController, UIImagePickerControllerDelegat
                     
                     // Prepare string for the Subject of the email
                     var subjectTitle = ""
-                    subjectTitle = subjectTitle.appendingFormat("90 DWT 1 %@ Photos - Session %@", monthArray[i], self.session)
+                    subjectTitle = subjectTitle.appendingFormat("90 DWT 2 %@ Photos - Session %@", monthArray[i], self.session)
                     
                     mailcomposer.setSubject(subjectTitle)
                     

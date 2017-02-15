@@ -1,6 +1,6 @@
 //
 //  MeasurementsRecordViewController.swift
-//  90 DWT 1
+//  90 DWT 2
 //
 //  Created by Grant, Jared on 8/2/16.
 //  Copyright © 2016 Grant, Jared. All rights reserved.
@@ -291,8 +291,8 @@ class MeasurementsRecordViewController: UIViewController, UITextFieldDelegate, M
                 // Send email
                 
                 let csvData = writeString.data(using: String.Encoding.ascii.rawValue)
-                let subject = NSString .localizedStringWithFormat("90 DWT 1 %@ Measurements - Session %@", self.navigationItem.title!, session)
-                let fileName = NSString .localizedStringWithFormat("90 DWT 1 %@ Measurements - Session %@.csv", self.navigationItem.title!, session)
+                let subject = NSString .localizedStringWithFormat("90 DWT 2 %@ Measurements - Session %@", self.navigationItem.title!, session)
+                let fileName = NSString .localizedStringWithFormat("90 DWT 2 %@ Measurements - Session %@.csv", self.navigationItem.title!, session)
                 var emailAddress = [""]
                 
                 // Fetch defaultEmail data.
