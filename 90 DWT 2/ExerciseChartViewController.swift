@@ -74,7 +74,9 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
         chart.xAxis = xAxis;
         
         let yAxis = SChartNumberAxis()
-        if seriesConfiguration == 1000 || seriesConfiguration == 1010 {
+        if seriesConfiguration == 100000 ||
+            seriesConfiguration == 101000 ||
+            seriesConfiguration == 101010 {
             
             // This configuration only has data for Reps
             yAxis.title = "Reps"
@@ -115,8 +117,10 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
     func numberOfSeries(in chart: ShinobiChart) -> Int {
         
         // 1 input fields = 1 series (Rep 1)
-        // 2 input fields = 2 series (Rep 1 and Weight 1) or (Rep 1 and Rep 1)
+        // 2 input fields = 2 series (Rep 1 and Weight 1) or (Rep 1 and Rep 2)
+        // 3 input fields = 3 series (Rep 1, Rep 2, Rep 3)
         // 4 input fields = 4 series (Rep 1, Rep 2, and Weight 1, Weight 2)
+        // 6 input fields = 6 series (Rep 1, Rep 2, Rep 3, and Weight 1, Weight 2, Weight 3)
         return self.numberOfSeriesToShow
     }
     
@@ -137,7 +141,73 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
         lineSeries.style().pointStyle().innerColor = UIColor.white
 
         switch seriesConfiguration {
-        case 1111:
+        case 111111:
+            if index == 0 || index == 1 || index == 2 {
+                
+                switch index {
+                case 0:
+                    columnSeries.title = "1-R"
+                    //columnSeries.style().areaColor = UIColor (red: 9/255, green: 74/255, blue: 191/255, alpha: 1)
+                    //columnSeries.style().showAreaWithGradient = false
+                    
+                case 1:
+                    columnSeries.title = "2-R"
+                    //columnSeries.style().areaColor = UIColor (red: 218/255, green: 14/255, blue: 16/255, alpha: 1)
+                    //columnSeries.style().showAreaWithGradient = false
+                    
+                default:
+                    //case = 2
+                    columnSeries.title = "3-R"
+                    //columnSeries.style().areaColor = UIColor (red: 218/255, green: 14/255, blue: 16/255, alpha: 1)
+                    //columnSeries.style().showAreaWithGradient = false
+                }
+                return columnSeries
+            }
+            else {
+                
+                switch index {
+                case 3:
+                    lineSeries.title = "1-W"
+                    //lineSeries.style().lineColor = UIColor (red: 1/255, green: 133/255, blue: 214/255, alpha: 1)
+                    //lineSeries.style().pointStyle().color = UIColor (red: 1/255, green: 133/255, blue: 214/255, alpha: 1)
+                    
+                case 4:
+                    lineSeries.title = "2-W"
+                    //lineSeries.style().lineColor = UIColor (red: 241/255, green: 3/255, blue: 125/255, alpha: 1)
+                    //lineSeries.style().pointStyle().color = UIColor (red: 241/255, green: 3/255, blue: 125/255, alpha: 1)
+                    
+                default:
+                    //case = 5
+                    lineSeries.title = "3-W"
+                    //lineSeries.style().lineColor = UIColor (red: 241/255, green: 3/255, blue: 125/255, alpha: 1)
+                    //lineSeries.style().pointStyle().color = UIColor (red: 241/255, green: 3/255, blue: 125/255, alpha: 1)
+                }
+                
+                return lineSeries
+            }
+
+        case 101010:
+            switch index {
+            case 0:
+                columnSeries.title = "1-R"
+                //columnSeries.style().areaColor = UIColor (red: 9/255, green: 74/255, blue: 191/255, alpha: 1)
+                //columnSeries.style().showAreaWithGradient = false
+                
+            case 1:
+                columnSeries.title = "2-R"
+                //columnSeries.style().areaColor = UIColor (red: 218/255, green: 14/255, blue: 16/255, alpha: 1)
+                //columnSeries.style().showAreaWithGradient = false
+                
+            default:
+                // case 3:
+                columnSeries.title = "3-R"
+                //columnSeries.style().areaColor = UIColor (red: 218/255, green: 14/255, blue: 16/255, alpha: 1)
+                //columnSeries.style().showAreaWithGradient = false
+            }
+            
+            return columnSeries
+            
+        case 111100:
             if index == 0 || index == 1 {
                 
                 switch index {
@@ -145,11 +215,14 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
                     columnSeries.title = "1-R"
                     //columnSeries.style().areaColor = UIColor (red: 9/255, green: 74/255, blue: 191/255, alpha: 1)
                     //columnSeries.style().showAreaWithGradient = false
+                    
                 default:
+                    //case = 1
                     columnSeries.title = "2-R"
                     //columnSeries.style().areaColor = UIColor (red: 218/255, green: 14/255, blue: 16/255, alpha: 1)
                     //columnSeries.style().showAreaWithGradient = false
                 }
+                
                 return columnSeries
             }
             else {
@@ -159,7 +232,9 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
                     lineSeries.title = "1-W"
                     //lineSeries.style().lineColor = UIColor (red: 1/255, green: 133/255, blue: 214/255, alpha: 1)
                     //lineSeries.style().pointStyle().color = UIColor (red: 1/255, green: 133/255, blue: 214/255, alpha: 1)
+                    
                 default:
+                    //case = 3
                     lineSeries.title = "2-W"
                     //lineSeries.style().lineColor = UIColor (red: 241/255, green: 3/255, blue: 125/255, alpha: 1)
                     //lineSeries.style().pointStyle().color = UIColor (red: 241/255, green: 3/255, blue: 125/255, alpha: 1)
@@ -168,22 +243,23 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
                 return lineSeries
             }
 
-        case 1010:
+        case 101000:
             switch index {
             case 0:
                 columnSeries.title = "1-R"
                 //columnSeries.style().areaColor = UIColor (red: 9/255, green: 74/255, blue: 191/255, alpha: 1)
                 //columnSeries.style().showAreaWithGradient = false
+                
             default:
-                // case 1:
+                //case = 1
                 columnSeries.title = "2-R"
                 //columnSeries.style().areaColor = UIColor (red: 218/255, green: 14/255, blue: 16/255, alpha: 1)
                 //columnSeries.style().showAreaWithGradient = false
             }
             
             return columnSeries
-            
-        case 1100:
+
+        case 110000:
             switch index {
             case 0:
                 columnSeries.title = "1-R"
@@ -201,7 +277,7 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
                 return lineSeries
             }
         default:
-            // case 1000:
+            // case 100000:
             columnSeries.title = "1-R"
             //columnSeries.style().areaColor = UIColor (red: 9/255, green: 74/255, blue: 191/255, alpha: 1)
             //columnSeries.style().showAreaWithGradient = false
@@ -223,7 +299,51 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
         dataPoint.xValue = dataIndex + 1
         
         switch seriesConfiguration {
-        case 1111:
+        case 111111:
+            switch seriesIndex {
+            case 0:
+                // Reps 1
+                dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 1", index: (dataIndex + 1) as NSNumber)!)
+                
+            case 1:
+                // Reps 2
+                dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 2", index: (dataIndex + 1) as NSNumber)!)
+                
+            case 2:
+                // Reps 3
+                dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 3", index: (dataIndex + 1) as NSNumber)!)
+                
+            case 3:
+                // Weight 1
+                dataPoint.yValue = Double(CDOperation.getWeightTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 1", index: (dataIndex + 1) as NSNumber)!)
+                
+            case 4:
+                // Weight 2
+                dataPoint.yValue = Double(CDOperation.getWeightTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 2", index: (dataIndex + 1) as NSNumber)!)
+                
+            default:
+                // seriesIndex = 5
+                // Weight 3
+                dataPoint.yValue = Double(CDOperation.getWeightTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 3", index: (dataIndex + 1) as NSNumber)!)
+            }
+
+        case 101010:
+            switch seriesIndex {
+            case 0:
+                // Reps 1
+                dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 1", index: (dataIndex + 1) as NSNumber)!)
+                
+            case 1:
+                // Reps 2
+                dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 2", index: (dataIndex + 1) as NSNumber)!)
+                
+            default:
+                // case 2:
+                // Reps 3
+                dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 3", index: (dataIndex + 1) as NSNumber)!)
+            }
+
+        case 111100:
             switch seriesIndex {
             case 0:
                 // Reps 1
@@ -238,12 +358,12 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
                 dataPoint.yValue = Double(CDOperation.getWeightTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 1", index: (dataIndex + 1) as NSNumber)!)
                 
             default:
-                // seriesIndex = 3
+                // case 3:
                 // Weight 2
                 dataPoint.yValue = Double(CDOperation.getWeightTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 2", index: (dataIndex + 1) as NSNumber)!)
             }
 
-        case 1010:
+        case 101000:
             switch seriesIndex {
             case 0:
                 // Reps 1
@@ -255,7 +375,7 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
                 dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 2", index: (dataIndex + 1) as NSNumber)!)
             }
 
-        case 1100:
+        case 110000:
             switch seriesIndex {
             case 0:
                 // Reps 1
@@ -268,7 +388,7 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
             }
             
         default:
-            // case 1000:
+            // case 100000:
             // Reps 1
             dataPoint.yValue = Double(CDOperation.getRepsTextForExerciseRound(self.session, workout: self.selectedWorkout, exercise: self.exerciseName, round: "Round 1", index: (dataIndex + 1) as NSNumber)!)
         }
@@ -282,24 +402,24 @@ class ExerciseChartViewController: UIViewController, SChartDatasource {
         
         // Normal
         switch self.selectedWorkout {
-        case "Chest + Back & Ab Workout":
-            return 5
+        case "Complete Fitness & Ab Workout":
+            return 4
             
-        case "Shoulders + Arms & Ab Workout":
-            return 5
+        case "Strength + Stability":
+            return 4
+            
+        case "Chest + Back + Stability & Ab Workout":
+            return 4
+            
+        case "Shoulder + Bi + Tri & Ab Workout":
+            return 4
             
         case "Legs + Back & Ab Workout":
-            return 10
-            
-        case "Chest + Shoulders + Tri & Ab Workout":
-            return 5
-            
-        case "Back + Biceps & Ab Workout":
-            return 5
+            return 4
             
         default:
             // Core Fitness
-            return 6
+            return 4
         }
     }
 }

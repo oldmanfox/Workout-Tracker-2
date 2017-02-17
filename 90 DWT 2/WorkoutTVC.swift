@@ -634,6 +634,19 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
                                     }
                                     
                                 case 2:
+                                    // Reps
+                                    if object.reps != nil {
+                                        
+                                        cell.currentRep3.text = object.reps
+                                        cell.originalCurrentRep3_Text = object.reps!
+                                    }
+                                    else {
+                                        
+                                        cell.currentRep3.text = "0.0"
+                                        cell.originalCurrentRep3_Text = "0.0"
+                                    }
+                                    
+                                    // Weight
                                     if object.weight != nil {
                                         
                                         cell.currentWeight3.text = object.weight
@@ -916,38 +929,74 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
             if cell.currentRep1.isHidden == false &&
                 cell.currentRep2.isHidden == false &&
                 cell.currentWeight1.isHidden == false &&
-                cell.currentWeight2.isHidden == false {
+                cell.currentWeight2.isHidden == false &&
+                cell.currentWeight3.isHidden == false &&
+                cell.currentWeight3.isHidden == false {
                 
-                //  Both round 1 and round 2 Reps and Weight fields are showing
-                destinationVC.numberOfSeriesToShow = 4
-                destinationVC.seriesConfiguration = 1111 // ON, ON, ON, ON
+                //  3 Rounds
+                //  Round 1, 2, and 3 Reps and Weight fields are showing
+                destinationVC.numberOfSeriesToShow = 6
+                destinationVC.seriesConfiguration = 111111 // ON, ON, ON, ON, ON, ON
             }
             else if cell.currentRep1.isHidden == false &&
                 cell.currentRep2.isHidden == false &&
+                cell.currentRep3.isHidden == false &&
                 cell.currentWeight1.isHidden == true &&
-                cell.currentWeight2.isHidden == true {
+                cell.currentWeight2.isHidden == true &&
+                cell.currentWeight3.isHidden == true {
                 
-                //  Only round 1 and round 2 Reps fields are showing
+                //  3 Rounds
+                //  Only round 1, 2, and 3 Reps fields are showing
+                destinationVC.numberOfSeriesToShow = 3
+                destinationVC.seriesConfiguration = 101010 // ON, OFF, ON, OFF, ON, OFF
+            }
+            else if cell.currentRep1.isHidden == false &&
+                cell.currentRep2.isHidden == false &&
+                cell.currentRep3.isHidden == true &&
+                cell.currentWeight1.isHidden == false &&
+                cell.currentWeight2.isHidden == false &&
+                cell.currentWeight3.isHidden == true {
+                
+                //  2 Rounds
+                //  Both round 1 and 2 Reps and Weight fields are showing
+                destinationVC.numberOfSeriesToShow = 4
+                destinationVC.seriesConfiguration = 111100 // ON, ON, ON, ON, OFF, OFF
+            }
+            else if cell.currentRep1.isHidden == false &&
+                cell.currentRep2.isHidden == false &&
+                cell.currentRep3.isHidden == true &&
+                cell.currentWeight1.isHidden == true &&
+                cell.currentWeight2.isHidden == true &&
+                cell.currentWeight3.isHidden == true {
+                
+                //  2 Rounds
+                //  Both round 1 and 2 Reps fields are showing
                 destinationVC.numberOfSeriesToShow = 2
-                destinationVC.seriesConfiguration = 1010 // ON, OFF, ON, OFF
+                destinationVC.seriesConfiguration = 101000 // ON, OFF, ON, OFF, OFF, OFF
             }
             else if cell.currentRep1.isHidden == false &&
                 cell.currentRep2.isHidden == true &&
+                cell.currentRep3.isHidden == true &&
                 cell.currentWeight1.isHidden == false &&
-                cell.currentWeight2.isHidden == true {
+                cell.currentWeight2.isHidden == true &&
+                cell.currentWeight3.isHidden == true {
                 
+                //  1 Round
                 //  Only round 1 Reps and Weight fields are showing
                 destinationVC.numberOfSeriesToShow = 2
-                destinationVC.seriesConfiguration = 1100 // ON, ON, OFF, OFF
+                destinationVC.seriesConfiguration = 110000 // ON, ON, OFF, OFF, OFF, OFF
             }
             else if cell.currentRep1.isHidden == false &&
                 cell.currentRep2.isHidden == true &&
+                cell.currentRep3.isHidden == true &&
                 cell.currentWeight1.isHidden == true &&
-                cell.currentWeight2.isHidden == true {
+                cell.currentWeight2.isHidden == true &&
+                cell.currentWeight3.isHidden == true {
                 
+                //  1 Round
                 //  Only round 1 Reps fields are showing
                 destinationVC.numberOfSeriesToShow = 1
-                destinationVC.seriesConfiguration = 1000 // ON, OFF, OFF, OFF
+                destinationVC.seriesConfiguration = 100000 // ON, OFF, OFF, OFF, OFF, OFF
             }
 
             let exerciseName = cell.nonUpperCaseExerciseName

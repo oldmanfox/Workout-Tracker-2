@@ -1486,7 +1486,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="d3O-xF-pE0"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                             <color key="textColor" red="0.61809694770000001" green="0.27303695680000001" blue="0.041807003320000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -1754,6 +1754,7 @@
                                             </state>
                                             <connections>
                                                 <action selector="graphButtonPressed:" destination="Q4S-5J-tet" eventType="touchUpInside" id="kiD-Fh-mx2"/>
+                                                <segue destination="nYq-dI-1H7" kind="presentation" identifier="ShowShinobiChart" id="RXC-P9-ceF"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U3a-6q-SJy">
@@ -1974,7 +1975,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rxH-o6-fCp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3101.5999999999999" y="626.98650674662679"/>
+            <point key="canvasLocation" x="3102" y="671"/>
         </scene>
         <!--Date Picker View Controller-->
         <scene sceneID="1VF-1e-N0B">
@@ -3378,6 +3379,6 @@
         <image name="weight_lifting_selected" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="08R-9k-ji7"/>
+        <segue reference="RXC-P9-ceF"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -504,7 +504,7 @@ class CDOperation {
                 
                 var workoutArray = [NSManagedObject]()
                 
-                for outerIndex in 0...1 {
+                for outerIndex in 0...2 {
                     
                     var objectsAtIndexArray = [NSManagedObject]()
                     
@@ -559,7 +559,14 @@ class CDOperation {
                 case 1:
                     let matchedWorkoutInfo = workoutObjects[0]
                     
-                    return matchedWorkoutInfo.reps
+                    if matchedWorkoutInfo.reps == nil || matchedWorkoutInfo.reps == ""  {
+                        
+                        return "0.0"
+                    }
+                    else {
+                        
+                        return matchedWorkoutInfo.reps
+                    }
                     
                 default:
                     // More than one match
@@ -567,7 +574,14 @@ class CDOperation {
                     // print("More than one match for object")
                     let matchedWorkoutInfo = workoutObjects.last
                     
-                    return matchedWorkoutInfo!.reps
+                    if matchedWorkoutInfo?.reps == nil || matchedWorkoutInfo?.reps == ""  {
+                        
+                        return "0.0"
+                    }
+                    else {
+                        
+                        return matchedWorkoutInfo?.reps
+                    }
                 }
             }
         } catch { print(" ERROR executing a fetch request: \( error)") }
@@ -1680,13 +1694,13 @@ class CDOperation {
                                                 tempExerciseName = tempExerciseTitlesArray[b]
                                                 
                                                 //  Add the exercise title to the string
-                                                writeString.append(",\n\(tempExerciseName)\n, Round 1, Round 2, ,Notes\n")
+                                                writeString.append(",\n\(tempExerciseName)\n, Round 1, Round 2, Round 3, Notes\n")
                                                 
                                                 // Add the "Reps" to the row
                                                 writeString.append("Reps,")
                                                 
                                                 //  Add the reps and notes to the string
-                                                for round in 0..<2 {
+                                                for round in 0..<3 {
                                                     
                                                     roundConvertedToString = self.renameRoundIntToString(round)
                                                     tempRepData = ""
@@ -1715,50 +1729,27 @@ class CDOperation {
                                                                     
                                                                     tempRepData = (workoutObjects3.last?.reps)!
                                                                     
-                                                                    if round == 1 {
-                                                                        
-                                                                        //  Inserts a """" into the string
-                                                                        writeString.append("\(tempRepData),,")
-                                                                    }
-                                                                    else {
-                                                                        
-                                                                        //  Inserts a "" into the string
-                                                                        writeString.append("\(tempRepData),")
-                                                                    }
+                                                                    //  Inserts a "" into the string
+                                                                    writeString.append("\(tempRepData),")
                                                                 }
                                                                 else {
                                                                     
                                                                     // There was a record found, but only had data for the weight or notes and not the reps.
-                                                                    if round == 1 {
-                                                                        
-                                                                        //  Inserts a """" into the string
-                                                                        writeString.append("\(tempRepData),,")
-                                                                    }
-                                                                    else {
-                                                                        
-                                                                        //  Inserts a "" into the string
-                                                                        writeString.append("\(tempRepData),")
-                                                                    }
+                                                                    //  Inserts a "" into the string
+                                                                    writeString.append("\(tempRepData),")
                                                                 }
                                                             }
                                                             else {
                                                                 // No match found
-                                                                if round == 1 {
-                                                                    
-                                                                    //  Inserts a """" into the string
-                                                                    writeString.append("\(tempRepData),,")
-                                                                }
-                                                                else {
-                                                                    
-                                                                    //  Inserts a "" into the string
-                                                                    writeString.append("\(tempRepData),")
-                                                                }
+                                                                
+                                                                //  Inserts a "" into the string
+                                                                writeString.append("\(tempRepData),")
                                                             }
                                                         }
                                                     } catch { print(" ERROR executing a fetch request: \( error)") }
                                                     
                                                     //  Notes
-                                                    if round == 1 {
+                                                    if round == 2 {
                                                         
                                                         filter = NSPredicate(format: "session == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
                                                                              currentSessionString,
@@ -1803,7 +1794,7 @@ class CDOperation {
                                                 writeString.append("Weight,")
                                                 
                                                 //  Add the weight line from the database
-                                                for round in 0..<2 {
+                                                for round in 0..<3 {
                                                     
                                                     roundConvertedToString = self.renameRoundIntToString(round)
                                                     tempWeightData = ""
@@ -1831,7 +1822,7 @@ class CDOperation {
                                                                     
                                                                     tempWeightData = (workoutObjects4.last?.weight)!
                                                                     
-                                                                    if round == 1 {
+                                                                    if round == 2 {
                                                                         
                                                                         writeString.append("\(tempWeightData)\n")
                                                                     }
@@ -1843,7 +1834,7 @@ class CDOperation {
                                                                 else {
                                                                     
                                                                     //  There was a record found, but only had data for the reps or notes and not the weight.
-                                                                    if round == 1 {
+                                                                    if round == 2 {
                                                                         
                                                                         writeString.append("\(tempWeightData)\n")
                                                                     }
@@ -1857,7 +1848,7 @@ class CDOperation {
                                                                 
                                                                 //  No Weight
                                                                 //  Inserts a "" into the string
-                                                                if round == 1 {
+                                                                if round == 2 {
                                                                     
                                                                     writeString.append("\(tempWeightData)\n")
                                                                 }
@@ -1993,13 +1984,13 @@ class CDOperation {
                                             tempExerciseName = tempExerciseTitlesArray[b]
                                             
                                             //  Add the exercise title to the string
-                                            writeString.append(",\n\(tempExerciseName)\n, Round 1, Round 2, ,Notes\n")
+                                            writeString.append(",\n\(tempExerciseName)\n, Round 1, Round 2, Round 3, Notes\n")
                                             
                                             // Add the "Reps" to the row
                                             writeString.append("Reps,")
                                             
                                             //  Add the reps and notes to the string
-                                            for round in 0..<2 {
+                                            for round in 0..<3 {
                                                 
                                                 roundConvertedToString = self.renameRoundIntToString(round)
                                                 tempRepData = ""
@@ -2028,50 +2019,27 @@ class CDOperation {
                                                                 
                                                                 tempRepData = (workoutObjects3.last?.reps)!
                                                                 
-                                                                if round == 1 {
-                                                                    
-                                                                    //  Inserts a """" into the string
-                                                                    writeString.append("\(tempRepData),,")
+                                                                //  Inserts a "" into the string
+                                                                writeString.append("\(tempRepData),")
                                                                 }
-                                                                else {
-                                                                    
-                                                                    //  Inserts a "" into the string
-                                                                    writeString.append("\(tempRepData),")
-                                                                }
-                                                            }
                                                             else {
                                                                 
                                                                 // There was a record found, but only had data for the weight or notes and not the reps.
-                                                                if round == 1 {
-                                                                    
-                                                                    //  Inserts a """" into the string
-                                                                    writeString.append("\(tempRepData),,")
-                                                                }
-                                                                else {
-                                                                    
-                                                                    //  Inserts a "" into the string
-                                                                    writeString.append("\(tempRepData),")
-                                                                }
+                                                                //  Inserts a "" into the string
+                                                                writeString.append("\(tempRepData),")
                                                             }
                                                         }
                                                         else {
                                                             // No match found
-                                                            if round == 1 {
-                                                                
-                                                                //  Inserts a """" into the string
-                                                                writeString.append("\(tempRepData),,")
-                                                            }
-                                                            else {
-                                                                
-                                                                //  Inserts a "" into the string
-                                                                writeString.append("\(tempRepData),")
-                                                            }
+                                                            
+                                                            //  Inserts a "" into the string
+                                                            writeString.append("\(tempRepData),")
                                                         }
                                                     }
                                                 } catch { print(" ERROR executing a fetch request: \( error)") }
                                                 
                                                 //  Notes
-                                                if round == 1 {
+                                                if round == 2 {
                                                     
                                                     filter = NSPredicate(format: "session == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
                                                                          currentSessionString,
@@ -2116,7 +2084,7 @@ class CDOperation {
                                             writeString.append("Weight,")
                                             
                                             //  Add the weight line from the database
-                                            for round in 0..<2 {
+                                            for round in 0..<3 {
                                                 
                                                 roundConvertedToString = self.renameRoundIntToString(round)
                                                 tempWeightData = ""
@@ -2144,7 +2112,7 @@ class CDOperation {
                                                                 
                                                                 tempWeightData = (workoutObjects4.last?.weight)!
                                                                 
-                                                                if round == 1 {
+                                                                if round == 2 {
                                                                     
                                                                     writeString.append("\(tempWeightData)\n")
                                                                 }
@@ -2156,7 +2124,7 @@ class CDOperation {
                                                             else {
                                                                 
                                                                 //  There was a record found, but only had data for the reps or notes and not the weight.
-                                                                if round == 1 {
+                                                                if round == 2 {
                                                                     
                                                                     writeString.append("\(tempWeightData)\n")
                                                                 }
@@ -2170,7 +2138,7 @@ class CDOperation {
                                                             
                                                             //  No Weight
                                                             //  Inserts a "" into the string
-                                                            if round == 1 {
+                                                            if round == 2 {
                                                                 
                                                                 writeString.append("\(tempWeightData)\n")
                                                             }
@@ -2269,13 +2237,13 @@ class CDOperation {
                         let tempExerciseName = exerciseTitleArray[b] 
                         
                         //  Add the exercise title to the string
-                        writeString.append(",\n\(tempExerciseName)\n, Round 1, Round 2, ,Notes\n")
+                        writeString.append(",\n\(tempExerciseName)\n, Round 1, Round 2, Round 3, Notes\n")
                         
                         // Add the "Reps" to the row
                         writeString.append("Reps,")
                         
                         //  Add the reps and notes to the string
-                        for round in 0..<2 {
+                        for round in 0..<3 {
                             
                             let roundConvertedToString = self.renameRoundIntToString(round)
                             var tempRepData = ""
@@ -2304,50 +2272,27 @@ class CDOperation {
                                             
                                             tempRepData = (workoutObjects3.last?.reps)!
                                             
-                                            if round == 1 {
-                                                
-                                                //  Inserts a """" into the string
-                                                writeString.append("\(tempRepData),,")
-                                            }
-                                            else {
-                                                
-                                                //  Inserts a "" into the string
-                                                writeString.append("\(tempRepData),")
-                                            }
+                                            //  Inserts a "" into the string
+                                            writeString.append("\(tempRepData),")
                                         }
                                         else {
                                             
                                             // There was a record found, but only had data for the weight or notes and not the reps.
-                                            if round == 1 {
-                                                
-                                                //  Inserts a """" into the string
-                                                writeString.append("\(tempRepData),,")
-                                            }
-                                            else {
-                                                
-                                                //  Inserts a "" into the string
-                                                writeString.append("\(tempRepData),")
-                                            }
-                                        }
-                                    }
-                                    else {
-                                        // No match found
-                                        if round == 1 {
-                                            
-                                            //  Inserts a """" into the string
-                                            writeString.append("\(tempRepData),,")
-                                        }
-                                        else {
                                             
                                             //  Inserts a "" into the string
                                             writeString.append("\(tempRepData),")
                                         }
                                     }
+                                    else {
+                                        // No match found
+                                        // Inserts a "" into the string
+                                        writeString.append("\(tempRepData),")
+                                    }
                                 }
                             } catch { print(" ERROR executing a fetch request: \( error)") }
                             
                             //  Notes
-                            if round == 1 {
+                            if round == 2 {
                                 
                                 filter = NSPredicate(format: "session == %@ AND workout == %@ AND exercise = %@ AND round = %@ AND index == %@",
                                                      currentSessionString,
@@ -2392,7 +2337,7 @@ class CDOperation {
                         writeString.append("Weight,")
                         
                         //  Add the weight line from the database
-                        for round in 0..<2 {
+                        for round in 0..<3 {
                             
                             let roundConvertedToString = self.renameRoundIntToString(round)
                             var tempWeightData = ""
@@ -2420,7 +2365,7 @@ class CDOperation {
                                             
                                             tempWeightData = (workoutObjects4.last?.weight)!
                                             
-                                            if round == 1 {
+                                            if round == 2 {
                                                 
                                                 writeString.append("\(tempWeightData)\n")
                                             }
@@ -2432,7 +2377,7 @@ class CDOperation {
                                         else {
                                             
                                             //  There was a record found, but only had data for the reps or notes and not the weight.
-                                            if round == 1 {
+                                            if round == 2 {
                                                 
                                                 writeString.append("\(tempWeightData)\n")
                                             }
@@ -2446,7 +2391,7 @@ class CDOperation {
                                         
                                         //  No Weight
                                         //  Inserts a "" into the string
-                                        if round == 1 {
+                                        if round == 2 {
                                             
                                             writeString.append("\(tempWeightData)\n")
                                         }

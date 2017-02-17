@@ -141,32 +141,14 @@ extension StoreTVC {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone) {
+        // Rewarded Ad Unit
+        if identifier == "RewardVideo" && MPRewardedVideo.hasAdAvailable(forAdUnitID: "c9130834e2324aa281a4b59dbcc41301"){
             
-            // iPhone
-            // Rewarded Ad Unit
-            if identifier == "RewardVideo" && MPRewardedVideo.hasAdAvailable(forAdUnitID: "f41f0c37b0aa4e939b052e74322a8719"){
-                
-                return true
-            }
-            else {
-                
-                return false
-            }
+            return true
         }
         else {
             
-            // iPad
-            // Rewarded Ad Unit
-            if identifier == "RewardVideo" && MPRewardedVideo.hasAdAvailable(forAdUnitID: "895ad8786fb7436f86219a3bff896c1f"){
-                
-                return true
-            }
-            else {
-                
-                return false
-            }
-
+            return false
         }
     }
 }
