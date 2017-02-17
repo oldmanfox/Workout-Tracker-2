@@ -61,9 +61,9 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
     }
     
     fileprivate struct Color {
-        static let light = UIColor (red: 86/255, green: 145/255, blue: 254/255, alpha: 1)
-        static let medium = UIColor (red: 4/255, green: 142/255, blue: 93/255, alpha: 1)
-        static let dark = UIColor (red: 43/255, green: 72/255, blue: 127/255, alpha: 1)
+        static let light = UIColor (red: 0/255, green: 125/255, blue: 191/255, alpha: 1)
+        static let medium = UIColor (red: 0/255, green: 83/255, blue: 127/255, alpha: 1)
+        static let dark = UIColor (red: 0/255, green: 42/255, blue: 64/255, alpha: 1)
     }
     
     override func viewDidLoad() {
@@ -857,7 +857,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
         header.textLabel?.textColor = UIColor.white
         
         // Set the background color of the header/footer
-        header.contentView.backgroundColor = UIColor (red: 130/255, green: 155/255, blue: 203/255, alpha: 1)
+        header.contentView.backgroundColor = UIColor (red: 0/255, green: 167/255, blue: 255/255, alpha: 1)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -204,7 +204,6 @@
 		A531F5591E526AE1008A55B2 /* MPRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A531F4A31E526AE1008A55B2 /* MPRewardedVideoCustomEvent.m */; };
 		A531F55A1E526AE1008A55B2 /* MPRewardedVideoError.m in Sources */ = {isa = PBXBuildFile; fileRef = A531F4A51E526AE1008A55B2 /* MPRewardedVideoError.m */; };
 		A531F55B1E526AE1008A55B2 /* MPRewardedVideoReward.m in Sources */ = {isa = PBXBuildFile; fileRef = A531F4A71E526AE1008A55B2 /* MPRewardedVideoReward.m */; };
-		A531F55F1E5359EE008A55B2 /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A531F55E1E5359EE008A55B2 /* Chartboost.framework */; };
 		A531F6151E535CB4008A55B2 /* ShinobiCharts in Frameworks */ = {isa = PBXBuildFile; fileRef = A531F6141E535CB4008A55B2 /* ShinobiCharts */; };
 		A531F6171E535CCF008A55B2 /* ExerciseChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531F6161E535CCF008A55B2 /* ExerciseChartViewController.swift */; };
 		A531F6211E535D1A008A55B2 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A531F61C1E535D1A008A55B2 /* CoreDataHelper.m */; };
@@ -286,6 +285,7 @@
 		A59A6F421BE11D2700021100 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F401BE11D2700021100 /* EventKitUI.framework */; };
 		A59A6F441BE11D6200021100 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F431BE11D6200021100 /* libxml2.tbd */; };
 		A59A6F461BE11D6C00021100 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F451BE11D6C00021100 /* CoreBluetooth.framework */; };
+		A5B641B41E57BF2D00A747BA /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B641B31E57BF2D00A747BA /* Chartboost.framework */; };
 		A5E11E5A1C2200EA00761C00 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A5E11E591C2200EA00761C00 /* Settings.bundle */; };
 		A5FD70F5164E0B85004E4884 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FD70F4164E0B84004E4884 /* Social.framework */; };
 /* End PBXBuildFile section */
@@ -669,7 +669,6 @@
 		A531F4A51E526AE1008A55B2 /* MPRewardedVideoError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPRewardedVideoError.m; sourceTree = "<group>"; };
 		A531F4A61E526AE1008A55B2 /* MPRewardedVideoReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPRewardedVideoReward.h; sourceTree = "<group>"; };
 		A531F4A71E526AE1008A55B2 /* MPRewardedVideoReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPRewardedVideoReward.m; sourceTree = "<group>"; };
-		A531F55E1E5359EE008A55B2 /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
 		A531F5601E535C08008A55B2 /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShinobiCharts.framework; sourceTree = "<group>"; };
 		A531F5651E535CB3008A55B2 /* SChart+Deprecated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SChart+Deprecated.h"; sourceTree = "<group>"; };
 		A531F5661E535CB3008A55B2 /* SChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SChart.h; sourceTree = "<group>"; };
@@ -934,6 +933,7 @@
 		A59A6F401BE11D2700021100 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		A59A6F431BE11D6200021100 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		A59A6F451BE11D6C00021100 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		A5B641B31E57BF2D00A747BA /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
 		A5E11E411C21B4FB00761C00 /* _0_DWT_ 2_v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "_0_DWT_ 2_v2.xcdatamodel"; sourceTree = "<group>"; };
 		A5E11E591C2200EA00761C00 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A5FD70F4164E0B84004E4884 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -949,6 +949,7 @@
 				A59A6F3E1BE11D1600021100 /* CoreMedia.framework in Frameworks */,
 				A531F68B1E536184008A55B2 /* libc++.tbd in Frameworks */,
 				A531F6891E536165008A55B2 /* WebKit.framework in Frameworks */,
+				A5B641B41E57BF2D00A747BA /* Chartboost.framework in Frameworks */,
 				A59A6F461BE11D6C00021100 /* CoreBluetooth.framework in Frameworks */,
 				A59A6F441BE11D6200021100 /* libxml2.tbd in Frameworks */,
 				A59A6F411BE11D2700021100 /* EventKit.framework in Frameworks */,
@@ -969,7 +970,6 @@
 				A59A6F321BE1152400021100 /* AVFoundation.framework in Frameworks */,
 				A54B631B15CB14DA0085C0E5 /* AudioToolbox.framework in Frameworks */,
 				A59A6F301BE1151100021100 /* AdSupport.framework in Frameworks */,
-				A531F55F1E5359EE008A55B2 /* Chartboost.framework in Frameworks */,
 				A53AAEED174678D100FC3521 /* Security.framework in Frameworks */,
 				A54B631C15CB14DA0085C0E5 /* CoreImage.framework in Frameworks */,
 				A54B62F915CB13F10085C0E5 /* UIKit.framework in Frameworks */,
@@ -1888,12 +1888,12 @@
 		A54B62F715CB13F10085C0E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5B641B31E57BF2D00A747BA /* Chartboost.framework */,
 				A531F68E1E536252008A55B2 /* OpenGLES.framework */,
 				A531F68C1E536236008A55B2 /* CoreText.framework */,
 				A531F68A1E536184008A55B2 /* libc++.tbd */,
 				A531F6881E536165008A55B2 /* WebKit.framework */,
 				A531F5601E535C08008A55B2 /* ShinobiCharts.framework */,
-				A531F55E1E5359EE008A55B2 /* Chartboost.framework */,
 				A59A6F451BE11D6C00021100 /* CoreBluetooth.framework */,
 				A59A6F431BE11D6200021100 /* libxml2.tbd */,
 				A59A6F3F1BE11D2700021100 /* EventKit.framework */,
@@ -2389,24 +2389,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/MoPubSDK/AdNetworkSupport/GoogleAdMob/SDK",
-					"$(PROJECT_DIR)/MoPubSDK/AdNetworkSupport/Millennial/SDK",
-					"$(PROJECT_DIR)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT 2/90 DWT 2-Prefix.pch";
 				INFOPLIST_FILE = "90 DWT 2/90 DWT 2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/90",
-					DWT,
-					2,
-					"$(PROJECT_DIR)/90\\ DWT\\ 2",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.g-rantsoftware.-0-DWT-2";
@@ -2429,24 +2418,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/MoPubSDK/AdNetworkSupport/GoogleAdMob/SDK",
-					"$(PROJECT_DIR)/MoPubSDK/AdNetworkSupport/Millennial/SDK",
-					"$(PROJECT_DIR)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT 2/90 DWT 2-Prefix.pch";
 				INFOPLIST_FILE = "90 DWT 2/90 DWT 2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/90",
-					DWT,
-					2,
-					"$(PROJECT_DIR)/90\\ DWT\\ 2",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.g-rantsoftware.-0-DWT-2";
@@ -2504,24 +2482,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/MoPubSDK/AdNetworkSupport/GoogleAdMob/SDK",
-					"$(PROJECT_DIR)/MoPubSDK/AdNetworkSupport/Millennial/SDK",
-					"$(PROJECT_DIR)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "90 DWT 2/90 DWT 2-Prefix.pch";
 				INFOPLIST_FILE = "90 DWT 2/90 DWT 2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/90",
-					DWT,
-					2,
-					"$(PROJECT_DIR)/90\\ DWT\\ 2",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.g-rantsoftware.-0-DWT-2";

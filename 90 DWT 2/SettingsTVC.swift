@@ -95,7 +95,7 @@ class SettingsTVC: UITableViewController, UIPopoverPresentationControllerDelegat
 
     func configureButtonBorder() {
         
-        let red = UIColor(red: 203/255, green: 116/255, blue: 49/255, alpha: 1)
+        let red = UIColor(red: 204/255, green: 70/255, blue: 20/255, alpha: 1)
         //let lightRed = UIColor(red: 175/255, green: 89/255, blue: 8/255, alpha: 0.75)
         
         // decreaseSession Button

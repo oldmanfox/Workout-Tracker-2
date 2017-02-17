@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Red-Orange-Check-22.png",
+      "filename" : "RED-Check-22-90DWT2.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Red-Orange-Check-44.png",
+      "filename" : "RED-Check-44-90DWT2.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Red-Orange-Check-66.png",
+      "filename" : "RED-Check-66-90DWT2.png",
       "scale" : "3x"
     }
   ],

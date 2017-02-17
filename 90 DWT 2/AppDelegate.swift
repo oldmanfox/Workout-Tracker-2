@@ -26,14 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MPRewardedVideoDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         
         // Change navigation bar bar button items and title text color
-        // Dark Grey Color
+        // Blue Color
         // White Color
-        UINavigationBar.appearance().barTintColor = UIColor (red: 81/255, green: 97/255, blue: 126/255, alpha: 1)
+        UINavigationBar.appearance().barTintColor = UIColor (red: 0/255, green: 125/255, blue: 191/255, alpha: 1)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
         
         // Change tab bar tint color
         // Redish Color
-        UITabBar.appearance().tintColor = UIColor (red: 203/255, green: 116/255, blue: 49/255, alpha: 1)
+        UITabBar.appearance().tintColor = UIColor (red: 204/255, green: 70/255, blue: 20/255, alpha: 1)
         
         // Initialize rewarded video before loading any ads.
         MoPub.sharedInstance().initializeRewardedVideo(withGlobalMediationSettings: nil, delegate: self)

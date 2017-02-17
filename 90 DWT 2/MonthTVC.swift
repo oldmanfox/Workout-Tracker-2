@@ -45,11 +45,8 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
     
     fileprivate struct Color {
         static let light = "Light"
+        static let medium = "Medium"
         static let dark = "Dark"
-        static let red = "Red"
-        static let purple = "Purple"
-        static let tan = "Tan"
-        static let white = "White"
     }
     
     override func viewDidLoad() {
@@ -223,31 +220,18 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
 
         switch weekOfMonthColorList[indexPath.section][indexPath.row] as! String {
         case "Light":
-            cell.weekOfMonthTextField.backgroundColor = UIColor(red: 86/255, green: 145/255, blue: 254/255, alpha: 1.0)
+            cell.weekOfMonthTextField.backgroundColor = UIColor(red: 0/255, green: 125/255, blue: 191/255, alpha: 1.0)
+            cell.weekOfMonthTextField.textColor = UIColor.white
+            
+        case "Medium":
+            cell.weekOfMonthTextField.backgroundColor = UIColor(red: 0/255, green: 83/255, blue: 127/255, alpha: 1.0)
             cell.weekOfMonthTextField.textColor = UIColor.white
             
         case "Dark":
-            cell.weekOfMonthTextField.backgroundColor = UIColor(red: 43/255, green: 72/255, blue: 127/255, alpha: 1.0)
+            cell.weekOfMonthTextField.backgroundColor = UIColor(red: 0/255, green: 42/255, blue: 64/255, alpha: 1.0)
             cell.weekOfMonthTextField.textColor = UIColor.white
-            
-        case "Red":
-            cell.weekOfMonthTextField.backgroundColor = UIColor(red: 203/255, green: 116/255, blue: 49/255, alpha: 1.0)
-            cell.weekOfMonthTextField.textColor = UIColor.white
-            
-        case "Purple":
-            cell.weekOfMonthTextField.backgroundColor = UIColor(red: 119/255, green: 112/255, blue: 152/255, alpha: 1.0)
-            cell.weekOfMonthTextField.textColor = UIColor.white
-            
-        case "Tan":
-            cell.weekOfMonthTextField.backgroundColor = UIColor(red: 254/255, green: 211/255, blue: 150/255, alpha: 1.0)
-            cell.weekOfMonthTextField.textColor = UIColor.white
-            
-        case "White":
-            cell.weekOfMonthTextField.backgroundColor = UIColor.white
-            cell.weekOfMonthTextField.textColor = UIColor.black
             
         default: break
-            
         }
 
         if self.weekCompleted(weekNum) {
@@ -330,9 +314,9 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
                          [Week.week5, Week.week6, Week.week7, Week.week8],
                          [Week.week9, Week.week10, Week.week11, Week.week12, Week.week13]]
         
-        weekOfMonthColorList = [[Color.light, Color.light, Color.light, Color.red],
-                                [Color.dark, Color.dark, Color.dark, Color.red],
-                                [Color.light, Color.dark, Color.light, Color.dark, Color.red]]
+        weekOfMonthColorList = [[Color.light, Color.light, Color.light, Color.light],
+                                [Color.medium, Color.medium, Color.medium, Color.medium],
+                                [Color.dark, Color.dark, Color.dark, Color.dark, Color.dark]]
         
     }
     
