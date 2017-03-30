@@ -129,6 +129,18 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
         // Force fetch when notified of significant data changes
         NotificationCenter.default.addObserver(self, selector: #selector(self.doNothing), name: NSNotification.Name(rawValue: "SomethingChanged"), object: nil)
         
+        // Set the AutoLock Setting
+        if CDOperation.getAutoLockSetting() == "ON" {
+            
+            // User wants to disable the autolock timer.
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+        else {
+            
+            // User doesn't want to disable the autolock timer.
+            UIApplication.shared.isIdleTimerDisabled = false
+        }
+
         // Show or Hide Ads
         if Products.store.isProductPurchased("com.grantsoftware.90DWT2.removeads1") {
             
@@ -386,7 +398,7 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
 
                     let dateString = DateFormatter.localizedString(from: date! as Date, dateStyle: .short, timeStyle: .none)
                     
-                    writeString.append("\(session!),\(month),\(week),\(workout!),\(notes!),\(dateString)\n")
+                    writeString.append("\(session!),\(month!),\(week!),\(workout!),\(notes!),\(dateString)\n")
                 }
             }
             

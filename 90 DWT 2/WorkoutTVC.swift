@@ -149,6 +149,18 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
         
         self.graphViewPurchased = self.wasGraphViewPurchased()
         
+        // Set the AutoLock Setting
+        if CDOperation.getAutoLockSetting() == "ON" {
+            
+            // User wants to disable the autolock timer.
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+        else {
+            
+            // User doesn't want to disable the autolock timer.
+            UIApplication.shared.isIdleTimerDisabled = false
+        }
+
         // Show or Hide Ads
         if Products.store.isProductPurchased("com.grantsoftware.90DWT2.removeads1") {
             
@@ -928,9 +940,9 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
             // 1 = ON
             if cell.currentRep1.isHidden == false &&
                 cell.currentRep2.isHidden == false &&
+                cell.currentRep3.isHidden == false &&
                 cell.currentWeight1.isHidden == false &&
                 cell.currentWeight2.isHidden == false &&
-                cell.currentWeight3.isHidden == false &&
                 cell.currentWeight3.isHidden == false {
                 
                 //  3 Rounds

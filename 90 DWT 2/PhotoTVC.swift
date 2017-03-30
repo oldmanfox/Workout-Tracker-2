@@ -37,6 +37,18 @@ class PhotoTVC: UITableViewController {
         // Force fetch when notified of significant data changes
         NotificationCenter.default.addObserver(self, selector: #selector(self.doNothing), name: NSNotification.Name(rawValue: "SomethingChanged"), object: nil)
         
+        // Set the AutoLock Setting
+        if CDOperation.getAutoLockSetting() == "ON" {
+            
+            // User wants to disable the autolock timer.
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+        else {
+            
+            // User doesn't want to disable the autolock timer.
+            UIApplication.shared.isIdleTimerDisabled = false
+        }
+
         self.tableView.reloadData()
     }
     
