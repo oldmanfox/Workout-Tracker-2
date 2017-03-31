@@ -786,6 +786,39 @@ class CDOperation {
         return "1"
     }
     
+    class func getImportPreviousSessionData() -> Bool {
+        
+        let request = NSFetchRequest<NSFetchRequestResult>( entityName: "Session")
+        let sortDate = NSSortDescriptor( key: "date", ascending: true)
+        request.sortDescriptors = [sortDate]
+        
+        do {
+            if let sessionObjects = try CoreDataHelper.shared().context.fetch(request) as? [Session] {
+                
+                // print("sessionObjects.count = \(sessionObjects.count)")
+                
+                if sessionObjects.count != 0 {
+                    
+                    // Match Found.
+                    return (sessionObjects.last?.importPreviousSessionData)! as! Bool
+                }
+                else {
+                    
+                    // No Matches Found.  Create new record and save.
+                    let insertSessionInfo = NSEntityDescription.insertNewObject(forEntityName: "Session", into: CoreDataHelper.shared().context) as! Session
+                    
+                    insertSessionInfo.importPreviousSessionData = false
+                    
+                    CoreDataHelper.shared().backgroundSaveContext()
+                    
+                    return false
+                }
+            }
+        } catch { print(" ERROR executing a fetch request: \( error)") }
+        
+        return false
+    }
+
     class func getAutoLockSetting() -> String {
         
         // Fetch AutoLock data.
@@ -2526,6 +2559,54 @@ class CDOperation {
         default:
             // Round 3
             return 2
+        }
+    }
+    
+    class func findMaxIndexForWorkout(workoutName: String) -> Int {
+            
+        switch workoutName {
+        case "Core Fitness":
+            return 4
+            
+        case "Plyometrics":
+            return 8
+            
+        case "Complete Fitness & Ab Workout":
+            return 4
+            
+        case "Yoga":
+            return 13
+            
+        case "Strength + Stability":
+            return 4
+            
+        case "Chest + Back + Stability & Ab Workout":
+            return 4
+            
+        case "Shoulder + Bi + Tri & Ab Workout":
+            return 4
+            
+        case "Legs + Back & Ab Workout":
+            return 4
+            
+        case "Lower Agility":
+            return 10
+            
+        case "Upper Agility":
+            return 10
+            
+        case "Ab Workout":
+            return 16
+            
+        case "Stretch":
+            return 26
+            
+        case "Rest":
+            return 26
+            
+        default:
+            // No matches
+            return 0
         }
     }
 }

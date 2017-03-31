@@ -12,8 +12,6 @@
 		A531F31D1E5269E3008A55B2 /* Measurement+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531F30D1E5269E3008A55B2 /* Measurement+CoreDataProperties.swift */; };
 		A531F31E1E5269E3008A55B2 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531F30E1E5269E3008A55B2 /* Photo+CoreDataClass.swift */; };
 		A531F31F1E5269E3008A55B2 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531F30F1E5269E3008A55B2 /* Photo+CoreDataProperties.swift */; };
-		A531F3201E5269E3008A55B2 /* Session+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531F3101E5269E3008A55B2 /* Session+CoreDataClass.swift */; };
-		A531F3211E5269E3008A55B2 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531F3111E5269E3008A55B2 /* Session+CoreDataProperties.swift */; };
 		A531F3221E5269E3008A55B2 /* AutoLock+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531F3121E5269E3008A55B2 /* AutoLock+CoreDataClass.swift */; };
 		A531F3231E5269E3008A55B2 /* AutoLock+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531F3131E5269E3008A55B2 /* AutoLock+CoreDataProperties.swift */; };
 		A531F3241E5269E3008A55B2 /* Bands+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531F3141E5269E3008A55B2 /* Bands+CoreDataClass.swift */; };
@@ -105,6 +103,8 @@
 		A59A6F421BE11D2700021100 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F401BE11D2700021100 /* EventKitUI.framework */; };
 		A59A6F441BE11D6200021100 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F431BE11D6200021100 /* libxml2.tbd */; };
 		A59A6F461BE11D6C00021100 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59A6F451BE11D6C00021100 /* CoreBluetooth.framework */; };
+		A5A5F6ED1E8F048400A4FB79 /* Session+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A5F6EB1E8F048400A4FB79 /* Session+CoreDataClass.swift */; };
+		A5A5F6EE1E8F048400A4FB79 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A5F6EC1E8F048400A4FB79 /* Session+CoreDataProperties.swift */; };
 		A5E11E5A1C2200EA00761C00 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A5E11E591C2200EA00761C00 /* Settings.bundle */; };
 		A5FD70F5164E0B85004E4884 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FD70F4164E0B84004E4884 /* Social.framework */; };
 		A5FFBCEC1E8D94CA00C323B1 /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FFBCEB1E8D94CA00C323B1 /* Chartboost.framework */; };
@@ -298,8 +298,6 @@
 		A531F30D1E5269E3008A55B2 /* Measurement+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Measurement+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A531F30E1E5269E3008A55B2 /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A531F30F1E5269E3008A55B2 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A531F3101E5269E3008A55B2 /* Session+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A531F3111E5269E3008A55B2 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A531F3121E5269E3008A55B2 /* AutoLock+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AutoLock+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A531F3131E5269E3008A55B2 /* AutoLock+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AutoLock+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A531F3141E5269E3008A55B2 /* Bands+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bands+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -574,6 +572,9 @@
 		A59A6F401BE11D2700021100 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		A59A6F431BE11D6200021100 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		A59A6F451BE11D6C00021100 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		A5A5F6EA1E8F044400A4FB79 /* _0_DWT_ 2_v4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "_0_DWT_ 2_v4.xcdatamodel"; sourceTree = "<group>"; };
+		A5A5F6EB1E8F048400A4FB79 /* Session+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A5A5F6EC1E8F048400A4FB79 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A5E11E411C21B4FB00761C00 /* _0_DWT_ 2_v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "_0_DWT_ 2_v2.xcdatamodel"; sourceTree = "<group>"; };
 		A5E11E591C2200EA00761C00 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A5FD70F4164E0B84004E4884 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -984,12 +985,12 @@
 		A531F32C1E526A52008A55B2 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				A5A5F6EB1E8F048400A4FB79 /* Session+CoreDataClass.swift */,
+				A5A5F6EC1E8F048400A4FB79 /* Session+CoreDataProperties.swift */,
 				A531F30C1E5269E3008A55B2 /* Measurement+CoreDataClass.swift */,
 				A531F30D1E5269E3008A55B2 /* Measurement+CoreDataProperties.swift */,
 				A531F30E1E5269E3008A55B2 /* Photo+CoreDataClass.swift */,
 				A531F30F1E5269E3008A55B2 /* Photo+CoreDataProperties.swift */,
-				A531F3101E5269E3008A55B2 /* Session+CoreDataClass.swift */,
-				A531F3111E5269E3008A55B2 /* Session+CoreDataProperties.swift */,
 				A531F3121E5269E3008A55B2 /* AutoLock+CoreDataClass.swift */,
 				A531F3131E5269E3008A55B2 /* AutoLock+CoreDataProperties.swift */,
 				A531F3141E5269E3008A55B2 /* Bands+CoreDataClass.swift */,
@@ -2191,7 +2192,6 @@
 				A5FFBEE51E8D94DD00C323B1 /* MPNativeAdData.m in Sources */,
 				A531F6221E535D1A008A55B2 /* CoreDataImporter.m in Sources */,
 				A5FFBEFF1E8D94DD00C323B1 /* MOPUBNativeVideoAdRenderer.m in Sources */,
-				A531F3211E5269E3008A55B2 /* Session+CoreDataProperties.swift in Sources */,
 				A531F6171E535CCF008A55B2 /* ExerciseChartViewController.swift in Sources */,
 				A531F6671E535DED008A55B2 /* MeasurementsRecordViewController.swift in Sources */,
 				A531F6341E535D25008A55B2 /* CDMigration.swift in Sources */,
@@ -2224,7 +2224,6 @@
 				A5FFBEBD1E8D94DD00C323B1 /* MPVASTInline.m in Sources */,
 				A5FFBE6B1E8D94DD00C323B1 /* MPBannerCustomEventAdapter.m in Sources */,
 				A5FFBECD1E8D94DD00C323B1 /* MPInterstitialAdController.m in Sources */,
-				A531F3201E5269E3008A55B2 /* Session+CoreDataClass.swift in Sources */,
 				A5FFBEDE1E8D94DD00C323B1 /* MPTableViewAdPlacerCell.m in Sources */,
 				A5FFBE781E8D94DD00C323B1 /* MPClosableView.m in Sources */,
 				A5FFBEC41E8D94DD00C323B1 /* MPVASTResponse.m in Sources */,
@@ -2259,11 +2258,13 @@
 				A531F67B1E535E5A008A55B2 /* WorkoutNavigationController.swift in Sources */,
 				A5FFBE961E8D94DD00C323B1 /* MPMRAIDBannerCustomEvent.m in Sources */,
 				A5FFBEF41E8D94DD00C323B1 /* MOPUBAVPlayer.m in Sources */,
+				A5A5F6ED1E8F048400A4FB79 /* Session+CoreDataClass.swift in Sources */,
 				A531F6331E535D25008A55B2 /* CDImporter.swift in Sources */,
 				A5FFBEBB1E8D94DD00C323B1 /* MPVASTDurationOffset.m in Sources */,
 				A5FFBEB31E8D94DD00C323B1 /* MPReachability.m in Sources */,
 				A5FFBEAF1E8D94DD00C323B1 /* MPIdentityProvider.m in Sources */,
 				A531F6711E535E03008A55B2 /* WebsiteViewController.swift in Sources */,
+				A5A5F6EE1E8F048400A4FB79 /* Session+CoreDataProperties.swift in Sources */,
 				A5FFBECA1E8D94DD00C323B1 /* MPAdView.m in Sources */,
 				A5FFBE841E8D94DD00C323B1 /* MPLogEventCommunicator.m in Sources */,
 				A5FFBEEE1E8D94DD00C323B1 /* MPStaticNativeAdRenderer.m in Sources */,
@@ -2550,11 +2551,12 @@
 		A54B630C15CB13F10085C0E5 /* _0_DWT_2.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A5A5F6EA1E8F044400A4FB79 /* _0_DWT_ 2_v4.xcdatamodel */,
 				A531F30A1E52592F008A55B2 /* _0_DWT_ 2_v3.xcdatamodel */,
 				A5E11E411C21B4FB00761C00 /* _0_DWT_ 2_v2.xcdatamodel */,
 				A54B630D15CB13F10085C0E5 /* _0_DWT_2.xcdatamodel */,
 			);
-			currentVersion = A531F30A1E52592F008A55B2 /* _0_DWT_ 2_v3.xcdatamodel */;
+			currentVersion = A5A5F6EA1E8F044400A4FB79 /* _0_DWT_ 2_v4.xcdatamodel */;
 			path = _0_DWT_2.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
