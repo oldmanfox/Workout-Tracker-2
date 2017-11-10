@@ -519,7 +519,7 @@
             <objects>
                 <tableViewController id="0pl-RJ-4Kw" customClass="WorkoutTVC" customModule="_0_DWT_2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="392" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZHf-lA-KQH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1350"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="0.10000000000000001" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -815,7 +815,7 @@
                                             <rect key="frame" x="279" y="246" width="80" height="40"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qex-Ry-2hc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.035294117649999998" green="0.2901960784" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -826,7 +826,7 @@
                                                     </variation>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CGm-Pf-Xcm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.015686274510000001" green="0.5568627451" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -837,7 +837,7 @@
                                                     </variation>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2hU-LG-r9B">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.43137254899999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -848,7 +848,7 @@
                                                     </variation>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qj0-90-Z9A">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.43137254899999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -859,7 +859,7 @@
                                                     </variation>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qTH-cQ-j7g">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -870,7 +870,7 @@
                                                     </variation>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dFM-uH-25X">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -881,7 +881,7 @@
                                                     </variation>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x5h-DC-d24">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -892,7 +892,7 @@
                                                     </variation>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VHb-kY-DzV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -903,42 +903,42 @@
                                                     </variation>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="W" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgB-0c-QJY">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTa-gS-FbV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uk1-fS-QXz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eR-Sn-BbC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6g-RL-KkM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hwz-m4-CIp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -953,7 +953,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="rVv-AA-zUM" firstAttribute="trailing" secondItem="6xP-oo-bxF" secondAttribute="trailingMargin" id="048-yE-993"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="q0o-Ti-Br7" secondAttribute="bottom" constant="1" id="51S-r0-Nby"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="q0o-Ti-Br7" secondAttribute="bottom" id="51S-r0-Nby"/>
                                         <constraint firstItem="cLx-l2-qtU" firstAttribute="top" secondItem="goM-Cf-vKK" secondAttribute="bottom" id="6ga-C2-VXP"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="cLx-l2-qtU" secondAttribute="trailing" priority="250" constant="38" id="7lb-sG-1gj"/>
                                         <constraint firstItem="F2p-6n-gfl" firstAttribute="centerX" secondItem="va2-BC-Ev1" secondAttribute="centerX" constant="-2.25" id="8J3-sr-2eW"/>
@@ -1301,7 +1301,7 @@
                                             <rect key="frame" x="279" y="246" width="80" height="40"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hkZ-4L-SNe">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.035294117649999998" green="0.2901960784" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1312,7 +1312,7 @@
                                                     </variation>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4n2-JR-tla">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.015686274510000001" green="0.5568627451" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1323,7 +1323,7 @@
                                                     </variation>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4sK-mW-1Xh">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1334,7 +1334,7 @@
                                                     </variation>
                                                 </textField>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="55.5" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HRB-8G-jHG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1345,21 +1345,21 @@
                                                     </variation>
                                                 </textField>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2s-fU-6Ta">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mD-dT-n8H">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHD-7i-hFH">
-                                                    <rect key="frame" x="0.0" y="0.0" width="84" height="40"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1384,7 +1384,7 @@
                                         <constraint firstItem="ICT-pW-h6f" firstAttribute="width" secondItem="IJ9-Oy-NDc" secondAttribute="width" id="87g-C6-31a"/>
                                         <constraint firstItem="nH7-g3-v02" firstAttribute="top" secondItem="hTP-Ns-ZoN" secondAttribute="bottom" constant="8" id="8JJ-Mg-CpW"/>
                                         <constraint firstItem="DHg-Qk-B6X" firstAttribute="top" secondItem="dzf-BK-plq" secondAttribute="bottom" id="9KK-ei-Bxx"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="U5p-vi-C3t" secondAttribute="bottom" constant="1" id="9eh-of-nmO"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="U5p-vi-C3t" secondAttribute="bottom" id="9eh-of-nmO"/>
                                         <constraint firstItem="zfh-Zi-NRz" firstAttribute="leading" secondItem="geo-u1-uxu" secondAttribute="trailing" priority="250" constant="13" id="9qD-vz-VLx"/>
                                         <constraint firstItem="dzf-BK-plq" firstAttribute="leading" secondItem="vX5-8h-dXp" secondAttribute="trailing" priority="250" constant="21" id="Brg-aD-4Mb"/>
                                         <constraint firstItem="FtT-9B-qcc" firstAttribute="leading" secondItem="5T1-SN-pBZ" secondAttribute="leadingMargin" priority="250" constant="6" id="C4W-iK-ZzZ"/>
@@ -1993,7 +1993,7 @@
                     </tableView>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="1300"/>
+                    <size key="freeformSize" width="375" height="1350"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rxH-o6-fCp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
