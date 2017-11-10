@@ -210,13 +210,13 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    func doNothing() {
+    @objc func doNothing() {
         
         // Do nothing
         self.tableView.reloadData()
     }
     
-    func disableRewardedGraph() {
+    @objc func disableRewardedGraph() {
         
         timer.invalidate()
         
@@ -242,7 +242,7 @@ class WorkoutTVC: UITableViewController, UIPopoverPresentationControllerDelegate
         }
     }
 
-    func actionButtonPressed(_ sender: UIBarButtonItem) {
+    @objc func actionButtonPressed(_ sender: UIBarButtonItem) {
         
         let alertController = UIAlertController(title: "Share", message: "How you want to share your progress?", preferredStyle: .actionSheet)
         

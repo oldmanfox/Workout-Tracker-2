@@ -54,7 +54,7 @@ class MeasurementsTVC: UITableViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "doNothing"), object: nil)
     }
     
-    func doNothing() {
+    @objc func doNothing() {
         
         // Do nothing
         self.tableView.reloadData()

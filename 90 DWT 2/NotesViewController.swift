@@ -175,7 +175,7 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
 //        self.adView.removeFromSuperview()
     }
     
-    func doNothing() {
+    @objc func doNothing() {
         
         // Do nothing
         

@@ -34,7 +34,7 @@ class StoreTVC: UITableViewController {
         reload()
     }
     
-    func reload() {
+    @objc func reload() {
         
         products = []
         
@@ -51,11 +51,11 @@ class StoreTVC: UITableViewController {
         }
     }
     
-    func restoreTapped(_ sender: AnyObject) {
+    @objc func restoreTapped(_ sender: AnyObject) {
         Products.store.restorePurchases()
     }
     
-    func handlePurchaseNotification(_ notification: Notification) {
+    @objc func handlePurchaseNotification(_ notification: Notification) {
         guard let productID = notification.object as? String else { return }
         
         for (index, product) in products.enumerated() {
