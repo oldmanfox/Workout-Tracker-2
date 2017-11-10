@@ -168,6 +168,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
             self.adView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
                                            y: self.bannerSize.height - self.bannerSize.height,
                                            width: self.bannerSize.width, height: self.bannerSize.height)
+            self.headerView.addSubview(self.adView)
             self.adView.isHidden = false
         }
 
@@ -230,7 +231,7 @@ class WeekTVC: UITableViewController, UIPopoverPresentationControllerDelegate, U
         present(alertController, animated: true, completion: nil)
     }
 
-    func longPressGRAction(_ sender: UILongPressGestureRecognizer) {
+    @objc func longPressGRAction(_ sender: UILongPressGestureRecognizer) {
      
         if (sender.isEqual(self.longPGR)) {
             

@@ -166,6 +166,7 @@ class MonthTVC: UITableViewController, UIPopoverPresentationControllerDelegate, 
             self.adView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
                                                      y: self.bannerSize.height - self.bannerSize.height,
                                                      width: self.bannerSize.width, height: self.bannerSize.height)
+            self.headerView.addSubview(self.adView)
             self.adView.isHidden = false
         }
 
