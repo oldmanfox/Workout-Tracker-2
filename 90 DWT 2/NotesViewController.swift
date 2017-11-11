@@ -153,6 +153,7 @@ class NotesViewController: UIViewController, MFMailComposeViewControllerDelegate
             self.adView.frame = CGRect(x: (self.view.bounds.size.width - self.bannerSize.width) / 2,
                                            y: self.view.bounds.size.height - self.bannerSize.height - self.tabBarController!.tabBar.bounds.size.height,
                                            width: self.bannerSize.width, height: self.bannerSize.height)
+            self.view.addSubview(self.adView)
             self.adView.isHidden = false
         }
     }
